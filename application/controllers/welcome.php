@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
 		}
 
 		if(isset($_FILES["resumefile"]) && $_FILES["resumefile"]["size"]>0  ){
-			$uf=Fun::uploadfile_post($_FILES["resumefile"]);
+			$uf=Fun::uploadfile_post($_FILES["resumefile"], array(), 'resume');
 			if($uf["ec"]>0)
 				$_POST["resume"]=$uf["fn"];
 		}
