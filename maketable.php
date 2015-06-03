@@ -62,6 +62,18 @@ function create(){
 	echo Sql::query("CREATE TABLE all_subjects (id int UNSIGNED , subjectname VARCHAR(30) NOT NULL)");
 	echo Sql::query("CREATE TABLE all_topics (id int UNSIGNED , topicname VARCHAR(30) NOT NULL)");
 	echo Sql::query("CREATE TABLE all_cst (c_id int UNSIGNED , s_id int UNSIGNED,t_id int UNSIGNED)");
+	echo Sql::query("CREATE TABLE user_query (
+    `q_id` INT(30) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) DEFAULT NULL,
+    `name` VARCHAR(50) NOT NULL,
+    `phone` VARCHAR(10) NOT NULL,
+    `email` VARCHAR(50) NOT NULL,
+    `msg` TEXT NOT NULL,
+    `resolved` TINYINT(1) NOT NULL DEFAULT '0',
+    `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`q_id`),
+    UNIQUE KEY `id` (`q_id`),
+)");
 
 }
 
