@@ -3,19 +3,6 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 ?>
 
-<!doctype html>
-<html>
-<head>
-  <title>Get IITians</title>
-  <link rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-  <link rel="stylesheet" href="css/custom-stylesheet.css"  media="screen,projection"/>
-  <link rel="stylesheet" href="css/jquery.bxslider.css" media="screen,projection"/>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-</head>
-
-<body>
-
 <br>
 <h5 class="bold teal-text center" style="font-variant:small-caps">Contact Us</h5>
 

@@ -4,8 +4,7 @@
       <div class="row">
         <div class="col l4 s12">
           <h5 class="white-text">Get IITians</h5>
-          <p class="grey-text text-lighten-4"></p>
-            <a class="grey-text text-lighten-3"><i> 9313394403</a>    
+          <a class="grey-text text-lighten-3" href="#"><i class="mdi-communication-email"></i> Info@getIITians.com</a>
         </div>
       </div>
     </div>

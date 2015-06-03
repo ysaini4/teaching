@@ -3,7 +3,6 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 ?>
 
-<body> 
   <main>
     <div class="container">
       
@@ -36,5 +35,4 @@ load_view("Template/navbarnew.php");
 <?php
 load_view("Template/footernew.php");
 load_view("Template/bottom.php");
-
 ?>
