@@ -1,0 +1,1 @@
+ssh -i serverkey.pem ubuntu@54.149.49.212
