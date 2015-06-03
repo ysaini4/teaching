@@ -98,28 +98,32 @@ load_view("Template/navbarnew.php");
               </div>
               <div class="row">
                 <div class="col s12 l4">
-                  <span class="grey-text text-darken-1">Mininum Fees<span class="red-text">*</span></span>
+                  <span class="grey-text text-darken-1">Mininum Fees<span class="red-text">*</span></span><br>
+                    <span class="grey-text text-lighten-1" style="font-size: 13px;">minimun tution fees per hour</span>
                 </div>
                 
-                <div class="col s12 l8">
+                <div class="col s12 l4">
                   <select data-condition="simple" onchange="f(this);" name="minfees" id="minfees">
-                    <option value="" disabled selected>Minimum Fees(Per Hour)</option>
-                    <option value="6">$6</option>
-                    <option value="7">$7</option>
-                    <option value="8">$8</option>
-                    <option value="9">$9</option>
-                    <option value="10">$10</option>
-                    <option value="15">$15</option>
-                    <option value="20">$20</option>
-                    <option value="25">$25</option>
-                    <option value="30">$30</option>
-                    <option value="35">$35</option>
-                    <option value="40">$40</option>
+                    <option value="" disabled selected>Min.Fees</option>
+                    <option value="300">₹300</option>
+                    <option value="500">₹500</option>
+                    <option value="800">₹800</option>
+                    <option value="1000">₹1000</option>
+                    <option value="1300">₹1300</option>
+                    <option value="1500">₹1500</option>
+                    <option value="1800">₹1800</option>
+                    <option value="2000">₹2000</option>
+                    <option value="2500">₹2500</option>
+                    <option value="3000">₹3000</option>
+                    
           </select>
 
               </div>
-              </div>
-              <div id="sada"></div>
+            <div class="col s12 l4">
+              <div id="sada" class="col s12 l2"></div>
+                <div class="col s12 l2">USD</div>
+                  </div>
+                </div>
               <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Teaching Experience<span class="red-text">*</span></span>
@@ -324,10 +328,17 @@ load_view("Template/navbarnew.php");
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Date of Birth<span class="red-text">*</span></span>
                 </div>
-                <div class="col s12 l8">
-                  <input type="date" class="datepicker" name="dob" data-condition="simple">
+                <div class="col s12 l6">
+                  <input type="date" class="datepicker" name="dob" data-condition="simple"  onchange="ageToTime(this);">
                 </div>
-              </div>
+                  <div class="col s12 l2">
+                <div class="col s12 l1"  id="times">
+                      
+                      </div>
+                      <div class="col s12 l1">
+                      Yrs.
+                      </div>
+                  </div>
                 <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Are you Ok with home tuition?<span class="red-text">*</span></span>
@@ -709,19 +720,27 @@ load_view("Template/navbarnew.php");
 <?php
 }
 else{
-  echo $msg;  //Thank You message
-  //Button
-  echo '<a href='.BASE."joinus".'>Back</a>';  // Make this link, a button
+ $_SESSION['msg11']= $msg;
+    Fun::redirect(BASE."index");//Thank You message
 }
 load_view("Template/footernew.php");
 ?>
 <script>
   function f(obj){
     var value1=$(obj).val();
-    var value2=<?php echo $currentDollarRate = simplexml_load_file("http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate?FromCurrency=USD&ToCurrency=INR");?> 
-    $("#sada").html(value1*value2);
+    var value2=<?php echo $currentDollarRate = simplexml_load_file("http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate?FromCurrency=INR&ToCurrency=USD");?> 
+    var x = Math.round(value1*value2);
+    $("#sada").html(x);
+  }
+function ageToTime(obj){
+    var d = new Date();
+    var n1 = d.getFullYear(); 
+    var d = new Date(obj.value);
+    var n2 = d.getFullYear(); 
+    $("#times").html(n1-n2);
   }
 </script>
 <?php
+
 load_view("Template/bottom.php");
 ?>

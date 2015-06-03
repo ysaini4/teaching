@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+
   <?php
   opent("base",array("href"=>HOST));
   ocloset("title",$title);
