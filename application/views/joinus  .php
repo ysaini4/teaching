@@ -1,12 +1,25 @@
 <?php
-load_view("Template/top.php",$inp);
-load_view("Template/navbarnew.php",$inp);
+$msg="";
+if(Fun::isSetP("name","iit","email","iitentryyear","password","degree","phone")){
+  $temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"]));
+  print_r($temp);
+  if($temp>0){
+    $datatoinsert=Fun::getflds(array('iit','iitentryyear','degree'),$_POST);
+    $datatoinsert["tid"]=$temp['id'];
+    $datatoinsert["isselected"]='t';
+    $odata=Sqle::insertVal("teachers",$datatoinsert);
+    Fun::redirect(BASE."topics");
+  }
+  else{
+    $msg="Error occured";
+  }
+}
 ?>
+<body>
 <main>
     <div class="container">
       <div class="card-panel">
         <div class="row">
-          <div align='center' style='color:red;' ><p><?php echo $msg; ?></p></div>
           <div class="col s12">
             <h3 class="teal-text text-darken-1 center">IITians Join Us</h3>
           </div>
@@ -28,6 +41,7 @@ load_view("Template/navbarnew.php",$inp);
                 <select name="iit">
                 <option value="" disabled selected>Choose your IIT</option>
                 <?php
+                  $alliit=alliits();
                   for($i=0;$i<count($alliit);$i++){
                 ?>
               <option value="<?php echo $i+1; ?>" ><?php echo $alliit[$i]; ?></option>
@@ -40,9 +54,9 @@ load_view("Template/navbarnew.php",$inp);
                <select name="iitentryyear">
                 <option value="" disabled selected>Year Of Joining IIT</option>
                  <?php
-                    for($i=0;$i<count($yearjoiniit);$i++){
+                    for($i=2015;$i>=1950;$i--){
                     ?>
-                      <option><?php echo $yearjoiniit[$i]; ?></option>
+                      <option><?php echo $i; ?></option>
                     <?php
                     }
                   ?>
@@ -54,6 +68,7 @@ load_view("Template/navbarnew.php",$inp);
                  <select name="degree">
                      <option value="" disabled selected>Degree</option>  
                     <?php
+                     $alldeg=degrees();
                     for($i=0;$i<count($alldeg);$i++){
                     ?>
                       <option value="<?php echo $i+1; ?>" ><?php echo $alldeg[$i]; ?></option>
@@ -90,6 +105,7 @@ load_view("Template/navbarnew.php",$inp);
       </div>
     </div>
 </main>
+
 <style>
 .select-wrapper input.select-dropdown {
   color:#9e9e9e;
@@ -106,7 +122,3 @@ $(document).ready(function() {
   });
 </script>
 
-<?php
-load_view("Template/footer.php",$inp);
-load_view("Template/bottom.php",$inp);
-?>
