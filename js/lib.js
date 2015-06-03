@@ -127,6 +127,7 @@ function submitForm_t2(obj){
 		var app="<b>You have to fill :</b><br>".fontcolor("red");
 		var finalApp=app.concat(list.fontcolor("red"));
 		document.getElementById("errorReport").innerHTML = finalApp;
+ 		window.scrollTo(0, 0);
 	}	
 	return !(problem);
 }
