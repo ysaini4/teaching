@@ -72,7 +72,7 @@ function create(){
     `resolved` TINYINT(1) NOT NULL DEFAULT '0',
     `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`q_id`),
-    UNIQUE KEY `id` (`q_id`),
+    UNIQUE KEY `id` (`q_id`)
 )");
 
 }
