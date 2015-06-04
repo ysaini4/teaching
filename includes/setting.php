@@ -1,5 +1,5 @@
 <?php
-	define("server",'server');//server = laptop,server,poorvi
+	define("server",'laptop');//server = laptop,server,poorvi
 	if(server=="poorvi"){
 		define('HOST','http://poorvi.cse.iitd.ac.in/~cs1120233/teaching/',false); // false mean that HOST cannot be used as hOsT
 		define('ROOT', '/home/btech/cs1120233/private_html/teaching/', false);
