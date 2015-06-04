@@ -5,7 +5,7 @@
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
       <div class="nav-wrapper container">
-        <a href="<?php echo BASE ;?>" class="brand-logo">getIITians</a>
+        <a href="<?php echo HOST ;?>" class="brand-logo">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
          
