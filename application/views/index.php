@@ -16,10 +16,15 @@ load_view("Template/navbarnew.php",$inp);
         <h1 class="header center white-text text-darken-2">Get IITians</h1>
         <div class="row center">
          <h5 class="col s12 light white-text"><?php
-if (isset($_SESSION['msg11']) && $_SESSION['msg11']!=null ){
-  echo $_SESSION['msg11'];
-  $_SESSION['msg11']=null;
-}?></h5>
+if (!empty($_SESSION['msg11']))
+{
+echo $_SESSION['msg11'];
+    session_unset(); 
+session_destroy();
+}
+             else
+             {echo "Get an IITian tutor for any topic any time!";
+             }?></h5>
           
         </div>
         

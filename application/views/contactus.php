@@ -14,16 +14,15 @@ load_view("Template/navbarnew.php");
 				<div class="divider"></div>
 				<div class="row">
 					<div class="col s5" style="padding-left:15px;">
-						<p>B-Block<br>Shivalik<br>Malviya Nagar<br>New Delhi, 000000</p>
+						<p>B-178<br>Shivalik<br>Malviya Nagar<br>New Delhi, 110017</p>
 					</div>
 					<div class="col s5">
 						<ul>
-							<li><p class="" href="#"><i class="mdi-maps-local-phone"></i> +919876543210</p></li>
+							<li><p class="" href="#"><i class="mdi-communication-email"></i>Info@getIITians.com</p></li>
 							<li>
-				              <a class="grey-text text-lighten-3" href="#!"><img src="images/facebook.png" alt="Facebook" width="30" height="30"/></a>&nbsp;
+				              <!--<a class="grey-text text-lighten-3" href="#!"><img src="images/facebook.png" alt="Facebook" width="30" height="30"/></a>&nbsp;
 				              <a class="grey-text text-lighten-3" href="#!"><img src="images/twitter.png" alt="Twitter" width="30" height="30"/></a>&nbsp;
-				              <a class="grey-text text-lighten-3" href="#!"><img src="images/google-plus.png" alt="Google+" width="30" height="30"/></a>&nbsp;
-				            </li>
+				            </li>-->
 					</div>
 					<div class="col s2">
 						<i class="large mdi-communication-location-on teal-text"></i>

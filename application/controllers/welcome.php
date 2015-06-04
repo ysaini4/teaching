@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
 //				Fun::redirect(BASE."account");
-				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
+				$msg="Dear ".$_POST["name"].",Thank You for Registering with us. We will soon get back to you.";
 			}
 
 			$data=json_encode($_POST);
@@ -56,7 +56,7 @@ class Welcome extends CI_Controller {
 		}
 		$pageinfo["msg"]=$msg;
 		if($pageinfo["issubmitted"]==true){
-			$pageinfo["msg"]="thanks for contacting us. We will soon get back to you.";	
+			$pageinfo["msg"]="Thank You for Registering with us. We will soon get back to you.";	
 			if($temp == -16)
 				$pageinfo["msg"]="<b>".$_POST["email"]."</b> Id already exists";	
 			else if($temp == -3)
@@ -276,13 +276,16 @@ public function set_news()
 		$result=Sql::query($sql);
 		echo '<h3>You accepted this user<br><br></h3>';
 		self::view($tid);
+		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function reject($tid){
 		$sql="UPDATE teachers set isselected='r' where tid=$tid";
 		$result=Sql::query($sql);
+
 		echo '<h3>You rejected this user<br><br></h3>';
 		self::view($tid);
+		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function view($tid){
