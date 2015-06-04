@@ -132,9 +132,10 @@ load_view("Template/navbarnew.php");
                 </div>
                 <div class="col s12 l8">
                   <p class="range-field">
-                    <input type="range" id="experience" min="0" max="30" name="teachingexp"  data-condition="simple">
+                    <input type="range" id="experience" min="0" max="30" name="teachingexp"  data-condition="simple" onchange="showexp(this);">
                   </p>
                 </div>
+                <div id="showe"></div>                
               </div>
               <div class="row">
                 <div class="col s12 l4">
@@ -739,6 +740,12 @@ function ageToTime(obj){
     var n2 = d.getFullYear(); 
     $("#times").html(n1-n2);
   }
+function showexp(obj){
+  //window.alert("dadasds");
+  v=$(obj).val();
+  v=v.concat(" years");
+  $("#showe").html(v);
+}
 </script>
 <?php
 
