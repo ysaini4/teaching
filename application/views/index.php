@@ -23,7 +23,7 @@ echo $_SESSION['msg11'];
 session_destroy();
 }
              else
-             {echo "Get an IITian tutor for any topic any time!";
+             {echo "Soon, get an IITian tutor for any topic any time!";
              }?></h5>
           
         </div>
