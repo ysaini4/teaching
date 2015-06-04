@@ -11,7 +11,7 @@
          
           <li><a href="<?php echo BASE."aboutus" ;?>">About us</a></li>
           <li><a href="<?php echo BASE."contactus" ;?>">Contact us</a></li>
-          <li><a href="<?php echo BASE."joinus" ;?>"><i class="mdi-action-account-circle left"></i>Join us</a></li>
+          <li><a href="<?php echo BASE."joinus" ;?>"><i class="mdi-action-account-circle left"></i>Teacher Join Us</a></li>
 
           
         </ul>
