@@ -45,7 +45,7 @@ abstract class Funs{
 	//$jsonArray is that jsoninfo field value in techers table
 	//$subN is the array of field
 	//$type is the name in jsoninfo field
-	public static function extractField($jsonArray,$subN,$type){
+	public static function extractFields($jsonArray,$subN,$type){
 		$jsonArray=str2json($jsonArray);
 		$subjects=$jsonArray[$type];
 		$subArray=explode("-", $subjects);
