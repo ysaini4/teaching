@@ -31,7 +31,7 @@
 		}
 	}
 	else if(server=="server"){
-		define('HOST','http://54.149.49.212/teaching/',false); // false mean that HOST cannot be used as hOsT
+		define('HOST','http://getiitians.com/teaching/',false); // false mean that HOST cannot be used as hOsT
 		define('ROOT', '/var/www/html/teaching/', false);
 		define('CDN', HOST.'photo/', false);
 		$db_data = array() ;
