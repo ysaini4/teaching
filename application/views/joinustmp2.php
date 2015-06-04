@@ -105,23 +105,23 @@ load_view("Template/navbarnew.php");
                 <div class="col s12 l4">
                   <select data-condition="simple" onchange="f(this);" name="minfees" id="minfees">
                     <option value="" disabled selected>Min.Fees</option>
-                    <option value="300">Rs. 300</option>
-                    <option value="500">Rs. 500</option>
-                    <option value="800">Rs. 800</option>
-                    <option value="1000">Rs. 1000</option>
-                    <option value="1300">Rs. 1300</option>
-                    <option value="1500">Rs. 1500</option>
-                    <option value="1800">Rs. 1800</option>
-                    <option value="2000">Rs. 2000</option>
-                    <option value="2500">Rs. 2500</option>
-                    <option value="3000">Rs. 3000</option>
+                    <option value="300">₹300</option>
+                    <option value="500">₹500</option>
+                    <option value="800">₹800</option>
+                    <option value="1000">₹1000</option>
+                    <option value="1300">₹1300</option>
+                    <option value="1500">₹1500</option>
+                    <option value="1800">₹1800</option>
+                    <option value="2000">₹2000</option>
+                    <option value="2500">₹2500</option>
+                    <option value="3000">₹3000</option>
                     
           </select>
 
               </div>
             <div class="col s12 l4">
-              <div id="sada" class="col s12 l2"></div>
-                <div class="col s12 l2">USD</div>
+              <div id="sada" class="col s8 l2"></div>
+                <div class="col s4 l2">USD</div>
                   </div>
                 </div>
               <div class="row">
@@ -130,11 +130,48 @@ load_view("Template/navbarnew.php");
                   <br>
                   <span class="grey-text text-lighten-1" style="font-size: 13px;">In years<br>Both offline and online</span>
                 </div>
-                <div class="col s12 l8">
-                  <p class="range-field">
-                    <input type="range" id="experience" min="0" max="30" name="teachingexp"  data-condition="simple">
-                  </p>
+                <div class="col s8 l4">
+                  
+                    <select data-condition="simple" name="teachingexp" id="experience">
+                    <option value="" disabled selected>Teaching Exp.</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                     <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                   
+                    
+          </select>
                 </div>
+                  <div class="col s4 l2">
+                      Yrs.
+                  </div>
               </div>
               <div class="row">
                 <div class="col s12 l4">
@@ -351,7 +388,7 @@ load_view("Template/navbarnew.php");
                     <label for="home1">Yes</label>
                   </div>
                   <div>
-                    <input id="home2" type="radio"  name="home2" >
+                    <input id="home2" type="radio"  name="home1" >
                     <label for="home2">No</label>
                   </div>
                 </div>
