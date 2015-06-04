@@ -347,11 +347,11 @@ load_view("Template/navbarnew.php");
                 </div>
                 <div class="col s12 l4">
                   <div>
-                    <input id="home1" type="radio"  name="home"  >
+                    <input id="home1" type="radio"  name="home1"  >
                     <label for="home1">Yes</label>
                   </div>
                   <div>
-                    <input id="home2" type="radio"  name="home" >
+                    <input id="home2" type="radio"  name="home2" >
                     <label for="home2">No</label>
                   </div>
                 </div>
