@@ -105,16 +105,16 @@ load_view("Template/navbarnew.php");
                 <div class="col s12 l4">
                   <select data-condition="simple" onchange="f(this);" name="minfees" id="minfees">
                     <option value="" disabled selected>Min.Fees</option>
-                    <option value="300">₹300</option>
-                    <option value="500">₹500</option>
-                    <option value="800">₹800</option>
-                    <option value="1000">₹1000</option>
-                    <option value="1300">₹1300</option>
-                    <option value="1500">₹1500</option>
-                    <option value="1800">₹1800</option>
-                    <option value="2000">₹2000</option>
-                    <option value="2500">₹2500</option>
-                    <option value="3000">₹3000</option>
+                    <option value="300">Rs. 300</option>
+                    <option value="500">Rs. 500</option>
+                    <option value="800">Rs. 800</option>
+                    <option value="1000">Rs. 1000</option>
+                    <option value="1300">Rs. 1300</option>
+                    <option value="1500">Rs. 1500</option>
+                    <option value="1800">Rs. 1800</option>
+                    <option value="2000">Rs. 2000</option>
+                    <option value="2500">Rs. 2500</option>
+                    <option value="3000">Rs. 3000</option>
                     
           </select>
 
