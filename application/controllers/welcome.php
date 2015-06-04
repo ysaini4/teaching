@@ -274,19 +274,15 @@ public function set_news()
 	public function accept($tid){
 		$sql="UPDATE teachers set isselected='a' where tid=$tid";
 		$result=Sql::query($sql);
-		
 		echo '<h3>You accepted this user<br><br></h3>';
 		self::view($tid);
-		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function reject($tid){
 		$sql="UPDATE teachers set isselected='r' where tid=$tid";
 		$result=Sql::query($sql);
-
 		echo '<h3>You rejected this user<br><br></h3>';
 		self::view($tid);
-		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function view($tid){
@@ -294,8 +290,6 @@ public function set_news()
 		$result=Sql::getArray($sql);
 		load_view("viewuser.php",array('result'=>$result));
 	}
-	
-
 }
 
 /* End of file welcome.php */
