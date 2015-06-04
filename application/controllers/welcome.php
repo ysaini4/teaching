@@ -11,10 +11,6 @@ class Welcome extends CI_Controller {
 		$pageinfo=array();
 		load_view('index.php',$pageinfo);
 	}
-
-
-
-
 	public function joinus(){
 		global $_ginfo;
 		$pageinfo=array("issubmitted"=>false,"msg1"=>"");
@@ -32,19 +28,20 @@ class Welcome extends CI_Controller {
 				$_POST["resume"]=$uf["fn"];
 		}
 
-
 		if(Fun::isSetP("fname", "lname", "email", "phone", "password", "action","subother","teachingexp","degreeother","branch","dob","city","zipcode","state","linkprofile","feedback")){
 			$pageinfo["issubmitted"]=true;
-			$_POST=Fun::mergeifunset($_POST,array("degree"=>"","college"=>"","resume"=>"","calvarification"=>"","minfees"=>""));
+			$_POST=Fun::mergeifunset($_POST,array("degree"=>"","college"=>"","resume"=>"","calvarification"=>"","minfees"=>"","country"=>""));
 			$_POST['name']=$_POST["fname"]." ".$_POST["lname"];
-			$temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"],"dob"=>Fun::strtotime_t3($_POST["dob"])));
+			$temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"],"dob"=>Fun::strtotime_t3($_POST["dob"]),"gender"=>$_POST["gender"]));
 			if($temp>0){
 				$datatoinsert=array("lang"=>Fun::getmulchecked($_POST,"lang",14),"teachingexp"=>$_POST["teachingexp"]);
 				$datatoinsert["tid"]=$temp['id'];
 				$datatoinsert["isselected"]=$_ginfo["joinus_need_to_confirm"]?'f':'t';
-				$adddata=Fun::getflds(array("college","subother","minfees","resume", "calvarification", "degree","degreeother","branch","city","zipcode","state","linkprofile","feedback"),$_POST);
+				$adddata=Fun::getflds(array("college","subother","minfees","resume", "calvarification", "degree","degreeother","branch","city","zipcode","state","country","linkprofile","feedback","knowaboutusother"),$_POST);
 				$adddata["sub"]=Fun::getmulchecked($_POST,"sub",6);
 				$adddata["grade"]=Fun::getmulchecked($_POST,"grade",4);
+				$adddata["knowaboutus"]=Fun::getmulchecked($_POST,"knowaboutus",4);
+				$adddata["home"]=Fun::getmulchecked($_POST,"home",2);
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
 //				Fun::redirect(BASE."account");
@@ -263,6 +260,41 @@ public function set_news()
 			$this->load->view('mohit');
 		}
 	}
+	//Made by ::Himanshu Rohilla::
+	public function acceptOrReject($tid = 0){
+		$sql="SELECT * from teachers LEFT JOIN users ON users.id=teachers.tid";
+		$arrResult=array();
+		if($tid != 0)
+			$sql="select * from teachers,users where teachers.tid=users.id and tid=$tid";
+		$result=Sql::getArray($sql);
+		$arrResult=array("result"=>$result, "tid"=>$tid);
+		load_view("acceptOrReject.php",$arrResult);
+	}
+	//Made by ::Himanshu Rohilla::
+	public function accept($tid){
+		$sql="UPDATE teachers set isselected='a' where tid=$tid";
+		$result=Sql::query($sql);
+		
+		echo '<h3>You accepted this user<br><br></h3>';
+		self::view($tid);
+		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
+	}
+	//Made by ::Himanshu Rohilla::
+	public function reject($tid){
+		$sql="UPDATE teachers set isselected='r' where tid=$tid";
+		$result=Sql::query($sql);
+
+		echo '<h3>You rejected this user<br><br></h3>';
+		self::view($tid);
+		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
+	}
+	//Made by ::Himanshu Rohilla::
+	public function view($tid){
+		$sql="select * from teachers,users where teachers.tid=users.id AND users.id=$tid";
+		$result=Sql::getArray($sql);
+		load_view("viewuser.php",array('result'=>$result));
+	}
+	
 
 }
 
