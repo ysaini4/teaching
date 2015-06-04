@@ -4,11 +4,11 @@ $gradeN=array("6th to 8th","9th to 10th","11th to 12th","IIT JEE");
 $langN=array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi");
 $knowN=array("Facebook","Email","Friends","Others");
 $homeN=array("Yes","No");
-
+echo "<table border='5'>";
 foreach ($result as $value){
-	echo "<b>Name: </b>".$value['name'].'<br><br>';
-	$subject=Funs::extractFields($value['jsoninfo'],$subN,"sub");
-	echo '<b>Subjects: </b>'.$subject.'<br><br>';
+	echo "<tr><td><b>Name: </b></td><td>".$value['name'].'<br><br></td><tr>';
+	$subject=Funs::extractSubject($value['jsoninfo'],$subN,"sub");
+	echo '<tr><td><b>Subjects: </b></td><td>'.$subject.'<br><br></td><tr>';
 
 	//classes display
 	$jsonArray=str2json($value['jsoninfo']);	
@@ -18,11 +18,11 @@ foreach ($result as $value){
 	foreach($gradeArray as $key){ 
 		$str=$str.$gradeN[$key-1].' , ';
 	}
-	echo '<b>Classes: </b>'.substr_replace($str, "", -2).'<br><br>';
+	echo '<tr><td><b>Classes: </b></td><td>'.substr_replace($str, "", -2).'<br><br></td><tr>';
 	//classes display ends
 
-	echo '<b>Minimum Fees: </b>Rs. '.$jsonArray["minfees"].'<br><br>';
-	echo '<b>Teaching Experience(in years): </b>'.$value['teachingexp'].'<br><br>';
+	echo '<tr><td><b>Minimum Fees: </b></td><td>Rs. '.$jsonArray["minfees"].'<br><br></td><tr>';
+	echo '<tr><td><b>Teaching Experience(in years): </b></td><td>'.$value['teachingexp'].'<br><br></td><tr>';
 	
 	//languages
 	$langArray=explode("-", $value['lang']);
@@ -30,10 +30,10 @@ foreach ($result as $value){
 	foreach ($langArray as $key) {
 		$str=$str.$langN[$key-1].' , ';
 	}
-	echo '<b>Languages: </b>'.substr_replace($str, "", -2).'<br><br>';
+	echo '<tr><td><b>Languages: </b></td><td>'.substr_replace($str, "", -2).'<br><br></td><tr>';
 	//end languages
 
-	echo '<b>College: </b>IIT '.$jsonArray["college"].'<br><br>';
+	echo '<tr><td><b>College: </b></td><td>IIT '.$jsonArray["college"].'<br><br></td><tr>';
 
 	//Degree Display
 	$comma="";
@@ -43,51 +43,49 @@ foreach ($result as $value){
 		$comma=" , ";
 		$degreeOther=$jsonArray["degreeother"];
 	}
-	echo '<b>Degree: </b>'.$jsonArray["degree"].$comma.$degreeOther.'<br><br>';
+	echo '<tr><td><b>Degree: </b></td><td>'.$jsonArray["degree"].$comma.$degreeOther.'<br><br>';
 	//Degree Display
-	echo '<b>Branch: </b>'.$jsonArray["branch"].'<br><br>';
-	echo '<b>Email: </b>'.$value['email'].'<br><br>';
-	echo '<b>Phone Number: </b>'.$value['phone'].'<br><br>';
-	echo '<b>Gender: </b>'.$value['gender'].'<br><br>';
-	echo '<b>Date Of Birth: </b>'.fun::timetodate($value['dob']).'<br><br>';
-	echo '<b>OK with home tuition: </b>'.$homeN[$jsonArray['home']-1].'<br><br>';
-	echo '<b>Address</b><br>';
-		echo '<div style="margin-left:30px;"><b>City: </b>'.$jsonArray['city'].'</div>';
-		echo '<div style="margin-left:30px;"><b>Zipcode: </b>'.$jsonArray['zipcode'].'</div>';
-		echo '<div style="margin-left:30px;"><b>State: </b>'.$jsonArray['state'].'</div>';
-		echo '<div style="margin-left:30px;"><b>Country: </b>'.$jsonArray['country'].'</div><br><br>';
+	echo '<tr><td><b>Branch: </b></td><td>'.$jsonArray["branch"].'<br><br></td><tr>';
+	echo '<tr><td><b>Email: </b></td><td>'.$value['email'].'<br><br></td><tr>';
+	echo '<tr><td><b>Phone Number: </b></td><td>'.$value['phone'].'<br><br></td><tr>';
+	echo '<tr><td><b>Gender: </b></td><td>'.$value['gender'].'<br><br></td><tr>';
+	echo '<tr><td><b>Date Of Birth: </b></td><td>'.fun::timetodate($value['dob']).'<br><br></td><tr>';
+	echo '<tr><td><b>OK with home tuition: </b></td><td>'.$homeN[$jsonArray['home']-1].'<br><br></td><tr>';
+	echo '<tr><td><b>Address: </b></td><td><br>';
+		echo '<div><b>City: </b>'.$jsonArray['city'].'</div>';
+		echo '<div><b>Zipcode: </b>'.$jsonArray['zipcode'].'</div>';
+		echo '<div><b>State: </b>'.$jsonArray['state'].'</div>';
+		echo '<div><b>Country: </b>'.$jsonArray['country'].'</div><br><br></td><tr>';
 
-	$knowabout=Funs::extractFields($value['jsoninfo'],$knowN,"knowaboutus");
-	echo '<b>Know About Us: </b>'.$knowabout.'<br><br>';
+	$knowabout=Funs::extractSubject($value['jsoninfo'],$knowN,"knowaboutus");
+	echo '<tr><td><b>Know About Us: </b></td><td>'.$knowabout.'<br><br></td><tr>';
 
-	echo '<b>Linkedin Profile: </b>'.$jsonArray['linkprofile'].'<br><br>';
-	echo '<b>Feedback: </b>'.$jsonArray['feedback'].'<br><br>';
+	echo '<tr><td><b>Linkedin Profile: </b></td><td>'.$jsonArray['linkprofile'].'<br><br></td><tr>';
+	echo '<tr><td><b>Feedback: </b></td><td>'.$jsonArray['feedback'].'<br><br></td><tr>';
 	$calV= $jsonArray['calvarification'];
 	$resume=$jsonArray['resume'];
-?>
-	<b>College Verification: </b><a href="<?php echo "../../../$calV" ?>">Click here to see the pdf</a><br><br>
-	<b>Resume: </b><a href="<?php echo "../../../$resume" ?>">Click here to see the pdf</a><br><br>
-<?php
+	echo '
+	<tr><td><b>College Verification: </b></td><td><a href="../../../'.$calV.'" target="_blank">Click here to see the pdf</a><br><br></td><tr>
+	<tr><td><b>Resume: </b></td><td><a href="../../../'.$resume.'" target="_blank">Click here to see the pdf</a><br><br></td><tr>
+	</table>';
+
 
 	$id=$value['tid'];
 	if($value['isselected']=='f'){
-	?>
-		<b style="margin-left:500px;"><a href="<?php echo BASE."accept/$id" ;?>">Accept</a></b>
-		<b style="margin-left:10px;"><a href="<?php echo BASE."reject/$id" ;?>">Reject</a></b>
-	<?php
+		echo '
+		<b style="margin-left:500px;font-size:30px;"><a href="'.(BASE."accept/$id").'">Accept</a></b>
+		<b style="margin-left:10px;font-size:30px;"><a href="'.(BASE."reject/$id").'">Reject</a></b>
+		';
 	}
 	else if($value['isselected']=='a'){
-		echo '<b style="margin-left:500px;">Accepted</b>';
-	?>
-		<b style="margin-left:10px;"><a href="<?php echo BASE."reject/$id" ;?>">Reject</a></b>
-	<?php
+		echo '<b style="margin-left:500px;font-size:30px;color:red;">Accepted</b>';
+		echo '<b style="margin-left:10px;font-size:30px;"><a href="'.(BASE."reject/$id").'">Reject</a></b>';
 	}
 	else if($value['isselected']=='r'){
-	?>
-		<b style="margin-left:500px;"><a href="<?php echo BASE."accept/$id" ;?>">Accept</a></b>
-	<?php
-				echo '<b style="margin-left:10px;">Rejected</b>';
+		echo '
+		<b style="margin-left:500px;font-size:30px;"><a href="'.(BASE."accept/$id").'">Accept</a></b>
+		<b style="margin-left:10px;font-size:30px;color:red;">Rejected</b>';
 	}	
-
+	echo '<b><a href="'.(BASE."acceptOrReject").'" style="margin-left:10px;font-size:30px;">Go Back</a></b>';
 }
 ?>
