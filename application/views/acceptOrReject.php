@@ -13,7 +13,7 @@ foreach ($result as $value) {
 	$jsonArray=str2json($value['jsoninfo']);	
 
 	//Subjects display
-	$subject=Funs::extractSubject($value['jsoninfo'],$subN,"sub");
+	$subject=Funs::extractFields($value['jsoninfo'],$subN,"sub");
 	echo '<td>'.$subject.'</td>';
 	//subject display ends here
 	
