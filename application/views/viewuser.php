@@ -7,7 +7,7 @@ $homeN=array("Yes","No");
 
 foreach ($result as $value){
 	echo "<b>Name: </b>".$value['name'].'<br><br>';
-	$subject=Funs::extractSubject($value['jsoninfo'],$subN,"sub");
+	$subject=Funs::extractFields($value['jsoninfo'],$subN,"sub");
 	echo '<b>Subjects: </b>'.$subject.'<br><br>';
 
 	//classes display
@@ -57,7 +57,7 @@ foreach ($result as $value){
 		echo '<div style="margin-left:30px;"><b>State: </b>'.$jsonArray['state'].'</div>';
 		echo '<div style="margin-left:30px;"><b>Country: </b>'.$jsonArray['country'].'</div><br><br>';
 
-	$knowabout=Funs::extractSubject($value['jsoninfo'],$knowN,"knowaboutus");
+	$knowabout=Funs::extractFields($value['jsoninfo'],$knowN,"knowaboutus");
 	echo '<b>Know About Us: </b>'.$knowabout.'<br><br>';
 
 	echo '<b>Linkedin Profile: </b>'.$jsonArray['linkprofile'].'<br><br>';
