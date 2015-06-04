@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
 		}
 
 		if(isset($_FILES["resumefile"]) && $_FILES["resumefile"]["size"]>0  ){
-			$uf=Fun::uploadfile_post($_FILES["resumefile"], array(), 'resume');
+			$uf=Fun::uploadfile_post($_FILES["resumefile"]);
 			if($uf["ec"]>0)
 				$_POST["resume"]=$uf["fn"];
 		}
@@ -48,7 +48,7 @@ class Welcome extends CI_Controller {
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
 //				Fun::redirect(BASE."account");
-				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
+				$msg="Dear ".$_POST["name"].", Thank You for Registering with us. We will soon get back to you.";
 			}
 
 			$data=json_encode($_POST);
@@ -59,7 +59,7 @@ class Welcome extends CI_Controller {
 		}
 		$pageinfo["msg"]=$msg;
 		if($pageinfo["issubmitted"]==true){
-			$pageinfo["msg"]="thanks for contacting us. We will soon get back to you.";	
+			$pageinfo["msg"]="Thank You for Registering with us. We will soon get back to you.";	
 			if($temp == -16)
 				$pageinfo["msg"]="<b>".$_POST["email"]."</b> Id already exists";	
 			else if($temp == -3)
@@ -255,7 +255,6 @@ public function set_news()
 		if ($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('index');
-
 		}
 		else
 		{
@@ -263,8 +262,22 @@ public function set_news()
 			$this->load->view('mohit');
 		}
 	}
-
+	public function acceptOrReject($tid = 0){
+		$set=" ON teachers.tid=users.id";
+		$arrResult=array();
+		if($tid != 0)
+			$set=" ON users.id=$tid";
+		$sql="SELECT * from teachers LEFT JOIN users".$set;
+		$result=Sql::getArray($sql);
+		$arrResult=array("result"=>$result, "tid"=>$tid);
+		load_view("acceptOrReject.php",$arrResult);
+	}
+	public function accept($tid){
+		echo 'YEss';
+	}
 }
+
+
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

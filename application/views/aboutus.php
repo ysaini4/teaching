@@ -13,17 +13,27 @@ load_view("Template/navbarnew.php");
               <div class="row center">
     <div class="teal-text text-lighten-2" class="col s12 m12 offset-m0">
       <ul class="tabs"  class="teal-text text-lighten-2">
-        <li class="tab col s12 "><a class="active" href="#test1">Mission </a></li>
-        <li class="tab col s12 "><a  href="#test2">  Who we Are </a></li>
-        <li class="tab col s12 "><a href="#test3">  How We Work </a></li>
-        <li class="tab col s12 "><a href="#test4">  Why Us </a></li>
-        <li class="tab col s12 "><a href="#test4">  Core Team</a></li>
+        <li class="tab col s12 "><a class="active" href="#test1">Vision </a></li>
+        <li class="tab col s12 "><a  href="#test2"> Mission </a></li>
+        <li class="tab col s12 "><a href="#test3"> Who we are </a></li>
+        <li class="tab col s12 "><a href="#test4"> How we work </a></li>
+        <li class="tab col s12 "><a href="#test5"> Why Us </a></li>
       </ul>
     </div>
-    <div id="test1" class="col s12">Our mission is to be the most respectable confluence of the college aspirants and IITians educationist to every student.</div>
-    <div id="test2" class="col s12">Test 2</div>
-    <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12">Problems we are trying to solve are student being not able to clear competitive exams even after putting required hard work because of improper or no guidance and the non-availability of platform where students/coaching/schools can search for optimum quality teachers. Main reason for this problem is schools focusing only on board examinations and good teachers & students/coaching/schools having trouble finding each other.</div>
+    <div id="test1" class="col s12">Indians Teaching across the globe.</div>
+    <div id="test2" class="col s12">Best Platform for Online live classes</div>
+    <div id="test3" class="col s12" >A Group of skilled IITians providing quality education at your doorstep</div>
+    <div id="test4" class="col s12" ><ul class="collection">
+        <li class="collection-item"><b>Step 1: </b>Choose Your Topic. </li>
+        <li class="collection-item"><b>Step 2: </b>Book Your Appointment.</li>
+        <li class="collection-item"><b>Step 3: </b>Study Online          </li></ul></div>
+     <div id="test5" class="col s12" ><ul class="collection">
+         <li class="collection-item">Study <b>TOPIC</b> of your choice   </li>
+         <li class="collection-item">Study with <b>TEACHERS</b> of your choice</li>
+         <li class="collection-item">Study at <b>PLACE</b> of your choice</li>
+         <li class="collection-item">Study at <b>TIME</b> of your choice </li>
+         </ul>
+                  </div>
   </div>
           </div>
         </div>

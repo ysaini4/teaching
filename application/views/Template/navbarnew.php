@@ -1,9 +1,6 @@
   <!-- Account Dropdown -->
   <body>
-  <ul id="dropdownaccount" class="dropdown-content">
-    <li><a href="<?php echo BASE."joinus" ;?>">Join us</a></li>
-    
-  </ul>
+  
   <!-- NavBar -->
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
@@ -14,7 +11,8 @@
          
           <li><a href="<?php echo BASE."aboutus" ;?>">About us</a></li>
           <li><a href="<?php echo BASE."contactus" ;?>">Contact us</a></li>
-          <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdownaccount"><i class="mdi-action-account-circle left"></i>Account</a></li>
+          <li><a href="<?php echo BASE."joinus" ;?>"><i class="mdi-action-account-circle left"></i>Join us</a></li>
+
           
         </ul>
       </div>

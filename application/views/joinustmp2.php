@@ -99,7 +99,7 @@ load_view("Template/navbarnew.php");
               <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Mininum Fees<span class="red-text">*</span></span><br>
-                    <span class="grey-text text-lighten-1" style="font-size: 13px;">minimun tution fees per hour</span>
+                    <span class="grey-text text-lighten-1" style="font-size: 13px;">Minimun tution fees per hour</span>
                 </div>
                 
                 <div class="col s12 l4">
