@@ -41,11 +41,11 @@ abstract class Funs{
 		}
 	}
 	//Made by ::Himanshu Rohilla::	
-	//This function extracts the subject from jsoninfo of teachers table from the database
+	//This function extracts the field from jsoninfo of teachers table from the database
 	//$jsonArray is that jsoninfo field value in techers table
-	//$subN is the array of subjects
+	//$subN is the array of field
 	//$type is the name in jsoninfo field
-	public static function extractSubject($jsonArray,$subN,$type){
+	public static function extractField($jsonArray,$subN,$type){
 		$jsonArray=str2json($jsonArray);
 		$subjects=$jsonArray[$type];
 		$subArray=explode("-", $subjects);
