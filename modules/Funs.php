@@ -40,5 +40,37 @@ abstract class Funs{
 			return $outp;
 		}
 	}
+	//Made by ::Himanshu Rohilla::	
+	//This function extracts the subject from jsoninfo of teachers table from the database
+	//$jsonArray is that jsoninfo field value in techers table
+	//$subN is the array of subjects
+	//$type is the name in jsoninfo field
+	public static function extractSubject($jsonArray,$subN,$type){
+		$jsonArray=str2json($jsonArray);
+		$subjects=$jsonArray[$type];
+		$subArray=explode("-", $subjects);
+		$check=0;
+		$str="";
+
+		foreach ($subArray as $key) {
+			if($key!='other' && $check==0) {
+				if($subN[$key-1]!="Others")	//for Other in 6 subjects
+					$str=$str.$subN[$key-1]." , ";
+			}
+			else
+				$check=1;
+		}
+		$comma="";
+		$subOther="";
+		if(trim($jsonArray[$type.'other'])!="")
+		{	
+			$comma=" , ";
+			$subOther=trim($jsonArray[$type.'other']);
+		}
+		$finalString=$str.$subOther.$comma;
+		$outSubject=substr_replace($finalString, "", -2);
+		return $outSubject;
+	}
+	
 }
 ?>
