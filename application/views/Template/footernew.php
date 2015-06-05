@@ -3,7 +3,7 @@
     <div class="container ">
       <div class="row">
         <div class="col l4 s12">
-          <h5 class="white-text">Get IITians</h5>
+          <h5 class="white-text">getIITians</h5>
           <div class="grey-text text-lighten-3" ><i class="mdi-communication-email"></i> Info@getIITians.com</div>
         </div>
       </div>

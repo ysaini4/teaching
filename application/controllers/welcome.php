@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
 //				Fun::redirect(BASE."account");
-				$msg="Dear ".$_POST["name"].",Thank You for Registering with us. We will soon get back to you.";
+				$msg="Dear ".$_POST["name"].",Thank you for registering with us. We will soon get back to you.";
 			}
 
 			$data=json_encode($_POST);
@@ -56,9 +56,9 @@ class Welcome extends CI_Controller {
 		}
 		$pageinfo["msg"]=$msg;
 		if($pageinfo["issubmitted"]==true){
-			$pageinfo["msg"]="Thank You for Registering with us. We will soon get back to you.";	
+			$pageinfo["msg"]="Thank you for registering with us. <br> We will soon get back to you.";	
 			if($temp == -16)
-				$pageinfo["msg"]="<b>".$_POST["email"]."</b> Id already exists";	
+				$pageinfo["msg"]="Dear <b>".$_POST["name"]."</b>, you are already registered with us.<br>Please contact us at info@getIITians.com";	
 			else if($temp == -3)
 				$pageinfo["msg"]="Invalid Data. Please fill the form again";
 		}	
@@ -269,44 +269,33 @@ public function set_news()
 		$result=Sql::getArray($sql);
 		$arrResult=array("result"=>$result, "tid"=>$tid);
 		load_view("acceptOrReject.php",$arrResult);
-
-		if(Fun::isSetP("check")){
-			$compareFields=$_POST['check'];
-			$compareFields=implode("-", $compareFields);
-			//self::compareMany($compareFields);
-			echo '<script>window.location.href = "'.BASE.'compareMany/'.$compareFields.'"</script>';
-		}
 	}
 	//Made by ::Himanshu Rohilla::
 	public function accept($tid){
 		$sql="UPDATE teachers set isselected='a' where tid=$tid";
 		$result=Sql::query($sql);
+		
 		echo '<h3>You accepted this user<br><br></h3>';
 		self::view($tid);
+		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function reject($tid){
 		$sql="UPDATE teachers set isselected='r' where tid=$tid";
 		$result=Sql::query($sql);
+
 		echo '<h3>You rejected this user<br><br></h3>';
 		self::view($tid);
+		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function view($tid){
 		$sql="select * from teachers,users where teachers.tid=users.id AND users.id=$tid";
 		$result=Sql::getArray($sql);
 		load_view("viewuser.php",array('result'=>$result));
-		echo '<b><a style="margin-left:10px;font-size:30px;" href="'.(BASE."acceptOrReject").'" style="font-size:30px;">Go Back</a></b>';
 	}
-	public function compareMany($tidString){
-		$tidArray=explode("-", $tidString);
-		$i=0;
-		foreach($tidArray as $id){
-			$sql="select * from teachers,users where teachers.tid=users.id AND users.id=$id";
-			$result[$i++]=Sql::getArray($sql);
-		}
-		load_view("compare.php",array('result'=>$result));
-	}
+	
+
 }
 
 /* End of file welcome.php */
