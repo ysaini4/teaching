@@ -33,8 +33,8 @@ if(User::isloginas('a')){
 	echo '<table border="5">';
 	echo '<thead><td>Compare</td><td>Teacher Id</td><td>Name</td><td>Subjects</td><td>Classes</td><td>Minimum Fees</td><td>Teaching Experience</td></thead>';
 
-	$subN=array("Mathematics","Physics","Chemistry","Biology","Science(6-10)","Others");
-	$gradeN=array("6th to 8th","9th to 10th","11th to 12th","IIT JEE");
+	$subN=$_ginfo['encodeddataofteacherstable']['sub'];
+	$gradeN=$_ginfo['encodeddataofteacherstable']['grade'];
 	foreach ($result as $value) {
 			echo '<tr><td><input type="checkbox" name="check[]" class="checkboxclass" value="'.$value['id'].'"/></td>';
 			echo '<td>'.$value['tid'].'</td>';
