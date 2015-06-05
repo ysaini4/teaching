@@ -1,3 +1,7 @@
+<?php
+if(User::isloginas('a'))
+{
+?>
 <script type="text/javascript">
 function f12(obj){
     var box = document.forms[0];
@@ -85,5 +89,9 @@ foreach ($result as $value) {
 	echo '</table><span><input type="checkbox" id="clickit" onclick="f12(this);"/>check all</span>
 			<input type="submit" name="formSubmit" value="Compare Selected" onclick="isEmpty(this);"/>
 			</form>';
-
+}
+else{
+	echo 'You dont have permission to acces this page';
+}
+}
 ?>
