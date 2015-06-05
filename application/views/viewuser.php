@@ -1,10 +1,10 @@
 <?php
 if(User::isloginas('a')){
-	$subN=array("Mathematics","Physics","Chemistry","Biology","Science(6-10)","Others");
-	$gradeN=array("6th to 8th","9th to 10th","11th to 12th","IIT JEE");
-	$langN=array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi");
-	$knowN=array("Facebook","Email","Friends","Others");
-	$homeN=array("Yes","No");
+	$subN=$_ginfo['encodeddataofteacherstable']['sub'];
+	$gradeN=$_ginfo['encodeddataofteacherstable']['grade'];
+	$langN=$_ginfo['encodeddataofteacherstable']['lang'];
+	$knowN=$_ginfo['encodeddataofteacherstable']['known'];
+	$homeN=$_ginfo['encodeddataofteacherstable']['home'];
 	echo "<table border='5'>";
 	foreach ($result as $value){
 		echo "<tr><td><b>Unique Id: </b></td><td>".$value['id'].'<br><br></td><tr>';
