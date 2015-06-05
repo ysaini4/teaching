@@ -1,4 +1,6 @@
 <?php
+if(User::isloginas('a'))
+{
 $subN=array("Mathematics","Physics","Chemistry","Biology","Science(6-10)","Others");
 $gradeN=array("6th to 8th","9th to 10th","11th to 12th","IIT JEE");
 $langN=array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi");
@@ -95,5 +97,11 @@ foreach ($result as $key) {
 
 	}
 	echo '</tr>';
+}
+}
+else
+{
+	echo 'You dont have permission to access this page'
+}
 }
 ?>
