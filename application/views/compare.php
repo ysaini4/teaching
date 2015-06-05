@@ -1,10 +1,10 @@
 <?php
 if(User::isloginas('a')){
-	$subN=array("Mathematics","Physics","Chemistry","Biology","Science(6-10)","Others");
-	$gradeN=array("6th to 8th","9th to 10th","11th to 12th","IIT JEE");
-	$langN=array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi");
-	$knowN=array("Facebook","Email","Friends","Others");
-	$homeN=array("Yes","No");
+	$subN=$_ginfo['encodeddataofteacherstable']['sub'];
+	$gradeN=$_ginfo['encodeddataofteacherstable']['grade'];
+	$langN=$_ginfo['encodeddataofteacherstable']['lang'];
+	$knowN=$_ginfo['encodeddataofteacherstable']['known'];
+	$homeN=$_ginfo['encodeddataofteacherstable']['home'];
 
 	echo '<table border="5">';
 	echo '<thead><td>Unique Id</td><td>Name</td><td>Subjects</td><td>Classes</td><td>Minimum Fees</td><td>Teaching Experience(in years)</td><td>Languages</td><td>College</td><td>Degree</td><td>Branch</td><td>Email</td><td>Phone Number</td><td>Gender</td><td>Date Of Birth</td><td>Are You Ok With Home Tuition</td><td>Address</td><td>How Did You Came To Know About Us</td><td>Linkedin Profile</td><td>Feedback</td><td>College Verification</td><td>Resume</td><td>Accept/Reject</td></thead>';
