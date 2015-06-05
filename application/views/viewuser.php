@@ -6,6 +6,7 @@ $knowN=array("Facebook","Email","Friends","Others");
 $homeN=array("Yes","No");
 echo "<table border='5'>";
 foreach ($result as $value){
+	echo "<tr><td><b>Unique Id: </b></td><td>".$value['id'].'<br><br></td><tr>';
 	echo "<tr><td><b>Name: </b></td><td>".$value['name'].'<br><br></td><tr>';
 	$subject=Funs::extractFields($value['jsoninfo'],$subN,"sub");
 	echo '<tr><td><b>Subjects: </b></td><td>'.$subject.'<br><br></td><tr>';
@@ -86,6 +87,6 @@ foreach ($result as $value){
 		<b style="margin-left:500px;font-size:30px;"><a href="'.(BASE."accept/$id").'">Accept</a></b>
 		<b style="margin-left:10px;font-size:30px;color:red;">Rejected</b>';
 	}	
-	echo '<b><a href="'.(BASE."acceptOrReject").'" style="margin-left:10px;font-size:30px;">Go Back</a></b>';
+
 }
 ?>
