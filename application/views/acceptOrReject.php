@@ -1,13 +1,43 @@
 <?php
+if(User::isloginas('a'))
+{
+?>
+<script type="text/javascript">
+function f12(obj){
+    var box = document.forms[0];
+    if(obj.checked==true){
+	    var i;
+	    for (i = 0; i < box.length; i++) {
+	        box[i].checked= true;
+	    }
+    }
+    else{
+	    for (i = 0; i < box.length; i++)
+	        box[i].checked= false;    	
+    }
+}
+function isEmpty(obj)
+{
+	var box = document.forms[0];
+	var i;
+	err=1;
+	for (i = 0; i < box.length; i++) {
+	    if(box[i].checked== true)
+	    	err=0;
+	}
+	if(err==1)
+		window.alert("Please select something to compare");
+}
+</script>
+<?php
+echo '<form method="post">';
 echo '<table border="5">';
-echo '<thead><td>Teacher Id</td><td>Name</td><td>Subjects</td><td>Classes</td><td>Minimum Fees</td><td>Teaching Experience</td></thead>';
+echo '<thead><td>Compare</td><td>Teacher Id</td><td>Name</td><td>Subjects</td><td>Classes</td><td>Minimum Fees</td><td>Teaching Experience</td></thead>';
 
 $subN=array("Mathematics","Physics","Chemistry","Biology","Science(6-10)","Others");
 $gradeN=array("6th to 8th","9th to 10th","11th to 12th","IIT JEE");
-
 foreach ($result as $value) {
-
-	echo '<tr>';
+	echo '<tr><td><input type="checkbox" name="check[]" class="checkboxclass" value="'.$value['id'].'"/></td>';
 	echo '<td>'.$value['tid'].'</td>';
 	echo '<td>'.$value['name'];
 	$jsonArray=str2json($value['jsoninfo']);	
@@ -55,5 +85,13 @@ foreach ($result as $value) {
 	}	
 	echo '</tr>';
 }
-echo '</table>';
+
+	echo '</table><span><input type="checkbox" id="clickit" onclick="f12(this);"/>check all</span>
+			<input type="submit" name="formSubmit" value="Compare Selected" onclick="isEmpty(this);"/>
+			</form>';
+}
+else{
+	echo 'You dont have permission to acces this page';
+}
+}
 ?>
