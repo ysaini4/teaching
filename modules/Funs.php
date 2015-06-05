@@ -29,7 +29,7 @@ abstract class Funs{
 		$datetoday=Fun::datetoday();
 		$times=array();
 		for($i=0;$i<48;$i++){
-			$times[]=Fun::timetotime($datetoday+$i*1800 )." - ".Fun::timetotime($datetoday+($i+1)*1800,true ) ;
+			$times[]=Fun::timetotime_t2($datetoday+$i*1800 )." - ".Fun::timetotime_t2($datetoday+($i+1)*1800,true )." ".Fun::timetotime_t2($datetoday+($i+1)*1800,false);
 		}
 		if(!$sliced)
 			return $times;
