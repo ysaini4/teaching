@@ -90,8 +90,8 @@ foreach ($result as $value) {
 			<input type="submit" name="formSubmit" value="Compare Selected" onclick="isEmpty(this);"/>
 			</form>';
 }
-else{
-	echo 'You dont have permission to acces this page';
-}
+else
+{
+	echo 'You dont have proper rights';
 }
 ?>
