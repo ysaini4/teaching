@@ -101,7 +101,7 @@ foreach ($result as $key) {
 }
 else
 {
-	echo 'You dont have permission to access this page'
+	echo 'You dont have permission to access this page';
 }
 }
 ?>
