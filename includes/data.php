@@ -59,7 +59,9 @@ $_ginfo["alldegrees"]=array('B.Tech', 'M. Tech', 'Phd', 'M.B.A', 'M.Sc.');
 
 $_ginfo["languages"]=array("English","Hindi","Tamil","Chiness");
 $_ginfo['encodeddataofteacherstable'] = array('sub'=>array("Mathematics","Physics","Chemistry","Biology","Science(6-10)","Others"),'grade'=>array("6th to 8th","9th to 10th","11th to 12th","IIT JEE"),'lang'=>array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi"),'known'=>array("Facebook","Email","Friends","Others"),'home'=>array("Yes","No"));
-
-
-
+//changes by himanshu
+$_ginfo["weekdays_long"]=array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
+$_ginfo["month"]=array("January","February","March","April","May","June","July","August","September","October","November","December");
+$_ginfo['end_year']=2025;
+//changed ends
 ?>
