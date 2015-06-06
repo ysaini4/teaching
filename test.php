@@ -2,7 +2,8 @@
 include "includes/app.php";
 
 
-echo "/tmp/".Fun::getuploadfilename("csv");
+
+echo Funs::sendmsg("7503759053","Hey, This is msg to mohit #$%^&* :p ");
 
 closedb();
 ?>

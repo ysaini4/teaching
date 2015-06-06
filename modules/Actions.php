@@ -78,6 +78,7 @@ class Actions{
 			$otp=rand(100000,999999);
 			sets("phone",$otp);
 			Fun::mailfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
+			Fun::msgfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
 		}
 		return array('ec'=>$ec,'data'=>$odata);
 	}

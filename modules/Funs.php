@@ -71,6 +71,13 @@ abstract class Funs{
 		$outSubject=substr_replace($finalString, "", -2);
 		return $outSubject;
 	}
+	public static function sendmsg($phone,$msg){
+		$phone=urlencode($phone);
+		$msg=urlencode($msg);
+		$url="http://216.245.209.132/rest/services/sendSMS/sendGroupSms?AUTH_KEY=14e4de84f23c84d81f24b8fb69d1e0&message=".$msg."&senderId=GETIIT&routeId=1&mobileNos=".$phone."&smsContentType=english";
+		return shell_exec("curl '".$url."'");
+	}
+
 	
 }
 ?>
