@@ -347,7 +347,10 @@ abstract class Fun{
 		return Fun::dummymail($to,$sub,$body);
 	}
 	public static function mailfromfile($to,$mfile,$data,$subject="getIITians"){
-		return Fun::mail($to,"Get IITians",Fun::rmsg(file_get_contents( $mfile),$data));
+		return Fun::mail($to,$subject,Fun::rmsg(file_get_contents( $mfile),$data));
+	}
+	public static function msgfromfile($phone,$mfile,$data){
+		return Funs::sendmsg($phone,Fun::rmsg(file_get_contents( $mfile),$data));
 	}
 	public static function timeslotlist(){
 		$datetoday=Fun::datetoday();
