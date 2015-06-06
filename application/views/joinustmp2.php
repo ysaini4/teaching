@@ -350,7 +350,7 @@ load_view("Template/navbarnew.php");
                     
                 </div>
                  <div class="col s6 l3">
-                     <a class="waves-effect waves-light btn" onclick='button.sendreq_v2_t2(this);' data-eparams='{"phone":$("#phonenumber").val()}' data-action='sendotp' >Send OTP</a>
+                     <a class="waves-effect waves-light btn" onclick='button.sendreq_v2(this);' data-eparams='{"phone":$("#phonenumber").val()}' data-action='sendotp' >Send OTP</a>
                   </div>
                 </div>
              <div class="row">
@@ -360,7 +360,7 @@ load_view("Template/navbarnew.php");
                    <input type='hidden' name='otpvarified' data-condition='simple' />
                 </div>
                   <div class="col s6 l3 ">
-                     <a class="waves-effect waves-light btn " onclick='button.sendreq_v2_t2(this);' data-eparams='{"otp":$("#otpinput").val()}' data-action="confirmotp" data-res='$("input[name=otpvarified]").val(1);obj.innerHTML="Varified!";' >Verify</a>
+                     <a class="waves-effect waves-light btn " onclick='button.sendreq_v2(this);' data-eparams='{"otp":$("#otpinput").val()}' data-action="confirmotp" data-res='$("input[name=otpvarified]").val(1);obj.innerHTML="Varified!";' >Verify</a>
                   </div>
                   </div>
                 </div>
