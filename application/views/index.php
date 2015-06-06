@@ -2,18 +2,11 @@
 load_view("Template/top.php",$inp);
 load_view("Template/navbarnew.php",$inp);
 ?>
-<html>
-<head>
-    <title>
-    
-    </title>
-    </head>
-<body>
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
         <br>
-        <h1 class="header center white-text text-darken-2">Get IITians</h1>
+        <h1 class="header center white-text text-darken-2">get IITians</h1>
         <div class="row center">
          <h5 class="col s12 light white-text"><?php
 if (!empty($_SESSION['msg11']))
@@ -75,7 +68,7 @@ session_destroy();
                 <div class="card-content white-text">
             <h2 class="header center"><i class="mdi-action-face-unlock"></i></h2>
           <p class="light center">
-            Fast,easy <br> and User friendly
+            Fast, easy <br> and student friendly
           </p>
         </div>
             </div>
@@ -85,7 +78,7 @@ session_destroy();
                 <div class="card-content white-text">
             <h2 class="header center"><i class="mdi-action-face-unlock"></i></h2>
           <p class="light center">
-            Ever Expanding database of qualified tutors
+            Ever expanding database of qualified tutors
               </div>
             </div>
         </div>

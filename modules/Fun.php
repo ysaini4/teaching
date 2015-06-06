@@ -118,6 +118,29 @@ abstract class Fun{
 	public static function timetotime($time){
 		return date("h:i a",$time);
 	}
+	public static function timetotime_t2($time,$bool=true){
+
+ 		
+		$hours=date("h",$time);
+		$min=date("i",$time);
+		$ampm=date("a",$time);
+        if($bool==false){
+ 			return $ampm;
+ 		}
+
+        if($bool=true){
+
+			if($min==0){
+				return date("g",$time);
+		    	$bool=false;
+			}
+			else{
+				return date("g:i",$time);
+				$bool=true;
+			}
+		}
+	}
+	
 	public static function timepassed($s){
 		if($s<5)
 			return "few second ago";
@@ -323,7 +346,7 @@ abstract class Fun{
 	public static function mail($to,$sub,$body){
 		return Fun::dummymail($to,$sub,$body);
 	}
-	public static function mailfromfile($to,$mfile,$data,$subject="Sprint"){
+	public static function mailfromfile($to,$mfile,$data,$subject="getIITians"){
 		return Fun::mail($to,"Get IITians",Fun::rmsg(file_get_contents( $mfile),$data));
 	}
 	public static function timeslotlist(){

@@ -14,7 +14,7 @@ load_view("Template/navbarnew.php");
 				<div class="divider"></div>
 				<div class="row">
 					<div class="col s5" style="padding-left:15px;">
-						<p>B-178<br>Shivalik<br>Malviya Nagar<br>New Delhi, 110017</p>
+						<p>B-178<br>Shivalik<br>Malviya Nagar<br>New Delhi-110017 (India)</p>
 					</div>
 					<div class="col s5">
 						<ul>

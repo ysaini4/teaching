@@ -68,7 +68,24 @@ class Actions{
 		}
 		return array('ec'=>$ec,'data'=>$odata);
 	}
-
-
+	function sendotp($data){
+		$need=array("phone");
+		$ec=1;
+		$odata=0;
+		if(!Fun::isAllSet($need,$data))
+			$ec=-9;
+		else{
+			$otp=rand(100000,999999);
+			sets("phone",$otp);
+			Fun::mailfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
+		}
+		return array('ec'=>$ec,'data'=>$odata);
+	}
+	function confirmotp($data){
+		$outp=array("ec"=>1,"data"=>0);
+		if(gets("phone")!=$data["otp"])
+			$outp["ec"]=-17;
+		return $outp;
+	}
 }
 ?>
