@@ -1,3 +1,8 @@
+var mohit={
+	alert:function(a){
+		alert(a);
+	}
+}
 
 var button={
 	attrs:function(obj){

@@ -64,4 +64,14 @@ $_ginfo["weekdays_long"]=array("Monday","Tuesday","Wednesday","Thursday","Friday
 $_ginfo["month"]=array("January","February","March","April","May","June","July","August","September","October","November","December");
 $_ginfo['end_year']=2025;
 //changed ends
+
+
+
+$_ginfo["action_constrain"]=array(
+	"cofirmotp"=>array("need"=>array("otp")),
+);
+
+
+
+
 ?>

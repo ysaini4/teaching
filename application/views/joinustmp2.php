@@ -346,21 +346,21 @@ load_view("Template/navbarnew.php");
                     <span class="grey-text text-lighten-1" style="font-size: 13px;">Enter your mobile no.</span>
                 </div>
                 <div class="col s6 l4">
-                  <input placeholder="98xxxxxxxx" type="tel" class="validate" name="phone"  length="10" data-condition="phone">
+                  <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone"  length="10" data-condition="phone">
                     
                 </div>
                  <div class="col s6 l3">
-                     <a class="waves-effect waves-light btn">Send OTP</a>
+                     <a class="waves-effect waves-light btn" onclick='button.sendreq_v2_t2(this);' data-eparams='{"phone":$("#phonenumber").val()}' data-action='sendotp' >Send OTP</a>
                   </div>
                 </div>
              <div class="row">
                 <div class="col s12 offset-l4">
               <div class="col s6 l4">
-                  <input placeholder="One Time Password" type="text" class="validate" name="Otp"  length="6" data-condition="simple">
-                    
+                  <input placeholder="One Time Password" type="text" class="validate" name="Otp" id="otpinput" length="6" >
+                   <input type='hidden' name='otpvarified' data-condition='simple' />
                 </div>
                   <div class="col s6 l3 ">
-                     <a class="waves-effect waves-light btn disabled">Verify</a>
+                     <a class="waves-effect waves-light btn " onclick='button.sendreq_v2_t2(this);' data-eparams='{"otp":$("#otpinput").val()}' data-action="confirmotp" data-res='$("input[name=otpvarified]").val(1);obj.innerHTML="Varified!";' >Verify</a>
                   </div>
                   </div>
                 </div>

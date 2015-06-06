@@ -346,7 +346,7 @@ abstract class Fun{
 	public static function mail($to,$sub,$body){
 		return Fun::dummymail($to,$sub,$body);
 	}
-	public static function mailfromfile($to,$mfile,$data,$subject="Sprint"){
+	public static function mailfromfile($to,$mfile,$data,$subject="getIITians"){
 		return Fun::mail($to,"Get IITians",Fun::rmsg(file_get_contents( $mfile),$data));
 	}
 	public static function timeslotlist(){
