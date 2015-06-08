@@ -95,8 +95,6 @@ class Welcome extends CI_Controller {
 		$contactVar=array("msg"=>$msg);
 		load_view("contactus.php",$contactVar);
 	}
-
-
 	public function joinusreal(){
 		global $_ginfo;
 		$pageinfo=array("msg"=>"");
@@ -163,16 +161,24 @@ class Welcome extends CI_Controller {
 				foreach ($finalS as $key) {
 					$slots[]=$key-7;
 				}
-				$repeatTime=$_POST["repeat"];
+				$startdate='';
+				$enddate='';
+				if($_POST['startdate']!='')
+					$startdate=$_POST['startdate'];
+				if($_POST['enddate']!='')
+					$enddate=$_POST['enddate'];
+
+				//$repeatTime=$_POST["repeat"];
 				$finalSlots=implode("_",$slots);
-				$timeStamp=funs::makeArray($finalSlots,implode("_",$days),$repeatTime);
+				$timeStamp=funs::makeArray_t2($finalSlots,implode("_",$days),$startdate,$enddate);
 				$slotArr=array();
+				
 				$id=User::loginId();
 				if($_POST['addHidden']!=''){
 					foreach ($timeStamp as $slot1) {
-						$slotArr[]=array($id,$slot1);
+								$slotArr[]=array($id,$slot1);
 					}
-					$str="insert into timeslot (tid,starttime) ".fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii');			
+					$str="insert into timeslot (tid,starttime) ".fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii');
 				}
 				else if($_POST["deleteHidden"]!=""){
 					foreach ($timeStamp as $slot1) {
