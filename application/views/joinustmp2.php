@@ -139,7 +139,6 @@ load_view("Template/navbarnew.php");
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
@@ -360,7 +359,7 @@ load_view("Template/navbarnew.php");
                    <input type='hidden' name='otpvarified' data-condition='simple' />
                 </div>
                   <div class="col s6 l3 ">
-                     <a class="waves-effect waves-light btn " onclick='button.sendreq_v2(this);' data-eparams='{"otp":$("#otpinput").val()}' data-action="confirmotp" data-res='$("input[name=otpvarified]").val(1);obj.innerHTML="Varified!";' >Verify</a>
+                     <a class="waves-effect waves-light btn " onclick='button.sendreq_v2(this);' data-eparams='{"otp":$("#otpinput").val()}' data-action="confirmotp" data-res='$("input[name=otpvarified]").val(1);obj.innerHTML="Verified!";' >Verify</a>
                   </div>
                   </div>
                 </div>
