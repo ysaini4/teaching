@@ -15,17 +15,34 @@ load_view("Template/navbar.php",$inp);
           <div class="row">
   <form method="post">
   <ul id="dropdowntimeslot" class="dropdown-content" style='color:black;padding:20px;max-height:300px;' >
+
+
+
     <div class='row' style='padding:0px;margin:0px;' >
       <?php
       $m=8;
-      foreach($timeslots as $group){
+
+      foreach($timeslots as $gid=>$group){
           ?>
-          <div class="col s12 l3" style='padding:0px;margin:0px;' >
+          <div class="col s12 l3" style='padding:0px;margin:0px;'>
+              <?php
+              if($gid==0){
+              ?>
+              <div style='margin-top:-28px;padding:0px;margin-bottom:-28px;'>
+                <input id="clickit" class="myCheckbox" type="checkbox" onchange="himanshu.f12(this);">
+                <label for="clickit" >Select All Slots</label>
+              </div>
           <?php
-          foreach($group as $val){
+              }
+              else{
+              ?>
+              <div style="height:40px;"></div>
+              <?php
+              }
+              foreach($group as $val){
             ?>
             <div style='margin-top:-28px;padding:0px;margin-bottom:-28px;'>
-              <input id="<?php echo $m; ?>" value="<?php echo $m; ?>" type="checkbox" name="time[]" class="timeclass">
+              <input id="<?php echo $m; ?>" class="myCheckbox" value="<?php echo $m; ?>" type="checkbox" name="time[]" class="timeclass">
               <label for="<?php echo $m; ?>" ><?php echo $val; ?></label>
             </div>
             <?php
@@ -35,14 +52,23 @@ load_view("Template/navbar.php",$inp);
           </div>
           <?php
       }
-      ?>
+      ?><div>
+
+      </div>
       <div class="col s12 l3" style='margin-top:-28px;padding:0px;margin-bottom:-28px;' >
-        <?php
+        <div style='padding:0px;margin-bottom:-28px;'>
+          <input id="clickit1" class="myCheckbox1" type="checkbox" onchange="himanshu.f22(this);">
+          <label for="clickit1" >Select All Days</label>
+        </div>
+
+<!--                 <input id="clickit1" type="checkbox" onclick="f22(this);">
+          <label for="clickit1" >Check All Days</label>
+ -->        <?php
           $i=0;
           foreach($weekdays as $days){
             ?>
             <div style="margin-top:-5px;padding:11px;margin-bottom:-28px;" >
-              <input id="<?php echo $i; ?>" value="<?php echo $i; ?>" type="checkbox" name="days[]">
+              <input id="<?php echo $i; ?>" class="myCheckbox1" value="<?php echo $i; ?>" type="checkbox" name="days[]">
               <label for="<?php echo $i; ?>"><?php echo $days; ?></label><br>
             </div>
             <?php
@@ -52,8 +78,8 @@ load_view("Template/navbar.php",$inp);
         
         <input type="date" id="startdate" class="datepicker" name="startdate" data-condition="simple" placeholder="Choose Start Date" required><br>
         <input type="date" id="enddate" class="datepicker" name="enddate" data-condition="simple" placeholder="Choose End Date" required><br>
-        <input type="submit" value="Add" onclick="f1();">
-        <input type="submit" value="Delete" onclick="f2();">
+        <input type="submit" value="Add" onclick="himanshu.f1();">
+        <input type="submit" value="Delete" onclick="himanshu.f2();">
         <input type="hidden" name="addHidden" value=""/>
         <input type="hidden" name="deleteHidden" value=""/>
       </div>
@@ -96,27 +122,50 @@ load_view("Template/navbar.php",$inp);
 <?php
 ?>
 <script>
-function f1(){
-  var mystart = document.getElementById('startdate').value;
-  var myend = document.getElementById('enddate').value;
+var himanshu={
+  f1:function(){
+    var mystart = document.getElementById('startdate').value;
+    var myend = document.getElementById('enddate').value;
 
-  if($("[name='time[]']:checked").length==0 || $("[name='days[]']:checked").length==0){
-    window.alert("Please select some slot or days to add");
-    $("input[name=addHidden]").val('');
+    if($("[name='time[]']:checked").length==0 || $("[name='days[]']:checked").length==0){
+      window.alert("Please select some slot or days to add");
+      $("input[name=addHidden]").val('');
+    }
+    else if(mystart=='' || myend==''){
+      window.alert("Please add a start and end date");
+    }
+    else
+      $("input[name=addHidden]").val('addSet');
+  },
+  f2:function(){
+    if($("[name='time[]']:checked").length==0){
+      window.alert("Please select some slot to delete");
+      $("input[name=deleteHidden]").val('');
+    }
+    else
+      $("input[name=deleteHidden]").val('deleteSet');
+  },
+  f12:function(obj){
+
+      if(obj.checked==true){
+        $("input[type=checkbox][class=myCheckbox]").each(function () {
+                $(this).prop("checked", true);        });
+      }
+      else{
+        $("input[type=checkbox][class=myCheckbox]").each(function () {
+                $(this).prop("checked", false);        });        
+      }
+  }, 
+  f22:function(obj){
+      if(obj.checked==true){
+        $("input[type=checkbox][class=myCheckbox1]").each(function () {
+                $(this).prop("checked", true);        });
+      }
+      else{
+        $("input[type=checkbox][class=myCheckbox1]").each(function () {
+                $(this).prop("checked", false);        });        
+      }
   }
-  else if(mystart=='' || myend==''){
-    window.alert("Please add a start and end date");
-  }
-  else
-    $("input[name=addHidden]").val('addSet');
-}
-function f2(){
-  if($("[name='time[]']:checked").length==0){
-    window.alert("Please select some slot to delete");
-    $("input[name=deleteHidden]").val('');
-  }
-  else
-    $("input[name=deleteHidden]").val('deleteSet');
 }
 </script>
 <?php
