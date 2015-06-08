@@ -439,6 +439,27 @@ abstract class Fun{
 			return $query;
 		}
 	}
+	public static function makeDummyTableColumns_t2($arr,$flds,$params=''){
+		if(count($arr)==0){
+			return "select 1 as id limit 0";
+		}
+		else{
+			$qtexts=array();
+			foreach($arr as $i=>$val){
+				$qtext="(select ";
+				$farr=array();
+				foreach($val as $j=>$val1){
+					$farr[]=( ($params!='' && $params[$j]=='s') ? "'".$val1."'" : (0+$val1)).($i==0?( " as ".$flds[$j] ):"" );
+				}
+				$qtext.=implode(" , ", $farr ).")";
+				$qtexts[]=$qtext;
+			}
+			if(isset($qtexts[1]))
+				$qtexts[0]=$qtexts[0].' as tmp ';
+			$query=implode(" union ", $qtexts );
+			return $query;
+		}
+	}
 	public static function dbarrtooption($arr,$id,$val){
 		$outp=array();
 		foreach($arr as $i=>$row){
