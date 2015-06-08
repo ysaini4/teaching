@@ -145,13 +145,53 @@ class Welcome extends CI_Controller {
 		load_view('signup.php',$pageinfo);
 	}
 	public function cal($tid=0){
+		global $_ginfo;
 		$tid=0+$tid;
 		if($tid==0)
 			$tid=User::loginId();
 		$pageinfo=array();
 		$pageinfo['timeslots']=Funs::timeslotlist(true);
+		$pageinfo['weekdays']=$_ginfo["weekdays_long"];
 
+		//$twoDArr=funs::calenderPrint();
 		load_view("cal.php",$pageinfo);
+		//&& User::isloginas('t');
+		if(Fun::isSetP("time","days") && User::isloginas('t')){
+			if($_POST['addHidden']!=''){
+				$finalS=$_POST["time"];
+				$days=$_POST["days"];
+				foreach ($finalS as $key) {
+					$slots[]=$key-7;
+				}
+				$repeatTime=$_POST["repeat"];
+				$finalSlots=implode("_",$slots);
+				$timeStamp=funs::makeArray($finalSlots,implode("_",$days),$repeatTime);
+				$slotArr=array();
+				foreach ($timeStamp as $slot1) {
+					$slotArr[]=array(User::loginId(),$slot1);
+				}
+				$str="insert into timeslot (tid,starttime) ".fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii');
+				$temp=sql::query($str);
+				echo 'Your changes have been saved';
+			}
+			else if($_POST["deleteHidden"]!=""){
+				$finalS=$_POST["time"];
+				$days=$_POST["days"];
+				foreach ($finalS as $key) {
+					$slots[]=$key-7;
+				}
+				$repeatTime=$_POST["repeat"];
+				$finalSlots=implode("_",$slots);
+				$timeStamp=funs::makeArray($finalSlots,implode("_",$days),$repeatTime);
+				$slotArr=array();
+				foreach ($timeStamp as $slot1) {
+					$slotArr[]=array($slot1);
+				}
+				$id=User::loginId();
+				$str="delete from timeslot where tid='$id' and starttime in (select * from ".fun::makeDummyTableColumns_t2($slotArr,array("starttime"),'i').')';
+				$temp=sql::query($str);
+			}
+		}
 	}
 	public function topics($tid=0){
 		$tid=0+$tid;
