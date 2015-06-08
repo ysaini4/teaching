@@ -50,6 +50,13 @@ class Actiondisp{
 		}
 		Disps::disp_chat_list($data["msgid"]);
 	}
+	function dispCalender($month,$year){
+		$twoDArr=funs::calenderPrint($month,$year);
+		$showVar=false;
+		if(date("n")==$month && date("Y")==$year)
+			$showVar=true;
 
+		load_view('Template/calenderPrint.php',array('twoDArr'=>$twoDArr,'currentDate'=>date("j"),'showVar'=>$showVar));
+	}
 }
 ?>
