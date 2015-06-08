@@ -1,6 +1,6 @@
 <?php
-load_view("Template/top.php",$inp);
-load_view("Template/navbar.php",$inp);
+load_view("Template/top.php");
+load_view("Template/navbarnew.php");
 ?>
 <main>
   <div class="container">
@@ -169,6 +169,6 @@ var himanshu={
 }
 </script>
 <?php
-load_view("Template/footer.php",$inp);
-load_view("Template/bottom.php",$inp);
+load_view("Template/footernew.php");
+load_view("Template/bottom.php");
 ?>
