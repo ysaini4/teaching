@@ -140,7 +140,54 @@ abstract class Funs{
 		//Array containing all timestamp
 		return $secondsArray;
 	}
+	function makeArray_t2($slotList,$dayList,$startdate,$enddate){
+		$sList=explode("_",$slotList);
+		$dList=explode("_",$dayList);
+		$currentDay = jddayofweek ( cal_to_jd(CAL_GREGORIAN, date("m"),date("d"), date("Y")) , 0 );	//returns day number Monday as 1 tuesday as 2 .....
+		$currentDay--;
+		$c=0;
+		$break=0;
 
-	
+		$startdate = date('d-m-Y', strtotime($startdate));
+		$startdate = $startdate.' 00:00:00';
+		$enddate = date('d-m-Y', strtotime($enddate));
+		$enddate = $enddate.' 00:00:00';
+
+		echo $startdate.'<br>';
+		echo $enddate.'<br>';
+		echo $startstamp=strtotime($startdate);
+		echo $endstamp=strtotime($enddate) + 3600*24;
+		echo fun::timetostr($endstamp);
+		$nextWeekCounter=0;
+		while(1) {
+			foreach ($dList as $day) {
+				if ($day == $currentDay) {
+					$day=7;
+				}
+				else{
+					$day=$day-$currentDay;
+					if($day<0)
+						$day+=7;
+				}
+				foreach ($sList as $slot) {
+					$todayMidnight = strtotime('today midnight');
+					$nextDayMidnight = $todayMidnight + ($day+$nextWeekCounter)*3600*24;
+					$toAddTime = ($slot-1)*1800;
+					echo $addintoslot=$nextDayMidnight + $toAddTime;
+					if($startstamp<=$addintoslot && $addintoslot<$endstamp)
+						$secondsArray[$c++] = $addintoslot;
+					if($addintoslot>=$endstamp){
+						$break=1;
+					}
+				}
+			}
+			$nextWeekCounter+=7;
+			if($break==1)
+				break;
+		}
+		//Array containing all timestamp
+		return $secondsArray;
+
+	}
 }
 ?>
