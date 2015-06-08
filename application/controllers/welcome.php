@@ -145,13 +145,44 @@ class Welcome extends CI_Controller {
 		load_view('signup.php',$pageinfo);
 	}
 	public function cal($tid=0){
+		global $_ginfo;
 		$tid=0+$tid;
 		if($tid==0)
 			$tid=User::loginId();
 		$pageinfo=array();
 		$pageinfo['timeslots']=Funs::timeslotlist(true);
+		$pageinfo['weekdays']=$_ginfo["weekdays_long"];
 
+		//$twoDArr=funs::calenderPrint();
 		load_view("cal.php",$pageinfo);
+		//&& User::isloginas('t');
+		if(Fun::isSetP("time","days") && User::isloginas('t')){
+			if($_POST["deleteHidden"]!="" || $_POST['addHidden']!=''){
+				$finalS=$_POST["time"];
+				$days=$_POST["days"];
+				foreach ($finalS as $key) {
+					$slots[]=$key-7;
+				}
+				$repeatTime=$_POST["repeat"];
+				$finalSlots=implode("_",$slots);
+				$timeStamp=funs::makeArray($finalSlots,implode("_",$days),$repeatTime);
+				$slotArr=array();
+				$id=User::loginId();
+				if($_POST['addHidden']!=''){
+					foreach ($timeStamp as $slot1) {
+						$slotArr[]=array($id,$slot1);
+					}
+					$str="insert into timeslot (tid,starttime) ".fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii');			
+				}
+				else if($_POST["deleteHidden"]!=""){
+					foreach ($timeStamp as $slot1) {
+						$slotArr[]=array($slot1);
+					}
+					$str="delete from timeslot where tid='$id' and starttime in (select * from ".fun::makeDummyTableColumns_t2($slotArr,array("starttime"),'i').')';
+				}
+				$temp=sql::query($str);
+			}
+		}
 	}
 	public function topics($tid=0){
 		$tid=0+$tid;
@@ -269,33 +300,44 @@ public function set_news()
 		$result=Sql::getArray($sql);
 		$arrResult=array("result"=>$result, "tid"=>$tid);
 		load_view("acceptOrReject.php",$arrResult);
+
+		if(Fun::isSetP("check")){
+			$compareFields=$_POST['check'];
+			$compareFields=implode("-", $compareFields);
+			//self::compareMany($compareFields);
+			echo '<script>window.location.href = "'.BASE.'compareMany/'.$compareFields.'"</script>';
+		}
 	}
 	//Made by ::Himanshu Rohilla::
 	public function accept($tid){
 		$sql="UPDATE teachers set isselected='a' where tid=$tid";
 		$result=Sql::query($sql);
-		
 		echo '<h3>You accepted this user<br><br></h3>';
 		self::view($tid);
-		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function reject($tid){
 		$sql="UPDATE teachers set isselected='r' where tid=$tid";
 		$result=Sql::query($sql);
-
 		echo '<h3>You rejected this user<br><br></h3>';
 		self::view($tid);
-		echo '<br><br><a href="'.(BASE."acceptOrReject").'">Go Back</a>';
 	}
 	//Made by ::Himanshu Rohilla::
 	public function view($tid){
 		$sql="select * from teachers,users where teachers.tid=users.id AND users.id=$tid";
 		$result=Sql::getArray($sql);
 		load_view("viewuser.php",array('result'=>$result));
+		echo '<b><a style="margin-left:10px;font-size:30px;" href="'.(BASE."acceptOrReject").'" style="font-size:30px;">Go Back</a></b>';
 	}
-	
-
+	public function compareMany($tidString){
+		$tidArray=explode("-", $tidString);
+		$i=0;
+		foreach($tidArray as $id){
+			$sql="select * from teachers,users where teachers.tid=users.id AND users.id=$id";
+			$result[$i++]=Sql::getArray($sql);
+		}
+		load_view("compare.php",array('result'=>$result));
+	}
 }
 
 /* End of file welcome.php */
