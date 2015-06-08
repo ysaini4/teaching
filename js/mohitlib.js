@@ -179,6 +179,20 @@ var button={
 			}
 		}});
 	},
+	sendreq_v2_t4:function(obj,call_back_data,call_back_html,adata){
+		var allattrs=this.attrs(obj);
+		if(!button.hasattr(allattrs,"data-params"))
+			var params=this.tosendattrs(obj,allattrs);
+		else{
+			eval("var params="+allattrs["data-params"]);
+		}
+		if(button.hasattr(allattrs,"data-eparams")){
+			eval("var eparams="+allattrs["data-eparams"]);
+			params=others.mergeifunset(params,eparams);
+		}
+		params['action']=allattrs["data-action"];
+		button.sendreq_v2_t3(params,call_back_data,call_back_html);
+	},
 	sendreq1:function (params,call_back,adata){
 		$.post("actionv2.php",params,function(d,s){if(s=='success'){
 			var respo=button.parse(d);
