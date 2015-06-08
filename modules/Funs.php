@@ -77,6 +77,69 @@ abstract class Funs{
 		$url="http://216.245.209.132/rest/services/sendSMS/sendGroupSms?AUTH_KEY=14e4de84f23c84d81f24b8fb69d1e0&message=".$msg."&senderId=GETIIT&routeId=1&mobileNos=".$phone."&smsContentType=english";
 		return shell_exec("curl '".$url."'");
 	}
+	//Made by ::Himanshu Rohilla::
+	//Displays the calender of $month and $year
+	public function calenderPrint($month,$year){
+		$timestamp = strtotime($year.'-'.$month.'-1');
+		$dayName = date('l', $timestamp);
+		$days=$_ginfo["weekdays_long"];
+		$numberOfDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+		$try=0;
+		$count=1;
+		for($row=0;$row<7;$row++){
+			for($col=0;$col<7;$col++){
+				if($row==0)
+					$twoDArr[$row][$col]=$days[$col];
+				else{
+					if($days[$col]==$dayName && $try==0){
+						$twoDArr[$row][$col]=$count++;
+						$try=1;
+					}
+					else if($try==1 && $count<=$numberOfDays){
+						$twoDArr[$row][$col]=$count++;
+					}
+					else{
+						$twoDArr[$row][$col]="&nbsp";
+					}
+				}
+			}
+		}
+		$showVar=false;
+		if(date("n")==$month && date("Y")==$year)
+			$showVar=true;
+		//load_view('Template/calenderPrint.php',array('twoDArr'=>$twoDArr,'currentDate'=>date("j"),'showVar'=>$showVar));
+		return $twoDArr;
+	}
+	//makes array for the timeslot table	
+	function makeArray($slotList,$dayList,$repeatNumber){
+		$sList=explode("_",$slotList);
+		$dList=explode("_",$dayList);
+		$currentDay = jddayofweek ( cal_to_jd(CAL_GREGORIAN, date("m"),date("d"), date("Y")) , 0 );	//returns day number Monday as 1 tuesday as 2 .....
+		$currentDay--;
+		$c=0;
+		$nextWeekCounter=0;
+		for ($i=0; $i <=$repeatNumber; $i++) { 
+			foreach ($dList as $day) {
+				if ($day == $currentDay) {
+					$day=7;
+				}
+				else{
+					$day=$day-$currentDay;
+					if($day<0)
+						$day+=7;
+				}
+				foreach ($sList as $slot) {
+					$todayMidnight = strtotime('today midnight');
+					$nextDayMidnight = $todayMidnight + ($day+$nextWeekCounter)*3600*24;
+					$toAddTime = ($slot-1)*1800;	
+					$secondsArray[$c++] = $nextDayMidnight + $toAddTime;
+				}
+			}
+			$nextWeekCounter+=7;
+		}
+		//Array containing all timestamp
+		return $secondsArray;
+	}
 
 	
 }
