@@ -24,7 +24,7 @@ load_view("Template/navbar.php",$inp);
           <?php
           foreach($group as $val){
             ?>
-            <div style='margin-top:-28px;padding:0px;margin-bottom:-28px;' >
+            <div style='margin-top:-28px;padding:0px;margin-bottom:-28px;'>
               <input id="<?php echo $m; ?>" value="<?php echo $m; ?>" type="checkbox" name="time[]" class="timeclass">
               <label for="<?php echo $m; ?>" ><?php echo $val; ?></label>
             </div>
@@ -41,7 +41,7 @@ load_view("Template/navbar.php",$inp);
           $i=0;
           foreach($weekdays as $days){
             ?>
-            <div style="margin-top:0px;padding:0px;margin-bottom:0px;" >
+            <div style="margin-top:-5px;padding:11px;margin-bottom:-28px;" >
               <input id="<?php echo $i; ?>" value="<?php echo $i; ?>" type="checkbox" name="days[]">
               <label for="<?php echo $i; ?>"><?php echo $days; ?></label><br>
             </div>
@@ -49,7 +49,9 @@ load_view("Template/navbar.php",$inp);
             $i++;
           }
         ?>
-        <input placeholder="Repeat Time" name="repeat"/><br>
+        
+        <input type="date" id="startdate" class="datepicker" name="startdate" data-condition="simple" placeholder="Choose Start Date" required><br>
+        <input type="date" id="enddate" class="datepicker" name="enddate" data-condition="simple" placeholder="Choose End Date" required><br>
         <input type="submit" value="Add" onclick="f1();">
         <input type="submit" value="Delete" onclick="f2();">
         <input type="hidden" name="addHidden" value=""/>
@@ -95,30 +97,21 @@ load_view("Template/navbar.php",$inp);
 ?>
 <script>
 function f1(){
-  //check if empty field
-  var box = document.getElementsByClassName('timeclass');
-  var i;
-  err=1;
-  for (i = 0; i < box.length; i++) {
-       if(box[i].checked== true)
-        err=0;
-  }
-  if(err==1){
-    window.alert("Please select some slot to add");
+  var mystart = document.getElementById('startdate').value;
+  var myend = document.getElementById('enddate').value;
+
+  if($("[name='time[]']:checked").length==0 || $("[name='days[]']:checked").length==0){
+    window.alert("Please select some slot or days to add");
     $("input[name=addHidden]").val('');
+  }
+  else if(mystart=='' || myend==''){
+    window.alert("Please add a start and end date");
   }
   else
     $("input[name=addHidden]").val('addSet');
 }
 function f2(){
-  var box = document.getElementsByClassName('timeclass');
-  var i;
-  err=1;
-  for (i = 0; i < box.length; i++) {
-       if(box[i].checked== true)
-        err=0;
-  }
-  if(err==1){
+  if($("[name='time[]']:checked").length==0){
     window.alert("Please select some slot to delete");
     $("input[name=deleteHidden]").val('');
   }
