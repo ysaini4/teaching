@@ -69,6 +69,7 @@ $_ginfo['end_year']=2025;
 
 $_ginfo["action_constrain"]=array(
 	"cofirmotp"=>array("need"=>array("otp")),
+	"mohit"=>array("need"=>array("month","year")),
 );
 
 
