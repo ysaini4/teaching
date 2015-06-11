@@ -88,5 +88,11 @@ class Actions{
 			$outp["ec"]=-17;
 		return $outp;
 	}
+	function mohit($data){
+		$outp=array("ec"=>1,"data"=>0);
+		$outp["data"]=array(11,33,$data["month"]);
+		return $outp;
+	}
+
 }
 ?>
