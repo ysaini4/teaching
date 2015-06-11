@@ -45,4 +45,21 @@ var mohit={
 		}
 	};
 
+var mohit={
+	popup:function(id,data){
+		if(id==null)
+			id="";
+		if(data==null)
+			data={};
+		mergeifunset(data,{"title":null,"body":null});
+		$('#'+id+"Popup").fadeIn();
+		for(i in data){
+			if(data[i]!=null)
+				$("#"+id+"Popup"+i).html(data[i]);
+		}
+	},
+	alert:function(msg){
+		mohit.popup("alert",{"title":"Alert","body":msg});
+	}
+};
 

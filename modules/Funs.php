@@ -40,6 +40,7 @@ abstract class Funs{
 			return $outp;
 		}
 	}
+
 	//Made by ::Himanshu Rohilla::	
 	//This function extracts the field from jsoninfo of teachers table from the database
 	//$jsonArray is that jsoninfo field value in techers table
@@ -71,15 +72,11 @@ abstract class Funs{
 		$outSubject=substr_replace($finalString, "", -2);
 		return $outSubject;
 	}
-	public static function sendmsg($phone,$msg){
-		$phone=urlencode($phone);
-		$msg=urlencode($msg);
-		$url="http://216.245.209.132/rest/services/sendSMS/sendGroupSms?AUTH_KEY=14e4de84f23c84d81f24b8fb69d1e0&message=".$msg."&senderId=GETIIT&routeId=1&mobileNos=".$phone."&smsContentType=english";
-		return shell_exec("curl '".$url."'");
-	}
+	
 	//Made by ::Himanshu Rohilla::
 	//Displays the calender of $month and $year
-	public function calenderPrint($month,$year){
+	public static function calenderPrint($month,$year){
+		global $_ginfo;
 		$timestamp = strtotime($year.'-'.$month.'-1');
 		$dayName = date('l', $timestamp);
 		$days=$_ginfo["weekdays_long"];
@@ -104,13 +101,8 @@ abstract class Funs{
 				}
 			}
 		}
-		$showVar=false;
-		if(date("n")==$month && date("Y")==$year)
-			$showVar=true;
-		//load_view('Template/calenderPrint.php',array('twoDArr'=>$twoDArr,'currentDate'=>date("j"),'showVar'=>$showVar));
 		return $twoDArr;
 	}
-	//makes array for the timeslot table	
 	function makeArray($slotList,$dayList,$repeatNumber){
 		$sList=explode("_",$slotList);
 		$dList=explode("_",$dayList);
@@ -152,12 +144,9 @@ abstract class Funs{
 		$startdate = $startdate.' 00:00:00';
 		$enddate = date('d-m-Y', strtotime($enddate));
 		$enddate = $enddate.' 00:00:00';
-
-		echo $startdate.'<br>';
-		echo $enddate.'<br>';
-		echo $startstamp=strtotime($startdate);
-		echo $endstamp=strtotime($enddate) + 3600*24;
-		echo fun::timetostr($endstamp);
+		
+		$startstamp=strtotime($startdate);
+		$endstamp=strtotime($enddate) + 3600*24;
 		$nextWeekCounter=0;
 		while(1) {
 			foreach ($dList as $day) {
@@ -187,7 +176,124 @@ abstract class Funs{
 		}
 		//Array containing all timestamp
 		return $secondsArray;
-
 	}
+	//Function Added By Tej Pal Sharma
+	//Fetches timeslots of a teacher identified by tid from the database, based on the person (admin,teacher,student or guest) viewing the result.
+	public static function getTeacherTimeSlotsForDay($day,$month,$year,$tid='0',$timeslotsTable = 'timeslot')
+	{
+		$timestamp = strtotime($day.'-'.$month.'-'.$year.' 00:00:00');
+		$timestampMidNightStartOfDay = $timestamp;
+		$timestampMidNightEndOfDay  = $timestamp+3600*24;
+		$userLoginId = 0+User::loginId();
+	
+		//Fetch Time Slots of Teacher, ORDER HERE IS A MUST AND MUST NOT BE ALTERED.
+		$query = "SELECT tid, starttime, sid  FROM ".$timeslotsTable." WHERE tid = ".$tid." AND (".isUserLoggedInAs(array('a','t'))." OR "."( sid=0 OR sid=? )".") ORDER BY starttime ASC ";
+		$timeslotsForTeacher = Sqle::getArray($query,'i',array(&$userLoginId));
+
+		$timeslotForDay = array();
+		//THE FOLLOWING LOOP WILL INCREASE OVERHEAD WHEN NUMBER OF TIMESLOTS ARE LARGE
+		//CAN BE OPTIMIZED BY ADDING A COLUMN IN THE DATABASE TABLE timeslot WHICH DEFINES THE DATE SO WE WON'T NEED THIS LOOP.
+		foreach ($timeslotsForTeacher as $timeslot) {
+			if($timestampMidNightStartOfDay <= $timeslot['starttime'] && $timestampMidNightEndOfDay > $timeslot['starttime'] && $timeslot['tid'] == $tid){
+				$timeslotForDay[] = $timeslot;
+			}
+		}
+		return $timeslotForDay;
+	}
+		//Function Added By Tej Pal Sharma
+	//Extracts the language from array of languages based on indexes stored in database as 1-4-5 to Himdi, Mathematics, English etc.
+	public static function extractLang($langArray,$encodedUserLangString){
+		$userLangArray = explode("-", $encodedUserLangString);
+		$string = "";
+		foreach ($userLangArray as $userLang) {
+			if($userLang!="")
+				$string .= $langArray[$userLang-1].", ";
+		}
+		$string = substr_replace($string, "", -2);
+		return $string;
+	}
+	//Function added by Tej Pal Sharma 
+	//Function combines the continuous timeslots together as one e.g. 12:30-1 and 1-1:30 are combined to 12:30-1:30
+	//The timeslots provided as an argument to this function must be ordered by 'starttime' in ascending order for the function to work propery.
+	public static function combineContinuousTimeslots($timeslots){
+
+		//ERROR : WHILE COMBINING THE TIMESLOTS WHAT TO DO WITH OCCUPIED A PART OF IT MAY BE OCCUPIED AND ANOTHER MAY NOT BE.
+		//SOLUTION HANDLE OCCUPIED INDEX HERE ONLY 
+		//TWO OPTIONS:
+		//1: DON'T COMBINE TWO SLOTS IF ONE IS OCCUPIED AND ANOTHER IS NOT
+		//COMBINE BUT SET OCCUPIED INDEX VALUE TO SOME OTHER VALUE THAN -1,1, OR ZERO
+
+		//Add one more index to input array and set it's value to 1
+		//This index value can be used to compute duration as $timeslot['period']*1800 seconds.
+		
+		//FOR NOW I AM ASKED JUST TO IGNORE SID.
+
+		//FOLLOWING PART NOT WORKING
+		//foreach ($timeslots as $timeslot) {
+		//	$timeslot['period'] = 1;
+		//	//$timeslot['occupied'] = $timeslot['sid']==0?0:1;
+		//}
+
+		for($i=0;$i<count($timeslots);$i++){
+			$timeslots[$i]['period'] = 1;
+		}
+		$i = 0;
+		while($i<count($timeslots)-1){
+			if($timeslots[$i+1]['starttime'] == $timeslots[$i]['starttime']+$timeslots[$i]['period']*1800){
+				//Remove The next continuous timeslot from array.
+				unset($timeslots[$i+1]);
+				$timeslots = array_values($timeslots);
+				//Increase the period of current timeslot.
+				$timeslots[$i]['period'] += 1;
+			}
+			else{
+				$i+=1;
+			}
+		}
+		return $timeslots;
+	}
+
+	//Function Added by Tej Pal Sharma
+	//Function returns an array each element of which is another associative array as 'timeslotString'=>'12:30-1 pm' and 'countOfSlots'=>$noOfSlotsOnThatDay, More info can be added to this associative array.
+	//If the number of slots is less than ot equal to 3 the array consists of all 3 slots.
+	//Otherwise the array consists of first two slots and last element is 'timeslotString'=>'{$noOfSlots-2} more slots..'
+	public static function getTeacherTimeSlotsForDayCalDisplay($day,$month,$year,$tid='0'){
+		$timeslots = self::getTeacherTimeSlotsForDay($day,$month,$year,$tid);
+		//MODIFY ARRAY TO COMBINE CONTINUOUS VALUES.
+		$modifiedTimeslots = self::combineContinuousTimeslots($timeslots);
+		
+		$suitableForDisplayTimeslots = array();
+		if(count($modifiedTimeslots)<=3){
+			foreach ($modifiedTimeslots as $modifiedTimeslot) {
+				$timeslotString = Fun::timetotime_t2($modifiedTimeslot['starttime'],true).'-'.Fun::timetotime_t2($modifiedTimeslot['starttime']+$modifiedTimeslot['period']*1800,true).' '.Fun::timetotime_t2($modifiedTimeslot['starttime']+$modifiedTimeslot['period']*1800,false);
+				$suitableForDisplayTimeslot = array('timeslotString'=>$timeslotString);	
+				$suitableForDisplayTimeslots[] = $suitableForDisplayTimeslot;
+			}
+		}
+		else{
+			for($i=0;$i<2;$i++){
+				$timeslotString = Fun::timetotime_t3($modifiedTimeslots[$i]['starttime']).'-'.Fun::timetotime_t3($modifiedTimeslots[$i]['starttime']+$modifiedTimeslots[$i]['period']*1800,true);
+				$suitableForDisplayTimeslot = array('timeslotString'=>$timeslotString/*, 'occupied'=>$occupied*/);
+				$suitableForDisplayTimeslots[] = $suitableForDisplayTimeslot;
+			}
+			$countOfSlots = count($modifiedTimeslots);
+			$countOfRemainingSlots = $countOfSlots - 2;
+			$suitableForDisplayTimeslots[] = array('timeslotString'=>$countOfRemainingSlots.' more slots..');
+		}
+		$suitableForDisplayTimeslots['countOfSlots'] = count($modifiedTimeslots);
+		return $suitableForDisplayTimeslots;
+	}
+	
+
+	public static function getTeacherTimeSlotsForMonthCalDisplay($month=0,$year,$tid){
+		if($month!=0 /*AND OTHER VALIDATIONS OF MONTH AND YEAR*/){
+			$teacherTimeSlotsForMonth = array();
+			$numberOfDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+			for($countDays=1;$countDays<=$numberOfDays;$countDays++){
+				$teacherTimeSlotsForMonth[$countDays] = self::getTeacherTimeSlotsForDayCalDisplay($countDays,$month,$year,$tid);
+			}
+		}
+		return $teacherTimeSlotsForMonth;
+	}	
 }
 ?>

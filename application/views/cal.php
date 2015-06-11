@@ -78,8 +78,14 @@ load_view("Template/navbarnew.php");
         
         <input type="date" id="startdate" class="datepicker" name="startdate" data-condition="simple" placeholder="Choose Start Date" required><br>
         <input type="date" id="enddate" class="datepicker" name="enddate" data-condition="simple" placeholder="Choose End Date" required><br>
-        <input type="submit" value="Add" onclick="himanshu.f1();">
-        <input type="submit" value="Delete" onclick="himanshu.f2();">
+
+        <button class="btn waves-effect waves-light" type="submit" onclick="himanshu.f1();" >Add
+          <i class="mdi-content-send right"></i> 
+        </button>
+        <br>
+        <button class="btn waves-effect waves-light" type="submit" onclick="himanshu.f2();" >Delete
+          <i class="mdi-content-send right"></i> 
+        </button>
         <input type="hidden" name="addHidden" value=""/>
         <input type="hidden" name="deleteHidden" value=""/>
       </div>
@@ -101,74 +107,18 @@ load_view("Template/navbarnew.php");
     </div>
     <div class='row' >
       <div class="col s12 l12">
-        <div class="card-panel">
-          <table class="hoverable responsive-table" border='1' >
-            <thead>
-              <tr>
-                <th >Mohit.</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><?php echo "h"; ?></td>
-            </tbody>
-          </table>
-        </div>
+      <div class="col s12 l12"  id="divforcalender"  >
+        <?php
+          load_view("dispcal.php",array("month"=>date('m'),'year'=>date('Y'),'twoDArr'=>$twoDArr,'currentDate'=>date("j"),'showVar'=>$showVar,'timeSlotsArray'=>$timeSlotsArray,'tid'=>$tid));
+        ?>
       </div>
     </div>
   </div>
 </main>
 
-<?php
-?>
-<script>
-var himanshu={
-  f1:function(){
-    var mystart = document.getElementById('startdate').value;
-    var myend = document.getElementById('enddate').value;
 
-    if($("[name='time[]']:checked").length==0 || $("[name='days[]']:checked").length==0){
-      window.alert("Please select some slot or days to add");
-      $("input[name=addHidden]").val('');
-    }
-    else if(mystart=='' || myend==''){
-      window.alert("Please add a start and end date");
-    }
-    else
-      $("input[name=addHidden]").val('addSet');
-  },
-  f2:function(){
-    if($("[name='time[]']:checked").length==0){
-      window.alert("Please select some slot to delete");
-      $("input[name=deleteHidden]").val('');
-    }
-    else
-      $("input[name=deleteHidden]").val('deleteSet');
-  },
-  f12:function(obj){
-
-      if(obj.checked==true){
-        $("input[type=checkbox][class=myCheckbox]").each(function () {
-                $(this).prop("checked", true);        });
-      }
-      else{
-        $("input[type=checkbox][class=myCheckbox]").each(function () {
-                $(this).prop("checked", false);        });        
-      }
-  }, 
-  f22:function(obj){
-      if(obj.checked==true){
-        $("input[type=checkbox][class=myCheckbox1]").each(function () {
-                $(this).prop("checked", true);        });
-      }
-      else{
-        $("input[type=checkbox][class=myCheckbox1]").each(function () {
-                $(this).prop("checked", false);        });        
-      }
-  }
-}
-</script>
 <?php
 load_view("Template/footernew.php");
+load_view("popup.php",array("name"=>"timeslot"));
 load_view("Template/bottom.php");
 ?>

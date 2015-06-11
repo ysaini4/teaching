@@ -101,6 +101,16 @@ class Sqle extends Sql{
 		$query="delete from $table ".( $conds ===""? " ":" WHERE ").$conds." ".($limit!=-1 ? " LIMIT $limit ":" ");
 		return self::query($query,$str,$params);
 	}
+	public static function fetchColumnNamesFromTable($table,$excludeColumns=array()){		//Function returns a array of column names of table defined by $table. And Excludes columns which are present in array $excludeColumns
+		$columns = array();
+		$query = "SHOW COLUMNS FROM $table";
+		$columnInfoArray = self::getArray($query);
+		foreach ($columnInfoArray as $columnInfoRow) {
+			if(!array_search($columnInfoRow['Field'], $excludeColumns))
+				$columns[] = $columnInfoRow['Field'];
+		}
+		return $columns;
+	}
 
 }
 ?>

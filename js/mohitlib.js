@@ -1,9 +1,10 @@
-var mohit={
-	alert:function(a){
-		alert(a);
+if(false){
+	var mohit={
+		alert:function(a){
+			alert(a);
+		}
 	}
 }
-
 var button={
 	attrs:function(obj){
 		var alla=obj.attributes;
@@ -475,3 +476,20 @@ var rating={
 	}
 };
 
+
+$(document).ready(function(){
+	$(".closePopup").click(function(){
+		$('.PopupWrapper').fadeOut();
+	});
+});
+
+setifunset=function(data,key,val){
+	if(typeof(data[key])=='undefined')
+		data[key]=val;
+}
+
+mergeifunset=function(dict1,dict2){
+	for(i in dict2){
+		setifunset(dict1,i,dict2[i]);
+	}
+}

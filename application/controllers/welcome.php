@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
 //				Fun::redirect(BASE."account");
-				$msg="Dear ".$_POST["name"].",Thank you for registering with us. We will soon get back to you.";
+				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
 			}
 
 			$data=json_encode($_POST);
@@ -56,9 +56,9 @@ class Welcome extends CI_Controller {
 		}
 		$pageinfo["msg"]=$msg;
 		if($pageinfo["issubmitted"]==true){
-			$pageinfo["msg"]="Thank you for registering with us. <br> We will soon get back to you.";	
+			$pageinfo["msg"]="thanks for contacting us. We will soon get back to you.";	
 			if($temp == -16)
-				$pageinfo["msg"]="Dear <b>".$_POST["name"]."</b>, you are already registered with us.<br>Please contact us at info@getIITians.com";	
+				$pageinfo["msg"]="<b>".$_POST["email"]."</b> Id already exists";	
 			else if($temp == -3)
 				$pageinfo["msg"]="Invalid Data. Please fill the form again";
 		}	
@@ -95,6 +95,8 @@ class Welcome extends CI_Controller {
 		$contactVar=array("msg"=>$msg);
 		load_view("contactus.php",$contactVar);
 	}
+
+
 	public function joinusreal(){
 		global $_ginfo;
 		$pageinfo=array("msg"=>"");
@@ -151,10 +153,18 @@ class Welcome extends CI_Controller {
 		$pageinfo['timeslots']=Funs::timeslotlist(true);
 		$pageinfo['weekdays']=$_ginfo["weekdays_long"];
 
-		//$twoDArr=funs::calenderPrint();
-		load_view("cal.php",$pageinfo);
-		//&& User::isloginas('t');
-		if(Fun::isSetP("time","days") && User::isloginas('t')){
+		$twoDArr=funs::calenderPrint(date('n'),date('Y'));
+		$timeSlotsArray=Funs::getTeacherTimeSlotsForMonthCalDisplay(date('n'),date('Y'),$tid);
+
+
+		$pageinfo['timeSlotsArray'] = $timeSlotsArray;
+		$pageinfo['twoDArr']=$twoDArr;
+		$pageinfo['currentDate']=date('j');
+		$pageinfo['showVar']=true;
+		$pageinfo['tid']=$tid;
+
+
+		if(Fun::isSetP("time","days","deleteHidden","addHidden") && User::isloginas('t')){
 			if($_POST["deleteHidden"]!="" || $_POST['addHidden']!=''){
 				$finalS=$_POST["time"];
 				$days=$_POST["days"];
@@ -170,7 +180,7 @@ class Welcome extends CI_Controller {
 
 				//$repeatTime=$_POST["repeat"];
 				$finalSlots=implode("_",$slots);
-				$timeStamp=funs::makeArray_t2($finalSlots,implode("_",$days),$startdate,$enddate);
+				$timeStamp=Funs::makeArray_t2($finalSlots,implode("_",$days),$startdate,$enddate);
 				$slotArr=array();
 				
 				$id=User::loginId();
@@ -189,6 +199,7 @@ class Welcome extends CI_Controller {
 				$temp=sql::query($str);
 			}
 		}
+		load_view("cal.php",$pageinfo);
 	}
 	public function topics($tid=0){
 		$tid=0+$tid;
@@ -203,6 +214,7 @@ class Welcome extends CI_Controller {
 			$insert_data["tid"]=User::loginId();
 			Sqle::insertVal("subjects", $insert_data );
 			Fun::redirect($this->cururl);
+	
 		}
 		if(Fun::isSetG("deleteid")){
 			Sqle::deleteVal("subjects",array("id"=>$_GET["deleteid"],"tid"=>User::loginId()),1);
@@ -297,6 +309,7 @@ public function set_news()
 			$this->load->view('mohit');
 		}
 	}
+
 	//Made by ::Himanshu Rohilla::
 	public function acceptOrReject($tid = 0){
 		$sql="SELECT * from teachers LEFT JOIN users ON users.id=teachers.tid";
@@ -344,7 +357,74 @@ public function set_news()
 		}
 		load_view("compare.php",array('result'=>$result));
 	}
+	public function testCSV(){
+		$csvVar=array();
+		load_view("testCSV.php",$csvVar);
+	}
+	public function confirmSlots($date){
+		$date = date('d-m-Y', strtotime($date));
+		$startdate = $date.' 00:00:00';
+		$startstamp=strtotime($startdate);
+		$enddate = $date.' 23:59:59';
+		$endstamp=strtotime($enddate);
+		$id=User::loginId();
+		$sql="select * from timeslot where tid=$id";
+		$table=sql::getArray($sql);
+		$finalrows=array();
+		foreach($table as $row){
+			if($row['starttime']>=$startstamp && $row['starttime']<$endstamp)
+				$finalrows[]=$row['starttime'];
+		}
+
+		load_view("confirmSlots.php",array('finalrows'=>$finalrows,'timeslots'=>Funs::timeslotlist(true)));
+	}
+	public function review($tid) {
+		$sql="select * from reviews where tid=$tid";
+		$allreviews=sql::getArray($sql);
+		//finalArray is the array which we are passing in our view
+		$m=0;
+		$sid=User::loginId();
+		foreach ($allreviews as $key => $value) {
+			$finalArray[$m]['content']=$value['content'];
+			$finalArray[$m]['time']=date("M d, Y h:i A",strtotime($value['time']));
+				$id=$value['sid'];
+				$sql="select * from users where id=$id";
+				$temp=sql::getArray($sql);
+			$finalArray[$m]['sname']=$temp[0]['name'];
+			$finalArray[$m]['id']=$value['id'];
+				$id=$value['id'];
+				$sql="select count(sid) from likes where rid=$id and like_dislike='-1'";
+				$temp=sql::getArray($sql);
+			$finalArray[$m]['dislike']=$temp[0]['count(sid)'];
+				$sql="select count(sid) from likes where rid=$id and like_dislike='1'";
+				$temp=sql::getArray($sql);
+			$finalArray[$m]['like']=$temp[0]['count(sid)'];
+				$sql="select count(*) from likes where sid='$sid' and rid='$id'";
+				$temp=sql::getArray($sql);
+			if($temp[0]['count(*)']>0)
+				$finalArray[$m]['disableTag']=true;
+			else
+				$finalArray[$m]['disableTag']=false;
+			$id=$value['tid'];
+			$m++;
+		}
+		$sql="select * from users where id=$id";
+		$temp=sql::getArray($sql);
+		load_view("review.php",array('finalArray'=>$finalArray,'tname'=>$temp[0]['name']));
+	}
+	public function myslots($tid) {
+		if(isset($_FILES["timeslot_upload"]) && $_FILES["timeslot_upload"]["size"]>0){
+			$uf=Fun::uploadfile_slotpost($_FILES["timeslot_upload"]);
+			if($uf["ec"]>0)
+				$_POST["timeslot_upload"]=$uf["fn"];
+		}
+		load_view("fileupload.php",array());
+	}
+	public function test() {
+		load_view("test.php",array());
+	}
 }
 
 /* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* L
+ocation: ./application/controllers/welcome.php */

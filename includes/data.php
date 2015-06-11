@@ -4,42 +4,22 @@ $view_default=array(
 	"Template/top.php"=>array(
 		"css"=>array("css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css"),
 		"title"=>"Get IITians"
-		)
-	);
-array(
-	'template/top.php'=>array(
-		"title"=>"Player",
-		"css"=>array("bootstrap-3.1.1-dist/css/bootstrap.css","bootstrap-3.1.1-dist/css/bootstrap-theme.css","css/main.css")
 		),
-	'template/bottom.php'=>array(
-		"js"=>array("bootstrap-3.1.1-dist/js/jquery1.js","bootstrap-3.1.1-dist/js/bootstrap.js","js/lib.js","js/mohit.js","js/errorcodes.js","js/mohitlib.js","js/main.js"),
-		"needpopup"=>true
+	'Template/bottom.php'=>array(
+		"needpopup"=>true,
+		"needbody"=>true
 		),
-	"template/mselect.php"=>array(
+	"popup.php"=>array(
+		"title"=>"this popup is made in India",
+		"body"=>"",
+		"bodyinfo"=>array(),
+		"footer"=>"",
+		"footerinfo"=>array(),
 		"name"=>"",
-		"data"=>"all",
-		"divstyle"=>"",
-		"blocked"=>array(),
-		"selectall"=>true,
-		"selectallselected"=>true,
-		"label"=>""
-		),
-	"template/select.php"=>array(
-		"name"=>"",
-		"label"=>"",
-		"selectval"=>"",
-		"dc"=>"simple",
-		"onchange"=>""
-		),
-	"template/select_bool.php"=>array(
-		"label"=>"",
-		"name"=>"",
-		"options"=>array("Yes","No")
-		),
-	"template/header.php"=>array(
-		"islogin"=>null//redefined latter in includes/data_loadonce.php
-		)
-	);
+		'stylebody'=>'',
+		'stylemain'=>'min-width:200px;'
+	)
+);
 
 
 

@@ -99,6 +99,12 @@ abstract class Fun{
 	public static function timetostr($time){//Opposite of strtotime
 		return date("M d Y h:i a",$time);
 	}
+	public static function timetostr_t2($time){//made by himanshu
+		return date("h:i",$time);
+	}
+	public static function timetostr_t4($time){//made by himanshu
+		return date("h:i a",$time);
+	}	
 	public static function timetodate($time){
 		return date("M d, Y",$time);
 	}
@@ -118,7 +124,8 @@ abstract class Fun{
 	public static function timetotime($time){
 		return date("h:i a",$time);
 	}
-	public static function timetotime_t2($time,$bool=true){
+
+	public static function timetotime_t2($time,$bool = true){
 
  		
 		$hours=date("h",$time);
@@ -131,16 +138,15 @@ abstract class Fun{
         if($bool=true){
 
 			if($min==0){
-				return date("g",$time);
+				return date("h:i",$time);
 		    	$bool=false;
 			}
 			else{
-				return date("g:i",$time);
+				return date("h:i",$time);
 				$bool=true;
 			}
 		}
 	}
-	
 	public static function timepassed($s){
 		if($s<5)
 			return "few second ago";
@@ -298,7 +304,7 @@ abstract class Fun{
 			$outp['fn']=$fn;
 		}
 		return $outp;
-	}
+	}	
 	public static function uploadfiles($data,$const=array()){
 		$outp=array();
 		$ec=1;
@@ -346,11 +352,8 @@ abstract class Fun{
 	public static function mail($to,$sub,$body){
 		return Fun::dummymail($to,$sub,$body);
 	}
-	public static function mailfromfile($to,$mfile,$data,$subject="getIITians"){
-		return Fun::mail($to,$subject,Fun::rmsg(file_get_contents( $mfile),$data));
-	}
-	public static function msgfromfile($phone,$mfile,$data){
-		return Funs::sendmsg($phone,Fun::rmsg(file_get_contents( $mfile),$data));
+	public static function mailfromfile($to,$mfile,$data,$subject="Sprint"){
+		return Fun::mail($to,"Get IITians",Fun::rmsg(file_get_contents( $mfile),$data));
 	}
 	public static function timeslotlist(){
 		$datetoday=Fun::datetoday();

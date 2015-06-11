@@ -86,50 +86,11 @@
 	function curfilename(){
 		return firstelm(explode(".",lastelm(explode("/",$_SERVER['SCRIPT_FILENAME']))));
 	}
-
-	function isvalid_action($post_data){
-		global $_ginfo;
-		if(isset($_ginfo["action_constrain"][$post_data["action"]])){
-			$sarr=$_ginfo["action_constrain"][$post_data["action"]];
-			$sarr=Fun::mergeifunset($sarr,array("users"=>"","need"=>array()));
-			if($sarr["users"]!="" && strpos($sarr['users'], User::loginType() )===false)
-				return -2;
-			if(!Fun::isAllSet($sarr["need"], $post_data))
-				return -9;
-		}
-		return true;
-	}
-	function handle_request($post_data){
-		$b=new Actions();
-
-		if(User::isloginas('s'))
-			$a=new Students();
-		else if(User::isloginas('t'))
-			$a=new Teachers();
-		else if(User::isloginas('a'))
-			$a=new Admin();
+	function isUserLoggedInAs($loginTypeArray){//Function Added By Tej Pal Sharma 	The function takes an argument array of string of login types like array('s','t','a') and returns 1 if user of any of these types is currently logged in otherwise it returns 0.CAUSTION: FUNCTION USED IN DATABASE QUERY, SO KEEP THAT IN MIND WHILE EDITING.
+		$userLoginType = User::logintype();
+		if(in_array($userLoginType, $loginTypeArray))
+			return 1;
 		else
-			$a=$b;
-
-		$outp=array("ec"=>-11);
-		if(isset($post_data["action"])  ){
-			$isvalid=isvalid_action($post_data);
-			if(!($isvalid>0))
-				$outp["ec"]=$isvalid;
-			else{
-				$func=$post_data["action"];
-				if( method_exists($a,$post_data["action"]))
-					$outp=$a->$func($post_data);
-				else if( method_exists($b,$post_data["action"]))
-					$outp=$b->$func($post_data);
-			}
-		}
-		return $outp;
+			return 0;
 	}
-	function getmyneed($fname){
-		global $_ginfo;
-		return $_ginfo["action_constrain"][$fname]["need"];
-	}
-
-
 ?>
