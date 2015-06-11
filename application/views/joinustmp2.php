@@ -107,7 +107,8 @@ load_view("Template/navbarnew.php");
                 <div class="col s12 l4">
                   <select data-condition="simple"  class="browser-default" onchange="f(this);" name="minfees" id="minfees">
                     <option value="" disabled selected>Min.Fees</option>
-                    <option value="300">Rs.300</option>
+                    <option value="200">Rs.200</option>
+					<option value="300">Rs.300</option>
                     <option value="500">Rs.500</option>
                     <option value="800">Rs.800</option>
                     <option value="1000">Rs.1000</option>
@@ -117,6 +118,8 @@ load_view("Template/navbarnew.php");
                     <option value="2000">Rs.2000</option>
                     <option value="2500">Rs.2500</option>
                     <option value="3000">Rs.3000</option>
+					<option value="5000">Rs.5000</option>
+					<option value="8000">Rs.8000</option>
                     
           </select>
 
@@ -136,7 +139,8 @@ load_view("Template/navbarnew.php");
                   
                     <select data-condition="simple" class="browser-default" name="teachingexp" id="experience">
                     <option value="" disabled selected>Teaching Exp.</option>
-                    <option value="1">1</option>
+                    <option value="0">0</option>
+					<option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
