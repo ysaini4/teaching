@@ -162,7 +162,7 @@ abstract class Funs{
 					$todayMidnight = strtotime('today midnight');
 					$nextDayMidnight = $todayMidnight + ($day+$nextWeekCounter)*3600*24;
 					$toAddTime = ($slot-1)*1800;
-					echo $addintoslot=$nextDayMidnight + $toAddTime;
+//					echo $addintoslot=$nextDayMidnight + $toAddTime;
 					if($startstamp<=$addintoslot && $addintoslot<$endstamp)
 						$secondsArray[$c++] = $addintoslot;
 					if($addintoslot>=$endstamp){
@@ -179,7 +179,7 @@ abstract class Funs{
 	}
 	//Function Added By Tej Pal Sharma
 	//Fetches timeslots of a teacher identified by tid from the database, based on the person (admin,teacher,student or guest) viewing the result.
-	public static function getTeacherTimeSlotsForDay($day,$month,$year,$tid='0',$timeslotsTable = 'timeslot')
+	public static function getTeacherTimeSlotsForDay($day,$month,$year,$tid=0,$timeslotsTable = 'timeslot')
 	{
 		$timestamp = strtotime($day.'-'.$month.'-'.$year.' 00:00:00');
 		$timestampMidNightStartOfDay = $timestamp;
@@ -187,7 +187,7 @@ abstract class Funs{
 		$userLoginId = 0+User::loginId();
 	
 		//Fetch Time Slots of Teacher, ORDER HERE IS A MUST AND MUST NOT BE ALTERED.
-		$query = "SELECT tid, starttime, sid  FROM ".$timeslotsTable." WHERE tid = ".$tid." AND (".isUserLoggedInAs(array('a','t'))." OR "."( sid=0 OR sid=? )".") ORDER BY starttime ASC ";
+		$query = "SELECT tid, starttime, sid  FROM ".$timeslotsTable." WHERE tid = ".(0+$tid)." AND (".isUserLoggedInAs(array('a','t'))." OR "."( sid=0 OR sid=? )".") ORDER BY starttime ASC ";
 		$timeslotsForTeacher = Sqle::getArray($query,'i',array(&$userLoginId));
 
 		$timeslotForDay = array();

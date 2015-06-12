@@ -9,6 +9,9 @@ load_view("Template/navbarnew.php");
         <h3 class="teal-text center">Calender</h3>
       </div>
     </div>
+    <div id="test1" >
+      This div ( ROOT/app*/views/cal.php) need to be removed
+    </div>
     <div class="row">
       <div class="col s12 l12">
         <div class="card-panel">
@@ -42,7 +45,7 @@ load_view("Template/navbarnew.php");
               foreach($group as $val){
             ?>
             <div style='margin-top:-28px;padding:0px;margin-bottom:-28px;'>
-              <input id="<?php echo $m; ?>" class="myCheckbox" value="<?php echo $m; ?>" type="checkbox" name="time[]" class="timeclass">
+              <input id="<?php echo $m; ?>" class="myCheckbox timeclass" value="<?php echo $m; ?>" type="checkbox" name="time[]" >
               <label for="<?php echo $m; ?>" ><?php echo $val; ?></label>
             </div>
             <?php

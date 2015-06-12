@@ -115,14 +115,9 @@ var himanshu={
 
 
 function opencalpopup(obj){
-	if(false){
-		button.sendreq_v2_t4(obj,null,function(d){
-			$('#downloadeddata').html(d);
-		});	
-	}
+	mohit.popup("timeslot",{"body":"<img src='photo/icons/loading.gif' />"});
+	button.sendreq_v2_t4(obj,null,function(d){
+		$("#"+"timeslotPopup"+"body").html(d);
+	});	
 }
-
-// function spp(){
-// 	$('.PopupWrapper').fadeIn();
-// }
 

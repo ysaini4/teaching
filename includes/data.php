@@ -10,7 +10,7 @@ $view_default=array(
 		"needbody"=>true
 		),
 	"popup.php"=>array(
-		"title"=>"this popup is made in India",
+		"title"=>"This popup is made in India",
 		"body"=>"",
 		"bodyinfo"=>array(),
 		"footer"=>"",

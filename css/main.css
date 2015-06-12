@@ -48,3 +48,14 @@ a{
   font-size:23px;
 }
 
+
+
+.table-block-hover  > tbody > tr > td{
+  cursor:pointer;
+}
+
+.table-block-hover  > tbody > tr > td:hover {
+  background-color: #e8e8e8;
+}
+
+

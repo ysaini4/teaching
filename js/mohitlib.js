@@ -477,12 +477,6 @@ var rating={
 };
 
 
-$(document).ready(function(){
-	$(".closePopup").click(function(){
-		$('.PopupWrapper').fadeOut();
-	});
-});
-
 setifunset=function(data,key,val){
 	if(typeof(data[key])=='undefined')
 		data[key]=val;

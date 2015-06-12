@@ -146,14 +146,13 @@ class Welcome extends CI_Controller {
 	}
 	public function cal($tid=0){
 		global $_ginfo;
-		$tid=0+$tid;
 		if($tid==0)
 			$tid=User::loginId();
+		$tid=0+$tid;
 		$pageinfo=array();
 		$pageinfo['timeslots']=Funs::timeslotlist(true);
 		$pageinfo['weekdays']=$_ginfo["weekdays_long"];
-
-		$twoDArr=funs::calenderPrint(date('n'),date('Y'));
+		$twoDArr=Funs::calenderPrint(date('n'),date('Y'));
 		$timeSlotsArray=Funs::getTeacherTimeSlotsForMonthCalDisplay(date('n'),date('Y'),$tid);
 
 
@@ -188,15 +187,14 @@ class Welcome extends CI_Controller {
 					foreach ($timeStamp as $slot1) {
 								$slotArr[]=array($id,$slot1);
 					}
-					$str="insert into timeslot (tid,starttime) ".fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii');
+					Sql::query("insert into timeslot (tid,starttime) ".Fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii'));
 				}
 				else if($_POST["deleteHidden"]!=""){
 					foreach ($timeStamp as $slot1) {
 						$slotArr[]=array($slot1);
 					}
-					$str="delete from timeslot where tid='$id' and starttime in (select * from ".fun::makeDummyTableColumns_t2($slotArr,array("starttime"),'i').')';
+					Sql::query("delete from timeslot where tid=? and starttime in (select * from ".Fun::makeDummyTableColumns_t2($slotArr,array("starttime"),'i').')' ,'i',array(&$id));
 				}
-				$temp=sql::query($str);
 			}
 		}
 		load_view("cal.php",$pageinfo);

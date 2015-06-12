@@ -90,13 +90,40 @@
             <thead>
               <tr>
                 <th >
-  <div id="downloadeddata" >
-  <?php
+  <div  >
 
-  load_view('Template/calenderPrint.php',$inp);
-
-  ?>
-
+<?php
+echo '<table class="table-block-hover" >';
+  for($row=0;$row<7;$row++){
+    echo '<tr>';
+    for($col=0;$col<7;$col++){
+      $final=$twoDArr[$row][$col].'-'.$month.'-'.$year;
+      if($twoDArr[$row][$col]=='&nbsp' || is_string($twoDArr[$row][$col])){
+        echo '<td>'.$twoDArr[$row][$col].'</td>';
+      }
+      else if($currentDate==$twoDArr[$row][$col] && $showVar==true){
+        echo '<td style="color:red;" data-action="teacherTimeSlotOfDayPopUp" data-day='.$twoDArr[$row][$col].' data-month='.$month.' data-year='.$year.' data-tid='.$tid.' onclick="opencalpopup(this);" >'.$twoDArr[$row][$col]."<br/>";
+        if($timeSlotsArray[$twoDArr[$row][$col]]['countOfSlots']!=0){
+          for($i=0;$i<count($timeSlotsArray[$twoDArr[$row][$col]])-1;$i++){
+            echo $timeSlotsArray[$twoDArr[$row][$col]][$i]['timeslotString']."<br/>";
+          }
+        }
+        echo '</td>';
+      }
+      else if($twoDArr[$row][$col]!='&nbsp' && !(is_string($twoDArr[$row][$col]))){
+        echo '<td data-action="teacherTimeSlotOfDayPopUp" data-day='.$twoDArr[$row][$col].' data-month='.$month.' data-year='.$year.' data-tid='.$tid.' onclick="opencalpopup(this);" >'.$twoDArr[$row][$col].'<br/>';
+        if($timeSlotsArray[$twoDArr[$row][$col]]['countOfSlots']!=0){
+          for($i=0;$i<count($timeSlotsArray[$twoDArr[$row][$col]])-1;$i++){
+            echo $timeSlotsArray[$twoDArr[$row][$col]][$i]['timeslotString']."<br/>";
+          }
+        }
+        echo '</td>';
+      }     
+    }
+    echo '</tr>';
+  }
+echo "</table>";
+?>
   </div></th>
               </tr>
             </thead>

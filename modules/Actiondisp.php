@@ -6,8 +6,6 @@ class Actiondisp{
 		$odata=0;
 		if(!Fun::isAllSet($need,$data))
 			$ec=-9;
-		else if(!User::islogin())
-			$ec=-8;
 		echo json_encode(array('ec'=>$ec,'data'=>$odata))."\n";
 		if($ec<0){
 			return;
@@ -18,6 +16,7 @@ class Actiondisp{
 		if(date("n")==$data["month"] && date("Y")==$data["year"])
 			$showVar=true;	
 		$timeSlotsArray = Funs::getTeacherTimeSlotsForMonthCalDisplay($data['month'],$data['year'],$data["tid"]);
+		print_r(array($data['month'],$data['year'],$data["tid"]));
 
 		load_view("dispcal.php",array("year"=>$data["year"],"month"=>$data["month"],'twoDArr'=>$twoDArr,'currentDate'=>date("j"),'showVar'=>$showVar,'timeSlotsArray'=>$timeSlotsArray,'tid'=>$data['tid']));
 	}
@@ -95,8 +94,6 @@ class Actiondisp{
 		$pageinfo['day'] = $data['day'];
 		$pageinfo['month'] = $data['month'];
 		$pageinfo['year'] = $data['year'];
-
-		
 		load_view('timeslotpopup.php',$pageinfo);
 	}
 }

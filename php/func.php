@@ -87,10 +87,72 @@
 		return firstelm(explode(".",lastelm(explode("/",$_SERVER['SCRIPT_FILENAME']))));
 	}
 	function isUserLoggedInAs($loginTypeArray){//Function Added By Tej Pal Sharma 	The function takes an argument array of string of login types like array('s','t','a') and returns 1 if user of any of these types is currently logged in otherwise it returns 0.CAUSTION: FUNCTION USED IN DATABASE QUERY, SO KEEP THAT IN MIND WHILE EDITING.
-		$userLoginType = User::logintype();
+		$userLoginType = User::loginType();
 		if(in_array($userLoginType, $loginTypeArray))
 			return 1;
 		else
 			return 0;
 	}
+	function isvalid_action($post_data){
+		global $_ginfo;
+		if(isset($_ginfo["action_constrain"][$post_data["action"]])){
+			$sarr=$_ginfo["action_constrain"][$post_data["action"]];
+			$sarr=Fun::mergeifunset($sarr,array("users"=>"","need"=>array()));
+			if($sarr["users"]!="" && strpos($sarr['users'], User::loginType() )===false)
+				return -2;
+			if(!Fun::isAllSet($sarr["need"], $post_data))
+				return -9;
+		}
+		return true;
+	}
+	function islset($data,$arr){
+		for($i=0;$i<count($arr);$i++){
+			if(!isset($data[$arr[$i]]))
+				return false;
+			$data=$data[$arr[$i]];
+		}
+		return true;
+	}
+	function getmyneed($fname){
+		global $_ginfo;
+		return $_ginfo["action_constrain"][$fname]["need"];
+	}
+
+	function handle_request($post_data){
+		global $_ginfo;
+		$b=new Actions();
+		if(User::isloginas('u'))
+			$a=new Userc();
+		else if(User::isloginas('a'))
+			$a=new Admin();
+		else
+			$a=$b;
+		$outp=array("ec"=>-11);
+		if(isset($post_data["action"])  ){
+			$isvalid=isvalid_action($post_data);
+			if(!($isvalid>0))
+				$outp["ec"]=$isvalid;
+			else{
+				$func=$post_data["action"];
+				if( method_exists($a,$post_data["action"]))
+					$outp=$a->$func($post_data);
+				else if( method_exists($b,$post_data["action"]))
+					$outp=$b->$func($post_data);
+				else if(islset($_ginfo,array("autoinsert",$post_data["action"]))) {
+					$action_spec=$_ginfo["autoinsert"][$post_data["action"]];
+					$action_spec=Fun::mergeifunset($action_spec,array("fixed"=>array(),"add"=>array()));
+					$ins_data=Fun::getflds(getmyneed($post_data["action"]) , $post_data );
+					$ins_data=Fun::mergeifunset($ins_data,$action_spec["add"]);
+					$fixvalues=array("time"=>time(),"uid"=>User::loginId());
+					foreach($action_spec["fixed"] as $i=>$val){
+						$ins_data[$val]=$fixvalues[$val];
+					}
+					$outp["data"]=Sqle::insertVal($action_spec["table"],$ins_data);
+					$outp["ec"]=1;
+				}
+			}
+		}
+		return $outp;
+	}
+
 ?>
