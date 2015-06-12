@@ -23,7 +23,7 @@
                                        echo $year-1;
                                        else echo $year; ?>"
                                        
-                     value=" <?php     
+                     value="<?php     
                                        if($month==1 && $year>2015 )
                                        echo $year-1;
                                        else echo $year;?>">
@@ -34,6 +34,10 @@
                
                  <?php } ?> 
 
+                </th>
+                <th>
+                  <button style="display:none;" id="calhomebutton" data-month="<?php echo $month; ?>" data-year="<?php echo $year; ?>" data-tid="<?php echo $tid; ?>" data-action="dispcal" ></button>
+                  <img  src="photo/icons/home.png" data-month="<?php echo date("n"); ?>" data-year="<?php echo date("Y"); ?>" data-tid="<?php echo $tid; ?>" data-action="dispcal" onclick="hitu.f1(this);" style="cursor:pointer;" />
                 </th>
                 <th style="height:15px; width:100px;">
                   
@@ -118,7 +122,7 @@ echo '<table class="table-block-hover" >';
           }
         }
         echo '</td>';
-      }     
+      }
     }
     echo '</tr>';
   }

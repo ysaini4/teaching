@@ -155,48 +155,11 @@ class Welcome extends CI_Controller {
 		$twoDArr=Funs::calenderPrint(date('n'),date('Y'));
 		$timeSlotsArray=Funs::getTeacherTimeSlotsForMonthCalDisplay(date('n'),date('Y'),$tid);
 
-
 		$pageinfo['timeSlotsArray'] = $timeSlotsArray;
 		$pageinfo['twoDArr']=$twoDArr;
 		$pageinfo['currentDate']=date('j');
 		$pageinfo['showVar']=true;
 		$pageinfo['tid']=$tid;
-
-
-		if(Fun::isSetP("time","days","deleteHidden","addHidden") && User::isloginas('t')){
-			if($_POST["deleteHidden"]!="" || $_POST['addHidden']!=''){
-				$finalS=$_POST["time"];
-				$days=$_POST["days"];
-				foreach ($finalS as $key) {
-					$slots[]=$key-7;
-				}
-				$startdate='';
-				$enddate='';
-				if($_POST['startdate']!='')
-					$startdate=$_POST['startdate'];
-				if($_POST['enddate']!='')
-					$enddate=$_POST['enddate'];
-
-				//$repeatTime=$_POST["repeat"];
-				$finalSlots=implode("_",$slots);
-				$timeStamp=Funs::makeArray_t2($finalSlots,implode("_",$days),$startdate,$enddate);
-				$slotArr=array();
-				
-				$id=User::loginId();
-				if($_POST['addHidden']!=''){
-					foreach ($timeStamp as $slot1) {
-								$slotArr[]=array($id,$slot1);
-					}
-					Sql::query("insert into timeslot (tid,starttime) ".Fun::makeDummyTableColumns($slotArr,array("tid","starttime"),'ii'));
-				}
-				else if($_POST["deleteHidden"]!=""){
-					foreach ($timeStamp as $slot1) {
-						$slotArr[]=array($slot1);
-					}
-					Sql::query("delete from timeslot where tid=? and starttime in (select * from ".Fun::makeDummyTableColumns_t2($slotArr,array("starttime"),'i').')' ,'i',array(&$id));
-				}
-			}
-		}
 		load_view("cal.php",$pageinfo);
 	}
 	public function topics($tid=0){

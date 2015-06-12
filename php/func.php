@@ -121,10 +121,12 @@
 	function handle_request($post_data){
 		global $_ginfo;
 		$b=new Actions();
-		if(User::isloginas('u'))
-			$a=new Userc();
+		if(User::isloginas('s'))
+			$a=new Students();
 		else if(User::isloginas('a'))
 			$a=new Admin();
+		else if(User::isloginas('t'))
+			$a=new Teachers();
 		else
 			$a=$b;
 		$outp=array("ec"=>-11);
@@ -153,6 +155,18 @@
 			}
 		}
 		return $outp;
+	}
+	function rquery($str,$data){
+		preg_match_all("|{[^}]+}|U",$str,$matches);
+		$matches=$matches[0];
+		for($i=0;$i<count($matches);$i++){
+			$key=substr($matches[$i],1,strlen($matches[$i])-2);
+			$str=str_replace($matches[$i],$data[$key],$str);
+		}
+		return $str;
+	}
+	function timeondate($day,$month,$year){
+		return strtotime($day."-".$month."-".$year);
 	}
 
 ?>

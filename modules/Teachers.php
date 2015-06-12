@@ -158,5 +158,17 @@ class Teachers{
 		}
 		return array('ec'=>$ec,'data'=>$odata);
 	}
-
+	function teacherModifySlots($data){
+		$data=Fun::setifunset($data,"slots",array());
+		$outp=array("ec"=>1,"data"=>0);
+		$stime=timeondate($data["day"],$data["month"],$data["year"]);
+		$tid=User::loginId();
+		Sql::query("delete from timeslot where tid=? AND starttime>=? AND starttime<?+3600*24 ",'iii',array(&$tid,&$stime,&$stime));
+		$dummy_table=array();
+		foreach($data["slots"] as $ind){
+			$dummy_table[]=array(User::loginId(),$stime+($ind-1)*1800);
+		}
+		Sql::query("insert into timeslot (tid,starttime) ".Fun::makeDummyTableColumns($dummy_table) );
+		return $outp;
+	}
 }

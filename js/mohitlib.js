@@ -1,10 +1,3 @@
-if(false){
-	var mohit={
-		alert:function(a){
-			alert(a);
-		}
-	}
-}
 var button={
 	attrs:function(obj){
 		var alla=obj.attributes;

@@ -9,9 +9,11 @@ load_view("Template/navbarnew.php");
         <h3 class="teal-text center">Calender</h3>
       </div>
     </div>
-    <div id="test1" >
+
+<!--     <div id="test1" >
       This div ( ROOT/app*/views/cal.php) need to be removed
     </div>
+ -->
     <div class="row">
       <div class="col s12 l12">
         <div class="card-panel">

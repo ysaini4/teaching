@@ -10,7 +10,13 @@
 	else if($loginType=='a')
 		$disptype=4;//
 ?>
+<div>
+	<input id="selectallts"  type="checkbox"  class="timeclass" onchange="selectallmatched(this,$('#disppopupslots').find('input[type=checkbox]'));" />
+	<label for="selectallts" ><?php echo "Select All" ; ?></label>
+</div>
+<div id="disppopupslots" >
 <?php
+	$ms_count=0;
 	foreach ($timeslotsListArray as $timeslotListCol) {
 		foreach ($timeslotListCol as $timeslotListVal) {
 		?>
@@ -19,7 +25,7 @@
 			if($disptype==2){
 				//If LOGGED IN AS TEACHER WE CAN MAKE THE CHECKBOXES EDITABLE EXEPT ONES WHICH ARE BOOKED 
 				//ALSO PROVIDE A BUTTON SAYING SAVE CHANGES.
-				if($index = array_search($timeslotListVal, $timeslotsOfDayStringArray)){
+				if( isset($indexedts[$ms_count] )  ){
 					if($timeslotsArray[$index]['sid']!=0){
 						echo "<input id=\"".$count."\" value=\"".$count."\" type=\"checkbox\" checked=checked disabled=\"disabled\" name=\"time[]\" class=\"timeclass\"/>";
 						echo "<label for=\"".$count."\" >".$timeslotListVal."</label>";
@@ -78,13 +84,19 @@
 		?>
 		</div>
 		<?php
+		$ms_count++;
 		$count++;
 		}
 	}
 ?>
+</div>
 <?php
 	if($disptype==2){
-		echo "<button data-action=\"teacherModifySlots\" data-day=".$day." data-month=".$month." data-year=".$year." data-tid=\"".$tid."\"  onclick=\"button.sendreq(this);\" data-res=\"alert(data);\"  data-waittext=\"Loading....\" data-restext=\"Changes saved successfully ! \" >Save Changes</button>";
+		echo "<button data-action=\"teacherModifySlots\" data-day=".$day." data-month=".$month." data-year=".$year." data-tid=\"".$tid."\"  onclick=\"button.sendreq_v2(this);\"  data-waittext=\"Loading....\" data-restext=\"Changes saved successfully ! \" ";
+		?> data-eparams="{'slots':ms.getselected()}" data-res="hitu.f1($('#calhomebutton')[0]);"
+
+		<?php
+		echo "  >Save Changes</button>";
 	}
 	else if($disptype==3){
 		echo "<button data-action=\"studentBooksSlot\" data-day=".$day." data-month=".$month." data-year=".$year." data-tid=\"".$tid."\"  onclick=\"button.sendreq(this);\" data-res=\"alert(data);\"  data-waittext=\"Loading....\" data-restext=\"Success ! \" >Book Selected Slots</button>";

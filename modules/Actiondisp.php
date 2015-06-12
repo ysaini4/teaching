@@ -15,9 +15,7 @@ class Actiondisp{
 		$showVar=false;
 		if(date("n")==$data["month"] && date("Y")==$data["year"])
 			$showVar=true;	
-		$timeSlotsArray = Funs::getTeacherTimeSlotsForMonthCalDisplay($data['month'],$data['year'],$data["tid"]);
-		print_r(array($data['month'],$data['year'],$data["tid"]));
-
+		$timeSlotsArray = Funs::getTeacherTimeSlotsForMonthCalDisplay(0+$data['month'],0+$data['year'],0+$data["tid"]);
 		load_view("dispcal.php",array("year"=>$data["year"],"month"=>$data["month"],'twoDArr'=>$twoDArr,'currentDate'=>date("j"),'showVar'=>$showVar,'timeSlotsArray'=>$timeSlotsArray,'tid'=>$data['tid']));
 	}
 	function reviewload($data){
@@ -80,6 +78,12 @@ class Actiondisp{
 		$pageinfo = array();
 		$timeslotsArray = Funs::getTeacherTimeSlotsForDay($data['day'],$data['month'],$data['year'],$data['tid']);
 		$timeslotsOfDayStringArray = array();
+
+		$indexedts=array();
+		foreach($timeslotsArray as $val){
+			$indexedts[((0+$val["starttime"])-strtotime(date("d-m-Y",$val["starttime"])))/1800 ]=1;
+		}
+
 		foreach ($timeslotsArray as $timeslot) {
 			$timeslotsOfDayStringArray[] = Fun::timetotime_t2($timeslot['starttime'],true).' - '.Fun::timetotime_t2($timeslot['starttime']+1800,true).' '.Fun::timetotime_t2($timeslot['starttime']+1800,false);
 		}
@@ -94,6 +98,8 @@ class Actiondisp{
 		$pageinfo['day'] = $data['day'];
 		$pageinfo['month'] = $data['month'];
 		$pageinfo['year'] = $data['year'];
+		$pageinfo["indexedts"]=$indexedts;
+
 		load_view('timeslotpopup.php',$pageinfo);
 	}
 }

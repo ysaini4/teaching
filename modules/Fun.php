@@ -125,9 +125,21 @@ abstract class Fun{
 		return date("h:i a",$time);
 	}
 
-	public static function timetotime_t2($time,$bool = true){
+	public static function timetotime_t3($time,$bool = true){
+		$hours=date("h",$time);
+		$min=date("i",$time);
+		$ampm=date("a",$time);
+		$outp=$hours;
+		if($min!=0)
+			$outp.=":".$min;
+		if($bool){
+			$outp.=" ".$ampm;
+		}
+		return $outp;
+	}
 
- 		
+
+	public static function timetotime_t2($time,$bool = true){
 		$hours=date("h",$time);
 		$min=date("i",$time);
 		$ampm=date("a",$time);
@@ -423,11 +435,17 @@ abstract class Fun{
 		}
 		return $data;
 	}
-	public static function makeDummyTableColumns($arr,$flds,$params=''){
+	public static function makeDummyTableColumns($arr,$flds=null,$params=''){
 		if(count($arr)==0){
 			return "select 1 as id limit 0";
 		}
 		else{
+			if($flds==null){
+				$flds=array();
+				for($i=0;$i<count($arr[0]);$i++){
+					$flds[]="col".$i;
+				}
+			}
 			$qtexts=array();
 			foreach($arr as $i=>$val){
 				$qtext="(select ";

@@ -121,3 +121,23 @@ function opencalpopup(obj){
 	});	
 }
 
+var ms={
+	getselected:function(id){//1 indexed listing
+		if(id==null)
+			id="disppopupslots";
+		var alls=$("#"+id).find("input[type=checkbox]");
+		var outp=[];
+		for(var i=0;i<alls.length;i++){
+			if(alls[i].checked)
+				outp.push(i+1);
+		}
+		return outp;
+	}
+};
+
+
+function selectallmatched(obj,sel){
+	for(var i=0;i<sel.length;i++){
+		sel[i].checked=obj.checked;
+	}
+}
