@@ -160,7 +160,15 @@ class Welcome extends CI_Controller {
 		$pageinfo['currentDate']=date('j');
 		$pageinfo['showVar']=true;
 		$pageinfo['tid']=$tid;
+
+		load_view("Template/top.php");
+		load_view("Template/navbarnew.php");
 		load_view("cal.php",$pageinfo);
+
+		load_view("Template/footernew.php");
+		load_view("popup.php",array("name"=>"timeslot"));
+		load_view("Template/bottom.php");
+
 	}
 	public function topics($tid=0){
 		$tid=0+$tid;
@@ -187,6 +195,14 @@ class Welcome extends CI_Controller {
 		$pageinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
 		load_view('topics.php',$pageinfo);
 	}
+	public function profile($tid=0){
+		setift($tid,User::loginId(),$tid==0);
+		$tid=0+$tid;
+		$pageinfo=array();
+		$pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
+		$pageinfo["tid"]=$tid;
+		load_view("profile.php",$pageinfo);
+	}
 
     public function newsearch()
 	{
@@ -196,7 +212,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('Template/footer');
 		$this->load->view('Template/bottom');
 	}
-    
+
 
     public function account(){
 		Fun::gotohome();

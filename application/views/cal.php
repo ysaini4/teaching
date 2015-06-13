@@ -1,7 +1,3 @@
-<?php
-load_view("Template/top.php");
-load_view("Template/navbarnew.php");
-?>
 <main>
   <div class="container">
     <div class="row">
@@ -65,10 +61,7 @@ load_view("Template/navbarnew.php");
           <input id="clickit1" class="myCheckbox1" type="checkbox" onchange="himanshu.f22(this);">
           <label for="clickit1" >Select All Days</label>
         </div>
-
-<!--                 <input id="clickit1" type="checkbox" onclick="f22(this);">
-          <label for="clickit1" >Check All Days</label>
- -->        <?php
+         <?php
           $i=0;
           foreach($weekdays as $days){
             ?>
@@ -122,8 +115,3 @@ load_view("Template/navbarnew.php");
 </main>
 
 
-<?php
-load_view("Template/footernew.php");
-load_view("popup.php",array("name"=>"timeslot"));
-load_view("Template/bottom.php");
-?>

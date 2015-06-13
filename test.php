@@ -3,6 +3,7 @@ include "includes/app.php";
 load_view("Template/top.php");
 
 
+
 if(false){
 
 	$a=Funs::getTeacherTimeSlotsForDay(22,6,2015,3);

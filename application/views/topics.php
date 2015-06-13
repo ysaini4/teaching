@@ -1,6 +1,8 @@
 <?php
 load_view("Template/top.php",$inp);
 load_view("Template/navbar.php",$inp);
+load_view("subheader.php");
+
 ?>
 <script>
 var topics=<?php echo json_encode($cst_tree); ?>;
@@ -8,12 +10,10 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 <main>
   <div class="container">
     <div class="row">
-      <div class="col s12">
-        <h3 class="teal-text center">Topics</h3>
-      </div>
+      
     </div>
     <div class="row">
-      <div class="col s12 l4">
+      <div class="col s12 l3">
         <div class="card-panel">
           <span class="grey-text text-darken-2">Add your subject</span>
           <br>
@@ -54,7 +54,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
           </div>
         </div>
       </div>
-      <div class="col s12 l8">
+      <div class="col s12 l9">
         <div class="card-panel">
           <table class="hoverable responsive-table">
             <thead>

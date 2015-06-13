@@ -168,5 +168,13 @@
 	function timeondate($day,$month,$year){
 		return strtotime($day."-".$month."-".$year);
 	}
+	function setift(&$var,$val,$istrue=true){
+		if($istrue){
+			$var=$val;
+		}
+	}
+	function setifnn(&$var,$val){
+		setift($var,$val,$var==null);
+	}
 
 ?>

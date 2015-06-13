@@ -294,6 +294,25 @@ abstract class Funs{
 			}
 		}
 		return $teacherTimeSlotsForMonth;
-	}	
+	}
+	public static function get_teacher_cal_info($tid,$month=null,$year=null){
+		global $_ginfo;
+		setifnn($month,date("n"));
+		setifnn($year,date("Y"));
+		setift($tid,User::loginId(),$tid==0);
+		$tid=0+$tid;
+		$pageinfo=array();
+		$pageinfo['timeslots']=Funs::timeslotlist(true);
+		$pageinfo['weekdays']=$_ginfo["weekdays_long"];
+		$twoDArr=Funs::calenderPrint(date('n'),date('Y'));
+		$timeSlotsArray=Funs::getTeacherTimeSlotsForMonthCalDisplay($month,$year,$tid);
+
+		$pageinfo['timeSlotsArray'] = $timeSlotsArray;
+		$pageinfo['twoDArr']=$twoDArr;
+		$pageinfo['currentDate']=date('j');
+		$pageinfo['showVar']=true;
+		$pageinfo['tid']=$tid;
+		return $pageinfo;
+	}
 }
 ?>
