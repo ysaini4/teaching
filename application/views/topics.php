@@ -1,9 +1,3 @@
-<?php
-load_view("Template/top.php",$inp);
-load_view("Template/navbar.php",$inp);
-load_view("subheader.php");
-
-?>
 <script>
 var topics=<?php echo json_encode($cst_tree); ?>;
 </script>
@@ -90,10 +84,3 @@ var topics=<?php echo json_encode($cst_tree); ?>;
   </div>
 </main>
 
-<?php
-popupalert(null);
-popupconfirm(null);
-
-load_view("Template/footer.php",$inp);
-load_view("Template/bottom.php",$inp);
-?>

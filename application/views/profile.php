@@ -48,7 +48,7 @@ load_view("Template/navbarnew.php");
 </main>
         <div id="test1" class="col s12">
           <?php
-            load_view("profileabout.php");
+            load_view("profileabout.php",$aboutinfo);
           ?>
         </div>
         <div id="test2" class="col s12">
@@ -56,7 +56,11 @@ load_view("Template/navbarnew.php");
             load_view("cal.php",$calinfo);
           ?>
         </div>
-        <div id="test3" class="col s12"></div>
+        <div id="test3" class="col s12">
+          <?php
+            load_view("topics.php",$topicinfo);
+          ?>
+        </div>
         <div id="test4" class="col s12"></div>
         </div>
 

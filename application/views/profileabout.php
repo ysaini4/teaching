@@ -1,3 +1,5 @@
+<?php
+?>
    <main>
     <div class="container_profile">
     <div class="section">

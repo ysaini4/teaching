@@ -18,6 +18,16 @@ $view_default=array(
 		"name"=>"",
 		'stylebody'=>'',
 		'stylemain'=>'min-width:200px;'
+	),
+	"Template/cutecheckbox.php"=>array(
+		"onchange"=>"",
+		"id"=>"",
+		"label"=>"Check",
+		"class"=>"",
+		"inpattr"=>array(),
+//		"divattr"=>array("style"=>"margin-top:-28px;padding:0px;margin-bottom:-28px;"),
+		"divattr"=>array("style"=>"")
+
 	)
 );
 

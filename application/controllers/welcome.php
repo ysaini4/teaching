@@ -193,13 +193,29 @@ class Welcome extends CI_Controller {
 		$pageinfo=array('cst_tree'=>$cst_tree,"tid"=>$tid);
 		$pageinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
 		$pageinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
+
+		load_view("Template/top.php",$pageinfo);
+		load_view("Template/navbar.php",$pageinfo);
 		load_view('topics.php',$pageinfo);
+		load_view("Template/footer.php",$pageinfo);
+		load_view("Template/bottom.php",$pageinfo);
+
 	}
 	public function profile($tid=0){
 		setift($tid,User::loginId(),$tid==0);
 		$tid=0+$tid;
+
+		$cst_tree=Funs::cst_tree();
+		$topicinfo=array('cst_tree'=>$cst_tree,"tid"=>$tid);
+		$topicinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
+		$topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
+
+
+
 		$pageinfo=array();
+		$pageinfo["aboutinfo"]=Sqle::getRow("select teachers.*,users.* from teachers left join users on users.id=teachers.tid where teachers.tid=? limit 1",'i',array(&$tid));
 		$pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
+		$pageinfo["topicinfo"]=$topicinfo;
 		$pageinfo["tid"]=$tid;
 		load_view("profile.php",$pageinfo);
 	}

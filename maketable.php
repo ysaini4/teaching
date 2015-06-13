@@ -34,16 +34,16 @@ function create(){
 
 
 
-	echo Sql::query("CREATE TABLE timeslot ( tid int, starttime int, sid int, conf varchar(1)  ) ");
+	echo Sql::query("CREATE TABLE timeslot ( tid int, starttime int, conf varchar(1)  ) ");
 	echo Sql::query("ALTER TABLE timeslot add constraint tid_dt_slot unique (tid,starttime) ");
-	echo Sql::query("ALTER TABLE timeslot add url varchar(300) NULL ");
-	echo Sql::query("ALTER TABLE timeslot add feedback varchar(3000) NULL ");
-	echo Sql::query("ALTER TABLE timeslot add rate int NULL ");
-	echo Sql::query("ALTER TABLE timeslot add testfiles varchar(1000) NULL ");
-	echo Sql::query("ALTER TABLE timeslot add solnfiles varchar(1000) NULL ");
-	echo Sql::query("ALTER TABLE timeslot add marks int NULL ");
 
-
+	echo Sql::query("CREATE TABLE booked ( tid int, starttime int, sid int, duration int  ) ");
+	echo Sql::query("ALTER TABLE booked add url varchar(300) NULL ");
+	echo Sql::query("ALTER TABLE booked add feedback varchar(3000) NULL ");
+	echo Sql::query("ALTER TABLE booked add rate int NULL ");
+	echo Sql::query("ALTER TABLE booked add testfiles varchar(1000) NULL ");
+	echo Sql::query("ALTER TABLE booked add solnfiles varchar(1000) NULL ");
+	echo Sql::query("ALTER TABLE booked add marks int NULL ");
 
 
 	echo Sql::query("CREATE TABLE teachers (tid int NOT NULL,iit int, iitentryyear int , degree varchar(100), experience varchar(1000), addinfo varchar(1000) , isselected varchar(1) ) ");
