@@ -12,63 +12,69 @@
           <div class="col s5">
             <div class="row">
               <label class="label1">First Name:</label>
-              Mariah
+              <?php echo $firstName; ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1">Last Name:</label>
-              Caraiban
+              <?php echo $lastName;?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >User Name:</label>
-                Mariah
+                <?php echo $aboutinfo['username'] ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Email:</label>
-               someone@e.com 
+               <?php echo $aboutinfo['email'] ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >City:</label>
-              Los Angeles 
+              <?php echo $jsonArray['city']; ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Country:</label>
-               jkbkj
+               <?php echo $jsonArray['country']; ?>
               <!-- col-sm-10 --> 
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Birthday:</label>
-                22, 1984
+                <?php echo date('d-m-Y',$aboutinfo['dob']) ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Gender</label>
-              Male
+              <?php if($aboutinfo['gender']=='m')
+                      echo 'Male';
+                    else if($aboutinfo['gender']=='f')
+                      echo 'Female'; 
+                    else
+                      echo 'Other';
+                    ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
-              <label class="label1" >Resume</label>
-              <a href"#">resume</a>
+              <label class="label1" >Resume: </label>
+              <a href="<?php echo $jsonArray['resume'] ?>"><u>Click To See</u></a>
                  
             </div>
           </div>
           <div class="col s5">
             <div class="row">
               <label class="label1" >Phone:</label>
-              9999999999
+              <?php echo $aboutinfo['phone']; ?>
             </div>
           </div>
         </div>
@@ -81,12 +87,12 @@
             <div class="col s6">
                  <div class="row">
                      <label class="label1" >Subjects</label>
-                     <ul class="scroll_list"><li>mathematics</li>
-                         <li>german</li>
-                          <li>science</li>
-                          <li>chemistry</li>
-                          <li>physics</li>
-                          <li>english</li>
+                     <ul class="scroll_list">
+                     <?php
+                      foreach ($subArray as $value) {
+                        echo '<li>'.$value.'</li>';
+                      }
+                     ?>
                      </ul>
 
                  </div>
@@ -95,14 +101,12 @@
             <div class="col s4">
             <div class="row ">
              <label class="label1" >Grade</label>
-                     <ul class="scroll_list"> <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                          <li>7</li>
-                          <li>8</li>
+                     <ul class="scroll_list">
+                     <?php
+                      foreach ($gradeArray as $value) {
+                        echo '<li>'.$value.'</li>';
+                      }
+                     ?>
                      </ul>
             </div>
           </div>
@@ -112,10 +116,11 @@
             <div class="row ">
              <label class="label1" >Languages</label>
                      <ul class="scroll_list">
-                         <li>English</li>
-                          <li>hindi</li>
-                          <li>sanskrit</li>
-                          
+                     <?php
+                      foreach ($langArray as $value) {
+                        echo '<li>'.$value.'</li>';
+                      }
+                     ?>
                      </ul>
             </div>
           </div>
@@ -124,13 +129,13 @@
             <div class="col s5">
             <div class="row ">
               <label class="label1" >Fees</label>
-              1300
+              <?php echo 'Rs. '.$jsonArray['minfees']; ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Experience</label>
-              4 Yrs.
+              <?php echo $aboutinfo['teachingexp'] ?>
             </div>
           </div>
         </div>
@@ -142,7 +147,7 @@
           <div class="col s5">
             <div class="row">
               <label class="label1" >College</label>
-              IIT
+              <?php echo 'IIT '.$jsonArray['college'] ?>
             </div>
           </div>
           <div class="col s5">
@@ -154,13 +159,18 @@
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Degree</label>
-                B.tech
+                <?php echo $jsonArray['degree'];
+                      if($jsonArray['degreeother']!='')
+                        echo ' , '.$jsonArray['degreeother'];
+                ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Branch</label>
-                        Cse
+              <?php
+                echo $jsonArray['branch'];
+              ?>
               </div>
           </div>
         </div>

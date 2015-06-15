@@ -188,8 +188,9 @@ class Welcome extends CI_Controller {
 		load_view("Template/bottom.php",$pageinfo);
 
 	}
-	public function profile($tid=0,$tabid=1){
+	public function profile($tid=1,$tabid=1){
 		$numtabs=4;
+		global $_ginfo;
 		$tid=Funs::gettid($tid);
 		$tabid=max(min($numtabs,(0+$tabid)),1);
 
@@ -204,10 +205,31 @@ class Welcome extends CI_Controller {
 
 		$pageinfo=array();
 		$pageinfo["aboutinfo"]=Sqle::getRow("select teachers.*,users.* from teachers left join users on users.id=teachers.tid where teachers.tid=? limit 1",'i',array(&$tid));
+		if($pageinfo["aboutinfo"]==null){
+			Fun::redirect(HOST);
+		}
 		$pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
 		$pageinfo["topicinfo"]=$topicinfo;
 		$pageinfo["tid"]=$tid;
 		$pageinfo["tabid"]=$tabid;
+		$tempArr=explode(' ',$pageinfo['aboutinfo']['name']);
+		$pageinfo['firstName']=$tempArr[0];
+		$pageinfo['lastName']=$tempArr[1];
+		$jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']);
+		$pageinfo['city']=$jsonArray['city'];
+		$pageinfo['jsonArray']=$jsonArray;
+			$tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
+		$pageinfo['subArray']=explode(' , ', $tempSubjects);
+		$tempGrades=explode('-',$jsonArray['grade']);
+		foreach ($tempGrades as $value) {
+			$gradeArray[]=$_ginfo['encodeddataofteacherstable']['grade'][$value-1];
+		}
+		$pageinfo['gradeArray']=$gradeArray;
+		$tempLang=explode('-',$pageinfo['aboutinfo']['lang']);
+		foreach ($tempLang as $value) {
+			$langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
+		}
+		$pageinfo['langArray']=$langArray;		
 		load_view("profile.php",$pageinfo);
 	}
 

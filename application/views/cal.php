@@ -5,6 +5,9 @@
         <h3 class="teal-text center">Calender</h3>
       </div>
     </div>
+          <?php
+          if($tid==User::loginId()){
+          ?>
     <div class="row">
       <div class="col s12 l12">
         <div class="card-panel">
@@ -14,13 +17,18 @@
             </nav>
             <div class='row' style='padding:0px;margin:0px;display:none;margin-top:30px;' id="fillalltsform" >
               <?php
-              load_view("Template/uploadslotform.php",$inp);
+                load_view("Template/uploadslotform.php",$inp);
               ?>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <?php
+    }
+    ?>
+
     <div class='row' >
       <div class="col s12 l12">
       <div class="col s12 l12"  id="divforcalender" >

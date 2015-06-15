@@ -8,6 +8,9 @@ var topics=<?php echo json_encode($cst_tree); ?>;
     </div>
     <div class="row">
       <div class="col s12 l3">
+        <?php
+        if(User::loginId()==$tid){
+        ?>
         <div class="card-panel">
           <span class="grey-text text-darken-2">Add your subject</span>
           <br>
@@ -36,7 +39,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
                   <label for="duration">Class duration (in hrs)</label>
                 </div>
                 <div class="input-field col s12">
-                  <input id="fees" type="text" class="validate" name="price" data-condition='simple' >
+                  <input id="fees" type="text" class="validate" name="price" data-condition='simple' value='<?php echo $minfees; ?>' >
                   <label for="fees">Fees per hour ( Rs.)</label>
                 </div>
                 <div class="input-field col s12">
@@ -47,6 +50,9 @@ var topics=<?php echo json_encode($cst_tree); ?>;
             </form>
           </div>
         </div>
+        <?php
+        }
+        ?>
       </div>
       <div class="col s12 l9">
         <div class="card-panel">
@@ -71,7 +77,14 @@ var topics=<?php echo json_encode($cst_tree); ?>;
                 <td><?php echo $row["topicname"]; ?></td>
                 <td><?php echo $row["timer"]."h"; ?></td>
                 <td>&#8377;<?php echo $row["price"]; ?></td>
+              <?php
+              if($tid==User::loginId()){
+              ?>
                 <td><a href='<?php echo BASE."profile/".$tid."/3?deleteid=".$row["id"]; ?>' class="btn waves-effect waves-light red darken-1">Delete</a></td>
+              <?php
+              }
+              ?>
+
               </tr>
               <?php
               }
