@@ -103,8 +103,6 @@ Personalized education<br> LIVE 1-To-1 teaching
       </div>
     </div>
   </div>
-    </body>
-</html>
 <?php
 load_view("Template/footernew.php",$inp);
 load_view("Template/bottom.php",$inp);
