@@ -8,7 +8,7 @@ load_view("Template/navbarnew.php");
     <div class="section">
     <div class="row">
     <div class="col s12  l12">
-        <div class="card-panel  grey lighten-2 " style='<?php if(server=='server') echo "display:none;"; ?>' >
+        <div class="card-panel  grey lighten-2 " style='display:none;' >
             <div class="row">
                 <div class="col l3">
         <img class="materialboxed" width="200" src="photo/human1.png">
@@ -46,9 +46,9 @@ load_view("Template/navbarnew.php");
     <div class="col s12 l12">
       <ul class="tabs teal-text text-lighten-1 ">
         <li class="tab col s3"><a id="profiletab1" href="#test1">Profile</a></li>
-        <li class="tab col s3 "><a  id="profiletab2" href="#test2">Calender</a></li>
         <li class="tab col s3"><a  id="profiletab3" href="#test3">Topic</a></li>
-      <?php
+        <li class="tab col s3 "><a  id="profiletab2" href="#test2">Calender</a></li>
+        <?php
         if($tid==User::loginId()){
       ?>
         <li class="tab col s3"><a  id="profiletab4" href="#test4">My Classes</a></li>     
