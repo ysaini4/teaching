@@ -1,14 +1,19 @@
 <body>
   <!-- Account Dropdown -->
   <ul id="dropdownaccount" class="dropdown-content">
-      <?php if (!User::islogin()){?>
-      <li><a href="<?php echo BASE."login" ;?>">Login</a></li>
-      <li><a href="<?php echo BASE."joinus" ;?>">Join Us</a></li>
-      <?php } 
+      <?php 
       if (User::isloginas('t')){ ?>
       <li><a href="<?php echo BASE."profile" ;?>">Profile</a></li>  
       <li><a href="<?php echo BASE."?logout" ;?>">logout</a></li>
-       <?php }
+       <?php 
+     }
+     else{
+      ?>
+      <li><a href="<?php echo BASE."login" ;?>">Login</a></li>
+      <li><a href="<?php echo BASE."joinus" ;?>">Join Us</a></li>
+      <?php
+     }
+
       ?>
   </ul>
   <!-- NavBar -->
@@ -43,7 +48,7 @@
       <li><a href="<?php echo BASE."?logout" ;?>">logout</a></li>
     <?php
     }
-    if(!User::islogin()){
+    else{
     ?>
     <li><a href="<?php echo BASE."login" ;?>" >Login</a></li>
     <li><a href="<?php echo BASE."joinus" ;?>" >Join us</a></li>
