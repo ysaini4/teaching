@@ -3,10 +3,8 @@ include "includes/app.php";
 
 load_view("Template/top.php");
 
-load_view("Template/navbarnew.php");
 
-load_view("joinustmp3.php");
-
+print_r(gets("login"));
 
 
 if(false){

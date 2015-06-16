@@ -9,6 +9,7 @@ class Welcome extends CI_Controller {
 	}
 	public function index(){
 		$pageinfo=array();
+		Fun::issetlogout();
 		load_view('index.php',$pageinfo);
 	}
 	public function joinus(){
@@ -123,7 +124,7 @@ class Welcome extends CI_Controller {
 		if(Fun::isSetP("email","password")){
 		  $temp=User::signIn($_POST["email"],$_POST["password"]);
 		  if($temp>0){
-		    Fun::redirect(BASE."account");
+		    Fun::redirect(BASE."profile");
 		  }
 		  else
 		    $pageinfo["loginmsg"]="Error in login";
@@ -188,7 +189,7 @@ class Welcome extends CI_Controller {
 		load_view("Template/bottom.php",$pageinfo);
 
 	}
-	public function profile($tid=1,$tabid=1){
+	public function profile($tid=0,$tabid=1){
 		$numtabs=4;
 		global $_ginfo;
 		$tid=Funs::gettid($tid);

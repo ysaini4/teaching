@@ -5,51 +5,158 @@ load_view("Template/navbarnew.php");
 
   <main>
     <div class="container">
-      
       <div class="card-panel">
         <div class="row">
-          <div class="col s12 ">
-              <h4 class="teal-text text-darken-1 center" style="font-weight:bold; font-variant: small-caps;">About us</h4>
-              <div class="row center">
-    <div class="col s12 m12 offset-m0">
-      <ul  class="collapsible popout" data-collapsible="accordion" class="teal-text text-lighten-2">
-        <li>
-            <div  class="collapsible-header" ><div class="teal-text text-lighten-2">Vision </div></div>
-            <div  class="collapsible-body">Indians Teaching across the globe.</div>
-        </li>
-        <li>
-            <div class="collapsible-header"><div class="teal-text text-lighten-2">Mission </div></div>
-            <div class="collapsible-body">Best Platform for Online live classes</div>
-        </li> 
-        <li>
-            <div class="collapsible-header"><div class="teal-text text-lighten-2">Who we are </div></div>
-            <div class="collapsible-body">A Group of skilled IITians providing quality education at your doorstep</div>
-        </li>  
-        <li>
-            <div class="collapsible-header"><div class="teal-text text-lighten-2">How we work </div></div>
-            <div class="collapsible-body"><ul class="collection">
-        <li class="collection-item"><b>Step 1: </b>Choose Your Topic. </li>
-        <li class="collection-item"><b>Step 2: </b>Book Your Appointment.</li>
-        <li class="collection-item"><b>Step 3: </b>Study Online          </li></ul></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><div class="teal-text text-lighten-2">Why Us </div></div>
-            <div class="collapsible-body"><ul class="collection">
-         <li class="collection-item">Study <b>TOPIC</b> of your choice   </li>
-         <li class="collection-item">Study with <b>TEACHERS</b> of your choice</li>
-         <li class="collection-item">Study at <b>PLACE</b> of your choice</li>
-         <li class="collection-item">Study at <b>TIME</b> of your choice </li>
-         </ul></div>
-        </li> 
-      </ul>
-    </div>
-    
-  </div>
-          </div>
+         <div class="col s12 l12">
+          <ul class="tabs teal-text text-lighten-1"> 
+            <li class="tab col s2"><a href="#vision">Vision</a></li>
+            <li class="tab col s2"><a href="#mission">Mission</a></li>
+            <li class="tab col s2"><a href="#who">Who We Are</a></li>
+            <li class="tab col s2"><a href="#how">How We Work</a></li>     
+            <li class="tab col s2"><a href="#why">Why Us</a></li>
+<!-- 
+            <li class="tab col s2"><a href="#core">Core Team</a></li>  
+ -->
+          </ul>
+         </div>
         </div>
         
+      <div id="vision" class="col s12"><br/>
+       <div class="card-panel">
+         <div class="row">
+          <div class="col s12 m12 l12">
+              We imagine a world where a student will be at the center of learning again. Where a teacher will teach according to the need, pace and level of a student. Where learning graduates from One-to-Many to 1-to-1. 
+           </div>
+          </div>
+         </div>
+        </div>   
+
+      <div id="mission" class="col s12">
+        <div class="card-panel">
+         <div class="row">
+          <div class="col s12 m12 l12">
+             For personalization to happen, technology will definitely help. But more importantly there has to be a system free of institutions where learning is bound within four walls. We imagine a world free of such middle layers, where a student is directly connected to a teacher and learning-teaching happens in a personalized way. Imagine a world with Knowledge Democracy. 
+           </div>
+          </div>
+         </div>
+        </div> 
+
+      <div id="who" class="col s12">
+        <div class="card-panel">
+         <div class="row">
+          <div class="col s12 m12 l12">
+             A group of IITians
+           </div>
+          </div>
+         </div>
+        </div> 
+        
+      <div id="how" class="col s12">
+        <div class="card-panel">
+         <div class="row">
+          <div class="col s12 m12 l12">
+             Book your teachers of your choice and at your convenience.
+           </div>
+          </div>
+         </div>
+        </div>    
+
+      <div id="why" class="col s12">
+        <div class="card-panel">
+         <div class="row">
+          <div class="col s12 m12 l12">
+             Quality Education at cheap price.
+           </div>
+          </div>
+         </div>
+        </div> 
+
+    <div id="core" class="col s12" style='display:none;' >
+      <div class="row">
+        <div class="col l4">
+           <div class="card grey lighten-3">  
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="images/me.jpg" height="200px">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Name<i class="mdi-navigation-more-vert right"></i></span>
+              <p>Designation</p>
+            </div>
+            <div class="card-reveal ">
+              <span class="card-title grey-text text-darken-4">Name<i class="mdi-navigation-close right"></i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div> 
+         </div>
+         <div class="col l4">
+           <div class="card grey lighten-3">  
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator circle" src="images/google-plus.png" height="200px">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Name<i class="mdi-navigation-more-vert right"></i></span>
+              <p>Designation</p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Name<i class="mdi-navigation-close right"></i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div> 
+         </div>
+         
+          <div class="col l4">
+           <div class="card grey lighten-3">  
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator circle" src="images/google-plus.png" height="200px">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Name <i class="mdi-navigation-more-vert right"></i></span>
+              <p>Designation</p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Name<i class="mdi-navigation-close right"></i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div> 
+         </div>
+      <div class="row">
+        <div class="col l4">
+           <div class="card grey lighten-3">  
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="images/me.jpg" height="200px">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Name<i class="mdi-navigation-more-vert right"></i></span>
+              <p>Designation</p>
+            </div>
+            <div class="card-reveal ">
+              <span class="card-title grey-text text-darken-4">Name<i class="mdi-navigation-close right"></i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div> 
+         </div>   
+        <div class="col l4">
+           <div class="card grey lighten-3">  
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="images/me.jpg" height="200px">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Name<i class="mdi-navigation-more-vert right"></i></span>
+              <p>Designation</p>
+            </div>
+            <div class="card-reveal ">
+              <span class="card-title grey-text text-darken-4">Name<i class="mdi-navigation-close right"></i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div> 
+         </div>   
+
+        </div>
+
+      </div> 
+
+
       </div>
-    
     </div>
   </main>
 <?php
