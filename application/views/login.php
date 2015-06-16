@@ -36,7 +36,7 @@ load_view("Template/navbarnew.php",$inp);
           </form>
         </div>
 
-          <div class="container">
+          <div class="container" style='display:none;' >
             <div class="row">
               <a href="<?php echo BASE."signup" ; ?>" >New User? Create Account</a><br><br>
               <a href="<?php echo BASE."forgotpassword"; ?>" >Forgot Password</a>
