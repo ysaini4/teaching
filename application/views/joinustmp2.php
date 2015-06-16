@@ -352,7 +352,7 @@ load_view("Template/navbarnew.php");
                   <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone"  length="10" data-condition="phone">
                     
                 </div>
-                 <div class="col s6 l3">
+                 <div class="col s6 l3" style='display:none;' >
                      <a class="waves-effect waves-light btn" onclick='button.sendreq_v2(this);' data-eparams='{"phone":$("#phonenumber").val()}' data-action='sendotp' >Send OTP</a>
                   </div>
                 </div>
