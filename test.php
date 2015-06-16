@@ -5,12 +5,15 @@ load_view("Template/top.php");
 
 
 
-$e=new Email();
-$e->sendMessage("mohitsaini1196@gmail.com", "Hey This is Drama", "Go to hell", "Mohit Saini");
-print_r($e);
+
 
 
 if(false){
+
+	$e=new Email();
+	$e->sendMessage("mohitsaini1196@gmail.com", "Hey This is Drama", "Go to hell", "Mohit Saini");
+	print_r($e);
+
 
 	print_r(gets("login"));
 
