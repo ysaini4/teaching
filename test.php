@@ -3,8 +3,10 @@ include "includes/app.php";
 
 load_view("Template/top.php");
 
+load_view("Template/navbarnew.php");
 
-sets("login",array("id"=>9,"type"=>"t"));
+load_view("joinustmp3.php");
+
 
 
 if(false){
@@ -27,16 +29,7 @@ if(false){
 
 
 load_view("Template/footernew.php");
-?>
-
-<?php
 load_view("Template/bottom.php");
 
 closedb();
 ?>
-
-<script>
-$(document).ready(function(){
-	$("#mohits").click();
-});
-</script>
