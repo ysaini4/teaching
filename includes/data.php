@@ -88,6 +88,6 @@ $_ginfo["error"]=array(
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 
-$_ginfo["needotp"]=false;
+$_ginfo["needotp"]=(server=="server");
 
 ?>
