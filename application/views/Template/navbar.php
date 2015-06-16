@@ -11,8 +11,8 @@
         <a href="#" class="brand-logo">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="<?php echo BASE."about" ;?>">About</a></li>
-          <li><a href="<?php echo BASE."contact" ;?>">Contact us</a></li>
+          <li><a href="<?php echo BASE."aboutus" ;?>">About</a></li>
+          <li><a href="<?php echo BASE."contactus" ;?>">Contact us</a></li>
           <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdownaccount"><i class="mdi-action-account-circle left"></i>Account</a></li>
           <form class="right">
             <div class="input-field teal lighten-1">
