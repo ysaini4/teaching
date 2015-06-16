@@ -4,10 +4,15 @@ include "includes/app.php";
 load_view("Template/top.php");
 
 
-print_r(gets("login"));
+
+$e=new Email();
+$e->sendMessage("mohitsaini1196@gmail.com", "Hey This is Drama", "Go to hell", "Mohit Saini");
+print_r($e);
 
 
 if(false){
+
+	print_r(gets("login"));
 
 	$a=Funs::getTeacherTimeSlotsForDay(22,6,2015,3);
 

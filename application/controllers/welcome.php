@@ -71,7 +71,9 @@ class Welcome extends CI_Controller {
 		$aboutVar=array();
 		load_view("aboutus.php",$aboutVar);
 	}
-
+	public function reset(){
+		load_view("reset.php");
+	}
 	public function contactus(){
 		$msg="";
 		if(Fun::isSetP("name","phone","email","msg")){
@@ -273,11 +275,9 @@ class Welcome extends CI_Controller {
 	}   
 
 	public function mohit($tid=122,$saini="Mohit"){
-///		show_404();
-//		echo $this->input->get("timepass");
-		echo session_id();
-		echo BASEPATH;
-		$this->load->view('mohit',array("tid"=>$tid,'saini'=>$saini));
+		$e=new Email();
+		$e->sendMessage("mohitsaini1196@gmail.com", "Hey This is Drama", "Go to hell", "Mohit Saini");
+		print_r($e);
 	}
 
 public function set_news()
