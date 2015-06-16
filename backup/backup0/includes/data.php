@@ -33,7 +33,7 @@ $view_default=array(
 
 
 $_ginfo=array();
-$_ginfo["attributes"]=array("name","value","style","class","id","type","ph","onclick","dc",'rows',"disabled","align","valign","action","autofocus","style","rel","type","href","value","src","selected","target","for","checked");
+$_ginfo["attributes"]=array("name","value","style","class","id","type","ph","onclick","dc",'rows',"disabled","align","valign","action","autofocus","style","rel","type","href","value","src","selected","target","for");
 $_ginfo["attrs_shortcut"]=array("ph"=>"placeholder","dc"=>"data-condition");
 
 
@@ -56,10 +56,8 @@ $_ginfo['end_year']=2025;
 $_ginfo["action_constrain"]=array(
 	"cofirmotp"=>array("need"=>array("otp")),
 	"mohit"=>array("need"=>array("month","year")),
-	"teacherModifySlots"=>array("need"=>array("datets","slots")),
-	"addrembulkts"=>array("need"=>array("time","days","startdate","enddate")),
-	"addtopics"=>array("need"=>array("class","subject","topic","timer","price")),
-	"deltopics"=>array("need"=>array("deleteid"))
+	"teacherModifySlots"=>array("need"=>array("month","day","year")),
+	"addrembulkts"=>array("need"=>array("time","days","startdate","enddate"))
 );
 
 $_ginfo["error"]=array(
@@ -80,14 +78,10 @@ $_ginfo["error"]=array(
 	"-22"=>"Nobody is login",
 	"-23"=>"File not uploaded",
 	"-24"=>"You cannot do so much repeatition.",
-	"-25"=>"Error",
-	"-25"=>"Subject Already Added",
 	"1"=>"Positive"
 );
 
 $_ginfo["calrepeatlimit"]=365;
-$_ginfo["wiziqlimit"]=3;
 
-$_ginfo["needotp"]=false;
 
 ?>
