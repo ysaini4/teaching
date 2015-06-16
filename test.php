@@ -1,23 +1,34 @@
 <?php
 include "includes/app.php";
+
 load_view("Template/top.php");
 
-?>
+load_view("Template/navbarnew.php");
 
-<div style='margin:30px;' >
-	<button data-action="mohit" data-month="2" data-year="2015" data-arg3="vikash Saini" onclick="button.sendreq_v2_t4(this,null, function(d){$('#downloadeddata').html(d);}  );" >Demo of WWM library's Ajax</button>
-	<div id="downloadeddata" >
-		Ajax se Aya hua Data yah dikhega ! 
-	</div>
-	<button data-action="mohit" data-year="2015" data-arg3="vikash Saini" onclick="button.sendreq(this);" data-res="alert(data);"  data-waittext="Loading...." data-restext="Done ! " >Demo of WWM library's Ajax1</button>
-	
-</div>
+load_view("joinustmp3.php");
 
 
-<?php
+
+if(false){
+
+	$a=Funs::getTeacherTimeSlotsForDay(22,6,2015,3);
+
+	print_r($a);
+
+	$a=Sql::getArray("select * from timeslot where tid=3");
+
+	foreach($a as $i=>$row){
+		$a[$i]["starttime"]=Fun::timetostr($row["starttime"]);
+	}
+
+	Disp::disp_table($a);
+}
 
 
-//echo Funs::sendmsg("7503759053","Hey, This is msg to mohit #$%^&* :p ");
+
+
+
+load_view("Template/footernew.php");
 load_view("Template/bottom.php");
 
 closedb();
