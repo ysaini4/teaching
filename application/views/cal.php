@@ -1,10 +1,5 @@
 <main>
   <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h3 class="teal-text center">Calender</h3>
-      </div>
-    </div>
           <?php
           if($tid==User::loginId()){
           ?>

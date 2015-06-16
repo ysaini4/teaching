@@ -151,10 +151,6 @@
             </div>
           </div>
           <div class="col s5">
-            <div class="row ">
-              <label class="label1">College ID</label>
-              80055
-            </div>
           </div>
           <div class="col s5">
             <div class="row ">

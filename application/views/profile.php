@@ -8,7 +8,7 @@ load_view("Template/navbarnew.php");
     <div class="section">
     <div class="row">
     <div class="col s12  l12">
-        <div class="card-panel  grey lighten-2 ">
+        <div class="card-panel  grey lighten-2 " style='display:none;' >
             <div class="row">
                 <div class="col l3">
         <img class="materialboxed" width="200" src="photo/human1.png">

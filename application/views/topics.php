@@ -4,13 +4,10 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 <main>
   <div class="container">
     <div class="row">
-      
-    </div>
-    <div class="row">
-      <div class="col s12 l3">
         <?php
         if(User::loginId()==$tid){
         ?>
+      <div class="col s12 l3">
         <div class="card-panel">
           <span class="grey-text text-darken-2">Add your subject</span>
           <br>
@@ -50,10 +47,10 @@ var topics=<?php echo json_encode($cst_tree); ?>;
             </form>
           </div>
         </div>
-        <?php
-        }
-        ?>
       </div>
+      <?php
+      }
+      ?>
       <div class="col s12 l9">
         <div class="card-panel">
           <table class="hoverable responsive-table">
