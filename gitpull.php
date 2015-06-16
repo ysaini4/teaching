@@ -3,9 +3,6 @@ include "includes/app.php";
 
 
 
-
-
-
 if(get("key")=="vm341sm"){
 	$cmd="git pull -u origin master";
 	echo shell_exec($cmd);
