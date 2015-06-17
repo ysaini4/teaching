@@ -6,8 +6,6 @@ load_view("Template/top.php");
 
 
 
-
-
 if(false){
 
 	$e=new Email();

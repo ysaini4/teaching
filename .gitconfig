@@ -1,0 +1,8 @@
+[credential]
+	helper = store
+[core]
+	excludesfile = .gitignore
+[user]
+	name = Mohit
+	email = mohitsaini1196@gmail.com
+
