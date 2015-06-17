@@ -12,6 +12,7 @@
 
 <?php
 //echo Funs::sendmsg("7503759053","Hey, This is msg to mohit #$%^&* :p ");
+echo "Mohit Saini";
 load_view("Template/bottom.php");
 closedb();
 ?>
