@@ -427,8 +427,8 @@ public function set_news()
 		}
 		load_view("fileupload.php",array());
 	}
-	public function test() {
-		load_view("test.php",array());
+	public function forgotPassword() {
+		load_view("forgotPassword.php",array());
 	}
 }
 
