@@ -32,7 +32,7 @@ mohit11834567
        <div class="card-panel">
          <div class="row">
           <div class="col s12 m12 l12">
-              We imagine a world where a student will be at the center of learning again. Where a teacher will teach according to the need, pace and level of a student. Where learning graduates from One-to-Many to 1-to-1. 
+              1We imagine a world where a student will be at the center of learning again. Where a teacher will teach according to the need, pace and level of a student. Where learning graduates from One-to-Many to 1-to-1. 
            </div>
           </div>
          </div>
