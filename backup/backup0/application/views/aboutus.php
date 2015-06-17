@@ -1,5 +1,7 @@
 <?php
 load_view("Template/top.php");
+
+//ljkhighi
 load_view("Template/navbarnew.php");
 ?>
 
