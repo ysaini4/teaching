@@ -484,6 +484,9 @@ abstract class Fun{
 		}
 		return implode("-",$outp);
 	}
+	public static function msgfromfile($phone,$mfile,$data){
+		return Funs::sendmsg($phone,Fun::rmsg(file_get_contents( $mfile),$data));
+	}
 }
 
 ?>
