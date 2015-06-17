@@ -17,8 +17,8 @@ $need=array("users","teachers","user_query");
 
 // for($i=0;$i<count($temp);$i++){
 // 	$table_name=$temp[$i]["Tables_in_".$db_data["db"]];
-for($i=0;$i<count($need);$i++){
-	$table_name=$need[$i];
+for($i=0;$i<count($temp);$i++){
+	$table_name=$temp[$i]["Tables_in_".$db_data["db"]];
 	if(true || in_array($table_name,$need)){
 		?>
 			<div>
