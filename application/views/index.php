@@ -2,6 +2,12 @@
 load_view("Template/top.php",$inp);
 load_view("Template/navbarnew.php",$inp);
 ?>
+<!--
+
+mohit Saini
+-->
+
+
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
