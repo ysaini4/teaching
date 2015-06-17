@@ -236,6 +236,9 @@ class Welcome extends CI_Controller {
 		load_view("profile.php",$pageinfo);
 	}
 
+	public function search(){
+		load_view("newsearch1.php");
+	}
     public function newsearch()
 	{
 		$this->load->view('Template/top',array("inp"=>array("css"=>array("jquery/jRating.jquery.css","css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css"))));

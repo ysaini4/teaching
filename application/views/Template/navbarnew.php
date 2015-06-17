@@ -1,5 +1,4 @@
 <body>
-  <!-- Account Dropdown -->
   <ul id="dropdownaccount" class="dropdown-content">
       <?php 
       if (User::isloginas('t')){ ?>
@@ -55,9 +54,6 @@
     <?php
     }
     ?>
-
-<!--     <li><a href="<?php echo BASE."signup" ;?>">Signup</a></li>
- -->
     <li>
       <form>
         <div class="input-field">

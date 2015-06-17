@@ -316,7 +316,7 @@ abstract class Fun{
 			$ec=-2;//Not file uploaded
 		return array('ec'=>$ec,'outp'=>$outp);
 	}
-	public static function resizeimage($curimage,$tosave,$w,$h){
+	public static function resizeimage($curimage,$tosave,$w,$h){//don't use this function. use resizeimg { php/funcs.php }
 		$cmd="convert $curimage -resize '$w"."x"."$h^' -gravity Center -crop '$w"."x"."$h+0+0' $tosave ; chmod 777 $tosave";
 //		echo $cmd;
 		shell_exec($cmd);
@@ -333,16 +333,24 @@ abstract class Fun{
 		}
 		return $msg;
 	}
-	public static function dummymail($to,$sub,$body){
-		$cont="To : ".$to."\nSub : ".$sub."\nTime : ".(Fun::timetostr(time()))."\n\n".$body."\n\n----------------------------------------------------\n";
-		$oldc=file_exists("data/mailf")?file_get_contents("data/mailf"):"";
-		file_put_contents("data/mailf", $oldc.$cont);
-		return chmod("data/mailf",0777);
+
+	public static function dummymm($to,$sub,$body,$add=array()){
+		$cont="To : ".$to."\nSub : ".$sub."\nTime : ".(Fun::timetostr(time()))."\n\n".$body."\n\n".json_encode($add)."\n\n----------------------------------------------------\n";
+		mergeifunset($add,array("file"=>"data/mailf"));
+		$oldc=file_exists($add["file"])?file_get_contents($add["file"]):"";
+		file_put_contents($add["file"], $oldc.$cont);
+		return chmod($add["file"],0777);
 	}
-	public static function mail($to,$sub,$body){
-		return Fun::dummymail($to,$sub,$body);
+
+	public static function mail($to,$sub,$body,$add=array()){
+		return Fun::dummymm($to,$sub,$body,Fun::mergeifunset($add, array("file"=>"data/mailf")));
 	}
-	public static function mailfromfile($to,$mfile,$data,$subject="Sprint"){
+	public static function msg($to,$sub,$body,$add=array()){
+		return Fun::dummymm($to,$sub,$body, Fun::mergeifunset($add,array("file"=>"data/msgf")));
+	}
+
+	public static function mailfromfile($to,$mfile,$data){
+	//This function is marked at deletable, It is here just because of backward compatibity.
 		return Fun::mail($to,"Get IITians",Fun::rmsg(file_get_contents( $mfile),$data));
 	}
 	public static function timeslotlist(){
