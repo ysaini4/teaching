@@ -1,7 +1,11 @@
 <?php
 load_view("Template/top.php");
+//jaewfhjqwfb
 load_view("Template/navbarnew.php");
 ?>
+
+
+
 
   <main>
     <div class="container">
