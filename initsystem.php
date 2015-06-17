@@ -61,8 +61,10 @@ function makesomeaccounts(){
 	print_r(User::signUp(array("email"=>"mohit@s.com","password"=>"p","type"=>"s")));
 }
 
-insertall_cst();
-makesomeaccounts();
+if(get("key")=="mohitvm"){
+	insertall_cst();
+	makesomeaccounts();
+}
 
 closedb();
 ?>

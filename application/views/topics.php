@@ -9,25 +9,25 @@ var topics=<?php echo json_encode($cst_tree); ?>;
         ?>
       <div class="col s12 l3">
         <div class="card-panel">
-          <span class="grey-text text-darken-2">Add your subject</span>
+          <span class="grey-text text-darken-2">Please add your topics</span>
           <br>
           <div class="row">
             <form method="post" class="col s12" onsubmit='return submitForm(this);' action="<?php echo BASE."profile/".$tid."/3"; ?>"  >
               <div class="row">
                 <div class="input-field col s12">
-                  <select name='class' onchange='topicssubtopic(this);' id="selectclass" data-condition='simple' style='' >
+                  <select name='class' class="browser-default" onchange='topicssubtopic(this);' id="selectclass" data-condition='simple' style='' >
                     <?php
                        disp_olist($class_olist,array('selectalltext'=>"Select Class"));
                     ?>
                   </select>
                 </div>
                 <div class="input-field col s12">
-                  <select name='subject' id='selectsubject' onchange='topicssubtopic(this);' data-condition='simple' >
+                  <select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic(this);' data-condition='simple' >
                     <option value="" >Select Subject</option>
                   </select>
                 </div>
                 <div class="input-field col s12">
-                  <select name='topic' id='selecttopic' data-condition='simple' >
+                  <select name='topic' class="browser-default" id='selecttopic' data-condition='simple' >
                     <option value="" >Select Topic</option>
                   </select>
                 </div>
