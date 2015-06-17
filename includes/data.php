@@ -59,7 +59,9 @@ $_ginfo["action_constrain"]=array(
 	"teacherModifySlots"=>array("need"=>array("datets","slots")),
 	"addrembulkts"=>array("need"=>array("time","days","startdate","enddate")),
 	"addtopics"=>array("need"=>array("class","subject","topic","timer","price")),
-	"deltopics"=>array("need"=>array("deleteid"))
+	"deltopics"=>array("need"=>array("deleteid")),
+	"signupotp"=>array("need"=>array("phone")),
+	"signup"=>array("need"=>array("email","password","name","phone","otp")),
 );
 
 $_ginfo["error"]=array(
@@ -89,5 +91,9 @@ $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 
 $_ginfo["needotp"]=true;
+
+
+$_ginfo["needsignupotp"]=false;
+
 
 ?>

@@ -289,4 +289,8 @@
 		}
 		return $outp;
 	}
+	function errormsg($ec){
+		global $_ginfo;
+		return ($ec<0?getval($_ginfo["error"],$ec,""):"");
+	}
 ?>

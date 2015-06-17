@@ -368,4 +368,7 @@
 		mergeifunset($params,array("style"=>"height:".$inp."px",'innerHTML'=>''));
 		ocloset("div",$params['innerHTML'],$params);
 	}
+	function dit($cond=false){
+		echo ((!$cond)?"display:none;":"");
+	}
 ?>

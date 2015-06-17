@@ -82,6 +82,12 @@ class Actions{
 		}
 		return array('ec'=>$ec,'data'=>$odata);
 	}
+	function signupotp($data){
+		$outp=array("ec"=>1,"data"=>0);
+		$outp["ec"]=Funs::otpstore($data["phone"]);
+		return $outp;
+	}
+
 	function confirmotp($data){
 		$outp=array("ec"=>1,"data"=>0);
 		if(gets("phone")!=$data["otp"])
@@ -93,6 +99,21 @@ class Actions{
 		$outp["data"]=array(11,33,$data["month"]);
 		return $outp;
 	}
-
+	function signup($data){
+		global $_ginfo;
+		$outp=array("ec"=>1,"data"=>0);
+		if(gets("phone")!=$data["otp"] && $_ginfo["needsignupotp"] ){
+			$outp["ec"]=-17;
+		}
+		else{
+			$signup_data=Fun::getflds(array("phone","name","email","password"),$data);
+			$signup_data["type"]="s";
+			$temp=User::signUp($signup_data);
+			if(!($temp>0)){
+				$outp["ec"]=$temp;
+			}
+		}
+		return $outp;
+	}
 }
 ?>

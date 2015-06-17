@@ -32,6 +32,13 @@ class User extends Sql{
 	public static function isloginas($t){
 		return (self::islogin() && self::loginType()==$t);
 	}
+	public static function isloginin($t){
+		for($i=0;$i<strlen($t);$i++){
+			if(User::isloginas($t[$i]))
+				return true;
+		}
+		return false;
+	}
 	public static function isUserExist($email){
 		$temp=Sqle::selectVal( "users","email,password",array('email'=>$email),1);
 		return !($temp==null);

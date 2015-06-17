@@ -1,4 +1,15 @@
 
+function hideshow(h,s){
+	$("#"+h).hide();
+	$("#"+s).show();
+}
+function hideshowdown(h,s){
+	$("#"+h).slideUp();
+	$("#"+s).slideDown();
+}
+
+
+
 function uploadfile(obj,name){
 	var formjobj=$(obj).parent();
 	if(!(formjobj.find("input[name="+name+"]").length>0)){

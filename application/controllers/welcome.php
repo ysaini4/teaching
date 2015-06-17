@@ -134,17 +134,9 @@ class Welcome extends CI_Controller {
 		load_view("login.php",$pageinfo);
 	}
 	public function signup(){
-		$pageinfo=array("signupmsg"=>"");
-		if(Fun::isSetP("name","email","password")){
-			$signup_data=Fun::getflds(array("name","email","password"),$_POST);
-			$signup_data["type"]="s";
-			$temp=User::signUp($signup_data);
-			if($temp>0){
-				Fun::redirect(BASE."account");
-			}
-			else
-				$pageinfo["signupmsg"]="Error in signup";
-		}
+		$handle_signup=handle_request(Fun::mergeifunset($_POST, array("action"=>"signup")));
+//		print_r($handle_signup);
+		$pageinfo=array("signupmsg"=>errormsg($handle_signup));
 		load_view('signup.php',$pageinfo);
 	}
 	public function cal($tid=0){

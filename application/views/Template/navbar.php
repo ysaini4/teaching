@@ -4,7 +4,7 @@
     <li><a href="<?php echo BASE."login" ;?>">Login</a></li>
     <li><a href="<?php echo BASE."signup" ;?>">Signup</a></li>
   </ul>
-  <!-- NavBar -->
+
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
       <div class="nav-wrapper container">

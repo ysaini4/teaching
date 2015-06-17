@@ -1,6 +1,10 @@
 <?php
 load_view("Template/top.php",$inp);
 load_view("Template/navbar.php",$inp);
+
+$defopen="otpwindow";
+$defopen="signupwindow";
+
 ?>
   <main>
     <div class="container">
@@ -14,37 +18,74 @@ load_view("Template/navbar.php",$inp);
         </div>
         <div class="row center">
           <form class="col s12 m10 offset-m1" method="post">
-            <div class="row">
-              <div class="input-field col s12 m12">
-                <input id="fullname" name="name" type="text" class="validate">
-                <label for="fullname">Full Name</label>
+            <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <input id="fullname" name="name" type="text" class="validate">
+                  <label for="fullname">Full Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <input id="email" name="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <input id="password" name="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <input id="confirm_password" name="cpassword" type="password" class="validate">
+                  <label for="confirm_password">Confirm Password</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <input id="phone" name="phone" type="text" class="validate">
+                  <label for="phone">Phone</label>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <button class="btn waves-effect waves-light" <?php if($_ginfo["needsignupotp"]) { ?>  type="button" onclick='button.sendreq_v2(this);' data-action='signupotp' data-eparams='{"phone":$("#signupwindow").find("input[name=phone]").val()}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?> name="signup" type="submit" <?php } ?> >Submit
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                  <button class="btn waves-effect waves-light" type="reset">Reset</button>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12 m12">
-                <input id="email" name="email" type="email" class="validate">
-                <label for="email">Email</label>
+            <div id="otpwindow" style='<?php dit($defopen=="otpwindow"); ?>' >
+
+              <div class="col s12 m12">
+                Please confirm your number
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m12">
-                <input id="password" name="password" type="password" class="validate">
-                <label for="password">Password</label>
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <input id="otp" name="otp" type="text" class="validate" >
+                  <label for="otp">One Time Password</label>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m12">
-                <input id="confirm_password" name="cpassword" type="password" class="validate">
-                <label for="confirm_password">Confirm Password</label>
+              <div class="row">
+                <div class="input-field col s12 m12">
+                  <button class="btn waves-effect waves-light" <?php if($_ginfo["needsignupotp"]) { ?> name="signup" type="submit"  <?php }else{ ?>  <?php } ?> >Submit
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m12">
-                <button class="btn waves-effect waves-light" name="signup" type="submit">Submit
-                  <i class="mdi-content-send right"></i>
-                </button>
-                <button class="btn waves-effect waves-light" type="reset">Reset</button>
-              </div>
+
+
+
+
+
             </div>
           </form>
         </div>

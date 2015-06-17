@@ -1,14 +1,16 @@
 <body>
   <ul id="dropdownaccount" class="dropdown-content">
       <?php 
-      if (User::isloginas('t')){ ?>
-      <li><a href="<?php echo BASE."profile" ;?>">Profile</a></li>  
+      if (User::islogin()){ ?>
+      <li><a href="<?php echo BASE."profile" ;?>">Profile</a></li>
+      <li><a href="<?php echo BASE."account" ;?>">Account</a></li>
       <li><a href="<?php echo BASE."?logout" ;?>">logout</a></li>
        <?php 
      }
      else{
       ?>
       <li><a href="<?php echo BASE."login" ;?>">Login</a></li>
+      <li><a href="<?php echo BASE."signup" ;?>">Signup</a></li>
       <li><a href="<?php echo BASE."joinus" ;?>">Join Us</a></li>
       <?php
      }
