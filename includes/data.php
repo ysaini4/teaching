@@ -54,7 +54,7 @@ $_ginfo['end_year']=2025;
 
 
 $_ginfo["action_constrain"]=array(
-	"studenteditprofile"=>array("need"=>array("fname","lname","gender","email","dob","phone")),
+	"studenteditprofile"=>array("need"=>array("fname", "lname", "email", "dob", "phone")),
     "cofirmotp"=>array("need"=>array("otp")),
     "mohit"=>array("need"=>array("month","year")),
     "teacherModifySlots"=>array("need"=>array("datets","slots")),

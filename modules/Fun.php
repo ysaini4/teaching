@@ -91,11 +91,11 @@ abstract class Fun{
       $k=$arr[$i];
       if(isset($data[$k]))
         $temp[$k]=$data[$k];
-      else
-        return null;
     }
     return $temp;
   }
+
+
   public static function timetostr($time){//Opposite of strtotime
     return date("M d Y h:i a",$time);
   }
