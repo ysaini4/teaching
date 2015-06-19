@@ -268,78 +268,7 @@ class Welcome extends CI_Controller {
       load_view("account.php",$pageinfo);
   }   
 
-  //Made by ::Himanshu Rohilla::
-  public function accept($tid){
-    $sql="UPDATE teachers set isselected='a' where tid=$tid";
-    $result=Sql::query($sql);
-    echo '<h3>You accepted this user<br><br></h3>';
-    self::view($tid);
-  }
-  //Made by ::Himanshu Rohilla::
-  public function reject($tid){
-    $sql="UPDATE teachers set isselected='r' where tid=$tid";
-    $result=Sql::query($sql);
-    echo '<h3>You rejected this user<br><br></h3>';
-    self::view($tid);
-  }
-  //Made by ::Himanshu Rohilla::
-  public function view($tid){
-    $sql="select * from teachers,users where teachers.tid=users.id AND users.id=$tid";
-    $result=Sql::getArray($sql);
-    load_view("viewuser.php",array('result'=>$result));
-    echo '<b><a style="margin-left:10px;font-size:30px;" href="'.(BASE."acceptOrReject").'" style="font-size:30px;">Go Back</a></b>';
-  }
-  public function compareMany($tidString){
-    $tidArray=explode("-", $tidString);
-    $i=0;
-    foreach($tidArray as $id){
-      $sql="select * from teachers,users where teachers.tid=users.id AND users.id=$id";
-      $result[$i++]=Sql::getArray($sql);
-    }
-    load_view("compare.php",array('result'=>$result));
-  }
-  public function testCSV(){
-    $csvVar=array();
-    load_view("testCSV.php",$csvVar);
-  }
-  public function confirmSlots($date){
-    $date = date('d-m-Y', strtotime($date));
-    $startdate = $date.' 00:00:00';
-    $startstamp=strtotime($startdate);
-    $enddate = $date.' 23:59:59';
-    $endstamp=strtotime($enddate);
-    $id=User::loginId();
-    $sql="select * from timeslot where tid=$id";
-    $table=sql::getArray($sql);
-    $finalrows=array();
-    foreach($table as $row){
-      if($row['starttime']>=$startstamp && $row['starttime']<$endstamp)
-        $finalrows[]=$row['starttime'];
-    }
 
-    load_view("confirmSlots.php",array('finalrows'=>$finalrows,'timeslots'=>Funs::timeslotlist(true)));
-  }
-  public function create()
-  {
-    $this->load->helper('form');
-    $this->load->library('form_validation');
-
-    $data['title'] = 'Create a news item';
-
-    $this->form_validation->set_rules('title', 'Title', 'required');
-    $this->form_validation->set_rules('text', 'text', 'required');
-
-    if ($this->form_validation->run() === FALSE)
-    {
-      $this->load->view('index');
-
-    }
-    else
-    {
-      $this->news_model->set_news();
-      $this->load->view('mohit');
-    }
-  }
 
   //Made by ::Himanshu Rohilla::
   public function acceptOrReject($tid = 0){
@@ -409,48 +338,7 @@ class Welcome extends CI_Controller {
 
     load_view("confirmSlots.php",array('finalrows'=>$finalrows,'timeslots'=>Funs::timeslotlist(true)));
   }
-  public function review($tid) {
-    $sql="select * from reviews where tid=$tid";
-    $allreviews=sql::getArray($sql);
-    //finalArray is the array which we are passing in our view
-    $m=0;
-    $sid=User::loginId();
-    foreach ($allreviews as $key => $value) {
-      $finalArray[$m]['content']=$value['content'];
-      $finalArray[$m]['time']=date("M d, Y h:i A",strtotime($value['time']));
-        $id=$value['sid'];
-        $sql="select * from users where id=$id";
-        $temp=sql::getArray($sql);
-      $finalArray[$m]['sname']=$temp[0]['name'];
-      $finalArray[$m]['id']=$value['id'];
-        $id=$value['id'];
-        $sql="select count(sid) from likes where rid=$id and like_dislike='-1'";
-        $temp=sql::getArray($sql);
-      $finalArray[$m]['dislike']=$temp[0]['count(sid)'];
-        $sql="select count(sid) from likes where rid=$id and like_dislike='1'";
-        $temp=sql::getArray($sql);
-      $finalArray[$m]['like']=$temp[0]['count(sid)'];
-        $sql="select count(*) from likes where sid='$sid' and rid='$id'";
-        $temp=sql::getArray($sql);
-      if($temp[0]['count(*)']>0)
-        $finalArray[$m]['disableTag']=true;
-      else
-        $finalArray[$m]['disableTag']=false;
-      $id=$value['tid'];
-      $m++;
-    }
-    $sql="select * from users where id=$id";
-    $temp=sql::getArray($sql);
-    load_view("review.php",array('finalArray'=>$finalArray,'tname'=>$temp[0]['name']));
-  }
-  public function myslots($tid) {
-    if(isset($_FILES["timeslot_upload"]) && $_FILES["timeslot_upload"]["size"]>0){
-      $uf=Fun::uploadfile_slotpost($_FILES["timeslot_upload"]);
-      if($uf["ec"]>0)
-        $_POST["timeslot_upload"]=$uf["fn"];
-    }
-    load_view("fileupload.php",array());
-  }
+
   public function forgotPassword() {
     load_view("forgotPassword.php",array());
   }
@@ -598,11 +486,9 @@ class Welcome extends CI_Controller {
     sql::query($sql);
     unlink($finalFiles);
     header('Location:'.BASE.'myslots/'.$tid);
-    //self::myslots($tid);
   }
 
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
 
+?>

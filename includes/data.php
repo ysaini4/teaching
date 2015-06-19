@@ -54,17 +54,7 @@ $_ginfo['end_year']=2025;
 
 
 $_ginfo["action_constrain"]=array(
-<<<<<<< HEAD
-	"cofirmotp"=>array("need"=>array("otp")),
-	"mohit"=>array("need"=>array("month","year")),
-	"teacherModifySlots"=>array("need"=>array("datets","slots")),
-	"addrembulkts"=>array("need"=>array("time","days","startdate","enddate")),
-	"addtopics"=>array("need"=>array("class","subject","topic","timer","price")),
-	"deltopics"=>array("need"=>array("deleteid")),
-	"signupotp"=>array("need"=>array("phone")),
-	"signup"=>array("need"=>array("email","password","name","phone","otp")),
-	"studenteditprofile"=>array("need"=>array("fname","lname","gender","email","dob","phone"))
-=======
+	"studenteditprofile"=>array("need"=>array("fname","lname","gender","email","dob","phone")),
     "cofirmotp"=>array("need"=>array("otp")),
     "mohit"=>array("need"=>array("month","year")),
     "teacherModifySlots"=>array("need"=>array("datets","slots")),
@@ -74,7 +64,6 @@ $_ginfo["action_constrain"]=array(
     "signupotp"=>array("need"=>array("phone")),
     "signup"=>array("need"=>array("email","password","name","phone","otp")),
     "changepassaction"=>array("need"=>array("oldpass","newpass","newcpass"))
->>>>>>> a218fdf5348a9a2c12190249d9ef80f10e5542e8
 );
 $_ginfo["error"]=array(
     "-1"=>"Session expired",
