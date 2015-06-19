@@ -49,15 +49,29 @@
 		if(isset($view_default[$view]))
 			$inp=Fun::mergeifunset($inp,$view_default[$view]);
 		$inp=Fun::setifunset($inp,"page",$_ginfo["page"]);
-		foreach($inp as $key=>$val){
-			$$key=$val;
+		$inp=Fun::setifunset($inp,"islogin",User::loginType());
+		$tem_name=Fun::getloadviewname($view);
+		$templates=new Templates();
+		if(method_exists($templates,$tem_name )){
+			$templates->$tem_name($inp);
+			return true;
 		}
-		$view="application/views/".$view;
-		if(file_exists($view))
-			include $view;
-		else
-			echo "MM Error : Unable to load view ".$view." Line ".__LINE__." in file ".__FILE__ ;
+		else{
+			$view="application/views/".$view;
+			if(file_exists($view)){
+				foreach($inp as $key=>$val){
+					$$key=$val;
+				}
+				include $view;
+				return true;
+			}
+			else{
+				echo "MM Error : Unable to load view ".$view." Line ".__LINE__." in file ".__FILE__ ;
+				return false;
+			}
+		}
 	}
+
 	function str2json($inp){
 		$temp=json_decode($inp);
 		if($temp)

@@ -1,6 +1,16 @@
 <?php
 
 $view_default=array(
+    "Template/input.php"=>array(
+        "inpattr"=>array(),
+        "divattr"=>array(),
+        "label"=>"Enter",
+        "name"=>"",
+        "type"=>"text",
+        "closediv"=>true,
+        "dc"=>"simple",
+        "id"=>null
+        ),
 	"Template/top.php"=>array(
 		"css"=>array("css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css"),
 		"title"=>"Get IITians"

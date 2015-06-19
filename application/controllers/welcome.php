@@ -333,19 +333,12 @@ class Welcome extends CI_Controller {
   public function forgotPassword() {
     load_view("forgotPassword.php",array());
   }
-      public function changeuserpassword($tid=1) {
-      load_view("changepass.php",array());
-      if(isset($_POST['oldpass'])) {
-        $chngreq=handle_request(fun::mergeifunset($_POST,array("action"=>"changepassaction")));
-        if($chngreq['ec']==1) {
-          $link=BASE.'profile/'.$tid;
-          echo '<script>window.location.href="'.$link.'"</script>';
-        }
-        else {
-          echo "Password isn't changed";
-        }
-      }
-    }
+  public function changepassword(){
+    $pageinfo=array();
+    $cphandle=handle_request(Fun::setifunset($_POST,"action","changepassword"));
+    $pageinfo['cpmsg']=errormsg($cphandle["ec"],ispost("changepassword"));
+    load_view("changepass.php",$pageinfo);
+  }
         public function review($tid) {
         $sql="select * from reviews where tid=$tid";
         $allreviews=sql::getArray($sql);

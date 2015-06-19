@@ -371,4 +371,8 @@
 	function dit($cond=false){
 		echo ((!$cond)?"display:none;":"");
 	}
+	function disperror($error,$params=array()){
+		mergeifunset($params,array("style"=>"color:red;"));
+		ocloset("div",$error,$params);
+	}
 ?>

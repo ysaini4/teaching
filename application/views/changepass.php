@@ -3,31 +3,38 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 ?>
 
-<html>
-	<head>
+<main>
+<div class="container">
+  <div class="card-panel">
+    <div class="row">
+      <div class="col s12">
+        <h3 class="teal-text text-darken-1 center">Change Password</h3>
+      </div>
+    </div>
+    <div class="row center">
+      <form class="col s12 m6 offset-m3" method="post" onsubmit='return form.valid.action(this);' >
+      	<?php
+          disperror($cpmsg);
+          load_view("Template/input.php",array('label'=>"Old password","name"=>"opassword","type"=>"password"));
+          load_view("Template/input.php",array('label'=>"New password","name"=>"npassword","id"=>"password","type"=>"password"));
+          load_view("Template/input.php",array('label'=>"Confirm","name"=>"rpassword","dc"=>"password","type"=>"password"));
+      	?>
+        <div class="row">
+          <div class="input-field col s12 m12">
+            <button class="btn waves-effect waves-light" type="submit" name="changepassword" >Change Password
+              <i class="mdi-content-send right"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+   
+  </div>
+</div>
+</main>
 
-	</head>
-	<body>
-		<form method="post" onsubmit="return checkpass()">
-			Old Password: <input name="oldpass" id="oldpass" type="text" required/>
-			New Password: <input name="newpass" id="newpass" type="text" required/>
-			Confirm Password: <input name="newcpass" id="newcpass" type="text" required/>
-			<input type="submit" value="Change Password"/>
-		</form>
-	</body>
-</html>
-		<script type="text/javascript">
-			function checkpass() {
-			newp=document.getElementById('newpass').value;
-			newcp=document.getElementById('newcpass').value;
-			if(newp!=newcp){
-				window.alert('Password and Confirm password doesnt match!!');
-				return false;
-			}
-			else 
-				return true;
-		}
-		</script>
+
+
 
 <?php
 load_view("Template/footernew.php");

@@ -507,6 +507,9 @@ abstract class Fun{
       }
       return $fd["ec"];
   }
+  public static function getloadviewname($inp){
+    return firstelm(explode(".php",lastelm(explode("/",$inp))));
+  }
 }
 
 ?>
