@@ -436,7 +436,140 @@ public function set_news()
     		}
     	}
     }
-	
+        public function review($tid) {
+        $sql="select * from reviews where tid=$tid";
+        $allreviews=sql::getArray($sql);
+        //finalArray is the array which we are passing in our view
+        $m=0;
+        $sid=User::loginId();
+        foreach ($allreviews as $key => $value) {
+            $finalArray[$m]['content']=$value['content'];
+            $finalArray[$m]['time']=date("M d, Y h:i A",strtotime($value['time']));
+                $id=$value['sid'];
+                $sql="select * from users where id=$id";
+                $temp=sql::getArray($sql);
+            $finalArray[$m]['sname']=$temp[0]['name'];
+            $finalArray[$m]['id']=$value['id'];
+                $id=$value['id'];
+                $sql="select count(sid) from likes where rid=$id and like_dislike='-1'";
+                $temp=sql::getArray($sql);
+            $finalArray[$m]['dislike']=$temp[0]['count(sid)'];
+                $sql="select count(sid) from likes where rid=$id and like_dislike='1'";
+                $temp=sql::getArray($sql);
+            $finalArray[$m]['like']=$temp[0]['count(sid)'];
+                $sql="select count(*) from likes where sid='$sid' and rid='$id'";
+                $temp=sql::getArray($sql);
+            if($temp[0]['count(*)']>0)
+                $finalArray[$m]['disableTag']=true;
+            else
+                $finalArray[$m]['disableTag']=false;
+            $id=$value['tid'];
+            $m++;
+        }
+        $sql="select * from users where id=$id";
+        $temp=sql::getArray($sql);
+        load_view("review.php",array('finalArray'=>$finalArray,'tname'=>$temp[0]['name']));
+    }
+	public function myslots($tid) {
+		if(isset($_FILES["timeslot_upload"]) && $_FILES["timeslot_upload"]["size"]>0){
+			$uf=Fun::uploadfiles_t2($_FILES["timeslot_upload"]);
+			$filelink="";
+			foreach($uf['fn'] as $key => $value) {
+				if($key==0)
+					$filelink=$value;
+				else
+					$filelink=$filelink.','.$value;
+			}
+			foreach ($uf['message'] as $key => $value) {
+				echo $value[$key].'<br>';
+			}
+			if($uf['count']>0){
+				$count=$uf["count"];
+				echo '<b>'.$count.' files uploaded succesfully.<br></b>';
+			}
+			if(isset($_POST['slotid'])) {
+				foreach ($_POST['slotid'] as $key => $value) {
+					if($value!='')
+						$times=$value;
+				}
+			}
+			$sql="select testfiles from timeslot where tid='$tid' and starttime='$times'";
+			$previousdatafiles=sql::getArray($sql);
+			$previousdatafiles=$previousdatafiles[0]['testfiles'];
+			if($previousdatafiles!='' && $filelink!='')
+				$filelink=$previousdatafiles.','.$filelink;
+			if($filelink!='') {
+				$sql="update timeslot set testfiles='$filelink' where tid='$tid' and starttime='$times'";
+				sql::query($sql);
+			}
+		}
+		if(isset($_FILES["timeslot_uploadsoln"]) && $_FILES["timeslot_uploadsoln"]["size"]>0){
+			$uf=Fun::uploadfiles_t2($_FILES["timeslot_uploadsoln"]);
+			$filelink="";
+			foreach($uf['fn'] as $key => $value) {
+				if($key==0)
+					$filelink=$value;
+				else
+					$filelink=$filelink.','.$value;
+			}
+			foreach ($uf['message'] as $key => $value) {
+				echo $value[$key].'<br>';
+			}
+			if($uf['count']>0){
+				$count=$uf["count"];
+				echo '<b>'.$count.' files uploaded succesfully.<br></b>';
+			}
+			if(isset($_POST['slotid'])) {
+				foreach ($_POST['slotid'] as $key => $value) {
+					if($value!='')
+						$times=$value;
+				}
+			}
+			$sql="select solnfiles from timeslot where tid='$tid' and starttime='$times'";
+			$previousdatafiles=sql::getArray($sql);
+			$previousdatafiles=$previousdatafiles[0]['solnfiles'];
+			if($previousdatafiles!='' && $filelink!='')
+				$filelink=$previousdatafiles.','.$filelink;
+			if($filelink!='') {
+				$sql="update timeslot set solnfiles='$filelink' where tid='$tid' and starttime='$times'";
+				sql::query($sql);
+			}
+		}
+
+		$sql="select * from timeslot where tid='$tid'";
+		$temp=sql::getArray($sql);
+		load_view("fileupload.php",array('temp'=>$temp,'tid'=>$tid));		
+	}
+	public function deleteFile($firstArg,$secondArg,$thirdArg,$type) {
+		$tempArray=explode(',', $thirdArg);
+		$file=$firstArg.'/'.$secondArg.'/'.$tempArray[0];
+		$starttime=$tempArray[1];
+		$tid=$tempArray[2];
+		$sql="select * from timeslot where tid='$tid' and starttime='$starttime'";
+		$temp=sql::getArray($sql);
+		$testfiles=$temp[0][$type];
+		$tempArray=explode(',', $testfiles);
+		$finalFiles="";
+		foreach ($tempArray as $key => $value) {
+			if($value==$file)
+				$finalFiles=$finalFiles;
+			else{
+				if($finalFiles!='')
+					$finalFiles=$finalFiles.','.$value;
+				else
+					$finalFiles=$value;
+			}
+		}
+		if($type=='testfiles')
+			$sql="update timeslot set testfiles='$finalFiles' where tid='$tid' and starttime='$starttime'";
+		else if($type=='solnfiles')
+			$sql="update timeslot set solnfiles='$finalFiles' where tid='$tid' and starttime='$starttime'";
+		sql::query($sql);
+		unlink($finalFiles);
+		header('Location:'.BASE.'myslots/'.$tid);
+		//self::myslots($tid);
+	}
+
 }
 
 /* End of file welcome.php */
