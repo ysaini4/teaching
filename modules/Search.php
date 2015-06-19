@@ -156,13 +156,13 @@ class search{
 	public static function filterTeachersByPrice($lowerLimit=-1,$upperLimit=-1){
 		//Function to search for teachers using price per hour filter.
 		//Returns an associative array with keys 'query' whose value is the query and 'parama' whose value is an array(having values to replace in query) to pass to function Sqle::getA()
-		return filteredResultsQuery('price','subjects',$lowerLimit,$upperLimit,'tid');
+		return filteredResultsQuery('price','subjects',$lowerLimit,$upperLimit,array('tid'),'tid');
 	}
 
 	public static function filterTeachersByDurationOfCourse($lowerLimit,$upperLimit){
 		//Function to search for teachers using duration of Course filter.
 		//Returns an associative array with keys 'query' whose value is the query and 'parama' whose value is an array(having values to replace in query) to pass to function Sqle::getA()
-		return filteredResultsQuery('timer','subjects',$lowerLimit,$upperLimit,'tid');
+		return filteredResultsQuery('timer','subjects',$lowerLimit,$upperLimit,array('tid'),'tid');
 	}
 }
 ?>
