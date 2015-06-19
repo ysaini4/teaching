@@ -185,56 +185,59 @@ class Welcome extends CI_Controller {
 
   }
   public function profile($tid=0,$tabid=1){
-    $numtabs=4;
-    global $_ginfo;
-    $tid=Funs::gettid($tid);
-    $tabid=max(min($numtabs,(0+$tabid)),1);
+    // $numtabs=4;
+    // global $_ginfo;
+    // $tid=Funs::gettid($tid);
+    // $tabid=max(min($numtabs,(0+$tabid)),1);
+    // $uprofile=User::userProfile($tid);
 
-    $bulkupload_timeslot=handle_request(Fun::mergeifunset($_POST,array("action"=>"addrembulkts")));
-    $addtopic=handle_request(Fun::mergeifunset($_POST,array("action"=>"addtopics")));
-    $remtopic=handle_request(Fun::mergeifunset($_GET,array("action"=>"deltopics")));
+    // if(false){
+    //   $bulkupload_timeslot=handle_request(Fun::mergeifunset($_POST,array("action"=>"addrembulkts")));
+    //   $addtopic=handle_request(Fun::mergeifunset($_POST,array("action"=>"addtopics")));
+    //   $remtopic=handle_request(Fun::mergeifunset($_GET,array("action"=>"deltopics")));
 
-    if($tid!=User::loginId() || User::isloginas('t') ){
-      $cst_tree=Funs::cst_tree();
-      $topicinfo=array('cst_tree'=>$cst_tree,"tid"=>$tid);
-      $topicinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
-      $topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
+    //   if($tid!=User::loginId() || User::isloginas('t') ){
+    //     $cst_tree=Funs::cst_tree();
+    //     $topicinfo=array('cst_tree'=>$cst_tree,"tid"=>$tid);
+    //     $topicinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
+    //     $topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
 
-      $pageinfo=array();
-      $pageinfo["aboutinfo"]=Sqle::getRow("select teachers.*,users.* from teachers left join users on users.id=teachers.tid where teachers.tid=? limit 1",'i',array(&$tid));
-      if($pageinfo["aboutinfo"]==null){
-        Fun::redirect(HOST);
-      }
-      $pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
-      $pageinfo["topicinfo"]=$topicinfo;
-      $pageinfo["tid"]=$tid;
-      $pageinfo["tabid"]=$tabid;
-      $tempArr=explode(' ',$pageinfo['aboutinfo']['name']);
-      $pageinfo['firstName']=$tempArr[0];
-      $pageinfo['lastName']=$tempArr[1];
-      $jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']);
-      $pageinfo['city']=$jsonArray['city'];
-      $pageinfo['jsonArray']=$jsonArray;
-        $tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
-      $pageinfo['subArray']=explode(' , ', $tempSubjects);
-      $tempGrades=explode('-',$jsonArray['grade']);
-      foreach ($tempGrades as $value) {
-        $gradeArray[]=$_ginfo['encodeddataofteacherstable']['grade'][$value-1];
-      }
-      $pageinfo['gradeArray']=$gradeArray;
-      $tempLang=explode('-',$pageinfo['aboutinfo']['lang']);
-      foreach ($tempLang as $value) {
-        $langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
-      }
-      $pageinfo['langArray']=$langArray;    
-      load_view("profile.php",$pageinfo);
-    }
-    else if(User::isloginas('s')){
-      echo "Hey Student";
-    }
-    else if(User::isloginas('a')){
-      echo "Hey Admin";
-    }
+    //     $pageinfo=array();
+    //     $pageinfo["aboutinfo"]=Sqle::getRow("select teachers.*,users.* from teachers left join users on users.id=teachers.tid where teachers.tid=? limit 1",'i',array(&$tid));
+    //     if($pageinfo["aboutinfo"]==null){
+    //       Fun::redirect(HOST);
+    //     }
+    //     $pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
+    //     $pageinfo["topicinfo"]=$topicinfo;
+    //     $pageinfo["tid"]=$tid;
+    //     $pageinfo["tabid"]=$tabid;
+    //     $tempArr=explode(' ',$pageinfo['aboutinfo']['name']);
+    //     $pageinfo['firstName']=$tempArr[0];
+    //     $pageinfo['lastName']=$tempArr[1];
+    //     $jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']);
+    //     $pageinfo['city']=$jsonArray['city'];
+    //     $pageinfo['jsonArray']=$jsonArray;
+    //       $tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
+    //     $pageinfo['subArray']=explode(' , ', $tempSubjects);
+    //     $tempGrades=explode('-',$jsonArray['grade']);
+    //     foreach ($tempGrades as $value) {
+    //       $gradeArray[]=$_ginfo['encodeddataofteacherstable']['grade'][$value-1];
+    //     }
+    //     $pageinfo['gradeArray']=$gradeArray;
+    //     $tempLang=explode('-',$pageinfo['aboutinfo']['lang']);
+    //     foreach ($tempLang as $value) {
+    //       $langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
+    //     }
+    //     $pageinfo['langArray']=$langArray;    
+    //     load_view("profile.php",$pageinfo);
+    //   }
+    // }
+    // else if(User::isloginas('s')){
+    //   echo "Hey Student";
+    // }
+    // else if(User::isloginas('a')){
+    //   echo "Hey Admin";
+    // }
   }
 
   public function search(){
@@ -265,27 +268,57 @@ class Welcome extends CI_Controller {
       load_view("account.php",$pageinfo);
   }   
 
-  public function mohit($tid=122,$saini="Mohit"){
-    $e=new Email();
-    $e->sendMessage("mohitsaini1196@gmail.com", "Hey This is Drama", "Go to hell", "Mohit Saini");
-    print_r($e);
+  //Made by ::Himanshu Rohilla::
+  public function accept($tid){
+    $sql="UPDATE teachers set isselected='a' where tid=$tid";
+    $result=Sql::query($sql);
+    echo '<h3>You accepted this user<br><br></h3>';
+    self::view($tid);
   }
+  //Made by ::Himanshu Rohilla::
+  public function reject($tid){
+    $sql="UPDATE teachers set isselected='r' where tid=$tid";
+    $result=Sql::query($sql);
+    echo '<h3>You rejected this user<br><br></h3>';
+    self::view($tid);
+  }
+  //Made by ::Himanshu Rohilla::
+  public function view($tid){
+    $sql="select * from teachers,users where teachers.tid=users.id AND users.id=$tid";
+    $result=Sql::getArray($sql);
+    load_view("viewuser.php",array('result'=>$result));
+    echo '<b><a style="margin-left:10px;font-size:30px;" href="'.(BASE."acceptOrReject").'" style="font-size:30px;">Go Back</a></b>';
+  }
+  public function compareMany($tidString){
+    $tidArray=explode("-", $tidString);
+    $i=0;
+    foreach($tidArray as $id){
+      $sql="select * from teachers,users where teachers.tid=users.id AND users.id=$id";
+      $result[$i++]=Sql::getArray($sql);
+    }
+    load_view("compare.php",array('result'=>$result));
+  }
+  public function testCSV(){
+    $csvVar=array();
+    load_view("testCSV.php",$csvVar);
+  }
+  public function confirmSlots($date){
+    $date = date('d-m-Y', strtotime($date));
+    $startdate = $date.' 00:00:00';
+    $startstamp=strtotime($startdate);
+    $enddate = $date.' 23:59:59';
+    $endstamp=strtotime($enddate);
+    $id=User::loginId();
+    $sql="select * from timeslot where tid=$id";
+    $table=sql::getArray($sql);
+    $finalrows=array();
+    foreach($table as $row){
+      if($row['starttime']>=$startstamp && $row['starttime']<$endstamp)
+        $finalrows[]=$row['starttime'];
+    }
 
-public function set_news()
-{
-  $this->load->helper('url');
-
-  $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
-  $data = array(
-    'title' => $this->input->post('title'),
-    'slug' => $slug,
-    'text' => $this->input->post('text')
-  );
-
-  return $this->db->insert('news', $data);
-}
-
+    load_view("confirmSlots.php",array('finalrows'=>$finalrows,'timeslots'=>Funs::timeslotlist(true)));
+  }
   public function create()
   {
     $this->load->helper('form');
@@ -421,8 +454,154 @@ public function set_news()
   public function forgotPassword() {
     load_view("forgotPassword.php",array());
   }
+      public function changeuserpassword($tid=1) {
+      load_view("changepass.php",array());
+      if(isset($_POST['oldpass'])) {
+        $chngreq=handle_request(fun::mergeifunset($_POST,array("action"=>"changepassaction")));
+        if($chngreq['ec']==1) {
+          $link=BASE.'profile/'.$tid;
+          echo '<script>window.location.href="'.$link.'"</script>';
+        }
+        else {
+          echo "Password isn't changed";
+        }
+      }
+    }
+        public function review($tid) {
+        $sql="select * from reviews where tid=$tid";
+        $allreviews=sql::getArray($sql);
+        //finalArray is the array which we are passing in our view
+        $m=0;
+        $sid=User::loginId();
+        foreach ($allreviews as $key => $value) {
+            $finalArray[$m]['content']=$value['content'];
+            $finalArray[$m]['time']=date("M d, Y h:i A",strtotime($value['time']));
+                $id=$value['sid'];
+                $sql="select * from users where id=$id";
+                $temp=sql::getArray($sql);
+            $finalArray[$m]['sname']=$temp[0]['name'];
+            $finalArray[$m]['id']=$value['id'];
+                $id=$value['id'];
+                $sql="select count(sid) from likes where rid=$id and like_dislike='-1'";
+                $temp=sql::getArray($sql);
+            $finalArray[$m]['dislike']=$temp[0]['count(sid)'];
+                $sql="select count(sid) from likes where rid=$id and like_dislike='1'";
+                $temp=sql::getArray($sql);
+            $finalArray[$m]['like']=$temp[0]['count(sid)'];
+                $sql="select count(*) from likes where sid='$sid' and rid='$id'";
+                $temp=sql::getArray($sql);
+            if($temp[0]['count(*)']>0)
+                $finalArray[$m]['disableTag']=true;
+            else
+                $finalArray[$m]['disableTag']=false;
+            $id=$value['tid'];
+            $m++;
+        }
+        $sql="select * from users where id=$id";
+        $temp=sql::getArray($sql);
+        load_view("review.php",array('finalArray'=>$finalArray,'tname'=>$temp[0]['name']));
+    }
+  public function myslots($tid) {
+    if(isset($_FILES["timeslot_upload"]) && $_FILES["timeslot_upload"]["size"]>0){
+      $uf=Fun::uploadfiles_t2($_FILES["timeslot_upload"]);
+      $filelink="";
+      foreach($uf['fn'] as $key => $value) {
+        if($key==0)
+          $filelink=$value;
+        else
+          $filelink=$filelink.','.$value;
+      }
+      foreach ($uf['message'] as $key => $value) {
+        echo $value[$key].'<br>';
+      }
+      if($uf['count']>0){
+        $count=$uf["count"];
+        echo '<b>'.$count.' files uploaded succesfully.<br></b>';
+      }
+      if(isset($_POST['slotid'])) {
+        foreach ($_POST['slotid'] as $key => $value) {
+          if($value!='')
+            $times=$value;
+        }
+      }
+      $sql="select testfiles from timeslot where tid='$tid' and starttime='$times'";
+      $previousdatafiles=sql::getArray($sql);
+      $previousdatafiles=$previousdatafiles[0]['testfiles'];
+      if($previousdatafiles!='' && $filelink!='')
+        $filelink=$previousdatafiles.','.$filelink;
+      if($filelink!='') {
+        $sql="update timeslot set testfiles='$filelink' where tid='$tid' and starttime='$times'";
+        sql::query($sql);
+      }
+    }
+    if(isset($_FILES["timeslot_uploadsoln"]) && $_FILES["timeslot_uploadsoln"]["size"]>0){
+      $uf=Fun::uploadfiles_t2($_FILES["timeslot_uploadsoln"]);
+      $filelink="";
+      foreach($uf['fn'] as $key => $value) {
+        if($key==0)
+          $filelink=$value;
+        else
+          $filelink=$filelink.','.$value;
+      }
+      foreach ($uf['message'] as $key => $value) {
+        echo $value[$key].'<br>';
+      }
+      if($uf['count']>0){
+        $count=$uf["count"];
+        echo '<b>'.$count.' files uploaded succesfully.<br></b>';
+      }
+      if(isset($_POST['slotid'])) {
+        foreach ($_POST['slotid'] as $key => $value) {
+          if($value!='')
+            $times=$value;
+        }
+      }
+      $sql="select solnfiles from timeslot where tid='$tid' and starttime='$times'";
+      $previousdatafiles=sql::getArray($sql);
+      $previousdatafiles=$previousdatafiles[0]['solnfiles'];
+      if($previousdatafiles!='' && $filelink!='')
+        $filelink=$previousdatafiles.','.$filelink;
+      if($filelink!='') {
+        $sql="update timeslot set solnfiles='$filelink' where tid='$tid' and starttime='$times'";
+        sql::query($sql);
+      }
+    }
+
+    $sql="select * from timeslot where tid='$tid'";
+    $temp=sql::getArray($sql);
+    load_view("fileupload.php",array('temp'=>$temp,'tid'=>$tid));   
+  }
+  public function deleteFile($firstArg,$secondArg,$thirdArg,$type) {
+    $tempArray=explode(',', $thirdArg);
+    $file=$firstArg.'/'.$secondArg.'/'.$tempArray[0];
+    $starttime=$tempArray[1];
+    $tid=$tempArray[2];
+    $sql="select * from timeslot where tid='$tid' and starttime='$starttime'";
+    $temp=sql::getArray($sql);
+    $testfiles=$temp[0][$type];
+    $tempArray=explode(',', $testfiles);
+    $finalFiles="";
+    foreach ($tempArray as $key => $value) {
+      if($value==$file)
+        $finalFiles=$finalFiles;
+      else{
+        if($finalFiles!='')
+          $finalFiles=$finalFiles.','.$value;
+        else
+          $finalFiles=$value;
+      }
+    }
+    if($type=='testfiles')
+      $sql="update timeslot set testfiles='$finalFiles' where tid='$tid' and starttime='$starttime'";
+    else if($type=='solnfiles')
+      $sql="update timeslot set solnfiles='$finalFiles' where tid='$tid' and starttime='$starttime'";
+    sql::query($sql);
+    unlink($finalFiles);
+    header('Location:'.BASE.'myslots/'.$tid);
+    //self::myslots($tid);
+  }
+
 }
 
 /* End of file welcome.php */
-/* L
-ocation: ./application/controllers/welcome.php */
+/* Location: ./application/controllers/welcome.php */

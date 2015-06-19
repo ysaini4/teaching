@@ -296,4 +296,35 @@
 	function tf($inp){
 		return $inp?"true":"false";
 	}
+	// Function Added By Tej Pal Sharma for filtering Search Results
+	// Start::
+	//if both upperlimit and lowerlimit are set -1 then returns query => " TRUE " and param=>emptyArray
+	//Returns an associative array with keys 'query' whose value is the query and 'parama' whose value is an array(having values to replace in query) to pass to function Sqle::getA()
+	function filteredResultsQuery($filteringKey,$inWhichTable,$lowerLimit=-1,$upperLimit=-1,$colsToFetch=array('*'),$groupByKey = -1){
+		global $_ginfo;
+		$colsToFetch = implode(',', $colsToFetch);
+		$parametersArr = array();
+
+		if($lowerLimit==-1 && $upperLimit==-1){
+			return array('query'=>' TRUE ','parama'=>$parametersArr);
+		}
+
+		$parametersArr['lowerlimit'] = $lowerLimit;
+		$parametersArr['upperlimit'] = $upperLimit;
+		
+		$query  = "SELECT ".$colsToFetch." FROM ".$inWhichTable." WHERE ";
+		if($lowerLimit==-1)
+			$query .= " TRUE AND ";
+		else
+			$query .= $filteringKey." > {lowerlimit} AND ";
+		if($upperLimit==-1)
+			$query .= " TRUE ";
+		else
+			$query .= $filteringKey." < {upperlimit} ";
+		if($groupByKey!=-1)
+			$query .= "group by ".$groupByKey." ";
+
+		return array('query'=>$query,'parama'=>$parametersArr);
+	}
+	// ::End
 ?>
