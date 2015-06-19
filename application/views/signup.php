@@ -21,19 +21,19 @@ $defopen="signupwindow";
             <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="fullname" name="name" type="text" class="validate">
+                  <input id="fullname" name="name" type="text" data-condition="simple" class="validate">
                   <label for="fullname">Full Name</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="email" name="email" type="email" class="validate">
+                  <input id="email" name="email" type="email" data-condition="simple" class="validate">
                   <label for="email">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="password" name="password" type="password" class="validate">
+                  <input id="password" name="password" type="password"  data-condition="simple" class="validate">
                   <label for="password">Password</label>
                 </div>
               </div>
@@ -41,14 +41,14 @@ $defopen="signupwindow";
 
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="confirm_password" name="cpassword" type="password" class="validate">
+                  <input id="confirm_password" name="cpassword" type="password" data-condition="simple" class="validate">
                   <label for="confirm_password">Confirm Password</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="phone" name="phone" type="text" class="validate">
+                  <input id="phone" name="phone" type="text" data-condition="simple" class="validate">
                   <label for="phone">Phone</label>
                 </div>
               </div>
@@ -70,7 +70,7 @@ $defopen="signupwindow";
               </div>
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="otp" name="otp" type="text" class="validate" >
+                  <input id="otp" name="otp" type="text" data-condition="simple" class="validate" >
                   <label for="otp">One Time Password</label>
                 </div>
               </div>
