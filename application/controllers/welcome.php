@@ -66,25 +66,23 @@ class Welcome extends CI_Controller {
 		load_view("joinustmp2.php",$pageinfo);
 	}
 
-
 	public function aboutus(){
-		$aboutVar=array();
-		load_view("aboutus.php",$aboutVar);
+		$aboutVar = array();
+		load_view("aboutus.php", $aboutVar);
 	}
+
 	public function reset(){
 		load_view("reset.php");
 	}
+
 	public function contactus(){
 		$msg="";
 		if(Fun::isSetP("name","phone","email","msg")){
 		  $contactus_data=Fun::getflds(array("name","phone","email","msg"),$_POST);
 		  $temp = User::loginId();
-		  if($temp)
-		  {
+		  if($temp) {
 		    $contactus_data["user_id"] = $temp;
-		  }
-		  else
-		  {
+		  } else {
 		    $contactus_data["user_id"] = null;
 		  }
 		  
