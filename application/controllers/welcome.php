@@ -247,7 +247,11 @@ class Welcome extends CI_Controller {
   }
 
   public function search(){
-    load_view("search.php");
+    $cst_tree=Funs::cst_tree();
+    $class_olist=Funs::cst_tree2classlist($cst_tree);
+    $pageinfo["class_olist"]=$class_olist;
+
+    load_view("search.php",$pageinfo);
   }
 
 
