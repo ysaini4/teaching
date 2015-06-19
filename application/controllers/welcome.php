@@ -133,7 +133,9 @@ class Welcome extends CI_Controller {
 	}
 	public function signup(){
 		$handle_signup=handle_request(Fun::mergeifunset($_POST, array("action"=>"signup")));
-//		print_r($handle_signup);
+		if($handle_signup["ec"]>0){
+			Fun::redirect(BASE."account");
+		}
 		$pageinfo=array("signupmsg"=>errormsg($handle_signup));
 		load_view('signup.php',$pageinfo);
 	}

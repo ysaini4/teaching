@@ -17,7 +17,7 @@ $defopen="signupwindow";
           </div>
         </div>
         <div class="row center">
-          <form class="col s12 m10 offset-m1" method="post"  >
+          <form class="col s12 m10 offset-m1" method="post" >
             <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
               <div class="row">
                 <div class="input-field col s12 m12">
