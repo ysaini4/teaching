@@ -1,14 +1,14 @@
 <main>
   <div class="container">
-          <?php
-          if($tid==User::loginId()){
-          ?>
+    <?php
+    if($tid==User::loginId()){
+    ?>
     <div class="row">
       <div class="col s12 l12">
         <div class="card-panel">
           <div class="row">
             <nav class="teal">
-              <div align=center style='cursor:pointer;' onclick='$("#fillalltsform").slideToggle();' >Add/Remove your free time Slot</div>
+              <div align=center style='cursor:pointer;' onclick='$("#fillalltsform").slideToggle();' >Click to Add/Remove your free time Slot</div>
             </nav>
             <div class='row' style='padding:0px;margin:0px;display:none;margin-top:30px;' id="fillalltsform" >
               <?php
@@ -19,7 +19,6 @@
         </div>
       </div>
     </div>
-
     <?php
     }
     ?>

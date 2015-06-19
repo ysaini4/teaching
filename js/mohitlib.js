@@ -545,7 +545,7 @@ function smilymsg(inp){
 var success={
 	id:0,
 	opentime:{},
-	hideafter:3000,//milli seconds
+	hideafter:8000,//milli seconds
 	push:function(msg,convert){
 		var sid=success.id;
 		success.opentime[sid]=time("m");

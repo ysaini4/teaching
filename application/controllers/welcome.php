@@ -247,17 +247,8 @@ class Welcome extends CI_Controller {
   }
 
   public function search(){
-    load_view("newsearch1.php");
+    load_view("search.php");
   }
-    public function newsearch()
-  {
-    $this->load->view('Template/top',array("inp"=>array("css"=>array("jquery/jRating.jquery.css","css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css"))));
-    $this->load->view('Template/navbar');
-    $this->load->view('newsearch');
-    $this->load->view('Template/footer');
-    $this->load->view('Template/bottom');
-  }
-
 
 
 
@@ -337,6 +328,10 @@ class Welcome extends CI_Controller {
     $pageinfo=array();
     $cphandle=handle_request(Fun::setifunset($_POST,"action","changepassword"));
     $pageinfo['cpmsg']=errormsg($cphandle["ec"],ispost("changepassword"));
+    load_view("changepass.php",$pageinfo);
+  }
+  public function account(){
+    $pageinfo=array('cpmsg'=>'');
     load_view("changepass.php",$pageinfo);
   }
         public function review($tid) {

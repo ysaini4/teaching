@@ -12,7 +12,7 @@ load_view("Template/navbarnew.php");
       </div>
     </div>
     <div class="row center">
-      <form class="col s12 m6 offset-m3" method="post" onsubmit='return form.valid.action(this);' >
+      <form class="col s12 m6 offset-m3" method="post" onsubmit='if(form.valid.action(this)){form.sendreq1(this, $(this).find("button[type=submit]")[0]);};return false;' data-action="changepassword" data-res='success.push("Password Changed!");' >
       	<?php
           disperror($cpmsg);
           load_view("Template/input.php",array('label'=>"Old password","name"=>"opassword","type"=>"password"));

@@ -95,6 +95,9 @@ var mohit={
 		$(obj).fadeOut();
 		$("#"+$(obj).attr("id")+"body").html("");
 	},
+	popup_close:function(id){
+		mohit.closeme( $("#"+id+"Popup")[0] );
+	}
 };
 
 $(document).keyup(function(e) {

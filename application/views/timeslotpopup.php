@@ -42,7 +42,7 @@
 		if(!$isguest){
 			if($isself){
 	?>
-			<button class='btn btn-default' type="button" data-datets="<?php echo $datets; ?>" data-eparams="{'slots':$('#popuptimecheckbox').val()}" data-action="teacherModifySlots" onclick="ms.f2();button.sendreq_v2(this);" data-waittext="Saving.." data-res='ms.calreq($("#calhomebutton")[0]);success.push("Timeslot Saved ! ");' >Save</button>
+			<button class='btn btn-default' type="button" data-datets="<?php echo $datets; ?>" data-eparams="{'slots':$('#popuptimecheckbox').val()}" data-action="teacherModifySlots" onclick="ms.f2();button.sendreq_v2(this);" data-waittext="Saving.." data-res='ms.calreq($("#calhomebutton")[0]);success.push("Timeslot Saved ! ");mohit.popup_close("timeslot");' >Save</button>
 	<?php
 			}
 		}

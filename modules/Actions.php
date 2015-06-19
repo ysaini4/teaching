@@ -115,10 +115,10 @@ class Actions{
     }
     return $outp;
   }
-  function changepassword($data) {
+  function changepassword($data){
     $outp=array("ec"=>1,"data"=>0);
-    if(!User::changePassword($data['oldpass'],$data['newpass']))
-      $outp['ec']=-26;
+    if(!User::changePassword($data["opassword"],$data["npassword"]))
+      $outp["ec"]=-26;
     return $outp;
   }
 }
