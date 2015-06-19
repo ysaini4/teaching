@@ -423,6 +423,20 @@ public function set_news()
 	public function forgotPassword() {
 		load_view("forgotPassword.php",array());
 	}
+    	public function changeuserpassword($tid=1) {
+    	load_view("changepass.php",array());
+    	if(isset($_POST['oldpass'])) {
+    		$chngreq=handle_request(fun::mergeifunset($_POST,array("action"=>"changepassaction")));
+    		if($chngreq['ec']==1) {
+    			$link=BASE.'profile/'.$tid;
+    			echo '<script>window.location.href="'.$link.'"</script>';
+    		}
+    		else {
+    			echo "Password isn't changed";
+    		}
+    	}
+    }
+	
 }
 
 /* End of file welcome.php */
