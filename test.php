@@ -4,10 +4,8 @@ include "includes/app.php";
 load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 
-
-load_view("Template/success.php");
-
-echo "Mohit Sain";
+$a=false;
+echo $a;
 
 
 

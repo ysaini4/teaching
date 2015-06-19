@@ -62,6 +62,7 @@ $_ginfo["action_constrain"]=array(
 	"deltopics"=>array("need"=>array("deleteid")),
 	"signupotp"=>array("need"=>array("phone")),
 	"signup"=>array("need"=>array("email","password","name","phone","otp")),
+	"studenteditprofile"=>array("need"=>array("fname","lname","gender","email","dob","phone"))
 );
 
 $_ginfo["error"]=array(
@@ -93,7 +94,7 @@ $_ginfo["wiziqlimit"]=3;
 $_ginfo["needotp"]=true;
 
 
-$_ginfo["needsignupotp"]=false;
+$_ginfo["needsignupotp"]=true;
 
 
 ?>

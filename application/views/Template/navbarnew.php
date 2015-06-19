@@ -42,20 +42,6 @@
   <ul class="side-nav" id="mobile-demo">
     <li><a href="<?php echo BASE."aboutus" ;?>" >About</a></li>
     <li><a href="<?php echo BASE."contactus" ;?>" >Contact</a></li>
-    <?php
-    if(User::isloginas("t")){
-    ?>
-      <li><a href="<?php echo BASE."profile" ;?>">Profile</a></li>  
-      <li><a href="<?php echo BASE."?logout" ;?>">logout</a></li>
-    <?php
-    }
-    else{
-    ?>
-    <li><a href="<?php echo BASE."login" ;?>" >Login</a></li>
-    <li><a href="<?php echo BASE."joinus" ;?>" >Join us</a></li>
-    <?php
-    }
-    ?>
     <li>
       <form>
         <div class="input-field">

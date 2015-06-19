@@ -17,7 +17,7 @@ $defopen="signupwindow";
           </div>
         </div>
         <div class="row center">
-          <form class="col s12 m10 offset-m1" method="post" >
+          <form class="col s12 m10 offset-m1" method="post" onsubmit='return ms.signupform(this,<?php echo tf($_ginfo["needsignupotp"]); ?>);' <?php if($_ginfo["needsignupotp"]) { ?>  data-action='signupotp' data-params='{"phone":$("#signupwindow").find("input[name=phone]").val()}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?>  <?php } ?>  >
             <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
               <div class="row">
                 <div class="input-field col s12 m12">
@@ -27,7 +27,7 @@ $defopen="signupwindow";
               </div>
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="email" name="email" type="email" data-condition="simple" class="validate">
+                  <input id="email" name="email" type="email" data-condition="email" class="validate">
                   <label for="email">Email</label>
                 </div>
               </div>
@@ -41,7 +41,7 @@ $defopen="signupwindow";
 
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <input id="confirm_password" name="cpassword" type="password" data-condition="simple" class="validate">
+                  <input id="confirm_password" name="cpassword" type="password" data-condition="password" class="validate">
                   <label for="confirm_password">Confirm Password</label>
                 </div>
               </div>
@@ -56,7 +56,7 @@ $defopen="signupwindow";
 
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <button class="btn waves-effect waves-light" <?php if($_ginfo["needsignupotp"]) { ?>  type="button" onclick='button.sendreq_v2(this);' data-action='signupotp' data-eparams='{"phone":$("#signupwindow").find("input[name=phone]").val()}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?> name="signup" type="submit" <?php } ?> >Submit
+                  <button class="btn waves-effect waves-light" name="signup" type="submit" >Submit
                     <i class="mdi-content-send right"></i>
                   </button>
                   <button class="btn waves-effect waves-light" type="reset">Reset</button>
@@ -76,7 +76,7 @@ $defopen="signupwindow";
               </div>
               <div class="row">
                 <div class="input-field col s12 m12">
-                  <button class="btn waves-effect waves-light" <?php if($_ginfo["needsignupotp"]) { ?> name="signup" type="submit"  <?php }else{ ?>  <?php } ?> >Submit
+                  <button class="btn waves-effect waves-light"  name="signup" type="submit" >Submit
                     <i class="mdi-content-send right"></i>
                   </button>
                 </div>

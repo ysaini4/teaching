@@ -289,8 +289,11 @@
 		}
 		return $outp;
 	}
-	function errormsg($ec){
+	function errormsg($ec,$cnd=true){
 		global $_ginfo;
-		return ($ec<0?getval($_ginfo["error"],$ec,""):"");
+		return (($ec<0 && $cnd) ?getval($ec, $_ginfo["error"], "Error : ".$ec):"");
+	}
+	function tf($inp){
+		return $inp?"true":"false";
 	}
 ?>

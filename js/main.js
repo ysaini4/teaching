@@ -170,6 +170,19 @@ var ms={
 		}
 		else
 			return false;
+	},
+	signupform:function(obj,needotp){
+		if(needotp){
+			if($("#signupwindow").is(":visible")){
+				if(form.valid.action(  $("#signupwindow")[0]  )){
+					form.sendreq1(obj, $("#signupwindow").find("button[type=submit]")[0] );
+				}
+				return false;
+			} else
+				return form.valid.action(obj);
+		} else{
+			return form.valid.action( $("#signupwindow")[0] ) ;
+		}
 	}
 };
 
