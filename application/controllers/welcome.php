@@ -184,38 +184,50 @@ class Welcome extends CI_Controller {
     load_view("Template/bottom.php",$pageinfo);
 
   }
-  public function profile($tid=0,$tabid=1){
-    $numtabs=4;
-    global $_ginfo;
-    $tid=Funs::gettid($tid);
-    $tabid=max(min($numtabs,(0+$tabid)),1);
-    $uprofile=User::userProfile($tid);
+    public function profile($tid=1,$tabid=1){
+        $numtabs=4;
+        global $_ginfo;
+        if(isset($_FILES["profile_upload"]) && $_FILES["profile_upload"]["size"]>0  ){
+            $uf=Fun::profile_upload_file($_FILES["profile_upload"]);
+            if($uf["ec"]>0)
+                $bigpic=$uf["fn"];
+            
+            $name=preg_replace('/\\.[^.\\s]{3,4}$/', '', $bigpic);
+            $pic=$name."_small.".pathinfo($_FILES['profile_upload']['name'],PATHINFO_EXTENSION);
+            resizeimg($bigpic,$pic,$_ginfo['imgheight'],$_ginfo['imgwidth']);
+            $sql="select * from users where id='$tid'";
+            $olddata=sql::getArray($sql);
+            if($olddata[0]['profilepic']!=''){
+	            $oldpic=$olddata[0]['profilepic'];
+    	        unlink($oldpic);
+    	    }
+    	    if($olddata[0]['profilepicbig']!=''){
+            	$oldpicbig=$olddata[0]['profilepicbig'];
+            	unlink($oldpicbig);
+            }
 
-    if($uprofile==null){
-      Fun::redirect(HOST);
-    }
-
-    if($uprofile!=null){
-
-      if(ispost("editstudentprofile")){
-        $update_profile=handle_request(Fun::setifunset($_POST, "action", "studenteditprofile"));
-      }
-
-      $bulkupload_timeslot=handle_request(Fun::mergeifunset($_POST,array("action"=>"addrembulkts")));
-      $addtopic=handle_request(Fun::mergeifunset($_POST,array("action"=>"addtopics")));
-      $remtopic=handle_request(Fun::mergeifunset($_GET,array("action"=>"deltopics")));
-      if(isset($_FILES["profilepic"])){
-        Fun::uploadpic($_FILES["profilepic"], "profilepic", "profilepicbig", 100);
-      }
-
-      if($uprofile["type"]=='t' ){
+            $sql="update users set profilepic='$pic',profilepicbig='$bigpic' where id='$tid'";
+            sql::query($sql);
+        }
+        if(isset($_POST['getText']) && $_POST['getText']!='') {
+        	$displayte=$_POST['getText'];
+        	$sql="update teachers set teachermoto='$displayte' where tid='$tid'";
+        	sql::query($sql);
+        }
+        $tid=Funs::gettid($tid);
+        $tabid=max(min($numtabs,(0+$tabid)),1);
+        $bulkupload_timeslot=handle_request(Fun::mergeifunset($_POST,array("action"=>"addrembulkts")));
+        $addtopic=handle_request(Fun::mergeifunset($_POST,array("action"=>"addtopics")));
+        $remtopic=handle_request(Fun::mergeifunset($_GET,array("action"=>"deltopics")));
         $cst_tree=Funs::cst_tree();
         $topicinfo=array('cst_tree'=>$cst_tree,"tid"=>$tid);
         $topicinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
         $topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
-
         $pageinfo=array();
         $pageinfo["aboutinfo"]=Sqle::getRow("select teachers.*,users.* from teachers left join users on users.id=teachers.tid where teachers.tid=? limit 1",'i',array(&$tid));
+        if($pageinfo["aboutinfo"]==null){
+            Fun::redirect(HOST);
+        }
         $pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
         $pageinfo["topicinfo"]=$topicinfo;
         $pageinfo["tid"]=$tid;
@@ -226,25 +238,75 @@ class Welcome extends CI_Controller {
         $jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']);
         $pageinfo['city']=$jsonArray['city'];
         $pageinfo['jsonArray']=$jsonArray;
-          $tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
+            $tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
         $pageinfo['subArray']=explode(' , ', $tempSubjects);
         $tempGrades=explode('-',$jsonArray['grade']);
         foreach ($tempGrades as $value) {
-          $gradeArray[]=$_ginfo['encodeddataofteacherstable']['grade'][$value-1];
+            $gradeArray[]=$_ginfo['encodeddataofteacherstable']['grade'][$value-1];
         }
         $pageinfo['gradeArray']=$gradeArray;
         $tempLang=explode('-',$pageinfo['aboutinfo']['lang']);
         foreach ($tempLang as $value) {
-          $langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
+            $langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
         }
-        $pageinfo['langArray']=$langArray;    
-        load_view("profile.php",$pageinfo);
-      }
-      else if($uprofile['type']=='s'){
-        load_view("studentprofile.php",Funs::student_profile($tid));
-      }
+        $pageinfo['langArray']=$langArray;      
+		load_view("profile.php",$pageinfo);
     }
-  }
+	public function edit($tid=1){
+	  $page=array("issubmitted"=>false);
+	  $sql="Select * from users where id='$tid' and type='t'";
+	  $temp=Sql::getArray($sql);
+	  $sql="Select * from teachers where tid='$tid'";
+	  $temp1=Sql::getArray($sql);
+
+	  if(isset($_FILES["resumefile"]) && $_FILES["resumefile"]["size"]>0  ){
+				$uf=Fun::uploadfile_post($_FILES["resumefile"], array(), 'resume');
+				if($uf["ec"]>0)
+					$_POST["resumefile"]=$uf["fn"];
+		}
+	  if(Fun::isSetP("fname", "lname","action","subother","teachingexp","dob","city","zipcode","state","linkprofile")){
+		  $page["issubmitted"]=true;
+			$_POST=Fun::mergeifunset($_POST,array("resume"=>"","minfees"=>"","country"=>""));
+
+			$_POST['name']=$_POST["fname"]." ".$_POST["lname"];
+			$name=$_POST['name'];
+			$dob=date($_POST['dob']);
+
+			$sql="UPDATE users SET name='$name',dob='$dob' where id='$tid'";
+			Sql::query($sql);
+
+			$lang=Fun::getmulchecked($_POST,"lang",14);
+			
+		  //$datatoinsert["isselected"] = $_ginfo["joinus_need_to_confirm"]?'f':'t';
+		  $adddata['subother']=$_POST['subother'];
+		  $adddata['city']=$_POST['city'];
+		  $adddata['country']=$_POST['country'];
+		  $adddata['zipcode']=$_POST['zipcode'];
+		  $adddata['state']=$_POST['state'];
+		  $adddata['minfees']=$_POST['minfees'];
+		  $adddata['linkprofile']=$_POST['linkprofile'];
+		  $jsonArray=str2json($temp1[0]['jsoninfo']);
+		  $adddata['knowaboutusother']=$jsonArray['knowaboutusother'];
+		  $adddata['college'] = $jsonArray['college'];
+		  $adddata['degree'] = $jsonArray['degree'];
+		  $adddata['degreeother'] = $jsonArray['degreeother'];
+		  $adddata['calvarification'] = $jsonArray['calvarification'];
+		  $adddata['branch'] = $jsonArray['branch'];
+		  if($_POST['resumefile']=='')
+		  	$_POST['resumefile']=$jsonArray['resume'];
+		  $adddata['resume']=$_POST['resumefile'];
+		  $adddata['feedback']=$jsonArray['feedback'];
+		  $adddata["sub"] = Fun::getmulchecked($_POST,"sub",6);
+		  $adddata["grade"] = Fun::getmulchecked($_POST,"grade",4);
+		  $adddata["home"] = Fun::getmulchecked($_POST,"home",2);
+		  $jsoninfo = json_encode($adddata);
+	    $exp=$_POST["teachingexp"];
+		  $sql="UPDATE teachers set teachingexp='$exp',lang='$lang',jsoninfo='$jsoninfo' where tid='$tid'"; 
+		  Sql::query($sql);
+				// chmod($uf,0777);
+		}
+	  load_view('joinustmp3.php',array('info'=>$temp,'tid'=>$tid,'info_t'=>$temp1,'issubmitted'=>$page['issubmitted']));
+  }    
 
   public function search(){
     load_view("search.php");
