@@ -1,116 +1,186 @@
 <?php
-	function div($a,$b){
+	function div($a, $b) {
+  /*
+  Divides $a by $b and returns the quotient
+  Arguments: $a,$b integer 
+
+  */
 		return ($a-($a%$b))/$b;
 	}
-	function jshref($url=""){
-		return "window.location.href='$url'";
+
+	function jshref($url="") {
+  /*
+  Used to redirect using javascript
+  Arguments: $url: path to redirect
+
+  */    
+		return "window.location.href = '$url'";
 	}
-	function sessm($key,$val){
+
+	function sessm($key, $val) {
+  /*
+  To check whether the session key is set and its corresponding value is correct 
+  Arguments: $key:To select required key
+             $val:Value corresponding to given key 
+  */    
 		return (isset($_SESSION[$key]) && $_SESSION[$key]==$val);
 	}
-	function init_db(){
+
+	function init_db() {
+  /*
+  To initialise database i.e to make connection to database
+  */    
 		global $DB,$db_data;
 		if($DB==null){
 			$DB = new mysqli( $db_data['host'] , $db_data['user'] , $db_data['pass'] , $db_data['db']);
 			Sql::init($DB);
 		}
 	}
-	function closedb(){
+
+	function closedb() {
+  /*
+  To close the database
+  */    
 		global $DB;
 		if($DB!=null)
 			$DB->close();
 	}
-	function getval($key,$arr,$default=null){
+
+	function getval($key, $arr, $default=null) {
+  /*
+  Returns the value corresponding to give key in associative array if it is set otherwise return default value
+  Arguments: $key: Key to be checked
+             $arr: Array in which key is to be checked
+             $default: default value to return if key is not set 
+  */
 		 return (isset($arr[$key]) ? $arr[$key] : $default );
 	}
-	function post($key,$default=null){
+
+	function post($key, $default=null) {
+  /*
+  Same as getval with array variable=$_POST 
+  */    
 		return getval($key,$_POST,$default);
 	}
-	function isget($key){
+
+	function isget($key) {
+  /*
+  Checks whether the given key is set in $_GET array
+  */    
 		return isset($_GET[$key]);
 	}
-	function ispost($key){
+
+	function ispost($key) {
+  /*
+  Checks whether the given key is set in $_POST array
+  */    
 		return isset($_POST[$key]);
 	}
-	function isses($key){
+
+	function isses($key) {
+  /*
+  Checks whether the given key is set in $_SESSION array 
+  */    
 		return isset($_SESSION[$key]);
 	}
-	function get($key,$default=null){
-		return getval($key,$_GET,$default);
-	}
-	function sets($key,$val){
-		$_SESSION[$key]=$val;
-	}
-	function gets($key,$default=null){
-		return getval($key,$_SESSION,$default);
-	}
-	function load_view($view,$inp=array()){
-		global $view_default,$_ginfo;
-		if(isset($view_default[$view]))
-			$inp=Fun::mergeifunset($inp,$view_default[$view]);
-		$inp=Fun::setifunset($inp,"page",$_ginfo["page"]);
-		$inp=Fun::setifunset($inp,"islogin",User::loginType());
-		$tem_name=Fun::getloadviewname($view);
-		$templates=new Templates();
-		if(method_exists($templates,$tem_name )){
-			$templates->$tem_name($inp);
-			return true;
-		}
-		else{
-			$view="application/views/".$view;
-			if(file_exists($view)){
-				foreach($inp as $key=>$val){
-					$$key=$val;
-				}
-				include $view;
-				return true;
-			}
-			else{
-				echo "MM Error : Unable to load view ".$view." Line ".__LINE__." in file ".__FILE__ ;
-				return false;
-			}
-		}
+
+	function get($key, $default = null) {
+  /*Same as getval with array variable=$_POST 
+  */
+		return getval($key, $_GET, $default);
 	}
 
-	function str2json($inp){
-		$temp=json_decode($inp);
+	function sets($key, $val) {
+  /*To set value of given key in $_SESSION array variable 
+  */    
+		$_SESSION[$key] = $val;
+	}
+
+	function gets($key, $default = null) {
+  /*Same as getval with array variable=$_SESSION 
+  */    
+		return getval($key,$_SESSION,$default);
+	}
+
+	function load_view($view, $inp = array()) {
+  /*Used to load/include required file in the given page.
+    Arguments: $view: Name of the page to be loaded.
+               $inp:  Variables to be passed to that page
+  */    
+		global $view_default,$_ginfo;
+		if(isset($view_default[$view]))
+			$inp = Fun::mergeifunset($inp,$view_default[$view]);
+		$inp = Fun::setifunset($inp,"page",$_ginfo["page"]);
+		foreach($inp as $key=>$val){
+			$$key = $val;
+		}
+		$view="application/views/".$view;
+		if(file_exists($view))
+			include $view;
+		else
+			echo "MM Error : Unable to load view ".$view." Line ".__LINE__." in file ".__FILE__ ;
+	}
+
+	function str2json($inp) {
+  /* Takes a JSON encoded string and converts it into Php array variable
+  */
+		$temp = json_decode($inp);
 		if($temp)
 			return (array)$temp;
 		else
 			return null;
 	}
 
-	function arr2option($arr,$type='intval'){
-		$outp=array();
+	function arr2option($arr, $type = 'intval') {
+  /* 
+  */    
+		$outp = array();
 		for($i=0;$i<count($arr);$i++){
-			$temp=array('disptext'=>$arr[$i],'val'=>( $type=='intval' ? $i+1 : $arr[$i] ));
-			$outp[]=$temp;
+			$temp = array('disptext'=>$arr[$i],'val'=>( $type=='intval' ? $i+1 : $arr[$i] ));
+			$outp[] = $temp;
 		}
 		return $outp;
 	}
-	function lastelm($arr){
+
+	function lastelm($arr) {
+  /* Returns the last element of array
+     Arguments: $arr: Array
+  */  
 		if(count($arr)==0)
 			return null;
 		else
 			return $arr[count($arr)-1];
 	}
-	function firstelm($arr){
+
+	function firstelm($arr) {
+  /* Returns the first element of array
+     Arguments: $arr: Array
+  */     
 		if(count($arr)==0)
 			return null;
 		else
 			return $arr[0];
 	}
-	function curfilename(){
+
+	function curfilename() {
+  /* Returns the name of currently running file
+  */ 
 		return firstelm(explode(".",lastelm(explode("/",$_SERVER['SCRIPT_FILENAME']))));
 	}
-	function isUserLoggedInAs($loginTypeArray){//Function Added By Tej Pal Sharma 	The function takes an argument array of string of login types like array('s','t','a') and returns 1 if user of any of these types is currently logged in otherwise it returns 0.CAUSTION: FUNCTION USED IN DATABASE QUERY, SO KEEP THAT IN MIND WHILE EDITING.
+
+	function isUserLoggedInAs($loginTypeArray) {
+  //Function Added By Tej Pal Sharma 	The function takes an argument array of string of login types like array('s','t','a') and returns 1 if user of any of these types is currently logged in otherwise it returns 0.CAUSTION: FUNCTION USED IN DATABASE QUERY, SO KEEP THAT IN MIND WHILE EDITING.
 		$userLoginType = User::loginType();
 		if(in_array($userLoginType, $loginTypeArray))
 			return 1;
 		else
 			return 0;
 	}
-	function isvalid_action($post_data){
+
+	function isvalid_action($post_data) {
+  /*Checks whether all the fields in post data are set or not according to g_info["action_constraint"] requirements
+   Arguments: $post_data: Input data array
+  */
 		global $_ginfo;
 		if(isset($_ginfo["action_constrain"][$post_data["action"]])){
 			$sarr=$_ginfo["action_constrain"][$post_data["action"]];
@@ -122,20 +192,29 @@
 		}
 		return true;
 	}
-	function islset($data,$arr){
-		for($i=0;$i<count($arr);$i++){
+
+	function islset($data, $arr) {
+  /*Checks whether the required keys value are set or not in given data
+   Arguments: $data: Input data array
+              $arr: array of keys 
+  */    
+		for($i = 0;$i<count($arr);$i++){
 			if(!isset($data[$arr[$i]]))
 				return false;
-			$data=$data[$arr[$i]];
+			$data = $data[$arr[$i]];
 		}
 		return true;
 	}
-	function getmyneed($fname){
+
+	function getmyneed($fname) {
+  /*Returns the need field from the $_ginfo["action_constraint"]["fname"]
+    Arguments: $fname: Field name  
+  */    
 		global $_ginfo;
 		return $_ginfo["action_constrain"][$fname]["need"];
 	}
 
-	function handle_request($post_data){
+	function handle_request($post_data) {
 		global $_ginfo;
 		$b=new Actions();
 		if(User::isloginas('s'))
@@ -173,7 +252,8 @@
 		}
 		return $outp;
 	}
-	function rquery($str,$data){
+
+	function rquery($str, $data) {
 		preg_match_all("|{[^}]+}|U",$str,$matches);
 		$matches=$matches[0];
 		for($i=0;$i<count($matches);$i++){
@@ -184,53 +264,80 @@
 		}
 		return $str;
 	}
-	function timeondate($day,$month,$year){
+
+	function timeondate($day, $month, $year){
+  /*Returns Unix time stamp corresponding to given date
+   Arguments: $day,$month,$year 
+  */  
 		return strtotime($day."-".$month."-".$year);
 	}
-	function setift(&$var,$val,$istrue=true){
+
+	function setift(&$var, $val, $istrue=true){
+  /*Set the variable's value if $istrue is true
+   Arguments: $var: variable that is to be set
+              $val: value to be assigned to variable
+              $istrue: flag to set value 
+  */  
 		if($istrue){
-			$var=$val;
+			$var = $val;
 		}
 	}
-	function setifnn(&$var,$val){
-		setift($var,$val,$var==null);
+
+	function setifnn(&$var, $val) {
+  //like setift  
+		setift($var, $val, $var==null);
 	}
-	function mergeifunset(&$a,$b){
-		$keys=array_keys($b);
-		for($i=0;$i<count($keys);$i++){
+
+	function mergeifunset(&$a, $b) {
+  /*If the required key values are not set in $a,then it set the corresponding key values from $b
+  */
+		$keys = array_keys($b);
+		for($i = 0;$i<count($keys);$i++){
 			if(!isset($a[$keys[$i]]))
-				$a[$keys[$i]]=$b[$keys[$i]];
+				$a[$keys[$i]] = $b[$keys[$i]];
 		}
 		return $a;
 	}
-	function myexplode($n,$st){
-		$temp=explode($n,$st);
+
+	function myexplode($n, $st) {
+		$temp = explode($n,$st);
 		return (count($temp)==1 && $temp[0]=="") ? array() : $temp;
 	}
-	function intexplode($ex,$inp){
-		$temp=myexplode($ex,$inp);
+
+	function intexplode($ex, $inp) {
+		$temp = myexplode($ex,$inp);
 		foreach($temp as $i=>$val){
-			$temp[$i]=0+$val;
+			$temp[$i] = 0+$val;
 		}
 		return $temp;
 	}
-	function daystarttime($ts=null){
+
+	function daystarttime($ts=null) {
+  /*Returns today's start time unix timestamp  
+  */    
 		setifnn($ts,time());
 		return strtotime(Fun::timetodate($ts));
 	}
-	function resizeimg($filename,$tosave, $max_width, $max_height){
-		$imginfo=getimagesize($filename);
+
+	function resizeimg($filename, $tosave, $max_width, $max_height) {
+  /*Resizes the image according to required height and width
+   Arguments: $filename: name of file
+              $tosave: path to save the file
+              $max_width: maximum width of image
+              $max_height: maximum height of image
+  */
+		$imginfo = getimagesize($filename);
 		list($orig_width, $orig_height) = $imginfo;
-		$type=$imginfo[2];
+		$type = $imginfo[2];
 
 
-		$crop_width=$orig_width;
-		$crop_height=$orig_height;
+		$crop_width = $orig_width;
+		$crop_height = $orig_height;
 		if($orig_width*$max_height <= $orig_height*$max_width){
-			$crop_height=$orig_width*$max_height/$max_width;
+			$crop_height = $orig_width*$max_height/$max_width;
 		}
 		else{
-			$crop_width=$orig_height*$max_width/$max_height;
+			$crop_width = $orig_height*$max_width/$max_height;
 		}
 
 		$image_p = imagecreatetruecolor($max_width, $max_height);
@@ -262,83 +369,94 @@
 		}
 		chmod($tosave,0777);
 	}
-	function getrefarr(&$inp){
+  
+	function getrefarr(&$inp) {
+  /*Returns the referenced array
+   Arguments: $inp: Input data array(passed by reference)
+  */    
 		$outp=array();
 		foreach($inp as $i=>$val){
-			$outp[]=&$inp[$i];
+			$outp[] = &$inp[$i];
 		}
 		return $outp;
 	}
-	function gtable($name){
+
+	function gtable($name) {
+  /*Used to select required query from $_ginfo["query"]
+   Arguments: $name: field name
+  */     
 		global $_ginfo;
 		return $_ginfo["query"][$name];
 	}
-	function grouplist($inp,$gap=1){
-		$outp=array();
-		$started=0;
-		$ended=0;
+
+	function grouplist($inp, $gap=1) {
+		$outp = array();
+		$started = 0;
+		$ended = 0;
 		for($i=0;$i<count($inp);$i++){
 			if($started==null){
-				$started=$inp[$i];
-				$ended=$started;
+				$started = $inp[$i];
+				$ended = $started;
 			}
 			else if($inp[$i]-$ended==$gap){
-				$ended=$inp[$i];
+				$ended = $inp[$i];
 			}
 			else{
-				$outp[]=array($started,($ended-$started)/$gap+1);
-				$started=null;
+				$outp[] = array($started,($ended-$started)/$gap+1);
+				$started = null;
 				$i--;
 			}
 		}
 		if($started!=null){
-			$outp[]=array($started,($ended-$started)/$gap+1 );
+			$outp[] = array($started,($ended-$started)/$gap+1 );
 		}
 		return $outp;
 	}
-	function sql2dict($data,$key){
-		$outp=array();
+
+	function sql2dict($data, $key) {
+		$outp = array();
 		foreach($data as $i=>$row){
-			$outp[$row[$key]]=$row;
+			$outp[$row[$key]] = $row;
 		}
 		return $outp;
 	}
-	function errormsg($ec,$cnd=true){
-		global $_ginfo;
-		return (($ec<0 && $cnd) ?getval($ec, $_ginfo["error"], "Error : ".$ec):"");
-	}
-	function tf($inp){
-		return $inp?"true":"false";
-	}
-	// Function Added By Tej Pal Sharma for filtering Search Results
-	// Start::
-	//if both upperlimit and lowerlimit are set -1 then returns query => " TRUE " and param=>emptyArray
-	//Returns an associative array with keys 'query' whose value is the query and 'parama' whose value is an array(having values to replace in query) to pass to function Sqle::getA()
-	function filteredResultsQuery($filteringKey,$inWhichTable,$lowerLimit=-1,$upperLimit=-1,$colsToFetch=array('*'),$groupByKey = -1){
-		global $_ginfo;
-		$colsToFetch = implode(',', $colsToFetch);
-		$parametersArr = array();
 
-		if($lowerLimit==-1 && $upperLimit==-1){
-			return array('query'=>' TRUE ','parama'=>$parametersArr);
-		}
+  function errormsg($ec, $cnd=true) {
+    global $_ginfo;
+    return (($ec<0 && $cnd) ?getval($ec, $_ginfo["error"], "Error : ".$ec):"");
+  }
 
-		$parametersArr['lowerlimit'] = $lowerLimit;
-		$parametersArr['upperlimit'] = $upperLimit;
-		
-		$query  = "SELECT ".$colsToFetch." FROM ".$inWhichTable." WHERE ";
-		if($lowerLimit==-1)
-			$query .= " TRUE AND ";
-		else
-			$query .= $filteringKey." > {lowerlimit} AND ";
-		if($upperLimit==-1)
-			$query .= " TRUE ";
-		else
-			$query .= $filteringKey." < {upperlimit} ";
-		if($groupByKey!=-1)
-			$query .= "group by ".$groupByKey." ";
+  function tf($inp) {
+    return $inp?"true":"false";
+  }
+  // Function Added By Tej Pal Sharma for filtering Search Results
+  // Start::
+  //if both upperlimit and lowerlimit are set -1 then returns query => " TRUE " and param=>emptyArray
+  //Returns an associative array with keys 'query' whose value is the query and 'parama' whose value is an array(having values to replace in query) to pass to function Sqle::getA()
+  function filteredResultsQuery($filteringKey, $inWhichTable, $lowerLimit = -1, $upperLimit = -1, $colsToFetch = array('*'),$groupByKey = -1) {
+    global $_ginfo;
+    $colsToFetch = implode(',', $colsToFetch);
+    $parametersArr = array();
+    if($lowerLimit==-1 && $upperLimit==-1){
+      return array('query'=>' TRUE ','parama'=>$parametersArr);
+    }
+    $parametersArr['lowerlimit'] = $lowerLimit;
+    $parametersArr['upperlimit'] = $upperLimit;
+    
+    $query  = "SELECT ".$colsToFetch." FROM ".$inWhichTable." WHERE ";
+    if($lowerLimit==-1)
+      $query .= " TRUE AND ";
+    else
+      $query .= $filteringKey." > {lowerlimit} AND ";
+    if($upperLimit==-1)
+      $query .= " TRUE ";
+    else
+      $query .= $filteringKey." < {upperlimit} ";
+    if($groupByKey!=-1)
+      $query .= "group by ".$groupByKey." ";
+    return array('query'=>$query,'parama'=>$parametersArr);
+  }
+  // ::End
 
-		return array('query'=>$query,'parama'=>$parametersArr);
-	}
-	// ::End
+
 ?>
