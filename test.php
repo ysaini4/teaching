@@ -2,7 +2,6 @@
 include "includes/app.php";
 
 
-echo "Mohit....";
 
 
 

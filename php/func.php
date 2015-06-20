@@ -214,6 +214,16 @@
 		}
 		return $temp;
 	}
+	function intexplode_t2($ex,$inp,$limit=-1){
+		$temp=myexplode($ex,$inp);
+		$outp=array();
+		foreach($temp as $i=>$val){
+			$val=0+$val;
+			if(1<=$val &&  ($limit==-1 || $val<=$limit) )
+				$outp[]=$val;
+		}
+		return $outp;
+	}
 	function daystarttime($ts=null){
 		setifnn($ts,time());
 		return strtotime(Fun::timetodate($ts));

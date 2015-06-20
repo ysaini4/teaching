@@ -33,5 +33,19 @@ class Templates{
               </div>
 <?php
 	}
+  function check1($inp){
+    foreach($inp as $key=>$val)
+      $$key=$val;
+    mergeifunset($inpattr,array("class"=>$class,"id"=>$id==''?'':"check_".$id,"onchange"=>$onchange,"type"=>"checkbox", "value"=>$value, 'checked'=>'',"name"=>$name ));
+    mergeifunset($divattr,array("class"=>"col l6"));
+?>
+            <div <?php echo param2str($divattr); ?> >
+             <input <?php echo param2str($inpattr); ?>  />
+             <label style="padding-left:1.4em" for="<?php echo $inpattr["id"]; ?>" >
+              <?php echo $label; ?>
+             </label>
+            </div>
+<?php    
+  }
 }
 ?>

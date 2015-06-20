@@ -8,6 +8,7 @@ function dt($tn){
 function drop_table(){
 //	$tl=array("users","subjects","teachers","timeslot","notf","all_classes","all_subjects","all_topics","all_cst","booked");
 	$tl=array("all_classes","all_subjects","all_topics","all_cst");
+	$tl=array("timeslot","notf","booked");
 	foreach($tl as $i=>$val){
 		dt($val);
 	}
