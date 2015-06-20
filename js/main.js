@@ -28,6 +28,39 @@ function uploadfile(obj,name){
 	elm.click();
 }
 
+function topicssubtopic_t2(obj){
+	temp=obj;
+	var ids=["selectclass","selectsubject","selecttopic"];
+	var cstval=[];
+	for(var i=0;i<ids.length;i++){
+		cstval[i]=$("#"+ids[i]).val();
+	}
+	function getslist(inp,stext){
+		outp=[];
+		if(stext!=null)
+			outp.push(['', stext]);
+		for(var i in inp){
+			outp.push([i,inp[i].name]);
+		}
+		return outp;
+	}
+	if(obj.id=="selectclass" && typeof(topics[obj.value])!='undefined'){
+		var selectedHTML=selects.arr2opt(getslist(topics[obj.value]['children'],"Select Subject"));
+		$("#selectsubject").html(selectedHTML);
+	}
+	if(obj.id=="selectsubject" && typeof(topics[cstval[0]])!='undefined' && typeof(topics[cstval[0]]['children'][cstval[1]])!='undefined' ){
+		var selectedHTML=selects.arr2mselect(getslist( topics[cstval[0]]['children'][cstval[1]]['children'] ),'topic');
+		$("#selecttopic").html(selectedHTML);
+	}
+	$(".selectall").click(function(){
+		var jobj=$(this);
+		if(jobj.val()==0){
+			selectallmatched(jobj[0], $("[id^="+jobj.attr("id")+"]") );
+		}
+	});
+	$('select').material_select();
+}
+
 function topicssubtopic(obj){//assuming a variable topics is already defined
 	temp=obj;
 	var ids=["selectclass","selectsubject","selecttopic"];
@@ -201,4 +234,5 @@ function setinputselects(hidinp,cbselector){
 	}
 	hidinp.value=outp.join("-");
 }
+
 

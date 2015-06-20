@@ -8,7 +8,7 @@ load_view("Template/navbarnew.php");
     <div class="section">
     <div class="row">
     <div class="col s12  l12">
-        <div class="card-panel  grey lighten-2 " style='<?php if(server=='server') echo "display:none;"; ?>' >
+        <div class="card-panel  grey lighten-2 " style='<?php  ?>' >
             <div class="row">
                 <div class="col l3">
         <img class="materialboxed" width="200" src="<?php 

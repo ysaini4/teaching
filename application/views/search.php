@@ -2,6 +2,9 @@
 load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 ?>
+<script>
+var topics=<?php echo json_encode($cst_tree); ?>;
+</script>
 
 <main>
  <div class="container_class">
@@ -13,7 +16,7 @@ load_view("Template/navbarnew.php");
        <span class="black-text">
         SORT BY
        </span>
-       <select name="subject" class="browser-default" id="selectsubject" data-condition="simple">
+       <select name="subject" class="browser-default" data-condition="simple">
         <option value="exp">
          Experience
         </option>
@@ -38,33 +41,48 @@ load_view("Template/navbarnew.php");
      </span>
      <div class="row">
       <form method="post">
+        <div>
+          <div class="input-field col s12">
+            <select name='class' class="browser-default" onchange='topicssubtopic_t2(this);' id="selectclass" data-condition='simple' style='' >
+              <?php
+                 disp_olist($class_olist,array('selectalltext'=>"Select Class"));
+              ?>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="input-field col s12">
+            <select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic_t2(this);' data-condition='simple' >
+              <option value="" >Select Subject</option>
+            </select>
+          </div>
+        </div>
+
        <div class="col l12">
         <ul class="collapsible" data-collapsible="expandable">
 
-         <li>
-          <div class="collapsible-header teal-text blue-grey lighten-5">
-           By Subjects
-          </div>
-          <div class="collapsible-body">
-           <div class="row">
-            <div>
-              <?php
-              foreach($class_olist as $i=>$val ){
-              ?>
-              <div><?php echo $val['disptext']; ?></div>
-              <?php
-              }
-              ?>
-            </div>
-           </div>
-          </div>
-         </li>
 
          <li>
           <div class="collapsible-header teal-text blue-grey lighten-5">
-           By Subjects
+           By Topics
           </div>
-          <div class="collapsible-body">
+          <div class="collapsible-body" id="selecttopic" >
+           <?php
+            for($i=0;$i<4;$i++){
+           ?>
+           <div class="row">
+            <div class="col l12">
+             <input id="math" type="checkbox" name="sub[]" data-condition="checkbox" data-group="sub" />
+             <label style="padding-left:1.4em" for="math">
+              Maths
+             </label>
+            </div>
+           </div>
+           <?php
+            }
+           ?>
+
+
            <div class="row">
             <div class="col l6">
              <input id="math" type="checkbox" name="sub[]" data-condition="checkbox" data-group="sub" />

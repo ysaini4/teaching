@@ -339,6 +339,15 @@ var selects={
 			outp+="<option value='"+arr[i][0]+"' >"+arr[i][1]+"</option>";
 		}
 		return outp;
+	},
+	arr2mselect:function(arr, name){
+		var text='<div class="row"><div class="col l12"><input id="{id}" class="selectall" type="checkbox" name="{name}[]" checked value="{value}" /><label style="padding-left:1.4em" for="{id}">{label}</label></div></div>';
+		var outp=[];
+		outp.push(text.replaceall({"{id}":name, "{name}":name, "{label}":" &nbsp;&nbsp;"+"Select All","{value}":0 }));
+		for(var i=0;i<arr.length;i++){
+			outp.push(text.replaceall({"{id}":name+i, "{name}":name, "{label}":" &nbsp;&nbsp;"+arr[i][1], "{value}":arr[i][0]}));
+		}
+		return a.convreadmore(outp);
 	}
 };
 
@@ -449,6 +458,18 @@ var a={
 	readmore:function (obj){
 		$(obj).next().show();
 		$(obj).hide();
+	},
+	convreadmore:function(divlist,limit){
+		if(limit==null)
+			limit=5;
+		if(divlist.length<=limit)
+			return divlist.join("");
+		else{
+			var outp=divlist.slice(0,limit-1).join("");
+			outp+="<a onclick='a.readmore(this);' >Read more</a>";
+			outp+=("<div style='display:none;' >"+divlist.slice(limit-1).join("")+"</div>");
+			return outp;
+		}
 	}
 };
 

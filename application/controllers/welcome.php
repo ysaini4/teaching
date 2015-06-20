@@ -312,6 +312,7 @@ class Welcome extends CI_Controller {
     $cst_tree=Funs::cst_tree();
     $class_olist=Funs::cst_tree2classlist($cst_tree);
     $pageinfo["class_olist"]=$class_olist;
+    $pageinfo["cst_tree"]=$cst_tree;
 
     load_view("search.php",$pageinfo);
   }
