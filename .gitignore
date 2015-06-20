@@ -3,3 +3,11 @@ data/files/*
 data/mailf
 msv
 .msv*
+*.php
+js/*.js
+css/*.css
+modules/*.php
+php/*.php
+includes/*.php
+application/*/*.php
+application/*/*/*.php
