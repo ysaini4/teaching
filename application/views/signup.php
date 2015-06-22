@@ -13,15 +13,7 @@ $defopen="signupwindow";
         <div class="col s12 l10 offset-l1">
           <div class="card-panel">
             <?php
-            if (!empty($signupmsg)) {
-            ?>
-              <div class="row">
-                <div class="col s12 l10 offset-l1">
-                  <div class="card-panel red white-text center"><?php echo $signupmsg; ?></div>
-                </div>
-              </div>
-            <?php
-            }
+              load_view('Template/form_errors.php',array("msg"=>$signupmsg));
             ?>
             <div class="row">
               <div class="col s12">

@@ -119,6 +119,8 @@ class Welcome extends CI_Controller {
     $pageinfo["alldeg"]=$_ginfo["alldegrees"];
     load_view('joinus.php',$pageinfo);
   }
+
+
   public function login(){
     $pageinfo=array("loginmsg"=>"");
     if(Fun::isSetP("email","password")){
@@ -131,6 +133,7 @@ class Welcome extends CI_Controller {
     }
     load_view("login.php",$pageinfo);
   }
+
   public function signup(){
     $handle_signup=handle_request(Fun::mergeifunset($_POST, array("action"=>"signup")));
     if($handle_signup["ec"]>0){
@@ -140,6 +143,7 @@ class Welcome extends CI_Controller {
     $pageinfo["signupmsg"]=errormsg($handle_signup["ec"],ispost("signup"));
     load_view('signup.php',$pageinfo);
   }
+  
   public function cal($tid=0){
     global $_ginfo;
     $tid=Funs::gettid($tid);
@@ -532,6 +536,10 @@ class Welcome extends CI_Controller {
     sql::query($sql);
     unlink($finalFiles);
     header('Location:'.BASE.'myslots/'.$tid);
+  }
+
+  public function studentprofile() {
+    load_view("studentprofile.php",array());
   }
 
 }

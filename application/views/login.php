@@ -10,11 +10,7 @@ load_view("Template/navbarnew.php",$inp);
         <div class="col s12 l6 offset-l3">
           <div class="card-panel">
             <?php
-            if (!empty($loginmsg)) {
-                echo '<div class="row"><div class="col s12 l10 offset-l1">';
-                echo '<div class="card-panel red white-text center">' . $loginmsg . '</div>';
-                echo '</div></div>';
-            }
+              load_view('Template/form_errors.php',array("msg"=>$loginmsg));
             ?>
             <div class="row">
               <div class="col s12">
