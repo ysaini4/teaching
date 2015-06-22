@@ -312,6 +312,7 @@ abstract class Funs{
   }
   public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
     $hisoutput=array("select tid from teachers",array());
+    $hisoutput[0]="select dispteachers.tid, users.name, users.profilepic, teachers.jsoninfo from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid ";
     return $hisoutput;
   }
 }

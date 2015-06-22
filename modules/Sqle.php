@@ -179,14 +179,12 @@ class Sqle extends Sql{
 			$querysort="select * from (".$querylimit.") sortquery ".$sort;
 		else
 			$querysort=$querylimit;
-		echo $querysort;
 		$qresult=Sqle::getA($querysort,$param);
 		$outp["qresult"]=$qresult;
 		$outp["maxl"]=$maxl;
 		$outp["minl"]=$minl;
 		if($key==null){
 			$outp["max"]=$param["max"]+count($qresult);
-			$outp["min"]=$param["min"];
 		} else{
 			if(count($qresult)==0){
 				$outp["min"] = $param["min"];
