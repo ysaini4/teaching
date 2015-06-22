@@ -127,7 +127,7 @@ class Welcome extends CI_Controller {
         Fun::redirect(BASE."profile");
       }
       else
-        $pageinfo["loginmsg"]="Error in login";
+        $pageinfo["loginmsg"]="Invalid email/password";
     }
     load_view("login.php",$pageinfo);
   }
