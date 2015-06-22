@@ -34,6 +34,11 @@ load_view("Template/navbarnew.php",$inp);
           </div>
           <div id="tab_profile" class="col s12 offset-l2">
           <br><br>
+            <div class="row">
+              <div class="col s12">
+                <h5 class="teal-text text-darken-1">Profile Details</h5>
+              </div>
+            </div>
             <div id="profile_info">
               <div class="row">
                 <div class="col s12 l4">
@@ -59,15 +64,15 @@ load_view("Template/navbarnew.php",$inp);
                   <span class="grey-text text-darken-1">+91 987 654 3210</span>
                 </div>
               </div>
-            </div>  
-            
-            <div class="row">
-              <div class="col s12">
-                <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' ><i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
+              <div class="row">
+                <div class="col s12">
+                  <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' ><i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
+                </div>
               </div>
             </div>
 
             <div id="edit_profile_info">
+            <br>
               <form onsubmit='form.sendreq1(this,$(this).find("button")[0]);return false;' data-action="saveuserdetails">
                 <div class="row">
                   <div class="col s12 l4">
@@ -136,6 +141,11 @@ load_view("Template/navbarnew.php",$inp);
           <br><br>
             <div class="row">
               <div class="col s12">
+                <h5 class="teal-text text-darken-1">Upcoming Classes</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
                 <table class="hoverable">
                   <thead>
                     <tr>
@@ -184,15 +194,102 @@ load_view("Template/navbarnew.php",$inp);
                   </tbody>
                 </table>
               </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <h5 class="teal-text text-darken-1">Previous Classes</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <table class="hoverable">
+                  <thead>
+                    <tr>
+                      <th>Teacher</th>
+                      <th>Class</th>
+                      <th>Subject</th>
+                      <th>Topic</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Duration</th>
+                      <th>Feedback</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Dr. Shivam Mamgain</td>
+                      <td>XII</td>
+                      <td>Computers</td>
+                      <td>Algorithms</td>
+                      <td>29/06/2015</td>
+                      <td>09:00 AM</td>
+                      <td>2 hrs</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Babloo</td>
+                      <td>VII</td>
+                      <td>English</td>
+                      <td>Adverbs</td>
+                      <td>30/06/2015</td>
+                      <td>09:00 AM</td>
+                      <td>1 hrs</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>  
           </div>
           <div id="tab_reviews" class="col s12">
-            
+          <br><br>
+            <div class="row">
+              <div class="col s12">
+                <h5 class="teal-text text-darken-1">Reviews provided by you</h5>
+              </div>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="row">
+              <div class="col s12 l10 offset-l1">
+                <div class="card blue-grey">
+                  <div class="card-content white-text">
+                    <span class="card-title">Prof. Severus Snape</span>
+                    <p>Excellent tutor. Explained concepts better than school teachers.</p>
+                  </div>
+                  <div class="card-action">
+                    <a class="modal-trigger" href="#likes">15 <i class="mdi-action-thumb-up"></i></a>
+                    <a class="modal-trigger" href="#dislikes">2 <i class="mdi-action-thumb-down"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Card 1 Structure -->
+  <div id="likes" class="modal">
+    <div class="modal-content">
+      <h5 class="green-text">Likes</h5>
+      <p><a href="#">Babloo</a></p>
+      <p><a href="#">Pickachu</a></p>
+      <p><a href="#">Partap Mess Wala</a></p>
+    </div>
+  </div>
+  <div id="dislikes" class="modal">
+    <div class="modal-content">
+      <h5 class="green-text">Dislikes</h5>
+      <p><a href="#">Rajnikandha</a></p>
+      <p><a href="#">Charmendar</a></p>
+      <p><a href="#">Bulbasaur</a></p>
+    </div>
+  </div>
+
 <?php
 load_view("Template/footer.php",$inp);
 load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
