@@ -14,9 +14,13 @@ $defopen="signupwindow";
           <div class="card-panel">
             <?php
             if (!empty($signupmsg)) {
-                echo '<div class="row"><div class="col s12 l10 offset-l1">';
-                echo '<div class="card-panel red white-text center">' . $signupmsg . '</div>';
-                echo '</div></div>';
+            ?>
+              <div class="row">
+                <div class="col s12 l10 offset-l1">
+                  <div class="card-panel red white-text center"><?php echo $signupmsg; ?></div>
+                </div>
+              </div>
+            <?php
             }
             ?>
             <div class="row">
@@ -88,21 +92,6 @@ $defopen="signupwindow";
     </div>
   </main>
 
-<script type="text/javascript">
-  var password = document.getElementById("password");
-  var confirm_password = document.getElementById("confirm_password");
-
-  function validatePassword() {
-    if (password.value != confirm_password.value) {
-      confirm_password.setCustomValidity("Passwords do not match");
-    }
-    else {
-      confirm_password.setCustomValidity("");
-    }
-  }
-
-  document.getElementById('submit_button').onclick = validatePassword;
-</script>
 <?php
 load_view("Template/footer.php",$inp);
 load_view("Template/bottom.php",$inp);
