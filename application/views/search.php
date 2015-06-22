@@ -193,11 +193,12 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 		 </div>
 		 <div class="divider">
 		 </div>
-		 <div id="searchresultdiv" data-action='search' data-max='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>' >
+		 <div id="searchresultdiv" data-action='search' data-max='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>' data-maxl='<?php echo $_ginfo["numsearchr"]["loadadd"]; ?>' data-eparams='searchform()' data-ignoreloadonce='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>' >
 		 <?php
-		 	handle_disp(array('class'=>'', 'subject'=>'', 'topic'=>'', 'price'=>'', 'timer'=>'', 'lang'=>'', 'timeslot'=>'', 'orderby'=>'', 'search'=>'', 'max'=>0, 'maxl'=>$_ginfo["numsearchr"]["loadonce"]), "search");
+		 	handle_disp(array('class'=>'', 'subject'=>'', 'topic'=>'', 'price'=>'', 'timer'=>'', 'lang'=>'', 'timeslot'=>'', 'orderby'=>'', 'search'=>$search, 'max'=>0, 'maxl'=>$_ginfo["numsearchr"]["loadonce"]), "search");
 		 ?>
 		 </div>
+		 <button onclick='div.load($("#searchresultdiv")[0],0);' >Loadmore</button>
 		</div>
 	 </div>
 	</div>

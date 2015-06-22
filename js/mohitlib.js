@@ -474,14 +474,27 @@ var a={
 };
 
 var div={
+	setblock:function(obj){
+		$(obj).attr("data-blocked","true");
+	},
+	isblock:function(obj){
+		return ($(obj).attr("data-blocked")=="true");
+	},
+	setunblock:function(obj){
+		$(obj).attr("data-blocked","false");
+	},
 	reload:function(obj,call_back_data,adata){
 		button.sendreq_v2_t4(obj,call_back_data,function(d){
 			$(obj).html(d);
 		},adata);
 	},
 	load:function(obj,isloadold){
+		if(div.isblock(obj))
+			return false;
+		div.setblock(obj);
 		$(obj).attr("data-isloadold",isloadold);
 		button.sendreq_v2_t4(obj,function(d){
+			div.setunblock(obj);
 			var replacearr=["min", "max", "minl", "maxl"];
 			for(var i=0; i<replacearr.length; i++){
 				$(obj).attr("data-"+replacearr[i], d[replacearr[i]]);
@@ -489,10 +502,19 @@ var div={
 		},function(d){
 			if(isloadold==1)
 				$(obj).prepend(d);
-			else
+			else if(isloadold==0)
 				$(obj).append(d);
+			else if(isloadold==-1)
+				$(obj).html(d);
 		});
+		return true;
 	},
+	reload_autoscroll:function(obj,data_maxl){
+		if(data_maxl==null)
+			data_maxl=$(obj).attr("data-ignoreloadonce");
+		$(obj).attr({"data-max":0, "data-maxl":data_maxl});
+		div.load($("#searchresultdiv")[0],-1);
+	}
 };
 
 

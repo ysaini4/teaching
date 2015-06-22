@@ -116,7 +116,7 @@ load_view("Template/navbarnew.php",$inp);
                 </div>
                 <div class="row">
                   <div class="col s12">
-                    <button type="submit" class="btn blue waves-effect waves-light" id="save_profile_button"><i class="mdi-content-save left"></i>Save Edit</button>
+                    <button  class="btn blue waves-effect waves-light" type="submit" ><i class="mdi-content-save left"></i>Save Edit</button>
                     <a class="btn white grey-text waves-effect waves-grey" id="cancel_profile_button">Cancel Edit</a>
                   </div>
                 </div>

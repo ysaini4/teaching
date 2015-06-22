@@ -143,7 +143,7 @@ class Actiondisp{
 
 		if($ec>0){
 			list($query,$param)=Funs::tejpal_output($data);
-			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$_ginfo["numsearchr"]["loadadd"], 'minl'=>0, 'min'=>0));
+			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$data["maxl"], 'minl'=>0, 'min'=>0));
 			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, $_ginfo["numsearchr"]["loadadd"]);
 			$odata=Fun::getflds(array("max", "maxl"), $qoutput);
 		}
