@@ -133,7 +133,8 @@ class Actiondisp{
 		load_view('timeslotpopup.php',$pageinfo);
 	}
 	function search($data,$printjson=true){
-		$need=array('class', 'subject', 'topic', 'price', 'timer', 'lang', 'timeslot', 'orderby', 'search','max');
+		global $_ginfo;
+		$need=array('class', 'subject', 'topic', 'price', 'timer', 'lang', 'timeslot', 'orderby', 'search', 'max', 'maxl');
 		$ec=1;
 		$odata = 0;
 		if(!Fun::isAllSet($need,$data)){
@@ -142,8 +143,8 @@ class Actiondisp{
 
 		if($ec>0){
 			list($query,$param)=Funs::tejpal_output($data);
-			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>10, 'minl'=>0, 'min'=>0));
-			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, 5);
+			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$_ginfo["numsearchr"]["loadadd"], 'minl'=>0, 'min'=>0));
+			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, $_ginfo["numsearchr"]["loadadd"]);
 			$odata=Fun::getflds(array("max", "maxl"), $qoutput);
 		}
 		if($printjson){

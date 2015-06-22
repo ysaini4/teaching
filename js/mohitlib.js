@@ -473,6 +473,29 @@ var a={
 	}
 };
 
+var div={
+	reload:function(obj,call_back_data,adata){
+		button.sendreq_v2_t4(obj,call_back_data,function(d){
+			$(obj).html(d);
+		},adata);
+	},
+	load:function(obj,isloadold){
+		$(obj).attr("data-isloadold",isloadold);
+		button.sendreq_v2_t4(obj,function(d){
+			var replacearr=["min", "max", "minl", "maxl"];
+			for(var i=0; i<replacearr.length; i++){
+				$(obj).attr("data-"+replacearr[i], d[replacearr[i]]);
+			}
+		},function(d){
+			if(isloadold==1)
+				$(obj).prepend(d);
+			else
+				$(obj).append(d);
+		});
+	},
+};
+
+
 
 String.prototype.bound = function (n) {
 	if(this.length<=n)
