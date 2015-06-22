@@ -86,5 +86,8 @@ $defopen="signupwindow";
 
 <?php
 load_view("Template/footer.php",$inp);
-load_view("Template/bottom.php",$inp);
+load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
 ?>
+  <script src="js/signup.js"></script>
+</body>
+</html>
