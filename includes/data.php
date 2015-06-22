@@ -88,7 +88,7 @@ $_ginfo["error"]=array(
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 $_ginfo["needotp"]=true;
-$_ginfo["needsignupotp"]=true;
+$_ginfo["needsignupotp"]=false;
 $_ginfo['imgheight']=200;
 $_ginfo['imgwidth']=200;
 
