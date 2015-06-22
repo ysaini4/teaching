@@ -184,3 +184,34 @@ function form_request(obj,data){//data is dict with keys => instruction,changedt
 		}
 	);
 }
+
+
+function readform(obj,add){
+	var inputs=['input','textarea','select'];
+	outp={};
+	var checkboxes={};
+	for(i=0;i<inputs.length;i++){
+		var ilist=$(obj).find(inputs[i]);
+		for(j=0;j<ilist.length;j++){
+			if(ilist[j].getAttribute('name')!=null){
+				var fn=ilist[j].getAttribute('name');
+				var fv=(ilist[j].value);
+				if(ilist[j].type=="checkbox"){
+					setifunset(outp,fn,[]);
+					setifunset(checkboxes,fn,1);
+					if(ilist[j].checked)
+						outp[fn].push(ilist[j].value);
+				}
+				else
+					outp[fn]=fv;
+			}
+		}
+	}
+	for(var i in checkboxes){
+		outp[i]=outp[i].join("-");
+	}
+	if(add!=null)
+		outp[add]="";
+	return outp;
+}
+

@@ -16,17 +16,17 @@ var topics=<?php echo json_encode($cst_tree); ?>;
        <span class="black-text">
         SORT BY
        </span>
-       <select name="subject" class="browser-default" data-condition="simple">
-        <option value="exp">
+       <select name="orderby" class="browser-default" >
+        <option value="1">
          Experience
         </option>
-        <option value="fee_h2l">
+        <option value="2">
          Fees/hr(High to Low)
         </option>
-        <option value="fee_l2h">
+        <option value="3">
          Fees/hr(Low to High)
         </option>
-        <option value="rating">
+        <option value="4">
          Rating
         </option>
        </select>
@@ -40,7 +40,10 @@ var topics=<?php echo json_encode($cst_tree); ?>;
       Refine
      </span>
      <div class="row">
-      <form method="post">
+      <form method="post" id="searchform" >
+        <?php
+        hidinp("search",htmlspecialchars($search));
+        ?>
         <div>
           <div class="input-field col s12">
             <select name='class' class="browser-default" onchange='topicssubtopic_t2(this);' id="selectclass" data-condition='simple' style='' >
@@ -67,8 +70,10 @@ var topics=<?php echo json_encode($cst_tree); ?>;
            By Topics
           </div>
           <div class="collapsible-body" id="selecttopic" >
+            Select The class
+            <input type='checkbox' style='display:none' name='topic' value='' />
            <?php
-            for($i=0;$i<4;$i++){
+            for($i=0;$i<0;$i++){
            ?>
            <div class="row">
             <div class="col l12">
@@ -81,36 +86,6 @@ var topics=<?php echo json_encode($cst_tree); ?>;
            <?php
             }
            ?>
-
-
-           <div class="row">
-            <div class="col l6">
-             <input id="math" type="checkbox" name="sub[]" data-condition="checkbox" data-group="sub" />
-             <label style="padding-left:1.4em" for="math">
-              Mathematics
-             </label>
-            </div>
-            <div class="col l6">
-             <input id="physics" type="checkbox" name="sub[]" data-condition="checkbox" data-group="sub" />
-             <label for="physics" style="padding-left:1.4em">
-              Physics
-             </label>
-            </div>
-           </div>
-           <div class="row">
-            <div class="col l6">
-             <input id="chem" type="checkbox" name="sub[]" data-condition="checkbox" data-group="sub" />
-             <label style="padding-left:1.4em" for="chem">
-              Chemistry
-             </label>
-            </div>
-            <div class="col l6">
-             <input id="bio" type="checkbox" name="sub[]" data-condition="checkbox" data-group="sub" />
-             <label for="bio" style="padding-left:1.4em">
-              Biology
-             </label>
-            </div>
-           </div>
           </div>
          </li>
          <li>
@@ -118,34 +93,26 @@ var topics=<?php echo json_encode($cst_tree); ?>;
            By Time
           </div>
           <div class="collapsible-body">
+           <?php
+           foreach($allts as $i=>$val) {
+           ?>
            <div class="row">
+            <?php
+              foreach($val as $j=>$val1){
+            ?>
             <div class="col l6">
-             <input id="t1" type="checkbox" name="time[]" data-condition="checkbox" data-group="time" />
-             <label style="padding-left:1.4em" for="t1">
-              12-1PM
+             <input id="timesearch<?php echo $i."-".$j; ?>" type="checkbox" name="timeslot" checked value="<?php echo $val1[1]; ?>" />
+             <label style="padding-left:1.4em" for="timesearch<?php echo $i."-".$j; ?>" >
+              <?php echo $val1[0]; ?>
              </label>
             </div>
-            <div class="col l6">
-             <input id="t2" type="checkbox" name="time[]" data-condition="checkbox" data-group="time" />
-             <label for="t2" style="padding-left:1.4em">
-              1-2PM
-             </label>
-            </div>
+            <?php
+              }
+            ?>
            </div>
-           <div class="row">
-            <div class="col l6">
-             <input id="t3" type="checkbox" name="time[]" data-condition="checkbox" data-group="time" />
-             <label style="padding-left:1.4em" for="t3">
-              2-3PM
-             </label>
-            </div>
-            <div class="col l6">
-             <input id="t4" type="checkbox" name="time[]" data-condition="checkbox" data-group="time" />
-             <label for="t4" style="padding-left:1.4em">
-              3-4PM
-             </label>
-            </div>
-           </div>
+           <?php
+           }
+           ?>
           </div>
          </li>
          <li>
@@ -153,42 +120,28 @@ var topics=<?php echo json_encode($cst_tree); ?>;
            By Language
           </div>
           <div class="collapsible-body">
+           <?php
+            $count=1;
+            foreach($lang as $i=>$val1){
+           ?>
            <div class="row">
+            <?php
+              foreach($val1 as $j=>$val2){
+            ?>
             <div class="col l6">
-             <input id="l1" type="checkbox" name="lang[]" data-condition="checkbox" data-group="lang" />
-             <label style="padding-left:1.4em" for="l1">
-              English
+             <input id="lang<?php echo $count; ?>" type="checkbox" name="lang" value='<?php echo $count; ?>' checked />
+             <label style="padding-left:1.4em" for="lang<?php echo $count; ?>" >
+              <?php echo $val2; ?>
              </label>
             </div>
-            <div class="col l6">
-             <input id="l2" type="checkbox" name="lang[]" data-condition="checkbox" data-group="lang" />
-             <label for="l2" style="padding-left:1.4em">
-              Hindi
-             </label>
-            </div>
+            <?php
+                $count++;
+              }
+            ?>
            </div>
-           <div class="row">
-            <div class="col l6">
-             <input id="l3" type="checkbox" name="lang[]" data-condition="checkbox" data-group="lang" />
-             <label style="padding-left:1.4em" for="l3">
-              Tamil
-             </label>
-            </div>
-            <div class="col l6">
-             <input id="l4" type="checkbox" name="lang[]" data-condition="checkbox" data-group="lang" />
-             <label for="l4" style="padding-left:1.4em">
-              Telugu
-             </label>
-            </div>
-           </div>
-           <div class="row">
-            <div class="col l6">
-             <input id="l5" type="checkbox" name="lang[]" data-condition="checkbox" data-group="lang" />
-             <label style="padding-left:1.4em" for="l5">
-              French
-             </label>
-            </div>
-           </div>
+           <?php
+            }
+           ?>
           </div>
          </li>
          <li>
@@ -196,42 +149,35 @@ var topics=<?php echo json_encode($cst_tree); ?>;
            By Fees/hr
           </div>
           <div class="collapsible-body">
-           <div class="row">
-            <div class="col l6">
-             <input id="f1" type="checkbox" name="fees[]" data-condition="checkbox" data-group="fees" />
-             <label style="padding-left:1.4em" for="f1">
-              &lt;1000
-             </label>
-            </div>
-            <div class="col l6">
-             <input id="f2" type="checkbox" name="fees[]" data-condition="checkbox" data-group="fees" />
-             <label for="f2" style="padding-left:1.4em">
-              1000-1500
-             </label>
-            </div>
-           </div>
-           <div class="row">
-            <div class="col l6">
-             <input id="f3" type="checkbox" name="fees[]" data-condition="checkbox" data-group="fees" />
-             <label style="padding-left:1.4em" for="f3">
-              1500-2000
-             </label>
-            </div>
-            <div class="col l6">
-             <input id="f4" type="checkbox" name="fees[]" data-condition="checkbox" data-group="fees" />
-             <label for="f4" style="padding-left:1.4em">
-              2000-2500
-             </label>
-            </div>
-           </div>
-           <div class="row">
-            <div class="col l6">
-             <input id="f5" type="checkbox" name="fees[]" data-condition="checkbox" data-group="fees" />
-             <label style="padding-left:1.4em" for="f5">
-              &gt;2500
-             </label>
-            </div>
-           </div>
+           <?php
+            $count=1;
+            foreach($price as $val){
+              opent("div",array("class"=>"row"));
+              foreach($val as $val1){
+                load_view("Template/check1.php",array('label'=>htmlspecialchars($val1[0]), 'value'=>$count,"id"=>"price".$count, "name"=>"price"));
+                $count++;
+              }
+              closet("div");
+            }
+           ?>
+          </div>
+         </li>
+         <li>
+          <div class="collapsible-header teal-text blue-grey lighten-5">
+           By Time required
+          </div>
+          <div class="collapsible-body">
+           <?php
+            $count=1;
+            foreach($timer as $val){
+              opent("div",array("class"=>"row"));
+              foreach($val as $val1){
+                load_view("Template/check1.php",array('label'=>htmlspecialchars($val1[0]), 'value'=>$count,"id"=>"timer".$count, "name"=>"timer"));
+                $count++;
+              }
+              closet("div");
+            }
+           ?>
           </div>
          </li>
         </ul>

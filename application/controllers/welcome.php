@@ -313,10 +313,16 @@ class Welcome extends CI_Controller {
   }    
 
   public function search(){
+    global $_ginfo;
     $cst_tree=Funs::cst_tree();
     $class_olist=Funs::cst_tree2classlist($cst_tree);
     $pageinfo["class_olist"]=$class_olist;
     $pageinfo["cst_tree"]=$cst_tree;
+    $pageinfo["allts"]=Funs::timeslotlist_t2();
+    $pageinfo["lang"]=Funs::doublesplit($_ginfo['encodeddataofteacherstable']["lang"]);
+    $pageinfo["price"]=Funs::doublesplit($_ginfo['price']);
+    $pageinfo["timer"]=Funs::doublesplit($_ginfo['timer']);
+    $pageinfo["search"]=get("q","");
 
     load_view("search.php",$pageinfo);
   }

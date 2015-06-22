@@ -1,4 +1,9 @@
 <?php
+/*
+Define 
+#fname : Name of function, in which we are currently.
+
+*/
 abstract class Funs{
   public static function headerinfo(){
     return array("title"=>"wwm","css"=>array("bootstrap-3.1.1-dist/css/bootstrap.css","bootstrap-3.1.1-dist/css/bootstrap-theme.css","css/main.css"));
@@ -39,6 +44,23 @@ abstract class Funs{
         $outp[]=array_slice($times,16*$i,16);
       return $outp;
     }
+  }
+
+  public static function timeslotlist_t2(){
+    /*
+    Return all timeslots in a day in 2 hour, 2 pair. try : print_r(#fname());
+    */
+    $datetoday=Fun::datetoday();
+    $times=array();
+    for($i=0;$i<6;$i++){
+      $pair=array();
+      for($j=0;$j<2;$j++){
+        $h=$i*2+$j*12;
+        $pair[]=array(Fun::timetotime_t3($datetoday+$h*3600,false)." - ".Fun::timetotime_t3($datetoday+($h+2)*3600,true ), implode("-", Fun::oneToN(2*$h+4,2*$h+1)));
+      }
+      $times[]=$pair;
+    }
+    return $times;
   }
 
   //Made by ::Himanshu Rohilla::  
@@ -277,6 +299,20 @@ abstract class Funs{
     $dob=$sinfo["dob"]>0 ? Fun::timetostr_t3($sinfo["dob"]):"";
     $pageinfo=array("fname"=>$flname[0],"lname"=>$flname[1],"sinfo"=>$sinfo,"dob"=>$dob);
     return $pageinfo;
+  }
+  public static function doublesplit($inp){
+    $outp=array();
+    for($i=0;$i<count($inp);$i+=2){
+      $newe=array($inp[$i]);
+      if($i+1<count($inp))
+        $newe[]=$inp[$i+1];
+      $outp[]=$newe;
+    }
+    return $outp;
+  }
+  public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
+    $hisoutput=array("select * from teachers",array());
+    
   }
 }
 ?>

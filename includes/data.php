@@ -26,6 +26,16 @@ $view_default=array(
 		"inpattr"=>array("value"=>""),
 //		"divattr"=>array("style"=>"margin-top:-28px;padding:0px;margin-bottom:-28px;"),
 		"divattr"=>array("style"=>"")
+	),
+	"Template/check1.php"=>array(
+		"onchange"=>"",
+		"id"=>"",
+		"label"=>"Check",
+		"class"=>"",
+		"name"=>"",
+		"value"=>"",
+		"inpattr"=>array(),
+		"divattr"=>array("style"=>"")
 	)
 );
 $_ginfo=array();
@@ -77,8 +87,20 @@ $_ginfo["error"]=array(
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 $_ginfo["needotp"]=true;
-$_ginfo["needsignupotp"]=false;
+$_ginfo["needsignupotp"]=true;
 $_ginfo['imgheight']=200;
 $_ginfo['imgwidth']=200;
+
+$_ginfo["price"]=array(
+		array('<1000','price<1000'),
+		array('1000-2000','1000<=price AND price<=2000'),
+		array('>2000','2000<=price'),
+	);
+$_ginfo["timer"]=array(
+		array('<1 hr','timer<1'),
+		array('1-5 hr','1<=timer AND timer<=5'),
+		array('>5 hr','5<timer'),
+	);
+
 
 ?>
