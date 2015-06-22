@@ -16,6 +16,8 @@ $(document).ready(function(){
     selectYears: 130,
     startDate:'1 January 1950',
   });
+  
+  $('.modal-trigger').leanModal();
 
   $('.bxslider').bxSlider({
     minSlides: 6,
