@@ -63,7 +63,7 @@ load_view("Template/navbarnew.php",$inp);
             
             <div class="row">
               <div class="col s12">
-                <a class="btn waves-effect waves-light blue" id="edit_profile_button"><i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
+                <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' ><i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
               </div>
             </div>
 
@@ -74,7 +74,7 @@ load_view("Template/navbarnew.php",$inp);
                     Name
                   </div>
                   <div class="col s12 l4">
-                    <input id="edit_full_name" placeholder="Enter your full name" type="text" value="Shivam Mamgain" class="validate">
+                    <input name="name" placeholder="Enter your full name" type="text" value="Shivam Mamgain" class="validate">
                   </div>
                 </div>
                 <div class="row">
@@ -82,7 +82,7 @@ load_view("Template/navbarnew.php",$inp);
                     Email
                   </div>
                   <div class="col s12 l4">
-                    <input id="edit_email" placeholder="Enter your email address" type="email" value="shivammamgain47@gmail.com" class="validate">
+                    <input name="email" placeholder="Enter your email address" type="email" value="shivammamgain47@gmail.com" class="validate">
                   </div>
                 </div>
                 <div class="row">
@@ -90,15 +90,7 @@ load_view("Template/navbarnew.php",$inp);
                     Mobile Number
                   </div>
                   <div class="col s12 l4">
-                    <input id="edit_mobile_no" placeholder="Enter your mobile number" type="text" value="9876543210" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Date Of Birth
-                  </div>
-                  <div class="col s12 l4">
-                    <input id="edit_dob" placeholder="Add date of birth" type="date" value="" class="datepicker">
+                    <input name="phone" placeholder="Enter your mobile number" type="text" value="9876543210" class="validate">
                   </div>
                 </div>
                 <div class="row">
@@ -106,18 +98,34 @@ load_view("Template/navbarnew.php",$inp);
                     Gender
                   </div>
                   <div class="col s12 l4">
-                    <input id="edit_gender_male" type="radio" class="validate" value="male" name="gender">
-                    <label for="edit_gender_male">Male</label>
-                    <input id="edit_gender_female" type="radio" class="validate" value="female" name="gender">
-                    <label for="edit_gender_female">Female</label>
-                    <input id="edit_gender_others" type="radio" class="validate" value="female" name="gender">
-                    <label for="edit_gender_others">Others</label>
+                    <select name="gender" class="browser-default">
+                      <option value="" disabled selected>Select gender</option>
+                       <?php
+                          $olist=array("Male","Female");
+                          $sinfo["gender"]="M";
+                          foreach($olist as $i=>$disp){
+                        ?>
+                          <option value="<?php echo $disp[0]; ?>">
+                            <?php echo $disp; ?>
+                          </option>
+                        <?php
+                          }
+                        ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 l4">
+                    Date Of Birth
+                  </div>
+                  <div class="col s12 l4">
+                    <input name="dob" placeholder="Add date of birth" type="date" value="" class="datepicker">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col s12">
-                    <button type="submit" class="btn blue waves-effect waves-light" id="save_profile_button"><i class="mdi-content-save left"></i>Save Edit</button>
-                    <a class="btn white grey-text waves-effect waves-grey" id="cancel_profile_button">Cancel Edit</a>
+                    <button type="submit" class="btn blue waves-effect waves-light" ><i class="mdi-content-save left"></i>Save Edit</button>
+                    <a class="btn white grey-text waves-effect waves-grey" onclick='hideshowdown("edit_profile_info", "profile_info", 1000);'  >Cancel Edit</a>
                   </div>
                 </div>
               </form>

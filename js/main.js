@@ -3,9 +3,9 @@ function hideshow(h,s){
 	$("#"+h).hide();
 	$("#"+s).show();
 }
-function hideshowdown(h,s){
-	$("#"+h).slideUp();
-	$("#"+s).slideDown();
+function hideshowdown(h,s,timetaken){
+	$("#"+h).slideUp(timetaken);
+	$("#"+s).slideDown(timetaken);
 }
 
 
