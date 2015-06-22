@@ -59,7 +59,8 @@ $_ginfo["action_constrain"]=array(
 	"deltopics"=>array("need"=>array("deleteid")),
 	"signupotp"=>array("need"=>array("phone")),
 	"signup"=>array("need"=>array("email","password","name","phone","otp")),
-	"changepassaction"=>array("need"=>array("oldpass","newpass","newcpass"))
+	"changepassaction"=>array("need"=>array("oldpass","newpass","newcpass")),
+	"saveuserdetails"=>array("users"=>"all"),
 );
 $_ginfo["error"]=array(
 	"-1"=>"Session expired",

@@ -132,5 +132,26 @@ class Actiondisp{
 
 		load_view('timeslotpopup.php',$pageinfo);
 	}
+	function search($data,$printjson=true){
+		$need=array('class', 'subject', 'topic', 'price', 'timer', 'lang', 'timeslot', 'orderby', 'search','max');
+		$ec=1;
+		$odata = 0;
+		if(!Fun::isAllSet($need,$data)){
+			$ec = -9;
+		}
+
+		if($ec>0){
+			list($query,$param)=Funs::tejpal_output($data);
+			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>10, 'minl'=>0));
+			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, 5);
+			$odata=Fun::getflds(array("max", "maxl"), $qoutput);
+		}
+		if($printjson){
+			echo json_encode(array('ec'=>$ec,'data'=>$odata))."\n";
+		}
+		if($ec<0)
+			return;
+		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult']));
+	}
 }
 ?>

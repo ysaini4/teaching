@@ -121,5 +121,17 @@ class Actions{
       $outp["ec"]=-26;
     return $outp;
   }
+  function saveuserdetails($data){
+    $outp=array("ec"=>1,"data"=>0);
+    $canneed=array("name", "email", "phone", "gender", "dob");
+    $toupdate=Fun::getflds($canneed, $data);
+    $myf=User::userProfile(null, array("email"=>getval("email",$toupdate,'')));
+    if(isset($toupdate["email"]) && !( $myf==null || $myf["id"]==$data["uid"] )){
+      $outp["ec"] = -16;
+    } else{
+      $outp["data"] = Sqle::updateVal("users",$toupdate,array("id"=>User::loginId()));
+    }
+    return $outp;
+  }
 }
 ?>

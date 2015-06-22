@@ -311,8 +311,8 @@ abstract class Funs{
     return $outp;
   }
   public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
-    $hisoutput=array("select * from teachers",array());
-    
+    $hisoutput=array("select tid from teachers",array());
+    return $hisoutput;
   }
 }
 ?>
