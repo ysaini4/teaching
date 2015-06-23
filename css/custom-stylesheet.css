@@ -39,3 +39,15 @@ input#main-search-bar:focus {
   background: #ffffff;
   border:1px solid #00897b;
 }
+
+.tabs .tab a {
+  color: #43a047;
+}
+
+.tabs .tab a:hover {
+  color: #00c853;
+}
+
+.tabs .indicator {
+  background-color: #43a047;
+}

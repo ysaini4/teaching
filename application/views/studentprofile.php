@@ -253,14 +253,16 @@ load_view("Template/navbarnew.php",$inp);
             <!-- Card 1 -->
             <div class="row">
               <div class="col s12 l10 offset-l1">
-                <div class="card blue-grey">
-                  <div class="card-content white-text">
-                    <span class="card-title">Prof. Severus Snape</span>
+                <div class="card white">
+                  <div class="card-content grey-text">
+                    <h6>
+                      <a href="#"><i class="mdi-action-face-unlock small left"></i>Prof. Severus Snape</a>
+                    </h6><br>
                     <p>Excellent tutor. Explained concepts better than school teachers.</p>
                   </div>
                   <div class="card-action">
-                    <a class="modal-trigger" href="#likes">15 <i class="mdi-action-thumb-up"></i></a>
-                    <a class="modal-trigger" href="#dislikes">2 <i class="mdi-action-thumb-down"></i></a>
+                    <a class="modal-trigger" href="#likes" onclick="smgPreloader();">15 <i class="mdi-action-thumb-up"></i></a>
+                    <a class="modal-trigger" href="#dislikes" onclick="smgPreloader();">2 <i class="mdi-action-thumb-down"></i></a>
                   </div>
                 </div>
               </div>
@@ -275,18 +277,25 @@ load_view("Template/navbarnew.php",$inp);
   <!-- Card 1 Structure -->
   <div id="likes" class="modal">
     <div class="modal-content">
-      <h5 class="green-text">Likes</h5>
-      <p><a href="#">Babloo</a></p>
-      <p><a href="#">Pickachu</a></p>
-      <p><a href="#">Partap Mess Wala</a></p>
+      <h5 class="green-text"><i class="mdi-action-thumb-up left"></i>Likes</h5>
+      <div class="smg-preloader"></div>
+      <div class="smg">
+        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Babloo</a></p>
+        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Pickachu</a></p>
+        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Partap</a></p>
+      </div>
     </div>
   </div>
+
   <div id="dislikes" class="modal">
     <div class="modal-content">
-      <h5 class="green-text">Dislikes</h5>
-      <p><a href="#">Rajnikandha</a></p>
-      <p><a href="#">Charmendar</a></p>
-      <p><a href="#">Bulbasaur</a></p>
+      <h5 class="green-text"><i class="mdi-action-thumb-down left"></i>Dislikes</h5>
+      <div class="smg-preloader"></div>
+      <div class="smg">
+        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Babloo</a></p>
+        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Pickachu</a></p>
+        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Partap</a></p>
+      </div>
     </div>
   </div>
 
