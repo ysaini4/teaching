@@ -289,6 +289,7 @@ var form={
 	valid:{
 		is:function (obj){
 			var errorlist=[];
+			var objlist=[];
 			var inputs=['INPUT','TEXTAREA','SELECT'];
 			var problem=false;
 			for(i=0;i<inputs.length;i++){
@@ -299,7 +300,8 @@ var form={
 					}
 					else{
 						$(ilist[j]).parent().addClass("has-error");
-						var errormsg=$(ilist[j]).attr("data-unfilled") || $(ilist[j]).attr("name") || null;
+						var errormsg=$(ilist[j]).attr("data-unfilled") || "Please fill it" ||$(ilist[j]).attr("name") ;
+						objlist.push(ilist[j]);
 						errorlist.push(errormsg);
 						if(!problem)
 							$(ilist[j]).focus();
@@ -307,18 +309,28 @@ var form={
 					}
 				}
 			}
-			return errorlist;
+			return [errorlist,objlist];
 		},
-		action:function(obj){
-			var errors=form.valid.is(obj);
+		action:function(obj, type){
+			var [errors, objlist]=form.valid.is(obj);
 			if(errors.length>0){
-				for(var i=0;i<errors.length;i++){
-					errors[i]=(i+1)+". "+errors[i];
+				if(type==1){
+					for(var i=0; i<errors.length; i++){
+						objlist[i].setCustomValidity(errors[i]);
+					}
 				}
-				var dispmsg="You have to fill:<br>"+errors.join("<br>");
-				success.push(dispmsg,true);
+				else{
+					for(var i=0;i<errors.length;i++){
+						errors[i]=(i+1)+". "+errors[i];
+					}
+					var dispmsg="You have to fill:<br>"+errors.join("<br>");
+					success.push(dispmsg,true);
+				}
 			}
 			return !(errors.length>0);
+		},
+		action1:function(obj){
+			return form.valid.action(obj,1);
 		}
 	}
 };
@@ -653,3 +665,41 @@ var success={
 	}
 };
 
+
+
+
+
+
+
+function mylib(){
+	function textareainc(obj){
+		var allattrs=button.attrs(obj);
+		mergeifunset(allattrs,{'data-maxrows':5});
+		if($(obj).outerHeight() < obj.scrollHeight + parseFloat($(obj).css("borderTopWidth")) + parseFloat($(obj).css("borderBottomWidth"))) {
+			if($(obj).attr("rows")<allattrs["data-maxrows"])
+				$(obj).attr("rows",1+parseInt($(obj).attr("rows")));
+		};
+	}
+	$("textarea.autoinc").on("keyup keydown",function(){
+		textareainc(this);
+	});
+	var valid={
+		resetinp:function (){
+			$("input").on("kepup keydown ", function(e){
+				if(e.keyCode!=9 && e.keyCode!=13 ){
+					this.setCustomValidity("");
+				}
+			});
+		}
+	};
+	valid.resetinp();
+}
+
+function hasgoodchar(inp){
+	var uselesschar=" \t\n";
+	for(var i=0;i<inp.length;i++){
+		if(uselesschar.indexOf(inp[i])==-1)
+			return true;
+	}
+	return false;
+}

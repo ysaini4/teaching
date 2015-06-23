@@ -338,6 +338,7 @@ abstract class Fun{
     $cont="To : ".$to."\nSub : ".$sub."\nTime : ".(Fun::timetostr(time()))."\n\n".$body."\n\n".json_encode($add)."\n\n----------------------------------------------------\n";
     mergeifunset($add,array("file"=>"data/mailf"));
     $oldc=file_exists($add["file"])?file_get_contents($add["file"]):"";
+
     file_put_contents($add["file"], $oldc.$cont);
     return chmod($add["file"],0777);
   }

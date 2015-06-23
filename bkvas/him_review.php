@@ -14,8 +14,8 @@ function getTeacherUserDetails($row) {
 	$details['isselected']=$row['isselected'];
 	$details['rate']=$row['rate'];
 	$details['youtubelink']=$row['youtubelink'];
-		$jsoninfo=$row['jsoninfo'];//Why, this is not formatted ?
-		$jsonArray=str2json($jsoninfo);
+	$jsoninfo=$row['jsoninfo'];//Why, this is not formatted ?
+	$jsonArray=str2json($jsoninfo);
 	$details['subother']=$jsonArray['subother'];
 	$details['city']=$jsonArray['city'];
 	$details['country']=$jsonArray['country'];

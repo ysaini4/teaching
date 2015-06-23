@@ -1,0 +1,22 @@
+@Satis/Shivam, Any other who is doing designing
+	PLEASE MAKE SURE:
+		If you improve already built part, make sure it's linking with backend is also working as it was before improving.
+		If anything doesn't work, just inform me IMMEDIATELY.
+
+
+$Satis/Shivam
+	For now, correct the contact us page, thank you message.
+
+	In review page,
+		when click on number => open popup.
+		when click on thumbs => display success message "Liked" in right top corner with timeout=1000 ms
+
+	In profile details, display all the details there. ( DOB, Gender ) { Don't add them in joinus form }
+
+	In student profile, there will be one more tab => my transictions.
+		In top of it display current amount in account.
+		display the listing of transictions.
+		ex: 
+		1. You paid 5000 rs. { on Last Thursday } { 15 min. Ago } 
+		2. You booked class of physics in 2000 rs. { 12 hours Ago.}
+		
