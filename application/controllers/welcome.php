@@ -288,7 +288,7 @@ class Welcome extends CI_Controller {
         }
     }
 
-	public function edit($tid=1){
+	public function edit($tid=0){
 	  $page=array("issubmitted"=>false);
 	  $sql="Select * from users where id='$tid' and type='t'";
 	  $temp=Sql::getArray($sql);
