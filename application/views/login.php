@@ -14,7 +14,7 @@ load_view("Template/navbarnew.php",$inp);
             ?>
             <div class="row">
               <div class="col s12">
-                <h3 class="teal-text center">Login</h3>
+                <h3 class="teal-text text-darken-1 center">Login</h3>
               </div>
             </div>
             <div class="row">
