@@ -1,7 +1,7 @@
 <?php
 ?>
    <main>
-    <div class="container_profile">
+    <div class="container">
     <div class="section">
         <br>
     <div class="row">
@@ -12,52 +12,52 @@
           <div class="col s5">
             <div class="row">
               <label class="label1">First Name:</label>
-              <?php echo fun::smilymsg($firstName); ?>
+              <?php echo Fun::smilymsg($firstName); ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1">Last Name:</label>
-              <?php echo fun::smilymsg($lastName);?>
+              <?php echo Fun::smilymsg($lastName);?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >User Name:</label>
-                <?php echo fun::smilymsg($aboutinfo['username']); ?>
+                <?php echo $aboutinfo['username']; ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Email:</label>
-               <?php echo fun::smilymsg($aboutinfo['email']); ?>
+               <?php echo $aboutinfo['email']; ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >City:</label>
-              <?php echo fun::smilymsg($jsonArray['city']); ?>
+              <?php echo Fun::smilymsg($jsonArray['city']); ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Country:</label>
-               <?php echo fun::smilymsg($jsonArray['country']); ?>
+               <?php echo Fun::smilymsg($jsonArray['country']); ?>
               <!-- col-sm-10 --> 
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Birthday:</label>
-                <?php echo fun::smilymsg(date('d-m-Y',$aboutinfo['dob'])); ?>
+                <?php echo date('d-m-Y',$aboutinfo['dob']); ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Gender</label>
-              <?php if(fun::smilymsg($aboutinfo['gender'])=='m')
+              <?php if(Fun::smilymsg($aboutinfo['gender'])=='m')
                       echo 'Male';
-                    else if(fun::smilymsg($aboutinfo['gender'])=='f')
+                    else if(Fun::smilymsg($aboutinfo['gender'])=='f')
                       echo 'Female'; 
                     else
                       echo 'Other';
@@ -67,14 +67,14 @@
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Resume: </label>
-              <a href="<?php echo fun::smilymsg($jsonArray['resume']); ?>"><u>Click To See</u></a>
+              <a href="<?php echo $jsonArray['resume']; ?>"><u>Click To See</u></a>
                  
             </div>
           </div>
           <div class="col s5">
             <div class="row">
               <label class="label1" >Phone:</label>
-              <?php echo fun::smilymsg($aboutinfo['phone']); ?>
+              <?php echo Fun::smilymsg($aboutinfo['phone']); ?>
             </div>
           </div>
         </div>
@@ -129,13 +129,13 @@
             <div class="col s5">
             <div class="row ">
               <label class="label1" >Fees</label>
-              <?php echo 'Rs. '.fun::smilymsg($jsonArray['minfees']); ?>
+              <?php echo 'Rs. '.$jsonArray['minfees']; ?>
             </div>
           </div>
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Experience</label>
-              <?php echo fun::smilymsg($aboutinfo['teachingexp']); ?>
+              <?php echo $aboutinfo['teachingexp']; ?>
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@
           <div class="col s5">
             <div class="row">
               <label class="label1" >College</label>
-              <?php echo 'IIT '.fun::smilymsg($jsonArray['college']); ?>
+              <?php echo 'IIT '.$jsonArray['college']; ?>
             </div>
           </div>
           <div class="col s5">
@@ -155,9 +155,9 @@
           <div class="col s5">
             <div class="row ">
               <label class="label1" >Degree</label>
-                <?php echo fun::smilymsg($jsonArray['degree']);
+                <?php echo Fun::smilymsg($jsonArray['degree']);
                       if($jsonArray['degreeother']!='')
-                        echo ' , '.fun::smilymsg($jsonArray['degreeother']);
+                        echo ' , '.Fun::smilymsg($jsonArray['degreeother']);
                 ?>
             </div>
           </div>
@@ -165,7 +165,7 @@
             <div class="row ">
               <label class="label1" >Branch</label>
               <?php
-                echo fun::smilymsg($jsonArray['branch']);
+                echo Fun::smilymsg($jsonArray['branch']);
               ?>
               </div>
           </div>
