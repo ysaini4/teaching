@@ -27,298 +27,37 @@ load_view("Template/navbarnew.php",$inp);
         <div class="row">
           <div class="col s12">
             <ul class="tabs">
-              <li class="tab col s4"><a class="active" href="#tab_profile">Profile</a></li>
-              <li class="tab col s4"><a href="#tab_classes">Classes</a></li>
-              <li class="tab col s4"><a href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s3"><a class="active" href="#tab_profile">Profile</a></li>
+              <li class="tab col s3"><a href="#tab_classes">Classes</a></li>
+              <li class="tab col s3"><a href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s3"><a href="#tab_account">Account</a></li>
             </ul>
           </div>
           <div id="tab_profile" class="col s12 offset-l2">
-          <br><br>
-            <div class="row">
-              <div class="col s12">
-                <h5 class="teal-text text-darken-1">Profile Details</h5>
-              </div>
-            </div>
-            <div id="profile_info">
-              <div class="row">
-                <div class="col s12 l4">
-                  Name
-                </div>
-                <div class="col s12 l6">
-                  <span class="grey-text text-darken-1">Shivam Mamgain</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s12 l4">
-                  Email
-                </div>
-                <div class="col s12 l6">
-                  <span class="grey-text text-darken-1">shivammamgain47@gmail.com</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s12 l4">
-                  Mobile Number
-                </div>
-                <div class="col s12 l6">
-                  <span class="grey-text text-darken-1">+91 987 654 3210</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s12">
-                  <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' >
-                  <i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
-                </div>
-              </div>
-            </div>
-
-            <div id="edit_profile_info">
-            <br>
-              <form onsubmit='form.sendreq1(this,$(this).find("button")[0]);return false;' data-action="saveuserdetails">
-                <div class="row">
-                  <div class="col s12 l4">
-                    Name
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="name" placeholder="Enter your full name" type="text" value="Shivam Mamgain" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Email
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="email" placeholder="Enter your email address" type="email" value="shivammamgain47@gmail.com" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Mobile Number
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="phone" placeholder="Enter your mobile number" type="text" value="9876543210" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Gender
-                  </div>
-                  <div class="col s12 l4">
-                    <select name="gender" class="browser-default">
-                      <option value="" disabled selected>Select gender</option>
-                       <?php
-                          $olist=array("Male","Female");
-                          $sinfo["gender"]="M";
-                          foreach($olist as $i=>$disp){
-                        ?>
-                          <option value="<?php echo $disp[0]; ?>">
-                            <?php echo $disp; ?>
-                          </option>
-                        <?php
-                          }
-                        ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Date Of Birth
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="dob" placeholder="Add date of birth" type="date" value="" class="datepicker">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    <button type="submit" class="btn blue waves-effect waves-light" ><i class="mdi-content-save left"></i>Save Edit</button>
-                    <a class="btn white grey-text waves-effect waves-grey" onclick='hideshowdown("edit_profile_info", "profile_info", 1000);'  >Cancel Edit</a>
-                  </div>
-                </div>
-              </form>
-            </div>
+          <?php
+            load_view("Template/studentprofile_about.php");
+          ?>
           </div>
 
           <div id="tab_classes" class="col s12">
-          <br><br>
-            <div class="row">
-              <div class="col s12">
-                <h5 class="teal-text text-darken-1">Upcoming Classes</h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <table class="hoverable">
-                  <thead>
-                    <tr>
-                      <th>Teacher</th>
-                      <th>Class</th>
-                      <th>Subject</th>
-                      <th>Topic</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Duration</th>
-                      <th>Feedback</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>Dr. Shivam Mamgain</td>
-                      <td>XII</td>
-                      <td>Computers</td>
-                      <td>Algorithms</td>
-                      <td>29/06/2015</td>
-                      <td>09:00 AM</td>
-                      <td>2 hrs</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Babloo</td>
-                      <td>VII</td>
-                      <td>English</td>
-                      <td>Adverbs</td>
-                      <td>30/06/2015</td>
-                      <td>09:00 AM</td>
-                      <td>1 hrs</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Prof. Snape</td>
-                      <td>Hogwarts</td>
-                      <td>Witchcraft</td>
-                      <td>Spells</td>
-                      <td>21/07/2015</td>
-                      <td>10:00 AM</td>
-                      <td>3 hrs</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <h5 class="teal-text text-darken-1">Previous Classes</h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <table class="hoverable">
-                  <thead>
-                    <tr>
-                      <th>Teacher</th>
-                      <th>Class</th>
-                      <th>Subject</th>
-                      <th>Topic</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Duration</th>
-                      <th>Feedback</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>Dr. Shivam Mamgain</td>
-                      <td>XII</td>
-                      <td>Computers</td>
-                      <td>Algorithms</td>
-                      <td>29/06/2015</td>
-                      <td>09:00 AM</td>
-                      <td>2 hrs</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Babloo</td>
-                      <td>VII</td>
-                      <td>English</td>
-                      <td>Adverbs</td>
-                      <td>30/06/2015</td>
-                      <td>09:00 AM</td>
-                      <td>1 hrs</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>  
+          <?php
+            load_view("Template/studentprofile_classes.php");
+          ?>
           </div>
           <div id="tab_reviews" class="col s12">
-          <br><br>
-            <div class="row">
-              <div class="col s12">
-                <h5 class="teal-text text-darken-1">Reviews provided by you</h5>
-              </div>
-            </div>
-
-            <!-- Review Cards  -->
-            <div class="row">
-              <div class="col s12 l10 offset-l1">
-                <div class="card white">
-                  <div class="card-content grey-text">
-                    <h6>
-                      <a href="#"><i class="mdi-action-face-unlock small left"></i>Prof. Severus Snape</a>
-                    </h6><br>
-                    <p>He is an excellent tutor. Explained concepts better than school teachers did.</p>
-                  </div>
-                  <div class="card-action">
-                    <a href="#">Upvote</a>
-                    <a href="#">Downvote</a>
-                    <a class="modal-trigger" href="#upvote_modal" onclick="smgPreloader();">15&nbsp;<i class="mdi-action-thumb-up"></i></a>
-                    <a class="modal-trigger" href="#downvote_modal" onclick="smgPreloader();">2&nbsp;<i class="mdi-action-thumb-down"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12 l10 offset-l1">
-                <div class="card white">
-                  <div class="card-content grey-text">
-                    <h6>
-                      <a href="#"><i class="mdi-action-face-unlock small left"></i>Dr. Shivam Mamgain</a>
-                    </h6><br>
-                    <p>A terrible and arrogant teacher. He has no respect for the students and thinks students and donkeys are alike.</p>
-                  </div>
-                  <div class="card-action">
-                    <a href="#">Upvote</a>
-                    <a href="#">Downvote</a>
-                    <a class="modal-trigger" href="#upvote_modal" onclick="smgPreloader();">39&nbsp;<i class="mdi-action-thumb-up"></i></a>
-                    <a class="modal-trigger" href="#downvote_modal" onclick="smgPreloader();">11&nbsp;<i class="mdi-action-thumb-down"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          <?php
+            load_view("Template/studentprofile_reviews.php");
+          ?>
+          </div>
+          <div id="tab_account" class="col s12">
+          <?php
+            load_view("Template/studentprofile_account.php");
+          ?>
           </div>
         </div>
       </div>
     </div>
   </main>
-
-  <!-- Upvote Modal Structure -->
-  <div id="upvote_modal" class="modal">
-    <div class="modal-content">
-      <h5 class="green-text"><i class="mdi-action-thumb-up left"></i>Upvotes</h5>
-      <div class="smg-preloader"></div>
-      <div class="smg">
-        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Babloo</a></p>
-        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Pickachu</a></p>
-        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Partap</a></p>
-      </div>
-    </div>
-  </div>
-  <!-- Downvote Modal Structure -->
-  <div id="downvote_modal" class="modal">
-    <div class="modal-content">
-      <h5 class="green-text"><i class="mdi-action-thumb-down left"></i>Downvotes</h5>
-      <div class="smg-preloader"></div>
-      <div class="smg">
-        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Babloo</a></p>
-        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Pickachu</a></p>
-        <p><a href="#"><i class="mdi-image-tag-faces left"></i>Partap</a></p>
-      </div>
-    </div>
-  </div>
 
 <?php
 load_view("Template/footer.php",$inp);
