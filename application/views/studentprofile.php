@@ -250,7 +250,7 @@ load_view("Template/navbarnew.php",$inp);
               </div>
             </div>
 
-            <!-- Card 1 -->
+            <!-- Review Cards  -->
             <div class="row">
               <div class="col s12 l10 offset-l1">
                 <div class="card white">
@@ -258,11 +258,31 @@ load_view("Template/navbarnew.php",$inp);
                     <h6>
                       <a href="#"><i class="mdi-action-face-unlock small left"></i>Prof. Severus Snape</a>
                     </h6><br>
-                    <p>Excellent tutor. Explained concepts better than school teachers.</p>
+                    <p>He is an excellent tutor. Explained concepts better than school teachers did.</p>
                   </div>
                   <div class="card-action">
-                    <a class="modal-trigger" href="#likes" onclick="smgPreloader();">15 <i class="mdi-action-thumb-up"></i></a>
-                    <a class="modal-trigger" href="#dislikes" onclick="smgPreloader();">2 <i class="mdi-action-thumb-down"></i></a>
+                    <a href="#">Upvote</a>
+                    <a href="#">Downvote</a>
+                    <a class="modal-trigger" href="#upvote_modal" onclick="smgPreloader();">15&nbsp;<i class="mdi-action-thumb-up"></i></a>
+                    <a class="modal-trigger" href="#downvote_modal" onclick="smgPreloader();">2&nbsp;<i class="mdi-action-thumb-down"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 l10 offset-l1">
+                <div class="card white">
+                  <div class="card-content grey-text">
+                    <h6>
+                      <a href="#"><i class="mdi-action-face-unlock small left"></i>Dr. Shivam Mamgain</a>
+                    </h6><br>
+                    <p>A terrible and arrogant teacher. He has no respect for the students and thinks students and donkeys are alike.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">Upvote</a>
+                    <a href="#">Downvote</a>
+                    <a class="modal-trigger" href="#upvote_modal" onclick="smgPreloader();">39&nbsp;<i class="mdi-action-thumb-up"></i></a>
+                    <a class="modal-trigger" href="#downvote_modal" onclick="smgPreloader();">11&nbsp;<i class="mdi-action-thumb-down"></i></a>
                   </div>
                 </div>
               </div>
@@ -274,10 +294,10 @@ load_view("Template/navbarnew.php",$inp);
     </div>
   </main>
 
-  <!-- Card 1 Structure -->
-  <div id="likes" class="modal">
+  <!-- Upvote Modal Structure -->
+  <div id="upvote_modal" class="modal">
     <div class="modal-content">
-      <h5 class="green-text"><i class="mdi-action-thumb-up left"></i>Likes</h5>
+      <h5 class="green-text"><i class="mdi-action-thumb-up left"></i>Upvotes</h5>
       <div class="smg-preloader"></div>
       <div class="smg">
         <p><a href="#"><i class="mdi-image-tag-faces left"></i>Babloo</a></p>
@@ -286,10 +306,10 @@ load_view("Template/navbarnew.php",$inp);
       </div>
     </div>
   </div>
-
-  <div id="dislikes" class="modal">
+  <!-- Downvote Modal Structure -->
+  <div id="downvote_modal" class="modal">
     <div class="modal-content">
-      <h5 class="green-text"><i class="mdi-action-thumb-down left"></i>Dislikes</h5>
+      <h5 class="green-text"><i class="mdi-action-thumb-down left"></i>Downvotes</h5>
       <div class="smg-preloader"></div>
       <div class="smg">
         <p><a href="#"><i class="mdi-image-tag-faces left"></i>Babloo</a></p>
