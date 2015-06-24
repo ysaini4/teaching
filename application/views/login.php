@@ -41,11 +41,6 @@ load_view("Template/navbarnew.php",$inp);
                   </div>
                 </form>
               </div>
-              <div class="row">
-                <div class="col s12 l10 offset-l1">
-                  <h6 class="grey-text">Don't have an account? Sign up <a href="<?php echo BASE."signup"; ?>">here</a>.</h6>
-                </div>
-              </div>
             </div>
 
             <div class="row">
@@ -75,17 +70,23 @@ load_view("Template/navbarnew.php",$inp);
                 </div>
               </form>
             </div>
+            <div class="row">
+              <div class="col s12 l10 offset-l1">
+                <h6 class="grey-text">Don't have an account? Sign up <a href="<?php echo BASE."signup"; ?>">here</a>.</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 l10 offset-l1">
+                <h5 class="grey-text center">OR</h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col s12 l6 offset-l3">
           <div class="card-panel">
-            <div class="row">
-              <div class="col s12">
-                <h5 class="grey-text center">OR</h5>
-              </div>
-            </div>
+          <br>
             <div class="row">
               <div class="col s12 l10 offset-l1">
                 <a class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">Login with facebook</a>
