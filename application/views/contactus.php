@@ -62,7 +62,7 @@ load_view("Template/navbarnew.php");
 	    		  <form id="contact-form" class="col s12" method="post">
 	    		  	<div class="row">
 	    		  	  <div class="col s12">
-	    		  	  	<h5 class="teal-text">Send us a message</h5>
+	    		  	  	<h5 class="teal-text">How can we help you?</h5>
 	    		  	  </div>
 	    		  	  <div class="input-field col s12">
 	    		  	  	<input id="name" name="name" type="text" class="validate" required>
