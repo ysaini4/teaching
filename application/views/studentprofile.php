@@ -66,7 +66,8 @@ load_view("Template/navbarnew.php",$inp);
               </div>
               <div class="row">
                 <div class="col s12">
-                  <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' ><i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
+                  <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' >
+                  <i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
                 </div>
               </div>
             </div>
