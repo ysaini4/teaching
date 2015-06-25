@@ -98,8 +98,10 @@ input#main-search-bar:focus {
   line-height: 40px;
 }
 
-.nav > li:hover > a { background: #fff;
-color:#000; }
+.nav > li:hover > a {
+  background: #fff;
+  color:#000;
+}
 
 .nav > li > div {
   position: absolute;
@@ -147,4 +149,5 @@ color:#000; }
 
 .nav .nav-column li a:hover { 
   background-color: none;
-  color: #666666; }
+  color: #666666;
+}

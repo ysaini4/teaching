@@ -8,7 +8,7 @@ load_view("Template/navbarnew.php");
 	<br>
 	  <div class="row">
 	  	<div class="col s12 l6">
-	  		<div class="card-panel">
+	  		<div class="card-panel" style="height:520px;">
 	  		  <div class="row">
             <div class="col s12">
               <h3 class="teal-text text-darken-1 center">Contact Us</h3>
@@ -45,7 +45,7 @@ load_view("Template/navbarnew.php");
 	  		</div>
 	  	</div>
 	  	<div class="col s12 l6">
-        <div class="card-panel">
+        <div class="card-panel" style="height:520px;">
 	    		<div class="row">
 		    		<?php
 					    if(!empty($msg)) {
@@ -62,7 +62,7 @@ load_view("Template/navbarnew.php");
 	    		  <form id="contact-form" class="col s12" method="post">
 	    		  	<div class="row">
 	    		  	  <div class="col s12">
-	    		  	  	<h5 class="teal-text">How can we help you?</h5>
+	    		  	  	<h5 class="teal-text">How can we help you?</h5><br>
 	    		  	  </div>
 	    		  	  <div class="input-field col s12">
 	    		  	  	<input id="name" name="name" type="text" class="validate" required>
