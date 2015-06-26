@@ -8,7 +8,7 @@ load_view("Template/navbarnew.php",$inp);
     <br>
       <div class="row">
         <div class="col s12 l6">
-          <div class="card-panel" style="height:540px;">
+          <div class="card-panel">
             <?php
               load_view('Template/form_errors.php',array("msg"=>$loginmsg));
             ?>
@@ -92,11 +92,11 @@ load_view("Template/navbarnew.php",$inp);
         </div>
 
         <div class="col s12 l6">
-          <div class="card-panel" style="height:540px;">
+          <div class="card-panel">
           <br>
             <div class="row">
               <div class="col s12 l10 offset-l1">
-                <h5 class="teal-text">Sign Up with other platforms</h5>
+                <h5 class="teal-text">Sign up with other platforms</h5>
               </div>
             </div>
             <div class="row">
