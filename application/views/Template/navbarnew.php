@@ -7,7 +7,7 @@
 
   <!-- NavBar -->
   <div class="navbar-fixed">
-    <nav class="teal" role="navigation">
+    <nav class="teal darken-4" role="navigation">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo" style="padding-left:20px;">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
