@@ -1,6 +1,6 @@
 <?php
 load_view("Template/top.php",$inp);
-load_view("Template/navbar.php",$inp);
+load_view("Template/navbarnew.php",$inp);
 
 $defopen="otpwindow";
 $defopen="signupwindow";
@@ -15,11 +15,27 @@ $defopen="signupwindow";
             <?php
               load_view('Template/form_errors.php',array("msg"=>$signupmsg));
             ?>
+
             <div class="row">
-              <div class="col s12">
+              <div class="col s12 l3 offset-l1">
                 <h4 class="teal-text text-darken-1 center">Sign Up</h4>
               </div>
+              <div class="col s12 l8">
+                <div class="row grey-text">
+                  <div class="col s12">
+                    <ul>
+                      <li><i class="mdi-navigation-chevron-right left"></i>
+                        This form is meant only for students.
+                      </li>
+                      <li><i class="mdi-navigation-chevron-right left"></i>
+                        All fields are mandatory.
+                      </li>                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div class="row center">
               <form class="col s12 l10 offset-l1" method="post" onsubmit='return ms.signupform(this,<?php echo tf($_ginfo["needsignupotp"]); ?>);' <?php if($_ginfo["needsignupotp"]) { ?>  data-action='signupotp' data-params='{"phone":$("#signupwindow").find("input[name=phone]").val()}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?>  <?php } ?>  autocomplete="off" >
                 <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
@@ -45,14 +61,15 @@ $defopen="signupwindow";
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <input id="phone" name="phone" type="text" data-condition="phone"  >
+                      <input id="phone" name="phone" type="text" data-condition="phone">
                       <label for="phone">Mobile Number</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <button class="btn waves-effect waves-light" name="signup" type="submit" id="submit_button">Submit</button>
-                      <button class="btn grey waves-effect waves-light" type="reset">Reset</button>
+                      <button class="btn waves-effect waves-light" name="signup" type="submit" id="submit_button">
+                        Submit<i class="mdi-content-send right"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -92,6 +109,5 @@ load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false))
 <!-- 
   <script src="js/signup.js"></script>
 -->
-
 </body>
 </html>

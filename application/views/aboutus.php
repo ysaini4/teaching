@@ -1,15 +1,7 @@
 <?php
 load_view("Template/top.php");
-//jaewfhjqwfb
 load_view("Template/navbarnew.php");
 ?>
-
-<!--
-44444
-11111111111gfggfgdgg
-mohit11834567
--->
-
 
   <main>
     <div class="container">
@@ -22,9 +14,6 @@ mohit11834567
             <li class="tab col s2"><a href="#who">Who We Are</a></li>
             <li class="tab col s2"><a href="#how">How We Work</a></li>     
             <li class="tab col s2"><a href="#why">Why Us</a></li>
-<!-- 
-            <li class="tab col s2"><a href="#core">Core Team</a></li>  
- -->
           </ul>
          </div>
         </div>
@@ -158,16 +147,12 @@ mohit11834567
             </div>
           </div> 
          </div>   
-
         </div>
-
-      </div> 
-
-
+      </div>
       </div>
     </div>
   </main>
 <?php
-load_view("Template/footernew.php");
+load_view("Template/footer.php");
 load_view("Template/bottom.php");
 ?>
