@@ -12,7 +12,7 @@
         <a href="#" class="brand-logo" style="padding-left:20px;">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="<?php echo BASE."aboutus"; ?>">About</a></li>
+          <li><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
           <li><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>
 
           <?php
@@ -47,8 +47,8 @@
 
   <!-- SideNav -->
   <ul class="side-nav" id="mobile-demo">
-    <li><a href="<?php echo BASE."aboutus"; ?>">About</a></li>
-    <li><a href="<?php echo BASE."contactus"; ?>">Contact</a></li>
+    <li><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
+    <li><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>
 
     <?php
     if (User::islogin()) {
