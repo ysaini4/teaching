@@ -9,7 +9,34 @@ load_view("Template/navbarnew.php",$inp);
       <br>
         <div class="row">
           <div class="col s12 l4 offset-l1 center">
-            <i class="mdi-action-account-circle large"></i>
+            <img class="materialboxed" height="100" width="100" src="photo/human1.png">
+            <br>
+            <!-- Change Profile Picture -->
+            <a href="#pic_upload" class="modal-trigger" style="cursor:pointer;">Change Profile Picture</a>
+            <div id="pic_upload" class="modal">
+              <div class="modal-content">
+                <h6 class="teal-text">Change Profile Picture</h6>
+              </div>
+              <div class="row">
+                <form action="#" class="col s12 l8 offset-l2">
+                  <div class="row">
+                    <div class="file-field input-field col s12">
+                      <input class="file-path validate" type="text">
+                      <div class="btn waves-effect waves-light blue">
+                        <span>Open</span>
+                        <input type="file">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <button type="submit" class="btn waves-effect waves-light white grey-text">Change</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End -->
           </div>
           <div class="col s12 l7">
             <div class="row">

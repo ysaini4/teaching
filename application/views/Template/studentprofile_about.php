@@ -29,11 +29,16 @@
       <span class="grey-text text-darken-1">+91 987 654 3210</span>
     </div>
   </div>
-  <div class="row">
-    <div class="col s12">
-      <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' >
-      <i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
-    </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <h6>
+      <a onclick="editProfile();" style="cursor:pointer;">
+        <i class="mdi-editor-mode-edit left"></i>Edit Profile&nbsp;&nbsp;
+        <i id="edit_prefix_arrow" class="mdi-hardware-keyboard-arrow-up"></i>
+      </a>
+    </h6>
   </div>
 </div>
 
