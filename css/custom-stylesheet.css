@@ -47,3 +47,7 @@ input#main-search-bar:focus {
 .tabs .indicator {
   background-color: #43a047;
 }
+
+.footer-link {
+  color: #eeeeee;
+}
