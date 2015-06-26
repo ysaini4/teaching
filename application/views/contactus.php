@@ -105,7 +105,7 @@ load_view("Template/navbarnew.php");
 </main>
 
 <?php
-load_view("Template/footernew.php");
+load_view("Template/footer.php");
 load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
 ?>
   <script src="https://maps.googleapis.com/maps/api/js"></script>

@@ -59,7 +59,7 @@ $defopen="signupwindow";
                 <div id="otpwindow" style='<?php dit($defopen=="otpwindow"); ?>' >
 
                   <div class="col s12">
-                    Please confirm your number
+                    An OTP has been sent to your phone. Please enter it below.
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
