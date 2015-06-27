@@ -3,14 +3,65 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 //$message="";
 ?>
-<?php if(!$issubmitted){?>
+<?php if (!$issubmitted) { ?>
 <main>
   <div class="container">
+  <br>
     <div class="row">
       <div class="col s12">
         <div class="card-panel">
-          <h4 class="teal-text text-darken-1 center">Join Us</h4>
-          <br>
+
+          <div class="row">
+            <div class="col s12 l3 offset-l1">
+              <h3 class="teal-text text-darken-1 center">Join Us</h3>
+            </div>
+            <div class="col s12 l8">
+              <div class="row grey-text">
+                <div class="col s12">
+                  <ul>
+                    <li><i class="mdi-navigation-chevron-right left"></i>
+                      This form is meant only for tutors.
+                    </li>
+                    <li><i class="mdi-navigation-chevron-right left"></i>
+                      Star (<span class="red-text">*</span>) marked fields are mandatory.
+                    </li>
+                    <li><i class="mdi-navigation-chevron-right left"></i>
+                      An OTP will be sent to your Mobile Phone after you submit the form.
+                    </li>
+                    <li><i class="mdi-navigation-chevron-right left"></i>
+                      Confirmation through the OTP is mandatory.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OTP Section -->
+          <div id="otp_section">  
+            <div class="row">
+              <div class="col s12 l11 offset-l1">
+                <h5 class="teal-text text-darken-1">Confirmation</h5>
+                <span class="grey-text">The OTP has been sent to your Mobile Phone.<br>Please confirm it below.</span>
+              </div>
+            </div>
+            <div class="row">
+              <form class="col s12 l11 offset-l1">
+                <div class="row">
+                  <div class="input-field col s12 l4">
+                    <input id="otp" type="text" class="validate">
+                    <label for="otp">One Time Password</label>
+                  </div>
+                  <div class="input-field col s12 l4">
+                    <button class="btn waves-effect waves-light" type="submit">Verify</button>
+                  </div>
+                </div>   
+              </form>
+            </div>
+          </div>
+          <!-- End OTP Section -->
+
+          <div id="main_form_section">
           <div class="row">
             <div class="col s12">
             <form class="col s12 l10 offset-l1" enctype="multipart/form-data"  method="post" onsubmit="return submitForm_t2(this);">
@@ -25,17 +76,17 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Name<span class="red-text">*</span></span>
                 </div>
                 <div class="col s12 l4">
-                  <input placeholder="First Name"   type="text" class="validate" name="fname"  data-condition="simple" length="35">
+                  <input placeholder="First Name" type="text" class="validate" name="fname"  data-condition="simple">
                 </div>
                 <div class="col s12 l4">
-                  <input placeholder="Last Name" type="text" class="validate" name="lname" data-condition="simple" length=35>
+                  <input placeholder="Last Name" type="text" class="validate" name="lname" data-condition="simple">
                 </div>
               </div>
               <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Subjects<span class="red-text">*</span></span>
                   <br>
-                  <span class="grey-text text-lighten-1" style="font-size: 13px;">You would love to teach</span>
+                  <span class="grey-text text-lighten-1" style="font-size: 13px;">You would like to teach</span>
                 </div>
                 <div class="col s12 l4">
                   <div>
@@ -61,16 +112,14 @@ load_view("Template/navbarnew.php");
                     <label for="science">Science (6-10)</label>
                   </div>
                   <div>
-                    <input id="subject_others" type="checkbox" name="sub6" data-condition="checkbox"  data-group="sub" onchange="ot();" >
-                    <label for="subject_others">Others</label>
+                    <input id="subject_other" type="checkbox" name="sub6" data-condition="checkbox" data-group="sub" onchange="specifySubOther()">
+                    <label for="subject_other">Other</label>
                   </div>
                 </div>
               </div>
-              <div class="row" id="otherType1">
+              <div class="row" id="specify_sub_other">
                 <div class="col s12 l8 offset-l4">
-
-                  <input placeholder="Specify if Others" type="text" class="validate" name="subother" length=20>
-            
+                  <input placeholder="Please specify if other" type="text" class="validate" name="subother">
                 </div>
               </div>
               <div class="row">
@@ -103,80 +152,67 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Mininum Fees<span class="red-text">*</span></span><br>
                     <span class="grey-text text-lighten-1" style="font-size: 13px;">Minimun tution fees per hour</span>
                 </div>
-                
-                <div class="col s12 l4">
-                  <select data-condition="simple"  class="browser-default" onchange="f(this);" name="minfees" id="minfees">
-                    <option value="" disabled selected>Min.Fees</option>
-                    <option value="200">Rs.200</option>
-					<option value="300">Rs.300</option>
-                    <option value="500">Rs.500</option>
-                    <option value="800">Rs.800</option>
-                    <option value="1000">Rs.1000</option>
-                    <option value="1300">Rs.1300</option>
-                    <option value="1500">Rs.1500</option>
-                    <option value="1800">Rs.1800</option>
-                    <option value="2000">Rs.2000</option>
-                    <option value="2500">Rs.2500</option>
-                    <option value="3000">Rs.3000</option>
-					<option value="5000">Rs.5000</option>
-					<option value="8000">Rs.8000</option>
-                    
-          </select>
-
-              </div>
-            <div class="col s12 l4">
-              <div id="sada" class="col s8 l2"></div>
-                <div class="col s4 l2">USD</div>
-                  </div>
+                <div class="col s12 l5">
+                  <select data-condition="simple"  class="browser-default" name="minfees" id="minfees">
+                    <option value="" disabled selected>Select Minimum Fees</option>
+                    <option value="200">&#8377; 200</option>
+					          <option value="300">&#8377; 300</option>
+                    <option value="500">&#8377; 500</option>
+                    <option value="800">&#8377; 800</option>
+                    <option value="1000">&#8377; 1000</option>
+                    <option value="1300">&#8377; 1300</option>
+                    <option value="1500">&#8377; 1500</option>
+                    <option value="1800">&#8377; 1800</option>
+                    <option value="2000">&#8377; 2000</option>
+                    <option value="2500">&#8377; 2500</option>
+                    <option value="3000">&#8377; 3000</option>
+					          <option value="5000">&#8377; 5000</option>
+					          <option value="8000">&#8377; 8000</option>
+                  </select>
                 </div>
+              </div>
               <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Teaching Experience<span class="red-text">*</span></span>
                   <br>
                   <span class="grey-text text-lighten-1" style="font-size: 13px;">In years<br>Both offline and online</span>
                 </div>
-                <div class="col s8 l4">
-                  
-                    <select data-condition="simple" class="browser-default" name="teachingexp" id="experience">
-                    <option value="" disabled selected>Teaching Exp.</option>
-                    <option value="0">0</option>
-					<option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                     <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                   
-                    
-          </select>
+                <div class="col s12 l5">
+                  <select data-condition="simple" class="browser-default" name="teachingexp" id="experience">
+                    <option value="" disabled selected>Select Teaching Experience</option>
+                    <option value="0">None</option>
+					          <option value="1">1 Yr</option>
+                    <option value="2">2 Yrs</option>
+                    <option value="3">3 Yrs</option>
+                    <option value="4">4 Yrs</option>
+                    <option value="5">5 Yrs</option>
+                    <option value="6">6 Yrs</option>
+                    <option value="7">7 Yrs</option>
+                    <option value="8">8 Yrs</option>
+                    <option value="9">9 Yrs</option>
+                    <option value="10">10 Yrs</option>
+                    <option value="11">11 Yrs</option>
+                    <option value="12">12 Yrs</option>
+                    <option value="13">13 Yrs</option>
+                    <option value="14">14 Yrs</option>
+                    <option value="15">15 Yrs</option>
+                    <option value="16">16 Yrs</option>
+                    <option value="17">17 Yrs</option>
+                    <option value="18">18 Yrs</option>
+                    <option value="19">19 Yrs</option>
+                    <option value="20">20 Yrs</option>
+                    <option value="21">21 Yrs</option>
+                    <option value="22">22 Yrs</option>
+                    <option value="23">23 Yrs</option>
+                    <option value="24">24 Yrs</option>
+                    <option value="25">25 Yrs</option>
+                    <option value="26">26 Yrs</option>
+                    <option value="27">27 Yrs</option>
+                    <option value="28">28 Yrs</option>
+                    <option value="29">29 Yrs</option>
+                    <option value="30">30 Yrs</option>
+                  </select>
                 </div>
-                  <div class="col s4 l2">
-                      Yrs.
-                  </div>
               </div>
               <div class="row">
                 <div class="col s12 l4">
@@ -276,7 +312,7 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Degree<span class="red-text">*</span></span>
                 </div>
                 <div class="col s12 l8">
-                  <select name="degree" id="degree" class="browser-default" onchange="other(this);" data-condition="simple">
+                  <select name="degree" id="degree" class="browser-default" onchange="specifyDegOther()" data-condition="simple">
                     <option value="" disabled selected>Select Degree</option>
                     <option value="btech">BTech</option>
                     <option value="mtech">MTech</option>
@@ -286,9 +322,9 @@ load_view("Template/navbarnew.php");
                     <option value="dual">Dual Degree</option>
                     <option value="other">Other</option>
                   </select>
-                      <div id="otherType" style="display:none;">
-                  <input placeholder="Specify if Other" type="text" class="validate" name="degreeother" length=40>
-                    </div>
+                  <div id="specify_deg_other">
+                    <input placeholder="Please specify if other" type="text" class="validate" name="degreeother">
+                  </div>
                 </div>
               </div>
               
@@ -299,7 +335,7 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-lighten-1" style="font-size: 13px;">You specialize in</span>
                 </div>
                 <div class="col s12 l8">
-                  <input placeholder="Electrical Engineering" type="text" class="validate" name="branch" data-condition="simple" length=20>
+                  <input placeholder="e.g. Electrical Engineering" type="text" class="validate" name="branch" data-condition="simple">
                 </div>
               </div>
               <div class="row">
@@ -323,7 +359,7 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Email<span class="red-text">*</span></span>
                 </div>
                 <div class="col s12 l8">
-                  <input placeholder="someone@example.com" type="email" class="validate" name="email" data-condition="email" length=40>
+                  <input placeholder="e.g. example@example.com" type="email" class="validate" name="email" data-condition="email" >
                 </div>
               </div>
               <div class="row">
@@ -331,7 +367,7 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Password<span class="red-text">*</span></span>
                 </div>
                 <div class="col s12 l8">
-                  <input placeholder="Password" type="password" class="validate" id="password" name="password" data-condition="simple" length=35>
+                  <input placeholder="Password" type="password" class="validate" id="password" name="password" data-condition="simple" >
                 </div>
               </div>
               <div class="row">
@@ -339,7 +375,7 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Confirm Password<span class="red-text">*</span></span>
                 </div>
                 <div class="col s12 l8">
-                  <input placeholder="Re-enter Password" type="password" class="validate" name="cpassword" data-condition="password" length=35>
+                  <input placeholder="Re-enter Password" type="password" class="validate" name="cpassword" data-condition="password" >
                 </div>
               </div>
               <div class="row">
@@ -349,39 +385,14 @@ load_view("Template/navbarnew.php");
                     <span class="grey-text text-lighten-1" style="font-size: 13px;">Enter your mobile no.</span>
                 </div>
                 <div class="col s6 l4">
-                  <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone"  length="10" data-condition="phone">
-                    
+                  <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone"   data-condition="phone">
                 </div>
-                 <div class="col s6 l3" style='' >
-                     <a class="waves-effect waves-light btn" onclick='button.sendreq_v2(this);' data-eparams='{"phone":$("#phonenumber").val()}' data-action='sendotp' >Send OTP</a>
-                  </div>
-                </div>
-
-                <?php
-                if($_ginfo["needotp"]){
-                ?>
-
-             <div class="row">
-                <div class="col s12 offset-l4">
-              <div class="col s6 l4">
-                  <input placeholder="One Time Password" type="text" class="validate" name="Otp" id="otpinput" length="6" >
-                   <input type='hidden' name='otpvarified' data-condition='simple' />
-                </div>
-                  <div class="col s6 l3 ">
-                     <a class="waves-effect waves-light btn " onclick='button.sendreq_v2(this);' data-eparams='{"otp":$("#otpinput").val()}' data-action="confirmotp" data-res='$("input[name=otpvarified]").val(1);obj.innerHTML="Verified!";' >Verify</a>
-                  </div>
-                  </div>
-                </div>
-                <?php
-              }
-                ?>
-
-
+              </div>
               <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Gender<span class="red-text">*</span></span>
                 </div>
-                <div class="col s12 l8">
+                <div class="col s12 l4">
                   <select name="gender" class="browser-default" data-condition="simple">
                     <option value="" disabled selected>Select Gender</option>
                     <option value="male">Male</option>
@@ -394,22 +405,22 @@ load_view("Template/navbarnew.php");
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Date of Birth<span class="red-text">*</span></span>
                 </div>
-                <div class="col s12 l6">
-                  <input type="date" class="datepicker" name="dob" data-condition="simple"  onchange="ageToTime(this);">
+                <div class="col s12 l4">
+                  <input type="date" class="datepicker" name="dob" data-condition="simple" onchange="ageToTime(this)">
                 </div>
-                  <div class="col s12 l2">
-                <div class="col s12 l1"  id="times">
-                      
-                      </div>
-                      <div class="col s12 l1">
-                      Yrs.
-                      </div>
-                  </div>
-                <div class="row">
+              </div>
+              <div class="row">
+                <div class="col s12 l4">
+                  <span class="grey-text text-darken-1">Age</span>
+                </div>
+                <div class="col s12 l6">
+                  <div id="times"></div>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col s12 l4">
                   <span class="grey-text text-darken-1">Are you Ok with home tuition?<span class="red-text">*</span></span>
                   <br>
-                  
                 </div>
                 <div class="col s12 l4">
                   <div>
@@ -427,11 +438,11 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-darken-1">Address<span class="red-text">*</span></span>
                 </div>
                 <div class="col s12 l4">
-                    <div><input placeholder="City" type="text" class="validate" name="city" data-condition="simple" length=17></div>
-                    <div><input placeholder="Postal/Zip Code" type="text" class="validate" name="zipcode" data-condition="simple" length=6></div>
+                  <div><input placeholder="City" type="text" class="validate" name="city" data-condition="simple" ></div>
+                  <div><input placeholder="Postal/Zip Code" type="text" class="validate" name="zipcode" data-condition="simple" ></div>
                 </div>
                 <div class="col s12 l4">
-                    <div><input placeholder="State/Province" type="text" class="validate" name="state" data-condition="simple" length=20 ></div>
+                    <div><input placeholder="State/Province" type="text" class="validate" name="state" data-condition="simple"  ></div>
                   <select name="country"  class="browser-default" data-condition="simple">
                     <option value="" disabled selected>Country</option>
                     
@@ -663,7 +674,7 @@ load_view("Template/navbarnew.php");
                     <option value="Ukraine"> Ukraine </option>
                     <option value="United Arab Emirates"> United Arab Emirates </option>
                     <option value="United Kingdom"> United Kingdom </option>
-                      <option value="United States"> United States </option>
+                    <option value="United States"> United States </option>
                     <option value="Uruguay"> Uruguay </option>
                     <option value="Uzbekistan"> Uzbekistan </option>
                     <option value="Vanuatu"> Vanuatu </option>
@@ -705,18 +716,15 @@ load_view("Template/navbarnew.php");
                     <label for="source3">Friends</label>
                   </div>
                   <div>
-                
-                    <input id="source4" type="checkbox"  name="knowaboutus4" data-condition="checkbox" data-group="knowaboutus">
-                <label for="source4">Others</label>
-                      
+                    <input id="source4" type="checkbox"  name="knowaboutus4" data-condition="checkbox" data-group="knowaboutus" onchange="specifySurveyOther()">
+                    <label for="source4">Other</label>
                   </div>
                 </div>
-              
-              <div class="row">
-              <div class="col s12 l8 offset-l4">
-              <input placeholder="Specify if Other" type="text" class="validate" name="knowaboutusother" length=20 >
               </div>
-              </div>
+              <div class="row" id="specify_survey_other">
+                <div class="col s12 l8 offset-l4">
+                  <input placeholder="Please specify if other" type="text" class="validate" name="knowaboutusother">
+                </div>
               </div>
               <div class="row">
                 <div class="col s12 l4">
@@ -741,7 +749,7 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-lighten-1" style="font-size: 13px;">Enter full URL</span>
                 </div>
                 <div class="col s12 l8">
-                  <input placeholder="https://" type="url" class="validate" name="linkprofile" length=55>
+                  <input placeholder="https://" type="url" class="validate" name="linkprofile" >
                 </div>
               </div>
               <div class="row">
@@ -751,76 +759,34 @@ load_view("Template/navbarnew.php");
                   <span class="grey-text text-lighten-1" style="font-size: 13px;">Any suggestion or a feedback</span>
                 </div>
                 <div class="col s12 l8">
-                  <textarea placeholder="Feel free to write anything" class="materialize-textarea" name="feedback" length="220" ></textarea>
+                  <textarea placeholder="Feel free to write anything" class="materialize-textarea" name="feedback"  ></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col s12 l8 offset-l4">
-                  <button class="btn waves-effect waves-light" type="submit" name="action" data-target="modal1" >Submit
+                  <button class="btn waves-effect waves-light" type="submit" name="action" data-target="modal1" onclick="openOtpSection()">Submit
                     <i class="mdi-content-send right"></i> 
                   </button>
-                
-                  </div>
-              </div>
-                <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-    </div>
-  </div>
-              <div class="row">
-                <div class="col 12 s12">
-                  <span class="red-text">* marked fields are mandatory</span>
                 </div>
               </div>
             </form>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div><br><br>
 </main>
 <?php
 }
-else{
- $_SESSION['msg11']= $msg;
-    Fun::redirect(BASE."index");//Thank You message
+else {
+  $_SESSION['msg11'] = $msg;
+  Fun::redirect(BASE."index"); //Thank You message
 }
-load_view("Template/footernew.php");
+load_view("Template/footer.php");
+load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
 ?>
-<script>
-    function f(obj){
-    var value1=$(obj).val();
-    var value2=<?php echo $currentDollarRate = simplexml_load_file("http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate?FromCurrency=INR&ToCurrency=USD");?> 
-    var x = Math.round(value1*value2);
-    $("#sada").html(x);
-  }
-    function other(obj){
-    var temp = obj.value;
-        if (temp ==="other")
-        {
-        $("#otherType").show()
-        }
-        else
-        {
-            $("#otherType").hide()
-        }
-    }
-
-        
-    function ageToTime(obj){
-    var d = new Date();
-    var n1 = d.getFullYear(); 
-    var d = new Date(obj.value);
-    var n2 = d.getFullYear(); 
-    $("#times").html(n1-n2);
-  }
-</script>
-<?php
-
-load_view("Template/bottom.php");
-?>
+  <script src="js/joinus.js"></script>
+</body>
+</html>

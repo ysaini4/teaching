@@ -27,13 +27,5 @@ class Students{
     }
     return array('ec'=>$ec,'data'=>$odata);
   }
-  function studenteditprofile($data){
-    $outp=array("ec"=>-1, "data"=>0);
-    $update_data=Fun::getflds(array("gender", "email", "dob", "phone"), $data);
-    $update_data["name"]=$data["fname"]." ".$data["lname"];
-    $update_data["dob"]=Fun::strtotime_t3($update_data["dob"]);
-    $outp["data"]=Sqle::updateVal("users", $update_data, array("id"=>User::loginId() ));
-    return $outp;
-  }
 
 }

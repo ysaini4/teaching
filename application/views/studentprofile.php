@@ -9,7 +9,34 @@ load_view("Template/navbarnew.php",$inp);
       <br>
         <div class="row">
           <div class="col s12 l4 offset-l1 center">
-            <i class="mdi-action-account-circle large"></i>
+            <img class="materialboxed" height="100" width="100" src="photo/human1.png">
+            <br>
+            <!-- Change Profile Picture -->
+            <a href="#pic_upload" class="modal-trigger" style="cursor:pointer;">Change Profile Picture</a>
+            <div id="pic_upload" class="modal">
+              <div class="modal-content">
+                <h6 class="teal-text">Change Profile Picture</h6>
+              </div>
+              <div class="row">
+                <form action="#" class="col s12 l8 offset-l2">
+                  <div class="row">
+                    <div class="file-field input-field col s12">
+                      <input class="file-path validate" type="text">
+                      <div class="btn waves-effect waves-light blue">
+                        <span>Open</span>
+                        <input type="file">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <button type="submit" class="btn waves-effect waves-light white grey-text">Change</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End -->
           </div>
           <div class="col s12 l7">
             <div class="row">
@@ -27,172 +54,38 @@ load_view("Template/navbarnew.php",$inp);
         <div class="row">
           <div class="col s12">
             <ul class="tabs">
-              <li class="tab col s4"><a class="active" href="#tab_profile">Profile</a></li>
-              <li class="tab col s4"><a href="#tab_classes">Classes</a></li>
-              <li class="tab col s4"><a href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s3"><a class="active" href="#tab_profile">Profile</a></li>
+              <li class="tab col s3"><a href="#tab_classes">Classes</a></li>
+              <li class="tab col s3"><a href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s3"><a href="#tab_account">Account</a></li>
             </ul>
           </div>
           <div id="tab_profile" class="col s12 offset-l2">
-          <br><br>
-            <div id="profile_info">
-              <div class="row">
-                <div class="col s12 l4">
-                  Name
-                </div>
-                <div class="col s12 l6">
-                  <span class="grey-text text-darken-1">Shivam Mamgain</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s12 l4">
-                  Email
-                </div>
-                <div class="col s12 l6">
-                  <span class="grey-text text-darken-1">shivammamgain47@gmail.com</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s12 l4">
-                  Mobile Number
-                </div>
-                <div class="col s12 l6">
-                  <span class="grey-text text-darken-1">+91 987 654 3210</span>
-                </div>
-              </div>
-            </div>  
-            
-            <div class="row">
-              <div class="col s12">
-                <a class="btn waves-effect waves-light blue" onclick='hideshowdown("profile_info", "edit_profile_info", 1000);' ><i class="mdi-editor-mode-edit left"></i>Edit Profile</a>
-              </div>
-            </div>
-
-            <div id="edit_profile_info">
-              <form onsubmit='form.sendreq1(this,$(this).find("button")[0]);return false;' data-action="saveuserdetails">
-                <div class="row">
-                  <div class="col s12 l4">
-                    Name
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="name" placeholder="Enter your full name" type="text" value="Shivam Mamgain" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Email
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="email" placeholder="Enter your email address" type="email" value="shivammamgain47@gmail.com" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Mobile Number
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="phone" placeholder="Enter your mobile number" type="text" value="9876543210" class="validate">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Gender
-                  </div>
-                  <div class="col s12 l4">
-                    <select name="gender" class="browser-default">
-                      <option value="" disabled selected>Select gender</option>
-                       <?php
-                          $olist=array("Male","Female");
-                          $sinfo["gender"]="M";
-                          foreach($olist as $i=>$disp){
-                        ?>
-                          <option value="<?php echo $disp[0]; ?>">
-                            <?php echo $disp; ?>
-                          </option>
-                        <?php
-                          }
-                        ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 l4">
-                    Date Of Birth
-                  </div>
-                  <div class="col s12 l4">
-                    <input name="dob" placeholder="Add date of birth" type="date" value="" class="datepicker">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    <button type="submit" class="btn blue waves-effect waves-light" ><i class="mdi-content-save left"></i>Save Edit</button>
-                    <a class="btn white grey-text waves-effect waves-grey" onclick='hideshowdown("edit_profile_info", "profile_info", 1000);'  >Cancel Edit</a>
-                  </div>
-                </div>
-              </form>
-            </div>
+          <?php
+            load_view("Template/studentprofile_about.php");
+          ?>
           </div>
 
           <div id="tab_classes" class="col s12">
-          <br><br>
-            <div class="row">
-              <div class="col s12">
-                <table class="hoverable">
-                  <thead>
-                    <tr>
-                      <th>Teacher</th>
-                      <th>Class</th>
-                      <th>Subject</th>
-                      <th>Topic</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Duration</th>
-                      <th>Feedback</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>Dr. Shivam Mamgain</td>
-                      <td>XII</td>
-                      <td>Computers</td>
-                      <td>Algorithms</td>
-                      <td>29/06/2015</td>
-                      <td>09:00 AM</td>
-                      <td>2 hrs</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Babloo</td>
-                      <td>VII</td>
-                      <td>English</td>
-                      <td>Adverbs</td>
-                      <td>30/06/2015</td>
-                      <td>09:00 AM</td>
-                      <td>1 hrs</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Prof. Snape</td>
-                      <td>Hogwarts</td>
-                      <td>Witchcraft</td>
-                      <td>Spells</td>
-                      <td>21/07/2015</td>
-                      <td>10:00 AM</td>
-                      <td>3 hrs</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>  
+          <?php
+            load_view("Template/studentprofile_classes.php");
+          ?>
           </div>
           <div id="tab_reviews" class="col s12">
-            
+          <?php
+            load_view("Template/studentprofile_reviews.php");
+          ?>
+          </div>
+          <div id="tab_account" class="col s12">
+          <?php
+            load_view("Template/studentprofile_account.php");
+          ?>
           </div>
         </div>
       </div>
     </div>
   </main>
+
 <?php
 load_view("Template/footer.php",$inp);
 load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));

@@ -88,7 +88,7 @@ $_ginfo["error"]=array(
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 $_ginfo["needotp"]=true;
-$_ginfo["needsignupotp"]=false;
+$_ginfo["needsignupotp"]=true;
 $_ginfo['imgheight']=200;
 $_ginfo['imgwidth']=200;
 
@@ -102,6 +102,8 @@ $_ginfo["timer"]=array(
 		array('1-5 hr','1<=timer AND timer<=5'),
 		array('>5 hr','5<timer'),
 	);
+
+$_ginfo["numsearchr"]=array("loadonce"=>3, "loadadd"=>2);
 
 
 ?>

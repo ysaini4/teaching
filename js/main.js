@@ -207,14 +207,14 @@ var ms={
 	signupform:function(obj,needotp){
 		if(needotp){
 			if($("#signupwindow").is(":visible")){
-				if(form.valid.action(  $("#signupwindow")[0]  )){
+				if(form.valid.action1(  $("#signupwindow")[0]  )){
 					form.sendreq1(obj, $("#signupwindow").find("button[type=submit]")[0] );
 				}
 				return false;
 			} else
-				return form.valid.action(obj);
-		} else{
-			return form.valid.action( $("#signupwindow")[0] ) ;
+				return form.valid.action1(obj);
+		} else {
+			return form.valid.action1( $("#signupwindow")[0] ) ;
 		}
 	}
 };
@@ -240,3 +240,9 @@ function searchform(){
 	mergeifunset(leftform, {'orderby':$("select[name=orderby]").val()});
 	return leftform;
 }
+
+
+$(document).ready(function(){
+	mylib();
+});
+

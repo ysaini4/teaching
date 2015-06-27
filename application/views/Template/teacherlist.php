@@ -11,7 +11,7 @@ foreach($qresult as $row){
        <div class="col l6 ">
         <h6>
          <b>
-          <?php echo $row["name"]; ?>
+          <?php echo $row["name"].$row["tid"]; ?>
          </b>
         </h6>
         <p class="black-text" style="margin-top:0.5em;">
