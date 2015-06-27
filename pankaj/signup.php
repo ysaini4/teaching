@@ -35,9 +35,11 @@ try {
   $session = $helper->getSessionFromRedirect();
 }
 catch( FacebookRequestException $ex ) {
+  echo "Session not found..";
   // Exception
 }
 catch( Exception $ex ) {
+  echo "In this branch";
 
   // When validation fails or other local issues
 }
@@ -46,6 +48,7 @@ catch( Exception $ex ) {
 if(isset($session))
 {
 
+echo "Session is set";
   // Request for user data
   $request = new FacebookRequest( $session, 'GET', '/me' );
   $response = $request->execute();
@@ -107,7 +110,9 @@ else
 }	
 
 */
+
 ?>
 <a href="<?php echo $helper->getLoginUrl(array(
    'scope' => 'email')); ?>">Fb login</a>
+
 
