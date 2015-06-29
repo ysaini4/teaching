@@ -13,23 +13,23 @@ $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
 $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
 $mail->Port       = 465;                   // set the SMTP port
 
-$mail->Username   = "********";  // GMAIL username
-$mail->Password   = "******";            // GMAIL password, Some times if two step varification enabled in this mail id, Mail will not be sent.
+$mail->Username   = "getiitians@gmail.com";  // GMAIL username
+$mail->Password   = "iitdelhi";            // GMAIL password, Some times if two step varification enabled in this mail id, Mail will not be sent.
 
-$mail->From       = "1196mohitsaini@gmail.com";
-$mail->FromName   = "21116504";
+$mail->From       = "getiitians@gmail.com";
+$mail->FromName   = "Himanshu";
 $mail->Subject    = "This is the subject";
 $mail->AltBody    = "This is the body when user views in plain text format"; //Text Body
 $mail->WordWrap   = 50; // set word wrap
 
 $mail->MsgHTML($body);
 
-//$mail->AddReplyTo("replyto@yourdomain.com","Webmaster");
+$mail->AddReplyTo("getiitians@gmail.com","Admin");
 
 //$mail->AddAttachment("/path/to/file.zip");             // attachment
 //$mail->AddAttachment("/path/to/image.jpg", "new.jpg"); // attachment
 
-$mail->AddAddress("mohitsaini1196@gmail.com","Mohit");
+$mail->AddAddress("pankaj.arora1994@gmail.com","Pankaj");
 
 $mail->IsHTML(true); // send as HTML
 
