@@ -50,7 +50,7 @@ class Welcome extends CI_Controller {
       }
 
       $data=json_encode($_POST);
-      $fn=time()."_".$_SERVER['REMOTE_ADDR']."_".strlen($data)."";
+      $fn=time()."_".$_SERVER['REMOTE_http://localhost/html/teaching/index.php/welcome/searchADDR']."_".strlen($data)."";
       $uf="joinusdata/".$fn;
 //      file_put_contents($uf, $data);
 //      chmod($uf,0777);
