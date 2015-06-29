@@ -312,7 +312,9 @@ var form={
 			return [errorlist,objlist];
 		},
 		action:function(obj, type){
-			var [errors, objlist]=form.valid.is(obj);
+			var temp=form.valid.is(obj);
+			var errors=temp[0];
+			var objlist=temp[1];
 			if(errors.length>0){
 				if(type==1){
 					for(var i=0; i<errors.length; i++){
