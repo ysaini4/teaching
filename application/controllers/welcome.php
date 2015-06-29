@@ -560,7 +560,10 @@ class Welcome extends CI_Controller {
 		load_view("studentprofile.php",array());
 	}
 
-}
+  public function hiring() {
+    load_view("hiring.php",array());
+  }
 
+}
 
 ?>
