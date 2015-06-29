@@ -1,59 +1,47 @@
 <?php
-foreach($qresult as $row){
+foreach($qresult as $row) {
 ?>
-     <div class="row card blue-grey lighten-5" style='' >
-      <div class="col l3">
-       <a href="">
-        <img src="<?php echo $row["profilepic"]; ?>" height="120px" width="120px" style="border:1px solid #021a40; margin-top:1em;" />
-       </a>
+<div class="card" style="padding:15px;">
+  <div class="row">
+    <div class="col s12 l3">
+      <a href="#">
+      <img src="<?php echo $row["profilepic"]; ?>" height="120px" width="120px" style="border:1px solid #9e9e9e;"/>
+      </a>
+    </div>
+    <div class="col s12 l9">
+      <div class="row">
+        <div class="col s12 l6">
+          <h6><strong><?php echo $row["name"].$row["tid"]; ?></strong></h6>
+          <h6>IIT Delhi</h6>
+          <br>
+          <h6>Physics, Chemistry</h6>
+          <h6>
+            Fees :
+            <span>
+              1000/hr
+            </span>
+          </h6>
+        </div>
+        <div class="col s12 l6">
+          <h6>
+            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+          </h6>
+          <h6>
+            3 Reviews
+          </h6>
+          <br><br>
+          <a class="waves-effect waves-light btn" style="display:none;">
+            Book slot
+          </a>
+        </div>
       </div>
-      <div class="col l9 ">
-       <div class="col l6 ">
-        <h6>
-         <b>
-          <?php echo $row["name"].$row["tid"]; ?>
-         </b>
-        </h6>
-        <p class="black-text" style="margin-top:0.5em;">
-         IIT Delhi
-        </p>
-        <br />
-        <h6>
-         <b>
-          Physics,Chemistry
-         </b>
-        </h6>
-        <h6>
-         Fees   :
-         <span>
-          <b>
-           1000/hr
-          </b>
-         </span>
-        </h6>
-       </div>
-       <div class="col offset-l3 l3">
-        <h6>
-         <i class="mdi-action-star-rate">
-         </i>
-         <i class="mdi-action-star-rate">
-         </i>
-         <i class="mdi-action-star-rate">
-         </i>
-         <i class="mdi-action-star-rate">
-         </i>
-        </h6>
-        <h6>
-         3 Reviews
-        </h6>
-        <br />
-        <br />
-        <a class="waves-effect waves-light btn" style="font-size:1em; padding:1px;display:none;">
-         Book slot
-        </a>
-       </div>
-      </div>
-     </div>
+    </div>
+  </div>
+</div>
 <?php
 }
 ?>

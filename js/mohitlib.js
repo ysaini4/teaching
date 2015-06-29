@@ -353,7 +353,7 @@ var selects={
 		return outp;
 	},
 	arr2mselect:function(arr, name){
-		var text='<div class="row"><div class="col l12"><input id="{id}" class="selectall" type="checkbox" name="{name}" checked value="{value}" /><label style="padding-left:1.4em" for="{id}">{label}</label></div></div>';
+		var text='<input id="{id}" class="selectall filled-in" type="checkbox" name="{name}" value="{value}" checked/><label for="{id}">{label}</label><br>';
 		var outp=[];
 		outp.push(text.replaceall({"{id}":name, "{name}":name, "{label}":" &nbsp;&nbsp;"+"Select All","{value}":0 }));
 		for(var i=0;i<arr.length;i++){
@@ -478,7 +478,7 @@ var a={
 			return divlist.join("");
 		else{
 			var outp=divlist.slice(0,limit-1).join("");
-			outp+="<a onclick='a.readmore(this);' >Read more</a>";
+			outp+="<a onclick='a.readmore(this);' style='cursor:pointer;'>Load more</a>";
 			outp+=("<div style='display:none;' >"+divlist.slice(limit-1).join("")+"</div>");
 			return outp;
 		}

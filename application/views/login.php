@@ -12,7 +12,7 @@ load_view("Template/navbarnew.php",$inp);
             <?php
               load_view('Template/form_errors.php',array("msg"=>$loginmsg));
             ?>
-            
+
             <div class="row">
               <div class="col s12 l4 offset-l1">
                 <h3 class="teal-text text-darken-1">Login</h3>
@@ -23,10 +23,10 @@ load_view("Template/navbarnew.php",$inp);
                     <ul>
                       <li>Login for Students and Tutors.</li>
                       <li>Don't have an account?</li>
-                      <li><i class="mdi-navigation-chevron-right left"></i>
+                      <li><i class="material-icons left tiny">chevron_right</i>
                         Student: Sign Up <a href="<?php echo BASE."signup"; ?>">here</a>.
                       </li>
-                      <li><i class="mdi-navigation-chevron-right left"></i>
+                      <li><i class="material-icons left tiny">chevron_right</i>
                         Tutor: Join Us <a href="<?php echo BASE."joinus"; ?>">here</a>.
                       </li>
                     </ul>
@@ -53,7 +53,7 @@ load_view("Template/navbarnew.php",$inp);
                   <div class="row">
                     <div class="input-field col s12 l10">
                       <button class="btn waves-effect waves-light" type="submit">Login
-                        <i class="mdi-content-send right"></i>
+                        <i class="material-icons right">send</i>
                       </button>
                     </div>
                   </div>
@@ -65,7 +65,7 @@ load_view("Template/navbarnew.php",$inp);
               <div class="col s12 l10 offset-l1">
                 <h6>
                   <a onclick="forgotPass();" style="cursor:pointer;">
-                    <i id="forgot_prefix_arrow" class="mdi-hardware-keyboard-arrow-up"></i>&nbsp;Forgot Password
+                    <span id="forgot_prefix_arrow"><i class="material-icons tiny">keyboard_arrow_up</i></span>&nbsp;Forgot Password
                   </a>
                 </h6>
               </div>
@@ -101,7 +101,7 @@ load_view("Template/navbarnew.php",$inp);
             </div>
             <div class="row">
               <div class="col s12 l10 offset-l1">
-                <h6 class="grey-text"><i class="mdi-navigation-chevron-right left"></i>Only Students can sign up from this section.</h6>
+                <h6 class="grey-text"><i class="material-icons tiny left">chevron_right</i>Only Students can sign up from this section.</h6>
               </div>
             </div>
             <div class="row">
