@@ -107,7 +107,7 @@ function submitForm_t2(obj){
 	var problem=false;
 	for(i=0;i<inputs.length;i++){
 		var ilist=$(obj).find(inputs[i]);
-		for(j=0;j<ilist.length;j++){
+		for(j=0;j<ilist.length && j<1  ;j++){
 			if(checkValidInput.isChecked( ilist[j] )){
 				$(ilist[j]).parent().removeClass("has-error");
 			}

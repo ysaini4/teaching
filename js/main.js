@@ -216,6 +216,21 @@ var ms={
 		} else {
 			return form.valid.action1( $("#signupwindow")[0] ) ;
 		}
+	},
+	joinusform:function(obj, needotp){
+		var mainwindow = $("#main_form_section");
+		var otpwindow = $("#otp_section");
+		if(needotp){
+			if(mainwindow.is(":visible")){
+				if(submitForm_t2(mainwindow[0])) {
+					form.sendreq1(obj, mainwindow.find("button[type=submit]")[0] );
+				}
+				return false;
+			} else
+				return submitForm_t2(obj);
+		} else {
+			return submitForm_t2(mainwindow[0]);
+		}
 	}
 };
 
