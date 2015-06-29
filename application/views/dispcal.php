@@ -1,4 +1,4 @@
-  <table class="responsive-table"  align="center" style="" >
+  <table class="responsive-table centered">
     <thead>
       <tr>
       <?php
@@ -8,7 +8,7 @@
             opent("img",array("src"=>$button_icons[$i], "class"=>"icon-hover canloadcal", "data-month"=>$buttons[$i][0], "data-year"=>$buttons[$i][1], "data-tid"=>$tid, "data-action"=>"dispcal", "onclick"=>"ms.calreq(this);"));
           }
           else if($i==2 || $i==3){
-            opent("select",array("class"=>"canloadcal","onchange"=>($i==2?'hitu.changemonth(this);':'hitu.changeyear(this);').'ms.calreq(this);',"data-month"=>$month,"data-year"=>$year,"data-action"=>"dispcal", "data-tid"=>$tid ));
+            opent("select",array("class"=>"canloadcal browser-default","onchange"=>($i==2?'hitu.changemonth(this);':'hitu.changeyear(this);').'ms.calreq(this);',"data-month"=>$month,"data-year"=>$year,"data-action"=>"dispcal", "data-tid"=>$tid ));
             if($i==2)
               disp_olist($monthlist,array("selected"=>$month));
             else if($i==3)

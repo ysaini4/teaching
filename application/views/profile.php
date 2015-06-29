@@ -3,121 +3,129 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 ?>
 
-	<main>
-		<div class="container">
-		<div class="section">
-		<div class="row">
-		<div class="col s12  l12">
-				<div class="card-panel  grey lighten-2 " style='<?php if(server=='server') echo "display:none;"; ?>' >
-						<div class="row">
-								<div class="col l3">
-				<img class="materialboxed" width="200" src="<?php 
-				if($aboutinfo['profilepic']!='')
-					echo $aboutinfo['profilepic']; 
-				else
-					echo 'photo/human1.png';
-				?>">
-								</div>
-								<div class="col l1">    
-
-		<?php
-		if(true || $tid==User::loginId()){
-		?>
-		<form id="myForm" method="post" enctype="multipart/form-data">    
-						<div class="fixed-action-btn">
-		<a class="btn-floating btn-small red">
-			<i class="large mdi-navigation-apps"></i>
-		</a>
-
-		<ul>
-				<li><a data-position="right" onclick="chooseFile();" data-delay="50" data-tooltip="Add Image" class="btn-floating red darken-1 tooltipped"><i class="large mdi-social-group-add"></i></a></li>
-				<li><a  data-position="right" data-delay="50" onclick="displaytext();displaytext_t2();" data-tooltip="Edit Text" class="btn-floating blue darken-1 tooltipped"><i class="large mdi-editor-border-color"></i></a></li>      
-				<li><a data-position="right" data-delay="50" data-tooltip="Edit Profile" class="btn-floating  tooltipped green" href="<?php echo BASE.'edit/'.$tid; ?>"><i class="large mdi-image-edit"></i></a></li>
-		</ul>
-	</div>
-	 <div style="height:0px;overflow:hidden">
-			<input type="file" id="profile_upload" name="profile_upload" onchange="this.form.submit();" />
-	 </div>
-		
-		<?php
-		}
-		?>
-
-				</div>
-								<div class="col l5 offset-l2">
-									<div class="card-panel_sub grey lighten-3">
-										<span id="displayte" name="displayte"><?php 
-										if($aboutinfo['teachermoto']!='')
-											echo $aboutinfo['teachermoto'];
-										else
-											echo 'Hi,i am '.$firstName; ?></span>
-										
-										<input id="getText" name="getText" type="text" style="visibility:hidden;" placeholder="Enter Text" value="<?php 
-										if($aboutinfo['teachermoto']!='')
-											echo $aboutinfo['teachermoto'];?>"/>
-										<input type="submit" value="Change" id="getText1" style="visibility:hidden;"/>
-									</div>
-								</div>
-						</div>
-				</div>
-				</div>
-</form>
-		<div class="col s12 l12">
-			<ul class="tabs teal-text text-lighten-1 ">
-				<li class="tab col s3"><a id="profiletab1" href="#test1">Profile</a></li>
-				<li class="tab col s3 "><a  id="profiletab2" href="#test2">Calender</a></li>
-				<li class="tab col s3"><a  id="profiletab3" href="#test3">Topic</a></li>
-			<?php
-				if($tid==User::loginId()){
-			?>
-				<li class="tab col s3"><a  id="profiletab4" href="#test4">My Classes</a></li>     
-			<?php
-				}
-			?>
-			</ul>
-		</div>
-			 </div>
-			 </div>
-</main>
-				<div id="test1" class="col s12">
-					<?php
-						load_view("profileabout.php",array('aboutinfo'=>$aboutinfo,'firstName'=>$firstName,'lastName'=>$lastName,'jsonArray'=>$jsonArray,'subArray'=>$subArray,'gradeArray'=>$gradeArray,'langArray'=>$langArray));
-
-					?>
-				</div>
-				<div id="test2" class="col s12 ">
-					<?php
-						load_view("cal.php",Fun::mergeifunset($calinfo,array("tid"=>$tid)) );
-					?>
-				</div>
-				<div id="test3" class="col s12">
-					<?php
-						load_view("topics.php",Fun::mergeifunset($topicinfo,array("tid"=>$tid,'minfees'=>$jsonArray['minfees'])));
-					?>
-				</div>
-				<div id="test4" class="col s12"></div>
-				</div>
+  <main>
+    <div class="container">
+    <br>
+      <div class="card-panel">
+      <br>
+        <div class="row">
+          <div class="col s12 l4 offset-l1 center">
+            <img class="materialboxed" height="200" width="200" src="
+            <?php
+            if ($aboutinfo['profilepic'] != '')
+              echo $aboutinfo['profilepic']; 
+            else
+              echo 'photo/human1.png';
+            ?>">
+            <br>
+            <!-- Change Profile Picture -->
+            <a href="#pic_upload" class="modal-trigger">Change Profile Picture</a>
+            <div id="pic_upload" class="modal">
+              <div class="modal-content">
+                <h6 class="teal-text">Change Profile Picture</h6>
+              </div>
+              <div class="row">
+                <form action="#" class="col s12 l6 offset-l3">
+                  <div class="row">
+                    <div class="file-field input-field col s12">
+                      <input class="file-path validate" type="text">
+                      <div class="btn waves-effect waves-light blue">
+                        <span>Upload</span>
+                        <input type="file">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <button type="submit" class="btn waves-effect waves-light white grey-text">Change</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End -->
+          </div>
+          <div class="col s12 l7">
+            <div class="row">
+              <div class="col s12">
+                <h5 class="green-text left">Shivam Mamgain</h5>
+              </div>
+            </div>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 l7">
+                    <textarea id="biography" class="materialize-textarea" placeholder="Write a small description about yourself."></textarea>
+                    <label for="biography">Bio</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light blue" type="submit"><i class="material-icons left">save</i>Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-panel">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a class="active" href="#tab_profile">Profile</a></li>
+              <li class="tab col s3"><a href="#tab_calendar">Calendar</a></li>
+              <li class="tab col s3"><a href="#tab_classes">Classes</a></li>
+              <li class="tab col s3"><a href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s3"><a href="#tab_topics">Topics</a></li>
+            </ul>
+          </div>
+          <div id="tab_profile" class="col s12 offset-l1">
+          <?php
+            load_view("Template/profile_about.php",array('aboutinfo'=>$aboutinfo,'firstName'=>$firstName,'lastName'=>$lastName,'jsonArray'=>$jsonArray,'subArray'=>$subArray,'gradeArray'=>$gradeArray,'langArray'=>$langArray));
+          ?>
+          </div>
+          <div id="tab_calendar" class="col s12">
+          <?php
+            load_view("Template/profile_calendar.php",Fun::mergeifunset($calinfo,array("tid"=>$tid)) );
+          ?>
+          </div>
+          <div id="tab_classes" class="col s12">
+          <?php
+            load_view("Template/profile_classes.php");
+          ?>
+          </div>
+          <div id="tab_reviews" class="col s12">
+          <?php
+            load_view("Template/profile_reviews.php");
+          ?>
+          </div>
+          <div id="tab_topics" class="col s12">
+          <?php
+            load_view("Template/profile_topics.php",Fun::mergeifunset($topicinfo,array("tid"=>$tid,'minfees'=>$jsonArray['minfees'])));
+          ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
 <?php
 load_view("Template/footernew.php");
 load_view("popup.php",array("name"=>"timeslot"));
 load_view("Template/bottom.php",array("needbody"=>false));
 ?>
-<script type="text/javascript">
-var focustabid=<?php echo $tabid; ?>;
-$(document).ready(function(){
-	$("#profiletab"+focustabid).click();
-});
-		function chooseFile() {
-			document.getElementById("profile_upload").click();
-	 }
-	 function displaytext() {
-		document.getElementById("displayte").style.visibility = "hidden";
-	 }
-	 function displaytext_t2() {
-		document.getElementById("getText").style.visibility = "visible";
-		document.getElementById("getText1").style.visibility = "visible";
-	 }
-</script>
+  <script>
+  var focustabid=<?php echo $tabid; ?>;
+  $("#profiletab"+focustabid).click();
+  function displaytext() {
+    document.getElementById("displayte").style.visibility = "hidden";
+  }
+  function displaytext_t2() {
+    document.getElementById("getText").style.visibility = "visible";
+    document.getElementById("getText1").style.visibility = "visible";
+  }
+  </script>
+  <script src="js/profile.js"></script>
 </body>
 </html>
