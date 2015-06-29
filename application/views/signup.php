@@ -24,10 +24,10 @@ $defopen="signupwindow";
                 <div class="row grey-text">
                   <div class="col s12">
                     <ul>
-                      <li><i class="mdi-navigation-chevron-right left"></i>
+                      <li><i class="material-icons tiny left">chevron_right</i>
                         This form is meant only for students.
                       </li>
-                      <li><i class="mdi-navigation-chevron-right left"></i>
+                      <li><i class="material-icons tiny left">chevron_right</i>
                         All fields are mandatory.
                       </li>                      
                     </ul>
@@ -68,7 +68,7 @@ $defopen="signupwindow";
                   <div class="row">
                     <div class="input-field col s12">
                       <button class="btn waves-effect waves-light" name="signup" type="submit" id="submit_button">
-                        Submit<i class="mdi-content-send right"></i>
+                        Submit<i class="material-icons right">send</i>
                       </button>
                     </div>
                   </div>
@@ -87,7 +87,7 @@ $defopen="signupwindow";
                   <div class="row">
                     <div class="input-field col s12">
                       <button class="btn waves-effect waves-light"  name="signup" type="submit" >Submit
-                        <i class="mdi-content-send right"></i>
+                        <i class="material-icons right">send</i>
                       </button>
                     </div>
                   </div>

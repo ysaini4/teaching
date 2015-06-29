@@ -2,11 +2,14 @@ $("#forgot_pass_section").hide();
 
 function forgotPass() {
   var prefix = $("#forgot_prefix_arrow");
-  if (prefix.attr("class") == "mdi-hardware-keyboard-arrow-up") {
-    prefix.attr("class", "mdi-hardware-keyboard-arrow-down");
+  var keyboard_up = '<i class="material-icons tiny">keyboard_arrow_up</i>';
+  var keyboard_down = '<i class="material-icons tiny">keyboard_arrow_down</i>';
+
+  if (prefix.html() == keyboard_up) {
+    prefix.html(keyboard_down);
   }
   else {
-    prefix.attr("class", "mdi-hardware-keyboard-arrow-up");
+    prefix.html(keyboard_up);
   }
   $("#login_section").slideToggle(1000);
   $("#forgot_pass_section").slideToggle(1000);

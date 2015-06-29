@@ -19,16 +19,16 @@ load_view("Template/navbarnew.php");
               <div class="row grey-text">
                 <div class="col s12">
                   <ul>
-                    <li><i class="mdi-navigation-chevron-right left"></i>
+                    <li><i class="material-icons left tiny">keyboard_arrow_right</i>
                       This form is meant only for tutors.
                     </li>
-                    <li><i class="mdi-navigation-chevron-right left"></i>
+                    <li><i class="material-icons left tiny">chevron_right</i>
                       Star (<span class="red-text">*</span>) marked fields are mandatory.
                     </li>
-                    <li><i class="mdi-navigation-chevron-right left"></i>
+                    <li><i class="material-icons left tiny">chevron_right</i>
                       An OTP will be sent to your Mobile Phone after you submit the form.
                     </li>
-                    <li><i class="mdi-navigation-chevron-right left"></i>
+                    <li><i class="material-icons left tiny">chevron_right</i>
                       Confirmation through the OTP is mandatory.
                     </li>
                   </ul>
@@ -348,7 +348,7 @@ load_view("Template/navbarnew.php");
                   <div class="file-field input-field">
                     <input class="file-path validate" type="text">
                     <div class="btn">
-                      <span>Open</span>
+                      <span>Upload</span>
                       <input type="file" name="uploadfile_clgvarification" >
                     </div>
                   </div>
@@ -736,7 +736,7 @@ load_view("Template/navbarnew.php");
                   <div class="file-field input-field">
                   <input class="file-path validate" type="text">
                     <div class="btn">
-                      <span>Open</span>
+                      <span>Upload</span>
                       <input type="file" name="resumefile" >
                     </div>
                   </div>
@@ -765,7 +765,7 @@ load_view("Template/navbarnew.php");
               <div class="row">
                 <div class="col s12 l8 offset-l4">
                   <button class="btn waves-effect waves-light" type="submit" name="action" data-target="modal1" onclick="openOtpSection()">Submit
-                    <i class="mdi-content-send right"></i> 
+                    <i class="material-icons right">send</i> 
                   </button>
                 </div>
               </div>
