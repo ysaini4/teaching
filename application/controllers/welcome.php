@@ -336,7 +336,7 @@ class Welcome extends CI_Controller {
 		$pageinfo["timer"]=Funs::doublesplit($_ginfo['timer']);
 		$pageinfo["search"]=get("q","");
 
-		load_view("search.php",$pageinfo);
+		load_view("search_old.php",$pageinfo);
 	}
 
 
