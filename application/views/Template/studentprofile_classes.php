@@ -21,36 +21,24 @@
       </thead>
 
       <tbody>
+        <?php
+          foreach($newslots as $i => $row) {
+        ?>
         <tr>
-          <td>Dr. Shivam Mamgain</td>
-          <td>XII</td>
-          <td>Computers</td>
-          <td>Algorithms</td>
-          <td>29/06/2015</td>
-          <td>09:00 AM</td>
-          <td>2 hrs</td>
-          <td></td>
+          <td><?php echo $row["teachername"] ?></td>
+          <td><?php echo $row["classname"] ?></td>
+          <td><?php echo $row["subjectname"] ?></td>
+          <td><?php echo $row["topicname"] ?></td>
+          <td><?php echo $row["startdate_disp"]; ?></td>
+          <td><?php echo $row["starttime_disp"]; ?></td>
+          <td><?php echo $row["duration_disp"]; ?> hrs</td>
+          <td><a href="<?php echo getifn($row["url"], ""); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
+
+
         </tr>
-        <tr>
-          <td>Babloo</td>
-          <td>VII</td>
-          <td>English</td>
-          <td>Adverbs</td>
-          <td>30/06/2015</td>
-          <td>09:00 AM</td>
-          <td>1 hrs</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Prof. Snape</td>
-          <td>Hogwarts</td>
-          <td>Witchcraft</td>
-          <td>Spells</td>
-          <td>21/07/2015</td>
-          <td>10:00 AM</td>
-          <td>3 hrs</td>
-          <td></td>
-        </tr>
+        <?php
+          }
+        ?>
       </tbody>
     </table>
   </div>
@@ -77,26 +65,22 @@
       </thead>
 
       <tbody>
+        <?php
+          foreach($oldslots as $i => $row) {
+        ?>
         <tr>
-          <td>Dr. Shivam Mamgain</td>
-          <td>XII</td>
-          <td>Computers</td>
-          <td>Algorithms</td>
-          <td>29/06/2015</td>
-          <td>09:00 AM</td>
-          <td>2 hrs</td>
-          <td></td>
+          <td><?php echo $row["teachername"] ?></td>
+          <td><?php echo $row["classname"] ?></td>
+          <td><?php echo $row["subjectname"] ?></td>
+          <td><?php echo $row["topicname"] ?></td>
+          <td><?php echo $row["startdate_disp"]; ?></td>
+          <td><?php echo $row["starttime_disp"]; ?></td>
+          <td><?php echo $row["duration_disp"]; ?> hrs</td>
+          <td><a href="<?php echo getifn($row["url"], ""); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
         </tr>
-        <tr>
-          <td>Babloo</td>
-          <td>VII</td>
-          <td>English</td>
-          <td>Adverbs</td>
-          <td>30/06/2015</td>
-          <td>09:00 AM</td>
-          <td>1 hrs</td>
-          <td></td>
-        </tr>
+        <?php
+          }
+        ?>
       </tbody>
     </table>
   </div>

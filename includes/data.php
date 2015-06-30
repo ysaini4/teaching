@@ -61,6 +61,7 @@ $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("email","password","name","phone","otp")),
 	"changepassaction"=>array("need"=>array("oldpass","newpass","newcpass")),
 	"saveuserdetails"=>array("users"=>"all"),
+	"studentBookSlots" => array("datets", "slots", "cst")
 );
 $_ginfo["error"]=array(
 	"-1"=>"Session expired",

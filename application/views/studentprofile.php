@@ -79,7 +79,7 @@ load_view("Template/navbarnew.php",$inp);
 
           <div id="tab_classes" class="col s12">
           <?php
-            load_view("Template/studentprofile_classes.php");
+            load_view("Template/studentprofile_classes.php", $inp);
           ?>
           </div>
           <div id="tab_reviews" class="col s12">

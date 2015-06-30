@@ -327,7 +327,8 @@
 		}
 	}
 	function addmycss(){
-		addcss("css/main.css");
+		addcss( "css/lib.css" );
+		addcss( "css/main.css" );
 	}
 	function addmyjs(){
 		global $_ginfo;//Assuming Bootstrap & Jquery are already added

@@ -102,12 +102,12 @@ load_view("Template/navbarnew.php");
           </div>
           <div id="tab_classes" class="col s12">
           <?php
-            load_view("Template/profile_classes.php");
+            load_view("Template/profile_classes.php", $myclasses);
           ?>
           </div>
           <div id="tab_reviews" class="col s12">
           <?php
-            load_view("Template/profile_reviews.php");
+//            load_view("Template/profile_reviews.php");
           ?>
           </div>
           <div id="tab_topics" class="col s12">

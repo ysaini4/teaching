@@ -1,11 +1,14 @@
 <?php
 include "includes/app.php";
-?>
 
-<form>
-  <input type="email" required>
-  <input type="submit">
-</form>
+
+echo qtable("bookedclasses", false);
+echo "<br><br><br><br>";
+
+Disp::disp_table(Sqle::getA(qtable("bookedclasses", false)));
+
+
+?>
 <?php
 closedb();
 ?>

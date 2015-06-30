@@ -19,10 +19,11 @@
 				foreach($group as $i=>$val){
 					$inpattr=array("class"=>"popuptimeslots", "value"=>$slotid);
 					if($dayslots[$slotid]["cansee"]){
-						if($dayslots[$slotid]["checked"])
-							$inpattr["checked"]="";
-						if($dayslots[$slotid]["blocked"])
+						if($dayslots[$slotid]["blocked"]){
 							$inpattr["disabled"]="";
+						} else if($dayslots[$slotid]["checked"]) {
+							$inpattr["checked"]="";
+						}
 						if($isguest){
 							ocloset("div",$val);
 						}
@@ -38,6 +39,7 @@
 		}
 	?>
 	</div>
+	<div class='clear' ></div>
 	<?php
 		if(!$isguest){
 			if($isself){
@@ -47,7 +49,7 @@
 			}
 			else if($isstudent){
 	?>
-			<button class='btn btn-default' type="button" data-datets="<?php echo $datets; ?>" data-eparams="{'slots':$('#popuptimecheckbox').val()}" data-action="studentBookSlots" onclick="ms.studentbookslot(this);" data-waittext="Booking.." data-res='Materialize.toast("Slots Booked ! ", 4000);mohit.popup_close("timeslot");' >Book</button>
+			<button class='btn btn-default' type="button" data-datets="<?php echo $datets; ?>" data-eparams="{'slots':$('#popuptimecheckbox').val()}" data-tid="<?php echo $tid; ?>" data-action="studentBookSlots" onclick="ms.studentbookslot(this);" data-waittext="Booking.." data-res='Materialize.toast("Slots Booked ! ", 4000);mohit.popup_close("timeslot");' >Book</button>
 	<?php
 			}
 		}

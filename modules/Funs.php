@@ -293,11 +293,23 @@ abstract class Funs{
 		$pageinfo["topicinfo"]=$topicinfo;
 		return $pageinfo;
 	}
+	public static function classeslist_filter($inp) {
+		foreach($inp as $i => $row) {
+			$row["starttime_disp"] = Fun::timetotime_t3($row["starttime"]);
+			$row["startdate_disp"] = Fun::timetodate($row["starttime"]);
+			$row["duration_disp"] = number_format($row["duration"]/3600.0 , 1);
+			$inp[$i] = $row;
+		}
+		return $inp;
+	}
 	public static function student_profile($sid){
 		$sinfo=User::userProfile($sid);
 		$flname=explode(" ",$sinfo["name"]." ");
 		$dob=$sinfo["dob"]>0 ? Fun::timetostr_t3($sinfo["dob"]):"";
-		$pageinfo=array("fname"=>$flname[0],"lname"=>$flname[1],"sinfo"=>$sinfo,"dob"=>$dob, "sid" => $sid);
+		$oldslots = Funs::classeslist_filter(Sqle::getA(qtable("stdbookedclasses_old", false), array("sid" => $sid)));
+		$newslots = Funs::classeslist_filter(Sqle::getA(qtable("stdbookedclasses_new", false), array("sid" => $sid)));
+
+		$pageinfo=array("fname"=>$flname[0],"lname"=>$flname[1],"sinfo"=>$sinfo,"dob"=>$dob, "sid" => $sid, "newslots" => $newslots, "oldslots" => $oldslots);
 		return $pageinfo;
 	}
 	public static function doublesplit($inp){
@@ -315,6 +327,11 @@ abstract class Funs{
 		$hisoutput=array("select tid from teachers",array());
 		$hisoutput[0]="select dispteachers.tid, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid order by pricelist.minprice asc";
 		return $hisoutput;
+	}
+	public static function get_teacher_classes($tid) {
+		$oldslots = Funs::classeslist_filter(Sqle::getA(qtable("teacherbookedclasses_old", false), array("tid" => $tid)));
+		$newslots = Funs::classeslist_filter(Sqle::getA(qtable("teacherbookedclasses_new", false), array("tid" => $tid)));
+		return array("newslots" => $newslots, "oldslots" => $oldslots);
 	}
 }
 ?>

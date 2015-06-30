@@ -111,7 +111,7 @@
 		global $view_default,$_ginfo;
 		if(isset($view_default[$view]))
 			$inp=Fun::mergeifunset($inp,$view_default[$view]);
-		$inp=Fun::setifunset($inp,"page",$_ginfo["page"]);
+		$inp=Fun::setifunset($inp,"page", getNameFromUrl(Fun::getcururl()));
 		$inp=Fun::setifunset($inp,"islogin",User::loginType());
 		$tem_name=Fun::getloadviewname($view);
 		$templates=new Templates();
@@ -298,6 +298,9 @@
 			$var = $val;
 		}
 	}
+	function getifn($inp, $alt=null) {
+		rit($inp, $inp!=null, $alt);
+	}
 
 	function setifnn(&$var, $val) {
 		/*
@@ -409,13 +412,19 @@
 		return $outp;
 	}
 
-	function gtable($name) {
+	function gtable($name) {//don't use it now. need to be deleted. it is here just because some people have used it.
 	/*Used to select required query from $_ginfo["query"]
 	 Arguments: $name: field name
 	*/     
 		global $_ginfo;
 		return $_ginfo["query"][$name];
 	}
+
+	function qtable($name, $alias=true) {
+		global $_ginfo;
+		return ($alias ? ("(".$_ginfo["query"][$name].") ".$name) : $_ginfo["query"][$name]);
+	}
+
 
 	function grouplist($inp, $gap=1) {
 		$outp = array();
@@ -559,6 +568,18 @@
 			$inp=str_replace($i, $val, $inp);
 		}
 		return $inp;
+	}
+
+	function getNameFromUrl($url) {
+		$arr=Fun::myexplode('/',$url);
+		$index=array_search('welcome', $arr)+1;
+		if(!(isset($arr[$index])) || $arr[$index]=='' || $arr[$index]=='#')
+			return 'index';
+		else if(strpos($arr[$index],'?')!==false) {
+			$ok=Fun::myexplode('?',$arr[$index]);
+			return $ok[0];
+		}
+		return $arr[$index];
 	}
 
 
