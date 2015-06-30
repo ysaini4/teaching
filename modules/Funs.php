@@ -399,5 +399,14 @@ abstract class Funs{
 			return $odata;
 		}
 	}
+	public static function wiziqurl($row) {
+		$outpurl = null;
+		if($row["starttime"] + $row["duration"] < time() ){
+			$outpurl = $row["rurl"];
+		} else {
+			$outpurl = $row[ (User::isloginas("s") ? "surl":"url") ];
+		}
+		return getifn($outpurl, "");
+	}
 }
 ?>
