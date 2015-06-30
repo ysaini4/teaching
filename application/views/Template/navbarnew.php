@@ -7,9 +7,9 @@
 
   <!-- NavBar -->
   <div class="navbar-fixed">
-    <nav class="teal darken-4" role="navigation">
+    <nav class="blue darken-1" role="navigation">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo" style="padding-left:20px;">getIITians</a>
+        <a href="#" class="brand-logo">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="<?php echo BASE."aboutus"; ?>">About</a></li>

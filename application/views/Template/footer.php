@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer teal darken-3">
+<footer class="page-footer blue-grey darken-2">
   <div class="container">
     <div class="row">
       <div class="col l4 s12">
@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-copyright teal darken-4">
+  <div class="footer-copyright blue-grey darken-1">
     <div class="container">
     &copy; Copyright 2015 GetIITians
     <a class="grey-text text-lighten-4 right" href="#!">www.getiitians.com</a>

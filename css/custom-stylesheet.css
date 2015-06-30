@@ -9,55 +9,6 @@ main {
   flex: 1 0 auto;
 }
 
-.parallax-container {
-  height: 350px;
-  min-height: 350px;
-}
-
-.bxslider 1{
-}
-
-#main-search-bar {
-  background: #eeeeee;
-  border-radius: 10px;
-
-  font-size: 20px;
-  color: teal;
-  height:52px;
-  padding-right: 0;
-}
-
-#main-search-bar input:first-child{
-  width:80%;
-  float:left;
-  font-size: 22px;
-}
-
-#main-search-bar input:nth-child(2){
-  box-shadow: none;
-  border:none;
-  height:52px;
-  line-height: 52px; 
-  width:19%;
-
-  background: #ccc;
-  border-radius: 9px;
-  float:right;
-  margin-right: 0;
-  padding-right: 0;
-}
-
-@media only screen and (max-width: 678px){
-  #main-search-bar input[type="button"]{
-    font-size: 16px;
-  }
-}
-
-#main-search-bar:focus {
-  background: #ffffff;
-  border:1px solid #00897b;
-}
-
 .tabs .tab a {
   color: #43a047;
 }
@@ -74,12 +25,26 @@ main {
   color: #eeeeee;
 }
 
-#container{
+@font-face {
+  font-family: 'Kurale';
+  src: url('font/Kurale-Regular.ttf');
+}
+
+a.brand-logo {
+  font-family: 'Kurale';
+  padding-left: 25px;
+}
+
+
+/* HOME */
+#container {
   width:80%;
 }
 
-@media only screen and (min-width: 993px){
-  .nav-wrapper a.brand-logo{
-    padding-left: 100px;
-  }
+.parallax-container {
+  height: 350px;
+  min-height: 350px;
+}
+
+.bxslider {
 }
