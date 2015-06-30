@@ -7,7 +7,7 @@
 
   <!-- NavBar -->
   <div class="navbar-fixed">
-    <nav class="blue darken-1" role="navigation">
+    <nav class="teal" role="navigation">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -35,7 +35,7 @@
           ?>
 
           <form class="right" action="<?php echo BASE."search"; ?>" >
-            <div class="input-field">
+            <div class="input-field teal darken-1">
               <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q" >
               <label for="search"><i class="material-icons">search</i></label>
               <button type="submit" style="display:none;" ></button>
