@@ -18,6 +18,11 @@
 	spl_autoload_register('loadModule');
 	include "php/func.php";
 
+	require_once(WIZ."create.php");
+		
+	require_once(WIZ."AddAttendee.php");
+
+
 	if(!isset($config))
 		$config=array();
 	$config=Fun::mergeifunset($config,array("session_start"=>true,"set_session_id"=>0,'calallcity'=>false));

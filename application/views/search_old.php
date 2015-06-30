@@ -160,7 +160,8 @@ load_view("Template/navbarnew.php");
   				</div>
   				<div class="row">
   					<div class="col s12">
-  						<a onclick='ms.searchloadmore(this);' style="cursor:pointer;" id="loadmorebutton" >Load More</a>
+  						<img src='photo/icons/loading2.gif' id="loadmoreloadingimg" style='visibility:hidden;' /><br>
+  						<a onclick='ms.searchloadmore(this);' style="cursor:pointer;" id="loadmorebutton" >Load More  </a>
   					</div>
   				</div>
   			</div>

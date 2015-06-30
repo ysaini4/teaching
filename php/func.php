@@ -298,6 +298,9 @@
 			$var = $val;
 		}
 	}
+	function getifn($inp, $alt=null) {
+		rit($inp, $inp!=null, $alt);
+	}
 
 	function setifnn(&$var, $val) {
 		/*

@@ -242,6 +242,7 @@ class Welcome extends CI_Controller {
 							Fun::redirect(HOST);
 					}
 					$pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
+					$pageinfo["myclasses"] = Funs::get_teacher_classes($tid);
 					$pageinfo["topicinfo"]=$topicinfo;
 					$pageinfo["tid"]=$tid;
 					$pageinfo["tabid"]=$tabid;

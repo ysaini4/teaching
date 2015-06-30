@@ -82,7 +82,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 					}
 					else if(User::isloginas('s')) {
 					?>
-						<td><a onclick="ms.booktopic(this,<?php echo $row["c_id"]."-".$row["s_id"]."-".$row["t_id"]; ?>);"  class="btn waves-effect waves-light red darken-1">Book</a></td>
+						<td><a onclick="ms.booktopic(this,'<?php echo $row["c_id"]."-".$row["s_id"]."-".$row["t_id"]; ?>');"  class="btn waves-effect waves-light red darken-1" data-topictext="<?php echo $row["classname"].", ".$row["subjectname"].", ".$row["topicname"]; ?>" >Book</a></td>
 					<?php
 					}
 					?>

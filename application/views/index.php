@@ -48,7 +48,7 @@ session_destroy();
                 <input type="submit" value="See Tutors">
               </div>              
             </div>
-            <div id="dropdownnav" class="row">
+            <div id="dropdownnav" class="row" style='display:none;' >
               <nav class="transparent col s12">
                 <ul class="nav">
                   <li><a href="#">VI</a>
