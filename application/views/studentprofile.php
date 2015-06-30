@@ -9,14 +9,25 @@ load_view("Template/navbarnew.php",$inp);
       <br>
         <div class="row">
           <div class="col s12 l4 offset-l1 center">
-            <img class="materialboxed" height="100" width="100" src="photo/human1.png">
+            <img class="materialboxed" height="100" width="100" src="<?php  echo $sinfo["profilepic"]; ?>">
             <br>
             <!-- Change Profile Picture -->
-            <a href="#pic_upload" class="modal-trigger" style="cursor:pointer;">Change Profile Picture</a>
+            <?php
+              if(User::loginId() == $sid){
+            ?>
+           <form method="post" enctype="multipart/form-data"> 
+            <a onclick='uploadfile(this,"profilepic");' style="cursor:pointer;" >Change Profile Picture</a>
+           </form>
+           <?php
+            }
+           ?>
+
+
             <div id="pic_upload" class="modal">
               <div class="modal-content">
                 <h6 class="teal-text">Change Profile Picture</h6>
               </div>
+
               <div class="row">
                 <form action="#" class="col s12 l8 offset-l2">
                   <div class="row">
@@ -41,10 +52,10 @@ load_view("Template/navbarnew.php",$inp);
           <div class="col s12 l7">
             <div class="row">
               <div class="col s12">
-                <h5 class="green-text left">Shivam Mamgain</h5>
+                <h5 class="green-text left"><?php echo $sinfo["name"]; ?></h5>
               </div>
               <div class="col s12">
-                <h6 class="grey-text left">shivammamgain47@gmail.com</h6>                
+                <h6 class="grey-text left"><?php echo $sinfo["email"]; ?></h6>                
               </div>
             </div>
           </div>
@@ -62,7 +73,7 @@ load_view("Template/navbarnew.php",$inp);
           </div>
           <div id="tab_profile" class="col s12 offset-l2">
           <?php
-            load_view("Template/studentprofile_about.php");
+            load_view("Template/studentprofile_about.php", $inp);
           ?>
           </div>
 
@@ -73,12 +84,12 @@ load_view("Template/navbarnew.php",$inp);
           </div>
           <div id="tab_reviews" class="col s12">
           <?php
-            load_view("Template/studentprofile_reviews.php");
+//            load_view("Template/studentprofile_reviews.php");
           ?>
           </div>
           <div id="tab_account" class="col s12">
           <?php
-            load_view("Template/studentprofile_account.php");
+//            load_view("Template/studentprofile_account.php");
           ?>
           </div>
         </div>

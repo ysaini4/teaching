@@ -13,7 +13,7 @@ include "includes/app.php";
 
 
 $temp=Sql::getArray("show tables");
-$need=array("users");
+$need=array("users", "teachers");
 
 // for($i=0;$i<count($temp);$i++){
 // 	$table_name=$temp[$i]["Tables_in_".$db_data["db"]];

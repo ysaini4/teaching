@@ -10,7 +10,7 @@
       Name
     </div>
     <div class="col s12 l6">
-      <span class="grey-text text-darken-1">Shivam Mamgain</span>
+      <span class="grey-text text-darken-1"><?php echo $sinfo["name"]; ?></span>
     </div>
   </div>
   <div class="row">
@@ -18,7 +18,7 @@
       Email
     </div>
     <div class="col s12 l6">
-      <span class="grey-text text-darken-1">shivammamgain47@gmail.com</span>
+      <span class="grey-text text-darken-1"><?php echo $sinfo["email"]; ?></span>
     </div>
   </div>
   <div class="row">
@@ -26,7 +26,7 @@
       Mobile Number
     </div>
     <div class="col s12 l6">
-      <span class="grey-text text-darken-1">+91 987 654 3210</span>
+      <span class="grey-text text-darken-1"><?php echo $sinfo["phone"]; ?></span>
     </div>
   </div>
 </div>
@@ -44,13 +44,13 @@
 
 <div id="edit_profile_info">
 <br>
-  <form onsubmit='form.sendreq1(this,$(this).find("button")[0]);return false;' data-action="saveuserdetails">
+  <form onsubmit='form.req(this);return false;' data-action="saveuserdetails">
     <div class="row">
       <div class="col s12 l4">
         Name
       </div>
       <div class="col s12 l4">
-        <input name="name" placeholder="Enter your full name" type="text" value="Shivam Mamgain" class="validate">
+        <input name="name" placeholder="Enter your full name" type="text" value="<?php echo convchars($sinfo["name"]); ?>" class="validate">
       </div>
     </div>
     <div class="row">
@@ -58,7 +58,7 @@
         Email
       </div>
       <div class="col s12 l4">
-        <input name="email" placeholder="Enter your email address" type="email" value="shivammamgain47@gmail.com" class="validate">
+        <input name="email" placeholder="Enter your email address" type="email" value="<?php echo $sinfo["email"]; ?>" class="validate">
       </div>
     </div>
     <div class="row">
@@ -66,10 +66,10 @@
         Mobile Number
       </div>
       <div class="col s12 l4">
-        <input name="phone" placeholder="Enter your mobile number" type="text" value="9876543210" class="validate">
+        <input name="phone" placeholder="Enter your mobile number" type="text" value="<?php echo convchars($sinfo["phone"]); ?>" class="validate">
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="<?php dit(false); ?>">
       <div class="col s12 l4">
         Gender
       </div>
@@ -90,7 +90,7 @@
         </select>
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="<?php dit(false); ?>" >
       <div class="col s12 l4">
         Date Of Birth
       </div>

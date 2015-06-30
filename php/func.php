@@ -534,6 +534,32 @@
 			echo json_encode($outp)."\n";
 	}
 
+	function subsarr($arr1, $arr2){
+		/*	
+			$arr1 - $arr2
+		*/
+		$outp = array();
+		foreach( $arr1 as $i){
+			if( !in_array($i, $arr2))
+				$outp[]=$i;
+		}
+		return $outp;
+	}
+
+	function rit($toprint, $cond=true, $toprint_false=''){
+		if($cond)
+			return $toprint;
+		else
+			return $toprint_false;
+	}
+
+	function convchars($inp){
+		$conv=array("&" => "&amp;", '"' => "&quot;", "'" => "&#039;", "<" => "&lt;", ">" => "&gt;");
+		foreach($conv as $i => $val) {
+			$inp=str_replace($i, $val, $inp);
+		}
+		return $inp;
+	}
 
 
 ?>

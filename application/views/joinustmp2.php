@@ -2,7 +2,7 @@
 load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 
-$issubmitted = false;
+//$issubmitted = false;
 ?>
 <?php if (!$issubmitted) { ?>
 <main>
@@ -38,7 +38,7 @@ $issubmitted = false;
             </div>
           </div>
           <div class="row" >
-            <form class="col s12 l10 offset-l1" enctype="multipart/form-data"  method="post" <?php if($_ginfo["needotp"]){?> data-action='signupotp' data-params='{"phone":$("#main_form_section").find("input[name=phone]").val()}' <?php } else {?> <?php } ?> onsubmit="return ms.joinusform(this, <?php echo tf($_ginfo["needotp"]); ?>);" data-res="openOtpSection();"  >
+            <form class="col s12 l10 offset-l1" data-enctype="multipart/form-data"  method="post" <?php if($_ginfo["needotp"]){?> data-action='signupotp' data-params='{"phone":$("#main_form_section").find("input[name=phone]").val()}' <?php } else {?> <?php } ?> onsubmit="return ms.joinusform(this, <?php echo tf($_ginfo["needotp"]); ?>);" data-res="openOtpSection();"  >
               <?php
                 load_view("Template/joinus_otp.php");
                 load_view("Template/joinus_main.php");
@@ -52,7 +52,36 @@ $issubmitted = false;
 </main>
 <?php
 }
+else{
+?>
 
+<main>
+  <div class="container">
+  <br>
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel"  >
+
+          <div class="row">
+            <div class="col s12 l8">
+              <div class="row grey-text">
+                <div class="col s12">
+                  <?php
+                    echo $msg;
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+</main>
+
+
+<?php
+}
 load_view("Template/footer.php");
 load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
 ?>

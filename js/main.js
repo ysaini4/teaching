@@ -231,6 +231,33 @@ var ms={
 		} else {
 			return submitForm_t2(mainwindow[0]);
 		}
+	},
+	refinesearch: function(){
+		var searchdiv = $('#searchresultdiv');
+		div.reload_autoscroll(searchdiv[0], null, function(d){
+			$("#loadmorebutton").fadeIn();
+		}, null, "#searchloadingimg");
+	},
+	searchloadmore: function(obj){
+		var sdiv = $("#searchresultdiv");
+		var maxl = parseInt(sdiv.attr("data-maxl"));
+		div.load(sdiv[0], 0, 0, function(d){
+			if(d.qresultlen < maxl){
+				$(obj).fadeOut();
+			}
+		});
+	},
+	studentbookslot: function(obj) {
+		if(selectedtopic != "") {
+			ms.cbautofill("disppopupslots");
+			button.sendreq_v2(obj);
+		} else {
+			Materialize.toast('Please select the topic first', 4000);
+		}
+	},
+	booktopic: function(obj, cst) {
+		selectedtopic=cst;
+		$("#profiletabs2").click();
 	}
 };
 
@@ -255,6 +282,8 @@ function searchform(){
 	mergeifunset(leftform, {'orderby':$("select[name=orderby]").val()});
 	return leftform;
 }
+
+
 
 
 $(document).ready(function(){

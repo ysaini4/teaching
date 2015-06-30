@@ -12,7 +12,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
           <span class="grey-text text-darken-2">Please add your topics</span>
           <br>
           <div class="row">
-            <form method="post" class="col s12" onsubmit='return submitForm(this);' action="<?php echo BASE."profile/".$tid."/3"; ?>"  >
+            <form method="post" class="col s12" onsubmit='return submitForm(this);' action="<?php echo BASE."profile/".$tid."/5"; ?>"  >
               <div class="row">
                 <div class="input-field col s12">
                   <select name='class' class="browser-default" onchange='topicssubtopic(this);' id="selectclass" data-condition='simple' style='' >
@@ -77,7 +77,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
               <?php
               if($tid==User::loginId()){
               ?>
-                <td><a href='<?php echo BASE."profile/".$tid."/3?deleteid=".$row["id"]; ?>' class="btn waves-effect waves-light red darken-1">Delete</a></td>
+                <td><a href='<?php echo BASE."profile/".$tid."/5?deleteid=".$row["id"]; ?>' class="btn waves-effect waves-light red darken-1">Delete</a></td>
               <?php
               }
               ?>

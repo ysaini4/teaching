@@ -375,4 +375,9 @@
 		mergeifunset($params,array("style"=>"color:red;"));
 		ocloset("div",$error,$params);
 	}
+	function pit($toprint, $cond=true, $toprint_false=''){
+		echo rit($toprint, $cond, $toprint_false);
+	}
+
+
 ?>
