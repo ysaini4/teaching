@@ -333,5 +333,71 @@ abstract class Funs{
 		$newslots = Funs::classeslist_filter(Sqle::getA(qtable("teacherbookedclasses_new", false), array("tid" => $tid)));
 		return array("newslots" => $newslots, "oldslots" => $oldslots);
 	}
+	public static function wiziqtime($inp) {
+		return date("Y-m-d H:i", $inp);
+	}
+	public static function wiziq($data) {
+		global $_ginfo;
+		$secretAcessKey="A9m0hoLiBLlixWgBgpUVuw==";
+		$access_key="f0fWFgPNdys=";
+
+		// $data["tmid"]="saini@mail.com";
+		// $data["class_title"]="Timepass";
+		// $data["s_time"]="2015-05-19 15:30";
+
+		$webServiceUrl="http://class.api.wiziq.com/";
+
+		if($data["action"] == "getteacherinfo") {
+			$obj = new getTeacher($secretAcessKey,$access_key,$webServiceUrl);
+
+		} else if($data["action"] == "addteacher") {//tmid
+			$requestParameters = array();
+			$requestParameters["name"]="Mohit Saini";
+			$requestParameters["email"]=$data["tmid"];
+			$requestParameters["password"] = "mohitsaini";
+			$obj=new AddTeacher($secretAcessKey,$access_key,$webServiceUrl,$requestParameters);
+		} else if($data["action"] == "addclass") {//tmid, s_time,duration  o:{title, }
+			mergeifunset($data, array("title" => "getIITians"));
+			$requestParameters=array();
+			$requestParameters["presenter_email"]=$data["tmid"];
+			$requestParameters["start_time"] = Funs::wiziqtime($data["s_time"]);
+			$requestParameters["title"]=$data["title"]; //Required
+			$requestParameters["duration"] = floor($data["duration"]/60); //optional
+			$requestParameters["time_zone"] = "Asia/Kolkata"; //optional
+			$requestParameters["attendee_limit"]=""; //optional
+			$requestParameters["control_category_id"]=""; //optional
+			$requestParameters["create_recording"]=""; //optional
+			$requestParameters["return_url"]=""; //optional
+			$requestParameters["status_ping_url"]=""; //optional
+			$requestParameters["language_culture_name"]="en-us";
+			$obj=new ScheduleClass($secretAcessKey,$access_key,$webServiceUrl,$requestParameters);
+			$odata=$obj->secheduledata;
+			return $odata;
+		} else if($data["action"] == "tryaddclass") {//s_time, duration
+			$teachers = array( "mohitsaini@gmail.com", "saini@mail.com", "vikash@mail.com" );
+			$temp=null;
+			for($i=0; $i<$_ginfo["wiziqlimit"]; $i++) {
+				$data["action"] = "addclass";
+				$data["tmid"] = $teachers[$i];
+				$temp = Funs::wiziq($data);
+				if($temp["ec"] > 0) {
+					break;
+				}
+			}
+			if($temp["ec"] > 0) {
+				$temp1 = Funs::wiziq(array("action" => "addstudent", "class_id" => $temp["cid"]));
+				$temp["surl"] = $temp1["url"];
+			}
+			return $temp;
+		} else if($data["action"] == "addstudent") {//class_id
+			$requestParameters = array();
+			$requestParameters["class_id"] = $data["class_id"];
+			$requestParameters["student_id"] = 100;
+			$requestParameters["student_name"] = "Student";
+			$obj = new AddAttendee($secretAcessKey,$access_key,$webServiceUrl,$requestParameters);
+			$odata = $obj->addclassdata;
+			return $odata;
+		}
+	}
 }
 ?>

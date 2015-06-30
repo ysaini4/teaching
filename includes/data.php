@@ -84,6 +84,8 @@ $_ginfo["error"]=array(
 	"-25"=>"Error",
 	"-25"=>"Subject Already Added",
 	"-26"=>"Password cant be changed",
+	"-27"=>"Wiziq Error",
+
 	"1"=>"Positive"
 );
 $_ginfo["calrepeatlimit"]=365;

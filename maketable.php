@@ -38,8 +38,9 @@ function create(){
 	echo Sql::query("ALTER TABLE booked add c_id int NULL ");
 	echo Sql::query("ALTER TABLE booked add s_id int NULL ");
 	echo Sql::query("ALTER TABLE booked add t_id int NULL ");
-	echo Sql::query("ALTER TABLE booked add surl int NULL ");
-	echo Sql::query("ALTER TABLE booked add rurl int NULL ");
+	echo Sql::query("ALTER TABLE booked add surl varchar(300) NULL ");
+	echo Sql::query("ALTER TABLE booked add rurl varchar(300) NULL ");
+	echo Sql::query("ALTER TABLE booked add class_id int NULL ");
 
 
 	echo Sql::query("CREATE TABLE teachers (tid int NOT NULL,iit int, iitentryyear int , degree varchar(100), experience varchar(1000), addinfo varchar(1000) , isselected varchar(1) ) ");

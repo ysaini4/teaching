@@ -34,14 +34,17 @@ class Students{
 		list($c_id, $s_id, $t_id) = intexplode("-", $data["cst"]);
 		$dbpush = array();
 		foreach($bookedslots as $i => $row) {
-			$insrow = array($data["tid"], $data["datets"]+($row[0]-1)*1800, User::loginId(), $row[1]*1800, $c_id, $s_id, $t_id  );
+			$starttime = $data["datets"]+($row[0]-1)*1800;
+			$duration = $row[1]*1800;
+			$wiziqo = Funs::wiziq(array("action" => "tryaddclass", "s_time" => $starttime, "duration" => $duration ));
+			$insrow = array($data["tid"], $starttime, User::loginId(), $duration, $c_id, $s_id, $t_id, getval("curl", $wiziqo), getval("surl", $wiziqo), getval("rurl", $wiziqo), getval("cid", $wiziqo)  );
 			$dbpush[] = $insrow;
 		}
 		foreach($inpslots as $i => $val) {
 			Sqle::updateVal("timeslot", array("sid" => User::loginId()), array("tid" => $data["tid"], "starttime" => $data["datets"]+($val-1)*1800 ));
 		}
 
-		$query = "insert into booked (tid, starttime, sid, duration, c_id, s_id, t_id) ".Fun::makeDummyTableColumns($dbpush)."";
+		$query = "insert into booked (tid, starttime, sid, duration, c_id, s_id, t_id, url, surl, rurl, class_id) ".Fun::makeDummyTableColumns($dbpush, null, "iiiiiiissss")."";
 		$outp["data"] = Sqle::q( $query );
 		return $outp;
 	}
