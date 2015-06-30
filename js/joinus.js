@@ -1,6 +1,7 @@
 $("#specify_sub_other").hide();
 $("#specify_deg_other").hide();
 $("#specify_survey_other").hide();
+
 $("#otp_section").hide();
 
 function specifySubOther() {
@@ -30,6 +31,6 @@ function ageToTime(obj) {
 }
 
 function openOtpSection() {
-  $("#otp_section").show();
-  $("#main_form_section").hide();
+  $("#otp_section").slideDown();
+  $("#main_form_section").slideUp();
 }

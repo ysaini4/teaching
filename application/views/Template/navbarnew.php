@@ -34,10 +34,11 @@
           }
           ?>
 
-          <form class="right">
+          <form class="right" action="<?php echo BASE."search"; ?>" >
             <div class="input-field">
-              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off">
+              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q" >
               <label for="search"><i class="material-icons">search</i></label>
+              <button type="submit" style="display:none;" ></button>
             </div>
           </form>
         </ul>
@@ -77,8 +78,9 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">search</i>
-            <input id="sidenav_search" type="text">
+            <input id="sidenav_search" type="text" name="q">
             <label for="sidenav_search">Search Tutors</label>
+            <button type="submit" style="display:none;" ></button>
           </div>
         </div>
       </form>

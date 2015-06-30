@@ -87,7 +87,7 @@ class Actiondisp{
 		}
 		$pageinfo["isguest"]=($data["tid"]!=User::loginId() && (!User::isloginas("s")));
 		$pageinfo["isself"]=($data["tid"]==User::loginId());
-		$pageinfo["isstudent"]=( (!User::isloginas("s")) );
+		$pageinfo["isstudent"]=( (User::isloginas("s")) );
 
 		$pageinfo["dayslots"]=$slotinfo;
 		$pageinfo["timeslots"]=Funs::timeslotlist(true);
@@ -145,7 +145,7 @@ class Actiondisp{
 			list($query,$param)=Funs::tejpal_output($data);
 			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$data["maxl"], 'minl'=>0, 'min'=>0));
 			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, $_ginfo["numsearchr"]["loadadd"]);
-			$odata=Fun::getflds(array("max", "maxl"), $qoutput);
+			$odata=Fun::getflds(array("max", "maxl", "qresultlen"), $qoutput);
 		}
 		if($printjson){
 			echo json_encode(array('ec'=>$ec,'data'=>$odata))."\n";

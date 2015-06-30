@@ -70,20 +70,22 @@ class User extends Sql{
 			return $temp;
 		}
 	}
+
 	public static function signIn($email,$password){
 		$temp=Sqle::selectVal("users",'id,type,password,conf',array('email'=>$email),1);
 		if($temp==null)
-			return -1;//account not exist
+			return -6;//account not exist
 		else if($temp['password']!=$password)
-			return 0;//password didn't matched !
+			return -4;//password didn't matched !
 		else if($temp['conf']=='d')
-			return -2;//Your account is deactivated ! 
+			return -21;//Your account is deactivated ! 
 		else{
 			$temp=array('id'=>$temp['id'],'type'=>$temp['type']);
 			$_SESSION['login']=$temp;
 			return $temp;
 		}
 	}
+
 	public static function changePassword($oldp,$newp){
 		if(self::islogin())
 			return Sqle::updateVal('users',array('password'=>$newp),array('id'=>self::loginId(),'password'=>$oldp),1);

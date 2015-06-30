@@ -503,7 +503,7 @@ abstract class Fun{
       $fd=Fun::uploadfile_post($file,$const);
       if($fd["ec"]>0){
         $smallpic="data/files/".Fun::getuploadfilename(pathinfo($fd['fn'], PATHINFO_EXTENSION), 'small');
-        Fun::resizeimage($fd["fn"], $smallpic, $size, $size);
+        resizeimg($fd["fn"], $smallpic, $size, $size);
         Sqle::updateVal("users",array($smallkey=>$smallpic, $bigkey=>$fd["fn"]), array("id"=>User::loginId()) );
       }
       return $fd["ec"];
@@ -512,5 +512,42 @@ abstract class Fun{
     return firstelm(explode(".php",lastelm(explode("/",$inp))));
   }
 }
+
+
+class Special{
+  function lt($a, $b){
+    return ($b==-1 || $a<$b);
+  }
+  function gt($a, $b){
+    return ($a==-1 || $a>$b);
+  }
+  function max2($a, $b){
+    return ($this->gt($a, $b) ? $a:$b);
+  }
+  function min2($a, $b){
+    return ($this->lt($a, $b) ? $a:$b);
+  }
+  function max(){
+    $inp=func_get_args();
+    if(count($inp)==0)
+      return null;
+    $maxtillnow=$inp[0];
+    for($i=1; $i<count($inp); $i++){
+      $maxtillnow=$this->max2($maxtillnow, $inp[$i]);
+    }
+    return $maxtillnow;
+  }
+  function min(){
+    $inp=func_get_args();
+    if(count($inp)==0)
+      return null;
+    $mintillnow=$inp[0];
+    for($i=1; $i<count($inp); $i++){
+      $mintillnow=$this->min2($mintillnow, $inp[$i]);
+    }
+    return $mintillnow;
+  }
+}
+
 
 ?>

@@ -1,6 +1,5 @@
 <?php
-
-class search{
+class search {
 	//function returns an SQL query for one keyword only
 	public static function searchQuery($param,$fromPrice,$toPrice,$fromTime,$toTime){
 	

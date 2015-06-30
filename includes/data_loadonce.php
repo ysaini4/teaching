@@ -13,6 +13,7 @@ $_ginfo["query"]["alltimeslots"]="select timeslot.*, numbookedtable.numbooked fr
 $_ginfo["query"]["meteacherallts"]=gtable("alltimeslots")." and tid={tid} and timeslot.starttime>={starttime} AND timeslot.starttime<{endtime} ";
 $_ginfo["query"]["studentteacherallts"]=gtable("meteacherallts")." AND (sid={sid} OR (sid is null AND numbooked<".$_ginfo["wiziqlimit"].") ) ";
 
+$_ginfo["query"]["pricelist"] = "select tid, min(price) as minprice, max(price) as maxprice from subjects group by tid";
 
 
 ?>

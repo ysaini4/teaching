@@ -63,7 +63,7 @@ function makesomeaccounts(){
 
 if(get("key")=="mohitvm"){
 	insertall_cst();
-	makesomeaccounts();
+//	makesomeaccounts();
 }
 
 closedb();
