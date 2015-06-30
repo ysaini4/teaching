@@ -113,6 +113,7 @@ load_view("Template/navbarnew.php");
 								  </ul>
 							  </div>
 						  </div>
+						  <button type="button" class="btn waves-effect waves-light" onclick="ms.refinesearch();" >Refine Search</button>
 						</form>
 					</div>
   			</div>
@@ -126,19 +127,23 @@ load_view("Template/navbarnew.php");
 					</div>
   				<div class="row">
   					<div class="col s12 l7">
+  						<img src="photo/icons/loading2.gif" id="searchloadingimg" style="visibility:hidden;" />
   					  <br>
-  						<span class="grey-text">Displaying 1-10 of 1000 results (402 online)</span>
-  					</div>
+<!--   						<span class="grey-text">Displaying 1-10 of 1000 results (402 online)</span>
+ -->
+   					</div>
   					<form method="post" class="col s12 l5">
 						  <div class="row">
 						  	<div class="col s12">
 						  		<select name="orderby" class="browser-default">
-						  		  <option value="" selected disabled>Sort By</option>
-										<option value="1">Experience</option>
+						  		  <option value="" >Sort By</option>
+<!-- 										<option value="1">Experience</option>
 										<option value="2">Fees/hr (High to Low)</option>
+ -->
 										<option value="3">Fees/hr (Low to High)</option>
-										<option value="4">Rating</option>
-									</select>
+<!-- 										<option value="4">Rating</option>
+ -->
+								</select>
 						  	</div>
 						  </div>
 						</form>
@@ -148,14 +153,15 @@ load_view("Template/navbarnew.php");
   					<div class="col s12">
   						<div id="searchresultdiv" data-action='search' data-max='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>' data-maxl='<?php echo $_ginfo["numsearchr"]["loadadd"]; ?>' data-eparams='searchform()' data-ignoreloadonce='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>'>
 							<?php
-							 	handle_disp(array('class'=>'', 'subject'=>'', 'topic'=>'', 'price'=>'', 'timer'=>'', 'lang'=>'', 'timeslot'=>'', 'orderby'=>'', 'search'=>$search, 'max'=>0, 'maxl'=>$_ginfo["numsearchr"]["loadonce"]), "search");
+							 	handle_disp(array('class'=>$class, 'subject'=>$subject, 'topic'=>$topic, 'price'=>'', 'timer'=>'', 'lang'=>'', 'timeslot'=>'', 'orderby'=>'', 'search'=>$search, 'max'=>0, 'maxl'=>$_ginfo["numsearchr"]["loadonce"]), "search");
 							?>
 							</div>
   					</div>
   				</div>
   				<div class="row">
   					<div class="col s12">
-  						<a onclick='div.load($("#searchresultdiv")[0],0);' style="cursor:pointer;">Load More</a>
+  						<img src='photo/icons/loading2.gif' id="loadmoreloadingimg" style='visibility:hidden;' /><br>
+  						<a onclick='ms.searchloadmore(this);' style="cursor:pointer;" id="loadmorebutton" >Load More  </a>
   					</div>
   				</div>
   			</div>

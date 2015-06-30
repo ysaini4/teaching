@@ -286,6 +286,10 @@ var form={
 			
 		}});
 	},
+	req:function(obj){
+		form.sendreq1(obj, $(obj).find("button[type=submit]")[0]);
+		return false;
+	},
 	valid:{
 		is:function (obj){
 			var errorlist=[];
@@ -312,7 +316,9 @@ var form={
 			return [errorlist,objlist];
 		},
 		action:function(obj, type){
-			var [errors, objlist]=form.valid.is(obj);
+			var temp=form.valid.is(obj);
+			var errors=temp[0];
+			var objlist=temp[1];
 			if(errors.length>0){
 				if(type==1){
 					for(var i=0; i<errors.length; i++){
@@ -500,33 +506,43 @@ var div={
 			$(obj).html(d);
 		},adata);
 	},
-	load:function(obj,isloadold){
+	load:function(obj, isloadold, isappendold, call_back_data, call_back_html, loadingselector) {
 		if(div.isblock(obj))
-			return false;
+			return -1;
+		if( (isloadold==1 && $(obj).attr("data-minl")==0) || (isloadold==0 && $(obj).attr("data-maxl")==0) )
+			return -2;
 		div.setblock(obj);
+		loading.showimg(loadingselector);
+		if(isappendold==null)
+			isappendold=isloadold;
 		$(obj).attr("data-isloadold",isloadold);
 		button.sendreq_v2_t4(obj,function(d){
-			div.setunblock(obj);
 			var replacearr=["min", "max", "minl", "maxl"];
 			for(var i=0; i<replacearr.length; i++){
 				$(obj).attr("data-"+replacearr[i], d[replacearr[i]]);
 			}
+			if(call_back_data!=null)
+				call_back_data(d);
+			loading.hideimg(loadingselector);
 		},function(d){
-			if(isloadold==1)
+			if(isappendold==1)
 				$(obj).prepend(d);
-			else if(isloadold==0)
+			else if(isappendold==0)
 				$(obj).append(d);
-			else if(isloadold==-1)
+			else if(isappendold==-1)
 				$(obj).html(d);
+			div.setunblock(obj);
+			if(call_back_html!=null){
+				call_back_html(d);
+			}
 		});
-		return true;
 	},
-	reload_autoscroll:function(obj,data_maxl){
+	reload_autoscroll: function(obj, data_maxl, call_back_data, call_back_html, selector) {
 		if(data_maxl==null)
 			data_maxl=$(obj).attr("data-ignoreloadonce");
 		$(obj).attr({"data-max":0, "data-maxl":data_maxl});
-		div.load($("#searchresultdiv")[0],-1);
-	}
+		div.load(obj, 0, -1, call_back_data, call_back_html, selector);
+	},
 };
 
 
@@ -703,3 +719,14 @@ function hasgoodchar(inp){
 	}
 	return false;
 }
+
+
+var loading = {
+	showimg: function(selector) {
+		$(selector).css("visibility", "visible");
+	},
+	hideimg: function(selector) {
+		$(selector).css("visibility", "hidden");
+	}
+};
+

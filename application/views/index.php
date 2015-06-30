@@ -41,14 +41,14 @@ session_destroy();
         </div></br>
 
         <div class="row center">
-          <form class="col s12">
+          <form class="col s12" action="<?php echo BASE."search"; ?>" >
             <div class="row center">
               <div class="col s12" style="margin-top:20px;"  id="main-search-bar" >
-                <input placeholder="Search by Topic, Subject, Time, Teacher" type="search" autocomplete="off">
-                <input type="button" value="See Tutors">
+                <input placeholder="Search by Topic, Subject, Time, Teacher" type="search" autocomplete="off" name="q">
+                <input type="submit" value="See Tutors">
               </div>              
             </div>
-            <div id="dropdownnav" class="row">
+            <div id="dropdownnav" class="row" style='display:none;' >
               <nav class="transparent col s12">
                 <ul class="nav">
                   <li><a href="#">VI</a>

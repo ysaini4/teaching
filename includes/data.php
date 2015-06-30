@@ -61,6 +61,7 @@ $_ginfo["action_constrain"]=array(
 	"signup"=>array("need"=>array("email","password","name","phone","otp")),
 	"changepassaction"=>array("need"=>array("oldpass","newpass","newcpass")),
 	"saveuserdetails"=>array("users"=>"all"),
+	"studentBookSlots" => array("datets", "slots", "cst")
 );
 $_ginfo["error"]=array(
 	"-1"=>"Session expired",
@@ -83,12 +84,14 @@ $_ginfo["error"]=array(
 	"-25"=>"Error",
 	"-25"=>"Subject Already Added",
 	"-26"=>"Password cant be changed",
+	"-27"=>"Wiziq Error",
+
 	"1"=>"Positive"
 );
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
-$_ginfo["needotp"]=true;
-$_ginfo["needsignupotp"]=true;
+$_ginfo["needotp"] = true;
+$_ginfo["needsignupotp"] = true;
 $_ginfo['imgheight']=200;
 $_ginfo['imgwidth']=200;
 

@@ -7,9 +7,9 @@
 
   <!-- NavBar -->
   <div class="navbar-fixed">
-    <nav class="teal darken-4" role="navigation">
+    <nav class="blue darken-1" role="navigation">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo" style="padding-left:20px;">getIITians</a>
+        <a href="#" class="brand-logo">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="<?php echo BASE."aboutus"; ?>">About</a></li>
@@ -34,10 +34,11 @@
           }
           ?>
 
-          <form class="right">
+          <form class="right" action="<?php echo BASE."search"; ?>" >
             <div class="input-field">
-              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off">
+              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q" >
               <label for="search"><i class="material-icons">search</i></label>
+              <button type="submit" style="display:none;" ></button>
             </div>
           </form>
         </ul>
@@ -77,8 +78,9 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">search</i>
-            <input id="sidenav_search" type="text">
+            <input id="sidenav_search" type="text" name="q">
             <label for="sidenav_search">Search Tutors</label>
+            <button type="submit" style="display:none;" ></button>
           </div>
         </div>
       </form>

@@ -9,7 +9,7 @@
 	date_default_timezone_set('Asia/Calcutta');
 
 	function loadModule($className){
-		$inside=array('Td'=>'Table','Row'=>'Table','Text'=>'Table' );
+		$inside=array('Td'=>'Table','Row'=>'Table','Text'=>'Table', "Special"=>"Fun" );
 		if(isset($inside[$className]))
 			$className=$inside[$className];
 		if(file_exists(ROOT.'modules/'.$className.'.php'))
@@ -17,6 +17,11 @@
 	}
 	spl_autoload_register('loadModule');
 	include "php/func.php";
+
+	require_once(WIZ."create.php");
+		
+	require_once(WIZ."AddAttendee.php");
+
 
 	if(!isset($config))
 		$config=array();

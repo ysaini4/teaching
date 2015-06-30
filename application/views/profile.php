@@ -19,7 +19,17 @@ load_view("Template/navbarnew.php");
             ?>">
             <br>
             <!-- Change Profile Picture -->
-            <a href="#pic_upload" class="modal-trigger">Change Profile Picture</a>
+            <?php
+              if(User::loginId() == $tid){
+            ?>
+           <form method="post" enctype="multipart/form-data"> 
+            <a onclick='uploadfile(this,"profilepic");' style="cursor:pointer;" >Change Profile Picture</a>
+           </form>
+           <?php
+            }
+           ?>
+
+
             <div id="pic_upload" class="modal">
               <div class="modal-content">
                 <h6 class="teal-text">Change Profile Picture</h6>
@@ -45,13 +55,13 @@ load_view("Template/navbarnew.php");
             </div>
             <!-- End -->
           </div>
-          <div class="col s12 l7">
+          <div class="col s12 l7" >
             <div class="row">
               <div class="col s12">
-                <h5 class="green-text left">Shivam Mamgain</h5>
+                <h5 class="green-text left"><?php echo $aboutinfo["name"]; ?></h5>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style="display:none;" >
               <form class="col s12">
                 <div class="row">
                   <div class="input-field col s12 l7">
@@ -72,12 +82,12 @@ load_view("Template/navbarnew.php");
       <div class="card-panel">
         <div class="row">
           <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a class="active" href="#tab_profile">Profile</a></li>
-              <li class="tab col s3"><a href="#tab_calendar">Calendar</a></li>
-              <li class="tab col s3"><a href="#tab_classes">Classes</a></li>
-              <li class="tab col s3"><a href="#tab_reviews">Reviews</a></li>
-              <li class="tab col s3"><a href="#tab_topics">Topics</a></li>
+            <ul class="tabs"  >
+              <li class="tab col s3"><a id="profiletabs1" <?php pit('class="active"', $tabid==1); ?> href="#tab_profile">Profile</a></li>
+              <li class="tab col s3"><a id="profiletabs5" <?php pit('class="active"', $tabid==5); ?>  href="#tab_topics">Topics</a></li>
+              <li class="tab col s3"><a id="profiletabs2" <?php pit('class="active"', $tabid==2); ?> href="#tab_calendar">Calendar</a></li>
+              <li class="tab col s3"><a id="profiletabs4" <?php pit('class="active"', $tabid==4); ?> href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s3" style="<?php pit("visibility:hidden", $tid != User::loginId()); ?>" ><a id="profiletabs3" <?php pit('class="active"', $tabid==3); ?> href="#tab_classes">Classes</a></li>
             </ul>
           </div>
           <div id="tab_profile" class="col s12 offset-l1">
@@ -92,12 +102,12 @@ load_view("Template/navbarnew.php");
           </div>
           <div id="tab_classes" class="col s12">
           <?php
-            load_view("Template/profile_classes.php");
+            load_view("Template/profile_classes.php", $myclasses);
           ?>
           </div>
           <div id="tab_reviews" class="col s12">
           <?php
-            load_view("Template/profile_reviews.php");
+//            load_view("Template/profile_reviews.php");
           ?>
           </div>
           <div id="tab_topics" class="col s12">
@@ -116,8 +126,8 @@ load_view("popup.php",array("name"=>"timeslot"));
 load_view("Template/bottom.php",array("needbody"=>false));
 ?>
   <script>
-  var focustabid=<?php echo $tabid; ?>;
-  $("#profiletab"+focustabid).click();
+  var selectedtopic = "";
+
   function displaytext() {
     document.getElementById("displayte").style.visibility = "hidden";
   }

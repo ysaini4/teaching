@@ -216,13 +216,58 @@ var ms={
 		} else {
 			return form.valid.action1( $("#signupwindow")[0] ) ;
 		}
+	},
+	joinusform:function(obj, needotp){
+		var mainwindow = $("#main_form_section");
+		var otpwindow = $("#otp_section");
+		if(needotp){
+			if(mainwindow.is(":visible")){
+				if(submitForm_t2(mainwindow[0])) {
+					form.sendreq1(obj, mainwindow.find("button[type=submit]")[0] );
+				}
+				return false;
+			} else
+				return submitForm_t2(obj);
+		} else {
+			return submitForm_t2(mainwindow[0]);
+		}
+	},
+	refinesearch: function(){
+		var searchdiv = $('#searchresultdiv');
+		div.reload_autoscroll(searchdiv[0], null, function(d){
+			$("#loadmorebutton").fadeIn();
+		}, null, "#searchloadingimg");
+	},
+	searchloadmore: function(obj){
+		var sdiv = $("#searchresultdiv");
+		var maxl = parseInt(sdiv.attr("data-maxl"));
+		div.load(sdiv[0], 0, 0, function(d){
+			if(d.qresultlen < maxl){
+				$(obj).fadeOut();
+			}
+		}, null, "#loadmoreloadingimg");
+	},
+	studentbookslot: function(obj) {
+		if(selectedtopic != "") {
+			ms.cbautofill("disppopupslots");
+			$(obj).attr("data-cst", selectedtopic);
+			button.sendreq_v2(obj);
+		} else {
+			Materialize.toast('Please select the topic first', 4000);
+		}
+	},
+	booktopic: function(obj, cst) {
+		selectedtopic=cst;
+		$("#profiletabs2").click();
+		Materialize.toast($(obj).attr("data-topictext")+' is selected, now select the time.', 10000);
 	}
 };
 
 
 function selectallmatched(obj,sel){
 	for(var i=0;i<sel.length;i++){
-		sel[i].checked=obj.checked;
+		if(!sel[i].disabled)
+			sel[i].checked=obj.checked;
 	}
 }
 
@@ -240,6 +285,8 @@ function searchform(){
 	mergeifunset(leftform, {'orderby':$("select[name=orderby]").val()});
 	return leftform;
 }
+
+
 
 
 $(document).ready(function(){

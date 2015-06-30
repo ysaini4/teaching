@@ -57,7 +57,7 @@ function timepass(){
 
 function makesomeaccounts(){
 	print_r(User::signUp(array("email"=>"admin@admin.com","password"=>"p","type"=>"a")));
-	print_r(User::signUp(array("email"=>"mohit@t.com","password"=>"p","type"=>"t")));
+//	print_r(User::signUp(array("email"=>"mohit@t.com","password"=>"p","type"=>"t")));
 	print_r(User::signUp(array("email"=>"mohit@s.com","password"=>"p","type"=>"s")));
 }
 
