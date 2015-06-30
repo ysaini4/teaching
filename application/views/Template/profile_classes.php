@@ -32,7 +32,7 @@
           <td><?php echo $row["startdate_disp"]; ?></td>
           <td><?php echo $row["starttime_disp"]; ?></td>
           <td><?php echo $row["duration_disp"]; ?> hrs</td>
-          <td><a href="<?php echo getifn($row["url"], ""); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
+          <td><a href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
         </tr>
         <?php
           }
@@ -74,7 +74,7 @@
           <td><?php echo $row["startdate_disp"]; ?></td>
           <td><?php echo $row["starttime_disp"]; ?></td>
           <td><?php echo $row["duration_disp"]; ?> hrs</td>
-          <td></td>
+          <td><a href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
         </tr>
         <?php
           }
