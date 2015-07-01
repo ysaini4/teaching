@@ -51,7 +51,7 @@ load_view("Template/navbarnew.php");
               <?php
               hidinp("search",htmlspecialchars($search));
               ?>
-              <div class="row">
+              <div class="row" style='margin-bottom:-20px;' >
                 <div class="col s12">
                   <select name="class" class="browser-default" onchange='topicssubtopic_t2(this);' id="selectclass" data-condition="simple">
                     <?php
@@ -60,7 +60,7 @@ load_view("Template/navbarnew.php");
                   </select>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" style='margin-bottom:-20px;' >
                 <div class="col s12">
                   <select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic_t2(this);' data-condition='simple'>
                     <option value="" disabled selected>Select Subject</option>
@@ -77,6 +77,9 @@ load_view("Template/navbarnew.php");
                         <input type='checkbox' style='display:none' name='topic' value=''/>
                       </div>
                     </li>
+                    <?php
+                      if(false) {
+                    ?>
                     <li>
                       <div class="collapsible-header">Time</div>
                       <div class="collapsible-body" style="padding:6px;">
@@ -147,6 +150,9 @@ load_view("Template/navbarnew.php");
                         ?>
                       </div>
                     </li>
+                    <?php
+                      }
+                    ?>
                   </ul>
                 </div>
               </div>

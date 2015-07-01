@@ -134,7 +134,8 @@ class Actiondisp{
 	}
 	function search($data,$printjson=true){
 		global $_ginfo;
-		$need=array('class', 'subject', 'topic', 'price', 'timer', 'lang', 'timeslot', 'orderby', 'search', 'max', 'maxl');
+//		$need=array('class', 'subject', 'topic', 'price', 'timer', 'lang', 'timeslot', 'orderby', 'search', 'max', 'maxl');
+		$need=array('class', 'subject', 'topic', 'orderby', 'search', 'max', 'maxl');
 		$ec=1;
 		$odata = 0;
 		if(!Fun::isAllSet($need,$data)){
