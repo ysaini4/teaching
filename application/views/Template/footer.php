@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col l4 s12">
         <h5 class="white-text">GetIITians</h5>
-        <p class="white-text"><i class="material-icons tiny">mail</i> mail@getiitians.com</p>
+        <p class="white-text"><i class="material-icons tiny">mail</i> info@getiitians.com</p>
         <?php /*
         <ul>
           <li><a class="footer-link" href="<?php echo BASE.'aboutus'; ?>">About Us</a></li>
