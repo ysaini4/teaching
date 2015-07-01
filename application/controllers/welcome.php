@@ -571,7 +571,11 @@ class Welcome extends CI_Controller {
   public function hiring() {
     load_view("hiring.php",array());
   }
-
+  
+  public function reviews() {
+    load_view("review.php",array());
+  }
+   
 }
 
 ?>
