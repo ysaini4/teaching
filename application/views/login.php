@@ -91,7 +91,7 @@ load_view("Template/navbarnew.php",$inp);
           </div>
         </div>
 
-        <div class="col s12 l6">
+        <div class="col s12 l6" style='visibility:hidden;' >
           <div class="card-panel">
           <br>
             <div class="row">
