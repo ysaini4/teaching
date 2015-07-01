@@ -1,4 +1,3 @@
-<body>
   <!-- Dropdown for Create Account -->
   <ul id="dropdownaccount" class="dropdown-content">
     <li><a href="<?php echo BASE."signup" ;?>">Signup&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;" class="grey-text">for Students</span></a></li>
