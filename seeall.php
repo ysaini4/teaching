@@ -25,7 +25,7 @@ for($i=0;$i<count($temp);$i++){
 				<a><?php echo $table_name; ?></a><br>
 		<?php
 //		Disp::disp_table(Sql::getArray("show columns from ".$table_name ));
-		Disp::disp_table( Sqle::selectVal( $table_name , "*" , array() , 30) );
+		Disp::disp_table( Sqle::selectVal( $table_name , "*" , array() ) );
 		echo "<br><br>";
 		?>
 			</div>

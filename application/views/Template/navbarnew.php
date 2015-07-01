@@ -12,7 +12,7 @@
         <a href="#" class="brand-logo">getIITians</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="<?php pit('active', $page==='aboutus');?>"><a href="<?php echo BASE."aboutus"; ?>">About</a></li>
+          <li class="<?php pit('active', $page==='aboutus');?>"><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
           <li class="<?php pit('active', $page==='contactus');?>"><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>
 
           <?php
@@ -48,7 +48,7 @@
 
   <!-- SideNav -->
   <ul class="side-nav" id="mobile-demo">
-    <li class="<?php pit('active', $page==='aboutus');?>"><a href="<?php echo BASE."aboutus"; ?>">About</a></li>
+    <li class="<?php pit('active', $page==='aboutus');?>"><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
     <li class="<?php pit('active', $page==='contactus');?>"><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>
 
     <?php
