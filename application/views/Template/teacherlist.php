@@ -11,7 +11,7 @@ foreach($qresult as $row) {
     <div class="col s12 l9">
       <div class="row">
         <div class="col s12 l6">
-          <h6><strong><?php echo $row["name"]; ?></strong></h6>
+          <h6><strong><?php echo convchars($row["name"]); ?></strong></h6>
 
 <!--           <h6>IIT Delhi</h6>
  -->
