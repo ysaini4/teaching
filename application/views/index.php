@@ -7,6 +7,7 @@ mohit Saini112
 -->
 
 
+<body>
   <div id="index-banner" class="parallax-container">
     <?php
     load_view("Template/navbarhome.php",$inp);
@@ -15,27 +16,14 @@ mohit Saini112
       <div class="container">
         <div class="row ">
           <div class="col s12">
-            <h1 class="header center green-text text-accent-3">get IITians</h1>
+            <h1 class="header center white-text">get IITians</h1>
           </div>
           <div class="col s12">
-        <?php
-if (!empty($_SESSION['msg11']))
-{
-echo $_SESSION['msg11'];
-    session_unset(); 
-session_destroy();
-}
-             else
-             {echo '
-                        <div class="rw-words-1">
-                          <h5 class="center">get an IITian tutor for any topic any time! </h5>
-                          <h5 class="center">Be one among us better than us</h5>
-                          <h5 class="center">for quality conscious people</h5>
-                          <h5 class="center">we inspire you to become your potential</h5>
-                        </div>
-                      
-                    ';
-             }?>
+              <div class="rw-words-1">
+                <h5 class="center">Get an IITian tutor for <b>Any Topic, Any Time</b>! </h5>
+                <h5 class="center">Be one among us <b>Better than us</b></h5>
+                <h5 class="center">We are for <b>Quality conscious people</b></h5>
+              </div>
              </div>
           
         </div></br>
@@ -179,7 +167,7 @@ session_destroy();
 
       <br><br>
 
-  <div style="width:100%">
+  <div style="width:100%; display:none;">
     <div class="section">
       <div class="row">
         <div class="col s12">
@@ -241,7 +229,7 @@ session_destroy();
     </div>
   </div>
 
-  <div class="container">
+  <div class="container" style="display:none;">
     <div class="section">
       <div class="row">
         <div class="col s12">
@@ -262,25 +250,30 @@ session_destroy();
       </div>
     </div>
   </div>
-  <div class="container" style="margin-bottom:0;">
+    <div class="container" style="margin-bottom:0;">
     <div class="section">
       <div class="row">
         <div class="col s12">
-          <div class="slider-container">
-            <ul class="bxslider">
-              <li><a href="www.iitgn.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Gandhinagar"><img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" height="50" width="50"></a></li>
-              <li><a href="www.iitr.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Roorkee"><img src="logos/roorkee.png" height="50" width="50"></a></li>
-              <li><a href="www.iitmandi.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Mandi"><img src="logos/mandi-iit.png" height="50" width="50"></a></li>
-              <li><a href="www.iiti.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Indore"><img src="logos/indore.png" height="50" width="50"></a></li>
-              <li><a href="www.iitj.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Jodhpur"><img src="logos/IIT-JODHPUR-LOGO.png" height="50" width="50"></a></li>
-              <li><a href="www.iitg.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Guwahati"><img src="logos/IIT-Guwahati-Logo.png" height="50" width="50"></a></li>
-              <li><a href="www.iitd.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Delhi"><img src="logos/iit-delhi.png" height="50" width="50"></a></li>
-              <li><a href="www.iitb.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Bombay"><img src="logos/iit-bombay.png" height="50" width="50"></a></li>
-              <li><a href="www.iitk.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Kanpur"><img src="logos/IIT_Kanpur_Logo.png" height="50" width="50"></a></li>
-              <li><a href="www.iith.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Hydrabad"><img src="logos/iit_hydrabad_logo.png" height="50" width="50"></a></li> 
-              <li><a href="www.iitbhu.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT (BHU)Varanasi"><img src="logos/iiit-varanasi.png" height="50" width="50"></a></li>  
-              <li><a href="www.iitbbs.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Bhuvneshwar"><img src="logos/bhuvneshwar.png" height="50" width="50"></a></li>
-              <li><a href="www.iitkgp.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Kharagpur"><img src="logos/IITKharagpurLogo.png" height="50" width="50"></a></li>
+          <div class="logo-slider-container">
+            <ul class="logo-bxslider">
+            <?php
+            $i = 0;
+            while($i++ < 10)echo '
+              <li><a href="http://www.iitgn.ac.in/" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Gandhinagar"><img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" height="50" width="50"></a></li>
+              <li><a href="http://www.iitr.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Roorkee"><img src="logos/roorkee.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitmandi.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Mandi"><img src="logos/mandi-iit.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iiti.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Indore"><img src="logos/indore.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitj.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Jodhpur"><img src="logos/IIT-JODHPUR-LOGO.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitg.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Guwahati"><img src="logos/IIT-Guwahati-Logo.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitd.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Delhi"><img src="logos/iit-delhi.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitb.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Bombay"><img src="logos/iit-bombay.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitk.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Kanpur"><img src="logos/IIT_Kanpur_Logo.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iith.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Hydrabad"><img src="logos/iit_hydrabad_logo.png" height="50" width="50"></a></li> 
+              <li><a href="http://www.iitbhu.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT (BHU)Varanasi"><img src="logos/iiit-varanasi.png" height="50" width="50"></a></li>  
+              <li><a href="http://www.iitbbs.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Bhuvneshwar"><img src="logos/bhuvneshwar.png" height="50" width="50"></a></li>
+              <li><a href="http://www.iitkgp.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Kharagpur"><img src="logos/IITKharagpurLogo.png" height="50" width="50"></a></li>
+             '
+             ?>
             </ul>
           </div>
         </div>
