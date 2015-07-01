@@ -4,69 +4,61 @@ load_view("Template/navbarnew.php");
 ?>
 
   <main>
-    <div class="container">
-      <div class="card-panel">
-        <div class="row">
-         <div class="col s12 l12">
-          <ul class="tabs teal-text text-lighten-1"> 
-            <li class="tab col s2"><a href="#vision">Vision</a></li>
-            <li class="tab col s2"><a href="#mission">Mission</a></li>
-            <li class="tab col s2"><a href="#who">Who We Are</a></li>
-            <li class="tab col s2"><a href="#how">How We Work</a></li>     
-            <li class="tab col s2"><a href="#why">Why Us</a></li>
-          </ul>
-         </div>
+    <div class="container" id="container">
+    <div class="card-panel">
+      <div class="row">
+        <div class="col s6 m4 offset-s3 grey lighten-2">
+          <img src="images/hometutor.jpg" width="100%" height="230">
         </div>
-        
-      <div id="vision" class="col s12"><br/>
-       <div class="card-panel">
-         <div class="row">
-          <div class="col s12 m12 l12">
-              1We imagine a world where a student will be at the center of learning again. Where a teacher will teach according to the need, pace and level of a student. Where learning graduates from One-to-Many to 1-to-1. 
-           </div>
-          </div>
-         </div>
-        </div>   
-
-      <div id="mission" class="col s12">
-        <div class="card-panel">
-         <div class="row">
-          <div class="col s12 m12 l12">
-             For personalization to happen, technology will definitely help. But more importantly there has to be a system free of institutions where learning is bound within four walls. We imagine a world free of such middle layers, where a student is directly connected to a teacher and learning-teaching happens in a personalized way. Imagine a world with Knowledge Democracy. 
-           </div>
-          </div>
-         </div>
-        </div> 
-
-      <div id="who" class="col s12">
-        <div class="card-panel">
-         <div class="row">
-          <div class="col s12 m12 l12">
-             A group of IITians
-           </div>
-          </div>
-         </div>
-        </div> 
-        
-      <div id="how" class="col s12">
-        <div class="card-panel">
-         <div class="row">
-          <div class="col s12 m12 l12">
-             Book your teachers of your choice and at your convenience.
-           </div>
-          </div>
-         </div>
-        </div>    
-
-      <div id="why" class="col s12">
-        <div class="card-panel">
-         <div class="row">
-          <div class="col s12 m12 l12">
-             Quality Education at cheap price.
-           </div>
-          </div>
-         </div>
-        </div> 
+        <div class="col s12 m7">
+          <h4 class="teal-text text-darken-3">About getIITians</h4>
+          <p>We are India’s first online teaching platform that facilitate students to select teachers of their choice for their specific topic/subject at their convenient time. We are a team of young and highly motivated IITians who aim to organize the otherwise fragmented tutorial services in India.</p>
+        </div>
+      </div>
+      <div class="row">
+        <ul class="timeline">
+          <li>
+            <time class="time"><span>OUR VISION</span></time>
+            <div class="icon"><i class="mdi-action-label"></i></div>
+            <div class="label">
+              <p>Indians teaching across the globe.</p>
+            </div>
+          </li>
+          <li>
+            <time class="time"><span>OUR MISSION</span></time>
+            <div class="icon"><i class="mdi-action-label"></i></div>
+            <div class="label">
+              <p>Best platform for online live classes.</p>
+            </div>
+          </li>
+          <li>
+            <time class="time"><span>WHO WE ARE</span></time>
+            <div class="icon"><i class="mdi-action-label"></i></div>
+            <div class="label">
+              <p>A group of skilled IITians providing quality education at your doorstep.</p>
+            </div>
+          </li>
+          <li>
+            <time class="time"><span>HOW WE WORK</span></time>
+            <div class="icon"><i class="mdi-action-label"></i></div>
+            <div class="label">
+              <p><b>Step 1:</b> Search Your Topic.</p>
+              <p><b>Step 2:</b> Book Appointment with your teacher.</p>
+              <p><b>Step 3:</b> Study Online from your home.</p>
+            </div>
+          </li>
+          <li>
+            <time class="time"><span>WHY US</span></time>
+            <div class="icon"><i class="mdi-action-label"></i></div>
+            <div class="label">
+              <p>Study the <b>TOPIC</b> of your choice</p>
+              <p>Study with <b>TEACHER</b> of your choice</p>
+              <p>Study at <b>PLACE</b> of your choice</p>
+              <p>Study at <b>TIME</b> of your choice</p>
+            </div>
+          </li>
+        </ul>
+      </div> 
 
     <div id="core" class="col s12" style='display:none;' >
       <div class="row">
@@ -153,6 +145,6 @@ load_view("Template/navbarnew.php");
     </div>
   </main>
 <?php
-load_view("Template/footer.php");
+load_view("Template/footernew.php");
 load_view("Template/bottom.php");
 ?>

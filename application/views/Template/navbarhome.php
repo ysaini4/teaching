@@ -1,4 +1,3 @@
-<body>
   <!-- Dropdown for Create Account -->
   <ul id="dropdownaccount" class="dropdown-content">
     <li><a href="<?php echo BASE."signup" ;?>">Signup&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;" class="grey-text">for Students</span></a></li>
@@ -34,9 +33,9 @@
           }
           ?>
 
-          <form class="right">
+          <form class="right" action="<?php echo BASE."search"; ?>" >
             <div class="input-field">
-              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off">
+              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q" >
               <label for="search"><i class="mdi-action-search"></i></label>
             </div>
           </form>
@@ -72,12 +71,12 @@
     }
     ?>
 
-    <div class="row">
-      <form class="col s12">
+    <div class="row"  >
+      <form class="col s12" action="<?php echo BASE."search"; ?>" >
         <div class="row">
           <div class="input-field col s12">
             <i class="mdi-action-search prefix"></i>
-            <input id="sidenav_search" type="text">
+            <input id="sidenav_search" type="text" name="q" >
             <label for="sidenav_search">Search Tutors</label>
           </div>
         </div>
