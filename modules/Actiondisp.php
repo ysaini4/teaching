@@ -154,5 +154,13 @@ class Actiondisp{
 			return;
 		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult']));
 	}
+	function disptopics($data, $printjson = true) {
+		$outp = array("ec" => 1, "data" => 0);
+		if($printjson)
+			echo json_encode($outp)."\n";
+		if($outp["ec"] < 0)
+			return;
+		load_view("Template/teacher_topiclist.php", array("mysubj" => Funs::teacher_subjects($data["tid"]), "tid" => $data["tid"] ));
+	}
 }
 ?>

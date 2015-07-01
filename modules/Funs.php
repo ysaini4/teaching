@@ -281,6 +281,11 @@ abstract class Funs{
 		$pageinfo['langArray']=$langArray;
 		return $pageinfo;
 	}
+
+	public static function teacher_subjects($tid) {
+		return Sqle::getA( gtable("subjectlist")." where tid={tid} ", array("tid" => $tid) );
+	}
+
 	public static function teacher_profile_info($tid){
 		$pageinfo=Funs::teacher_profile_about_info($tid);
 		if($pageinfo==null)
@@ -288,7 +293,8 @@ abstract class Funs{
 		$cst_tree=Funs::cst_tree();
 		$topicinfo=array('cst_tree'=>$cst_tree, "tid"=>$tid);
 		$topicinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
-		$topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
+		$topicinfo["mysubj"] = Funs::teacher_subjects($tid);
+//		$topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
 		$pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
 		$pageinfo["topicinfo"]=$topicinfo;
 		return $pageinfo;
@@ -324,8 +330,9 @@ abstract class Funs{
 	}
 
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
-		$hisoutput=array("select tid from teachers",array());
-		$hisoutput[0]="select dispteachers.tid, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid order by pricelist.minprice asc";
+//		$hisoutput=array("select tid from teachers",array());
+		$hisoutput = Funs::mssearch($data);
+		$hisoutput[0]="select dispteachers.tid, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid order by pricelist.minprice asc";
 		return $hisoutput;
 	}
 	public static function get_teacher_classes($tid) {
@@ -407,6 +414,21 @@ abstract class Funs{
 			$outpurl = $row[ (User::isloginas("s") ? "surl":"url") ];
 		}
 		return getifn($outpurl, "");
+	}
+//Search modules
+	public static function mssearch($data) {
+		$keys = searchkeysplit($data["search"]);
+		$params=array();
+		foreach($keys as $i => $val) {
+			$params["key".($i+1)] = $val;
+		}
+		mergeifunset($params, Fun::getflds(array("class", "subject", "topic"), $data));
+		$query1 = "select distinct tid from ".qtable("subjectlist")." left join users on users.id = subjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) ";
+		$finalquery = $query1;
+//		$finalquery = "(".$query1.") union (".$query2.") ";
+//		$finalquery = Fun::intersectionquery(array($query1, $query2), "tid");
+//		echo $finalquery;
+		return array($finalquery , $params);
 	}
 }
 ?>

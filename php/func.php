@@ -582,5 +582,11 @@
 		return $arr[$index];
 	}
 
+	function searchkeysplit($searchString) {
+		$searchString = preg_replace("/[^a-zA-Z 0-9]+/", " ", $searchString);
+		$searchString = trim($searchString);
+		return myexplode(" ", strtolower($searchString));
+	}
+
 
 ?>

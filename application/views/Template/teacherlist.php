@@ -11,10 +11,12 @@ foreach($qresult as $row) {
     <div class="col s12 l9">
       <div class="row">
         <div class="col s12 l6">
-          <h6><strong><?php echo $row["name"].$row["tid"]; ?></strong></h6>
-          <h6>IIT Delhi</h6>
+          <h6><strong><?php echo $row["name"]; ?></strong></h6>
+
+<!--           <h6>IIT Delhi</h6>
+ -->
           <br>
-          <h6>Physics, Chemistry</h6>
+          <h6><?php echo $row["subjectname"]; ?></h6>
           <h6>
             Fees :
             <span>
