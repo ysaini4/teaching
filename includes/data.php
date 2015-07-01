@@ -108,7 +108,7 @@ $_ginfo["timer"]=array(
 		array('>5 hr','5<timer'),
 	);
 
-$_ginfo["numsearchr"]=array("loadonce"=>3, "loadadd"=>2);
+$_ginfo["numsearchr"]=array("loadonce"=>20, "loadadd"=>10);
 
 
 ?>
