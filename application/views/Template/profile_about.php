@@ -83,6 +83,9 @@
   </div>
 
   <!-- Teaching Details -->
+  <?php
+  if(false) {
+  ?>
   <div class="row">
     <div class="col s12">
       <h6 class="teal-text text-darken-1"><i class="material-icons left">subject</i>Teaching Details</h6>
@@ -126,6 +129,9 @@
       </span>
     </div>
   </div>
+  <?php
+    }
+  ?>
 
   <!-- Education and Qualification Details -->
   <div class="row">

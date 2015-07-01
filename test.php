@@ -2,6 +2,9 @@
 include "includes/app.php";
 
 
+$a = searchkeysplit("$%^&");
+
+print_r( $a );
 
 //$c = Funs::wiziq(array("action" => "getteacherinfo", "tmid" => "msvmohit1@mail.com" ));
 //$a = Funs::wiziq(array("action" => "addteacher", "tmid" => "msvmohit1@mail.com" ));

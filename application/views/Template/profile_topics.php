@@ -12,7 +12,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 			<span class="grey-text text-darken-2">Please add your topics</span>
 			<br>
 			<div class="row">
-				<form method="post" class="col s12" onsubmit='return submitForm(this);' action="<?php echo BASE."profile/".$tid."/5"; ?>"  >
+				<form method="post" class="col s12" onsubmit='if(submitForm(this)){ form.req(this) };return false;' data-action="addtopics" data-res='div.reload($("#teacherdisptopics")[0]);' >
 					<div class="row">
 						<div class="input-field col s12">
 							<select name='class' class="browser-default" onchange='topicssubtopic(this);' id="selectclass" data-condition='simple' style='' >
@@ -40,7 +40,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 							<label for="fees">Fees per hour (in &#8377;)</label>
 						</div>
 						<div class="input-field col s12">
-							<button class="btn waves-effect waves-light blue"><i class="material-icons left">add_circle_outline</i>Add</button>
+							<button type="submit" class="btn waves-effect waves-light blue"><i class="material-icons left">add_circle_outline</i>Add</button>
 						</div>
 
 					</div>
@@ -64,32 +64,9 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 						<th data-field=""></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody data-tid="<?php echo $tid; ?>" data-action="disptopics" id="teacherdisptopics" >
 					<?php
-					foreach($mysubj as $i=>$row){
-					?>
-					<tr>
-						<td><?php echo $row["classname"]; ?></td>
-						<td><?php echo $row["subjectname"]; ?></td>
-						<td><?php echo $row["topicname"]; ?></td>
-						<td><?php echo $row["timer"]."h"; ?></td>
-						<td>&#8377;<?php echo $row["price"]; ?></td>
-					<?php
-					if($tid==User::loginId()){
-					?>
-						<td><a href='<?php echo BASE."profile/".$tid."/5?deleteid=".$row["id"]; ?>' class="btn waves-effect waves-light red darken-1">Delete</a></td>
-					<?php
-					}
-					else if(User::isloginas('s')) {
-					?>
-						<td><a onclick="ms.booktopic(this,'<?php echo $row["c_id"]."-".$row["s_id"]."-".$row["t_id"]; ?>');"  class="btn waves-effect waves-light red darken-1" data-topictext="<?php echo $row["classname"].", ".$row["subjectname"].", ".$row["topicname"]; ?>" >Book</a></td>
-					<?php
-					}
-					?>
-
-					</tr>
-					<?php
-					}
+						load_view("Template/teacher_topiclist.php", array("mysubj" => $mysubj, "tid" => $tid));
 					?>
 				</tbody>
 			</table>

@@ -264,6 +264,7 @@ class Welcome extends CI_Controller {
 					// 		$langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
 					// }
 					$pageinfo['langArray'] = array();// $langArray;
+					$pageinfo["isme"] = (User::loginId() == $tid);
 					load_view("profile.php",$pageinfo);            
 				}
 				else if($uprofile['type']=='s'){

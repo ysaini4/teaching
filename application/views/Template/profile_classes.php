@@ -9,14 +9,14 @@
     <table class="striped responsive-table">
       <thead>
         <tr>
-          <th>Teacher</th>
+          <th>Student</th>
           <th>Class</th>
           <th>Subject</th>
           <th>Topic</th>
           <th>Date</th>
           <th>Time</th>
           <th>Duration</th>
-          <th>Feedback</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -32,7 +32,7 @@
           <td><?php echo $row["startdate_disp"]; ?></td>
           <td><?php echo $row["starttime_disp"]; ?></td>
           <td><?php echo $row["duration_disp"]; ?> hrs</td>
-          <td><a href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
+          <td><a target="_blank" href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
         </tr>
         <?php
           }
@@ -51,14 +51,14 @@
     <table class="striped responsive-table">
       <thead>
         <tr>
-          <th>Teacher</th>
+          <th>Student</th>
           <th>Class</th>
           <th>Subject</th>
           <th>Topic</th>
           <th>Date</th>
           <th>Time</th>
           <th>Duration</th>
-          <th>Feedback</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -74,7 +74,7 @@
           <td><?php echo $row["startdate_disp"]; ?></td>
           <td><?php echo $row["starttime_disp"]; ?></td>
           <td><?php echo $row["duration_disp"]; ?> hrs</td>
-          <td><a href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
+          <td><a target="_blank" href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
         </tr>
         <?php
           }

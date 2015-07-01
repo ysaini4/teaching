@@ -33,4 +33,11 @@ $_ginfo["query"]["teacherbookedclasses"] = "select * from (".qtable("bookedclass
 $_ginfo["query"]["teacherbookedclasses_new"] = qtable("teacherbookedclasses", false)." and starttime > ".time();
 $_ginfo["query"]["teacherbookedclasses_old"] = qtable("teacherbookedclasses", false)." and starttime <= ".time();
 
+
+
+$_ginfo["query"]["subjectlist"] = "select subjects.*, all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id = subjects.c_id left join all_subjects on all_subjects.id = subjects.s_id left join all_topics on all_topics.id = subjects.t_id ";
+
+$_ginfo["query"]["subjectnamelist"] = "select tid, group_concat(distinct subjectname) subjectname from subjects left join all_subjects on all_subjects.id = subjects.s_id group by tid";
+
+
 ?>

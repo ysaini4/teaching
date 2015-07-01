@@ -14,6 +14,7 @@ class Teachers{
 		}
 		return $outp;
 	}
+
 	function teacherModifySlots($data){
 		$outp=array("ec"=>1,"data"=>0);
 		$slots=intexplode("-",$data["slots"]);
@@ -31,6 +32,7 @@ class Teachers{
 		$odata["data"]["rem"]=Funs::addremlist($toremslots,false);
 		return $outp;
 	}
+
 	function addtopics($data){
 		$outp=array("ec"=>1,"data"=>0);
 		$insert_data=Fun::getflds(array("timer","price"),$data);
@@ -47,8 +49,13 @@ class Teachers{
 		}
 		return $outp;
 	}
+
 	function deltopics($data){
 		Sqle::deleteVal("subjects",array("id"=>$data["deleteid"],"tid"=>User::loginId()),1);
 		return array("ec"=>1,"data"=>0);
+	}
+
+	function updatebio($data) {
+		Sqle::updateVal("teachers", array("teachermoto" => $data["teachermoto"]), array("tid" => User::loginId())) ;
 	}
 }

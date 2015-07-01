@@ -61,19 +61,23 @@ load_view("Template/navbarnew.php");
                 <h5 class="green-text left"><?php echo $aboutinfo["name"]; ?></h5>
               </div>
             </div>
-            <div class="row" style="display:none;" >
-              <form class="col s12">
+            <div class="row" style="" >
+              <form class="col s12" onsubmit='form.req(this);return false;' data-action='updatebio' >
                 <div class="row">
                   <div class="input-field col s12 l7">
-                    <textarea id="biography" class="materialize-textarea" placeholder="Write a small description about yourself."></textarea>
+                    <textarea name="teachermoto" id="biography" class="materialize-textarea" placeholder="Write a small description about yourself." <?php pit("readonly", !$isme); ?> ><?php echo convchars($aboutinfo["teachermoto"]); ?></textarea>
                     <label for="biography">Bio</label>
                   </div>
                 </div>
+                <?php if(User::loginId() == $tid) { ?>
                 <div class="row">
                   <div class="input-field col s12">
                     <button class="btn waves-effect waves-light blue" type="submit"><i class="material-icons left">save</i>Save</button>
                   </div>
                 </div>
+                <?php
+                  }
+                ?>
               </form>
             </div>
           </div>
