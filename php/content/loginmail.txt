@@ -1,0 +1,3 @@
+Hey {name},
+thank you for creating account in our website.
+Have a super nice day.

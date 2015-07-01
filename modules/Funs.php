@@ -430,5 +430,11 @@ abstract class Funs{
 //		echo $finalquery;
 		return array($finalquery , $params);
 	}
+
+	public static function addremmoney($money, $commentid='', $uid=null, $add = array()) {
+		setifnn($uid, User::loginId());
+		$comment = rquery(getval($commentid, $_ginfo["moneyaccount"], $commentid), $add);
+		Sqle::insertVal("moneyaccount", array("uid" => $uid, "content" => $content, "time" => time(), "amount" => $money));
+	}
 }
 ?>

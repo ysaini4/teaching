@@ -110,5 +110,11 @@ $_ginfo["timer"]=array(
 
 $_ginfo["numsearchr"]=array("loadonce"=>20, "loadadd"=>10);
 
+$_ginfo["moneyaccount"] = array(
+	"-1" => "You booked class of {cstname}",
+	"-2" => "Admin added in your account",
+	"-3" => "You have received by Admin"
+);
+
 
 ?>

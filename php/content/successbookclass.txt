@@ -1,0 +1,2 @@
+Hey {name},
+we class for teacher {teacher_name} have been booked successfully. login to website on given time & start class.

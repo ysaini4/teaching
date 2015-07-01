@@ -33,6 +33,8 @@ class Students{
 		$bookedslots = grouplist( $inpslots );
 		list($c_id, $s_id, $t_id) = intexplode("-", $data["cst"]);
 		$dbpush = array();
+		
+//		Fun::addremmoney();
 		foreach($bookedslots as $i => $row) {
 			$starttime = $data["datets"]+($row[0]-1)*1800;
 			$duration = $row[1]*1800;
@@ -48,5 +50,4 @@ class Students{
 		$outp["data"] = Sqle::q( $query );
 		return $outp;
 	}
-
 }

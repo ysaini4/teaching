@@ -77,6 +77,7 @@
           <td><?php echo $row["starttime_disp"]; ?></td>
           <td><?php echo $row["duration_disp"]; ?> hrs</td>
           <td><a target="_blank" href="<?php echo Funs::wiziqurl($row); ?>" ><button class="btn waves-effect waves-light" >Start Class</button></a></td>
+          <td><a><button class="btn waves-effect waves-light" >Review</button></a></td>
         </tr>
         <?php
           }
