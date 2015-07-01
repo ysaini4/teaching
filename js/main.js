@@ -232,11 +232,26 @@ var ms={
 			return submitForm_t2(mainwindow[0]);
 		}
 	},
+	refinecallafter: function() {
+		var sresult = $(".teacherlistelm").length;
+		if(sresult == 0) {
+			$("#loadmorebutton").hide();
+			$("#dispnoresult").show();
+		} else {
+			$("#dispnoresult").hide();
+		}
+	},
 	refinesearch: function(){
 		var searchdiv = $('#searchresultdiv');
+		var maxl = parseInt($("#searchresultdiv").attr("data-maxl"));
 		div.reload_autoscroll(searchdiv[0], null, function(d){
-			$("#loadmorebutton").fadeIn();
-		}, null, "#searchloadingimg");
+			$("#loadmorebutton").hide();
+			if(!(d.qresultlen < maxl)) {
+				$("#loadmorebutton").fadeIn();
+			}
+		}, function() {
+				ms.refinecallafter();
+		}, "#searchloadingimg");
 	},
 	searchloadmore: function(obj){
 		var sdiv = $("#searchresultdiv");

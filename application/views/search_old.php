@@ -195,8 +195,9 @@ load_view("Template/navbarnew.php");
                   </div>
                 </form>
     					</div>
-      				<div class="divider"></div><br>
-      				<div class="row">
+      				<div class="divider"></div>
+              <br>
+      				<div class="row" id="dispnoresult" style='display:none;' >
                 <div class="col s12 red-text text-lighten-1">
                   Sorry. No results found.
                 </div>
