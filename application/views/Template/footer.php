@@ -57,7 +57,7 @@
   <div class="footer-copyright teal darken-2">
     <div class="container">
     &copy; Copyright 2015 GetIITians
-    <a class="grey-text text-lighten-4 right" href="#!">www.getiitians.com</a>
+    <a class="grey-text text-lighten-4 right" href="<?php echo HOST; ?>">www.getiitians.com</a>
     </div>
   </div>
 </footer>
