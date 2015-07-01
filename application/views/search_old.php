@@ -197,6 +197,11 @@ load_view("Template/navbarnew.php");
     					</div>
       				<div class="divider"></div><br>
       				<div class="row">
+                <div class="col s12 red-text text-lighten-1">
+                  Sorry. No results found.
+                </div>
+              </div>
+              <div class="row">
       					<div class="col s12">
       						<div id="searchresultdiv" data-action='search' data-max='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>' data-maxl='<?php echo $_ginfo["numsearchr"]["loadadd"]; ?>' data-eparams='searchform()' data-ignoreloadonce='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>'>
     							<?php
