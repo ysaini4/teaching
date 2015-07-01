@@ -1,9 +1,9 @@
 <!-- Footer -->
-<footer class="page-footer teal darken-3">
+<footer class="page-footer teal darken-3" id="footer">
   <div class="container">
     <div class="row">
       <div class="col l4 s12">
-        <h5 class="white-text" style="font-family: Kurale;">GetIITians</h5>
+        <h5 class="white-text">GetIITians</h5>
         <p class="white-text"><i class="material-icons tiny">mail</i> mail@getiitians.com</p>
         <?php /*
         <ul>
