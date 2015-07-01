@@ -807,8 +807,8 @@ class Disp extends Sql{
 							</div>
 <?php	
 	}
-	public static function  disp_table($inp){
-			if(count($inp)>0){
+	public static function  disp_table($inp) {
+		if(count($inp)>0){
 		?>
 		<table border="1" style="margin-bottom:100px;">
 			<?php
