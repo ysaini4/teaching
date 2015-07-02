@@ -87,11 +87,12 @@ load_view("Template/navbarnew.php");
         <div class="row">
           <div class="col s12">
             <ul class="tabs"  >
-              <li class="tab col s3"><a id="profiletabs1" <?php pit('class="active"', $tabid==1); ?> href="#tab_profile">Profile</a></li>
-              <li class="tab col s3"><a id="profiletabs5" <?php pit('class="active"', $tabid==5); ?>  href="#tab_topics">Topics</a></li>
-              <li class="tab col s3"><a id="profiletabs2" <?php pit('class="active"', $tabid==2); ?> href="#tab_calendar">Calendar</a></li>
-              <li class="tab col s3"><a id="profiletabs4" <?php pit('class="active"', $tabid==4); ?> href="#tab_reviews">Reviews</a></li>
-              <li class="tab col s3" style="<?php pit("visibility:hidden", $tid != User::loginId()); ?>" ><a id="profiletabs3" <?php pit('class="active"', $tabid==3); ?> href="#tab_classes">Classes</a></li>
+              <li class="tab col s2"><a id="profiletabs1" <?php pit('class="active"', $tabid==1); ?> href="#tab_profile">Profile</a></li>
+              <li class="tab col s2"><a id="profiletabs5" <?php pit('class="active"', $tabid==5); ?>  href="#tab_topics">Topics</a></li>
+              <li class="tab col s2"><a id="profiletabs2" <?php pit('class="active"', $tabid==2); ?> href="#tab_calendar">Calendar</a></li>
+              <li class="tab col s2"><a id="profiletabs4" <?php pit('class="active"', $tabid==4); ?> href="#tab_reviews">Reviews</a></li>
+              <li class="tab col s2" style="<?php pit("visibility:hidden", $tid != User::loginId()); ?>" ><a id="profiletabs3" <?php pit('class="active"', $tabid==3); ?> href="#tab_classes">Classes</a></li>
+              <li class="tab col s2"><a id="profiletabs6" <?php pit('class="active"', $tabid==6); ?> href="#tab_account">Account</a></li>
             </ul>
           </div>
           <div id="tab_profile" class="col s12 offset-l1">
@@ -111,12 +112,17 @@ load_view("Template/navbarnew.php");
           </div>
           <div id="tab_reviews" class="col s12">
           <?php
-//            load_view("Template/profile_reviews.php");
+            load_view("Template/profile_reviews.php", Fun::mergeifunset($inp, array("reviewname" => "studentname")));
           ?>
           </div>
           <div id="tab_topics" class="col s12">
           <?php
             load_view("Template/profile_topics.php",Fun::mergeifunset($topicinfo,array("tid"=>$tid,'minfees'=>$jsonArray['minfees'])));
+          ?>
+          </div>
+          <div id="tab_account" class="col s12">
+          <?php
+            load_view("Template/moneyaccount.php", $inp);
           ?>
           </div>
         </div>

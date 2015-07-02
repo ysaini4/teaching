@@ -5,43 +5,10 @@
   </div>
 </div>
 
-<!-- Review Cards  -->
-<div class="row">
-  <div class="col s12 l10 offset-l1">
-    <div class="card white">
-      <div class="card-content grey-text">
-        <h6>
-          <a href="#"><i class="material-icons small left">face</i>Prof. Severus Snape</a>
-        </h6><br>
-        <p>He is an excellent tutor. Explained concepts better than school teachers did.</p>
-      </div>
-      <div class="card-action">
-        <a href="#">Upvote</a>
-        <a href="#">Downvote</a>
-        <a class="modal-trigger" href="#upvote_modal" onclick="smgPreloader();">15&nbsp;<i class="material-icons tiny">thumb_up</i></a>
-        <a class="modal-trigger" href="#downvote_modal" onclick="smgPreloader();">2&nbsp;<i class="material-icons tiny">thumb_down</i></a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col s12 l10 offset-l1">
-    <div class="card white">
-      <div class="card-content grey-text">
-        <h6>
-          <a href="#"><i class="material-icons small left">face</i>Dr. Shivam Mamgain</a>
-        </h6><br>
-        <p>A terrible and arrogant teacher. He has no respect for the students and thinks students and donkeys are alike.</p>
-      </div>
-      <div class="card-action">
-        <a href="#">Upvote</a>
-        <a href="#">Downvote</a>
-        <a class="modal-trigger" href="#upvote_modal" onclick="smgPreloader();">39&nbsp;<i class="material-icons tiny">thumb_up</i></a>
-        <a class="modal-trigger" href="#downvote_modal" onclick="smgPreloader();">11&nbsp;<i class="material-icons tiny">thumb_down</i></a>
-      </div>
-    </div>
-  </div>
-</div>
+
+<?php
+  load_view("Template/reviewlist.php", $inp);
+?>
 
 
   <!-- Upvote Modal Structure -->

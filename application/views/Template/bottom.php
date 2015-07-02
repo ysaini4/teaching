@@ -10,6 +10,7 @@ if($needpopup){
   <script src="js/jquery.bxslider.min.js"></script>
   <script src="js/custom-script.js"></script>
   <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.raty.js"></script>
 <?php
 addmyjs();
 

@@ -1,4 +1,5 @@
-#This mail is to be send when someone signup ( To confirm mail id)...this line is comment line
+#This mail is to be send when someone signup ( To confirm mail id).
+#Every line starting with # is comment line. first uncomment line is subject of mail and rest part is body.
 Signup confirmation is your subject
 Dear {name},
 	You created an account on our website.

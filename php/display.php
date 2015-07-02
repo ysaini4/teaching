@@ -262,7 +262,7 @@
 	function hinp($name,$val){
 		return "<input type=hidden name='$name' value='$val' />";
 	}
-	function hidinp($name,$val,$params=array()){
+	function hidinp($name, $val='', $params=array()){
 		$params=Fun::mergeifunset($params,array("type"=>"hidden","name"=>$name,"value"=>$val));
 		opent("input",$params);
 	}

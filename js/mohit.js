@@ -64,6 +64,7 @@ var mohit={
 		if(data==null)
 			data={};
 		mergeifunset(data,{"title":null,"body":null});
+		console.log(data);
 		for(i in data){
 			if(data[i]!=null)
 				$("#"+id+"Popup"+i).html(data[i]);
@@ -93,7 +94,7 @@ var mohit={
 	},
 	closeme:function(obj){
 		$(obj).fadeOut();
-		$("#"+$(obj).attr("id")+"body").html("");
+//		$("#"+$(obj).attr("id")+"body").html("");
 	},
 	popup_close:function(id){
 		mohit.closeme( $("#"+id+"Popup")[0] );

@@ -265,6 +265,8 @@ class Welcome extends CI_Controller {
 					// }
 					$pageinfo['langArray'] = array();// $langArray;
 					$pageinfo["isme"] = (User::loginId() == $tid);
+					mergeifunset($pageinfo, Funs::moneyaccount($tid));
+					$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where tid={tid} ", array("tid" => User::loginId()));
 					load_view("profile.php",$pageinfo);            
 				}
 				else if($uprofile['type']=='s'){
