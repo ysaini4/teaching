@@ -19,7 +19,7 @@ $mail->Password   = "iitdelhi1984";            // GMAIL password, Some times if 
 $mail->From       = "getiitians@gmail.com";
 $mail->FromName   = "Himanshu";
 $mail->Subject    = "This is the subject";
-$mail->AltBody    = "This is the body when user views in plain text format"; //Text Body
+$mail->AltBody    = ""; //Text Body
 $mail->WordWrap   = 50; // set word wrap
 
 $mail->MsgHTML($body);

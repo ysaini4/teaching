@@ -4,5 +4,5 @@
 # Awailable variables => {studentname}, {date}, {classname}, {subjectname}, {topicname}, {teachername}
 #
 Class book message
-Hey {studentname},
-your class for teacher {teachername} have been booked for {date}
+Dear {studentname},
+Your class with teacher {teachername} has been booked for {date}. Thank you.

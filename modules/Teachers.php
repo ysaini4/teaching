@@ -57,5 +57,6 @@ class Teachers{
 
 	function updatebio($data) {
 		Sqle::updateVal("teachers", array("teachermoto" => $data["teachermoto"]), array("tid" => User::loginId())) ;
+		return array("ec"=>1,"data"=>0);
 	}
 }

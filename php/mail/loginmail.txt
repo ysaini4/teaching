@@ -1,3 +1,2 @@
-Hey {name},
-thank you for creating account in our website.
-Have a super nice day.
+Dear {name},
+Thank you, for signing up with getIITians. Please login and book teachers slot as per your suitability. 

@@ -1,5 +1,6 @@
 includes/setting.php
 data/files/*
 data/mailf
+data/msgf
 msv
 .msv*
