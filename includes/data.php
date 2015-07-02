@@ -87,6 +87,8 @@ $_ginfo["error"]=array(
 	"-25"=>"Subject Already Added",
 	"-26"=>"Password cant be changed",
 	"-27"=>"Wiziq Error",
+	"-28"=>"No Such CST exist",
+	"-29"=>"You don't have sufficient money in your account.",
 
 	"1"=>"Positive"
 );
@@ -111,10 +113,14 @@ $_ginfo["timer"]=array(
 $_ginfo["numsearchr"]=array("loadonce"=>20, "loadadd"=>10);
 
 $_ginfo["moneyaccount"] = array(
-	"-1" => "You booked class of {cstname}",
+	"-1" => "You booked class of {classname}, {subjectname}, {topicname} with teacher {teachername} ",
 	"-2" => "Admin added in your account",
-	"-3" => "You have received by Admin"
+	"-3" => "You have received by Admin",
+	"-4" => "{studentname} booked your class on {date}",
+	"-5" => "You taught class of {classname}, {subjectname}, {topicname} to {studentname} ",
 );
+
+
 
 
 ?>

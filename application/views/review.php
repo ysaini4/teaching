@@ -46,9 +46,8 @@ load_view("Template/navbarnew.php",$inp);
 load_view("Template/footer.php",$inp);
 load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
 ?>
-  <script src="js/jquery.raty.js"></script>
   <script>
-    $("#review_stars").raty();
+    
   </script>
 </body>
 </html>

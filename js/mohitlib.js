@@ -730,3 +730,10 @@ var loading = {
 	}
 };
 
+
+function setform(fselector, darr) {
+	for(var i in darr) {
+		fselector.find("[name="+i+"]").val(darr[i]);
+	}
+}
+

@@ -1,0 +1,8 @@
+#this mail is being sent to student when he book a class.
+#Every line starting with # is comment line. first uncomment line is subject of mail and rest part is body.
+#
+# Awailable variables => {studentname}, {date}, {classname}, {subjectname}, {topicname}, {teachername}
+#
+Class book message
+Hey {studentname},
+your class for teacher {teachername} have been booked for {date}

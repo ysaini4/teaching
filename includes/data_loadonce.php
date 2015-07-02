@@ -22,7 +22,7 @@ $_ginfo["query"]["pricelist"] = "select tid, min(price) as minprice, max(price) 
 
 $_ginfo["query"]["cst_map"] = "select all_classes.classname, all_subjects.subjectname, all_topics.topicname, all_cst.* from all_cst left join all_classes on all_classes.id = all_cst.c_id left join all_subjects on all_subjects.id = all_cst.s_id left join all_topics on all_topics.id = all_cst.t_id ";
 
-$_ginfo["query"]["bookedclasses"] = "select users.name as studentname, userst.name as teachername, cst_map.classname, cst_map.subjectname, cst_map.topicname, booked.* from booked left join ".qtable("cst_map")." on (cst_map.c_id = booked.c_id AND cst_map.s_id = booked.s_id AND cst_map.t_id = booked.t_id ) left join users on users.id = booked.sid left join users as userst on userst.id = booked.tid order by booked.starttime";
+$_ginfo["query"]["bookedclasses"] = "select users.name as studentname, userst.name as teachername, cst_map.classname, cst_map.subjectname, cst_map.topicname, (subjects.price*booked.duration/3600) as classcharge, booked.* from booked left join ".qtable("cst_map")." on (cst_map.c_id = booked.c_id AND cst_map.s_id = booked.s_id AND cst_map.t_id = booked.t_id ) left join users on users.id = booked.sid left join subjects on (subjects.c_id = booked.c_id AND subjects.s_id = booked.s_id AND subjects.t_id = booked.t_id ) left join users as userst on userst.id = booked.tid order by booked.starttime";
 
 
 $_ginfo["query"]["stdbookedclasses"] = "select * from (".qtable("bookedclasses").") where sid={sid} ";
@@ -38,6 +38,10 @@ $_ginfo["query"]["teacherbookedclasses_old"] = qtable("teacherbookedclasses", fa
 $_ginfo["query"]["subjectlist"] = "select subjects.*, all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id = subjects.c_id left join all_subjects on all_subjects.id = subjects.s_id left join all_topics on all_topics.id = subjects.t_id ";
 
 $_ginfo["query"]["subjectnamelist"] = "select tid, group_concat(distinct subjectname) subjectname from subjects left join all_subjects on all_subjects.id = subjects.s_id group by tid";
+
+$_ginfo["query"]["accountbalance"] = "select uid, sum(amount) as mymoney from moneyaccount group by uid";
+
+$_ginfo["query"]["allreviews"] = "select rate, feedback, tid, sid, users.name as teachername, users1.name as studentname from booked left join users on users.id = tid left join users as users1 on users1.id = sid where (feedback is not null AND feedback != '' ) ";
 
 
 ?>

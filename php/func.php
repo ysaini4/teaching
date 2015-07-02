@@ -46,14 +46,8 @@
 			$DB->close();
 	}
 
-	function getval($key, $arr, $default=null) {
-	/*
-	Returns the value corresponding to give key in associative array if it is set otherwise return default value
-	Arguments: $key: Key to be checked
-						 $arr: Array in which key is to be checked
-						 $default: default value to return if key is not set 
-	*/
-		 return (isset($arr[$key]) ? $arr[$key] : $default );
+	function getval($key,$arr,$default=null){
+		 return ( ($arr!==null && isset($arr[$key])) ? $arr[$key] : $default );
 	}
 
 	function post($key, $default=null) {
@@ -588,5 +582,38 @@
 		return myexplode(" ", strtolower($searchString));
 	}
 
+
+	function g($inp) {
+		global $$inp;
+		return $$inp;
+	}
+
+	function s($inp, $val=null) {
+		global $$inp;
+		$$inp = $val;
+	}
+
+	function gi($inp) {
+		return getval($inp, g("_ginfo"));
+	}
+
+
+	function filter($list, $boolfunc) {
+		$outp = array();
+		foreach($list as $i => $val) {
+			if($boolfunc($val) === true) {
+				$outp[] = $val;
+			}
+		}
+		return $outp;
+	}
+
+	function map($list ,$func) {
+		$outp = array();
+		foreach($list as $i => $val) {
+			$outp[$i] = $func($val);
+		}
+		return $outp;
+	}
 
 ?>

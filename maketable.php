@@ -4,7 +4,7 @@ function dt($tn){
 	echo Sql::query("drop table ".$tn);
 }
 function drop_table(){
-//	$tl=array("users","subjects","teachers","timeslot","notf","all_classes","all_subjects","all_topics","all_cst","booked");
+	$tl=array("users","subjects","teachers","timeslot","notf","all_classes","all_subjects","all_topics","all_cst","booked");
 	$tl=array("booked");
 	foreach($tl as $i=>$val){
 		dt($val);
@@ -64,7 +64,7 @@ function create(){
 	echo Sql::query("CREATE TABLE moneyaccount (id int NOT NULL AUTO_INCREMENT, uid int, content varchar(1000), time int, amount int, PRIMARY KEY ( id) ) ");
 
 }
-//drop_table();
+drop_table();
 create();
 
 closedb();

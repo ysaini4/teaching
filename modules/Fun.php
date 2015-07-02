@@ -1,4 +1,40 @@
 <?php
+class Special{
+	function lt($a, $b){
+		return ($b==-1 || $a<$b);
+	}
+	function gt($a, $b){
+		return ($a==-1 || $a>$b);
+	}
+	function max2($a, $b){
+		return ($this->gt($a, $b) ? $a:$b);
+	}
+	function min2($a, $b){
+		return ($this->lt($a, $b) ? $a:$b);
+	}
+	function max(){
+		$inp=func_get_args();
+		if(count($inp)==0)
+			return null;
+		$maxtillnow=$inp[0];
+		for($i=1; $i<count($inp); $i++){
+			$maxtillnow=$this->max2($maxtillnow, $inp[$i]);
+		}
+		return $maxtillnow;
+	}
+	function min(){
+		$inp=func_get_args();
+		if(count($inp)==0)
+			return null;
+		$mintillnow=$inp[0];
+		for($i=1; $i<count($inp); $i++){
+			$mintillnow=$this->min2($mintillnow, $inp[$i]);
+		}
+		return $mintillnow;
+	}
+}
+
+
 abstract class Fun{
 	public static function encode($pass){
 		$shift=0;
@@ -137,7 +173,7 @@ abstract class Fun{
 		}
 		return $outp;
 	}
-	public static function timepassed($s){//#Buggy
+	public static function timepassed($s){
 		if($s<5)
 			return "few second ago";
 		else if($s<60)
@@ -151,7 +187,7 @@ abstract class Fun{
 		else if($s<60*60*24*5)
 			return floor($s/(60*60*24))." days ago";
 		else
-			return self::timetostr($s);
+			return self::timetostr(time()-$s);
 	}
 	public static function timepassed_t2($s){
 		if($s<5)
@@ -316,11 +352,12 @@ abstract class Fun{
 			$ec=-2;//Not file uploaded
 		return array('ec'=>$ec,'outp'=>$outp);
 	}
+
 	public static function resizeimage($curimage,$tosave,$w,$h){//don't use this function. use resizeimg { php/funcs.php }
 		$cmd="convert $curimage -resize '$w"."x"."$h^' -gravity Center -crop '$w"."x"."$h+0+0' $tosave ; chmod 777 $tosave";
-//    echo $cmd;
 		shell_exec($cmd);
 	}
+
 	public static function myexplode($n,$st){
 		$temp=explode($n,$st);
 		return (count($temp)==1 && $temp[0]=="") ? array() : $temp;
@@ -343,17 +380,23 @@ abstract class Fun{
 		return chmod($add["file"],0777);
 	}
 
-	public static function mail($to,$sub,$body,$add=array()){
+	public static function mail($to,$sub,$body,$add=array()){//to be replace
 		return Fun::dummymm($to,$sub,$body,Fun::mergeifunset($add, array("file"=>"data/mailf")));
 	}
-	public static function msg($to,$sub,$body,$add=array()){
+	public static function msg($to,$sub,$body,$add=array()){//to be replace
 		return Fun::dummymm($to,$sub,$body, Fun::mergeifunset($add,array("file"=>"data/msgf")));
+//		return Funs::sendmsg($to, $body);
 	}
 
-	public static function mailfromfile($to,$mfile,$data){
-	//This function is marked at deletable, It is here just because of backward compatibity.
-		return Fun::mail($to,"Get IITians",Fun::rmsg(file_get_contents( $mfile),$data));
+	public static function mailfromfile($to,$mfile,$data) {
+		list($subj, $body) = Fun::readmail($mfile);
+		return Fun::mail( $to, $subj, rquery($body, $data) );
 	}
+
+	public static function msgfromfile($phone,$mfile,$data){
+		return Fun::msg($phone, "phone messgae", rquery( Fun::readmail($mfile, true), $data));
+	}
+
 	public static function timeslotlist(){
 		$datetoday=Fun::datetoday();
 		$times=array();
@@ -495,9 +538,6 @@ abstract class Fun{
 		return implode("-",$outp);
 	}
 
-	public static function msgfromfile($phone,$mfile,$data){
-		return Funs::sendmsg($phone,Fun::rmsg(file_get_contents( $mfile),$data));
-	}
 
 	public static function uploadpic($file, $smallkey, $bigkey, $size, $const=array()){
 			$fd=Fun::uploadfile_post($file,$const);
@@ -541,41 +581,16 @@ abstract class Fun{
 		}
 	}
 
-}
-
-
-class Special{
-	function lt($a, $b){
-		return ($b==-1 || $a<$b);
-	}
-	function gt($a, $b){
-		return ($a==-1 || $a>$b);
-	}
-	function max2($a, $b){
-		return ($this->gt($a, $b) ? $a:$b);
-	}
-	function min2($a, $b){
-		return ($this->lt($a, $b) ? $a:$b);
-	}
-	function max(){
-		$inp=func_get_args();
-		if(count($inp)==0)
-			return null;
-		$maxtillnow=$inp[0];
-		for($i=1; $i<count($inp); $i++){
-			$maxtillnow=$this->max2($maxtillnow, $inp[$i]);
+	public static function readmail($file, $ismsg=false) {
+		$clines = implode("\n", filter( myexplode("\n", file_get_contents($file)) , function($inp){
+			return (strlen($inp)==0 || $inp[0]!="#");
+		}));
+		if( $ismsg ) {
+			return $clines;
+		} else {
+			$clines = explode("\n", $clines, 2);
+			return array(getval(0, $clines), getval(1, $clines) );
 		}
-		return $maxtillnow;
-	}
-	function min(){
-		$inp=func_get_args();
-		if(count($inp)==0)
-			return null;
-		$mintillnow=$inp[0];
-		for($i=1; $i<count($inp); $i++){
-			$mintillnow=$this->min2($mintillnow, $inp[$i]);
-		}
-		return $mintillnow;
 	}
 }
 
