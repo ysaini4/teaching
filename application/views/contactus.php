@@ -11,12 +11,12 @@ load_view("Template/navbarnew.php");
 	  		<div class="card-panel" style="height:520px;">
 	  		  <div class="row">
             <div class="col s12">
-              <h3 class="teal-text text-darken-1 center">Contact Us</h3>
+              <h4 class="teal-text text-darken-1 center">Contact Us</h4>
             </div>
           </div>
           <div class="row">
-            <div class="col s12">
-              <h5 class="teal-text text-darken-1">Address <i class="material-icons">navigation</i></h5>
+            <div class="col s6">
+              <h6 class="teal-text text-darken-1">Address <i class="material-icons tiny">navigation</i></h6>
               <div class="grey-text">
                 B-178<br>
                 Shivalik<br>
@@ -25,20 +25,21 @@ load_view("Template/navbarnew.php");
                 India
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <h5 class="teal-text text-darken-1">Mail <i class="material-icons">mail</i></h5>
+            <div class="col s6">
+              <h6 class="teal-text text-darken-1">Mail <i class="material-icons tiny">mail</i></h6>
               <div class="grey-text">
                 info@getiitians.com
+              </div><br>
+              <h6 class="teal-text text-darken-1">Call <i class="material-icons tiny">call</i></h6>
+              <div class="grey-text">
+                +91 987 654 3210
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12">
-              <h5 class="teal-text text-darken-1">Call <i class="material-icons">call</i></h5>
-              <div class="grey-text">
-                +91 987 654 3210
+              <div class="card">
+                <div id="map-canvas" style="height: 220px;"></div>
               </div>
             </div>
           </div>
@@ -93,13 +94,6 @@ load_view("Template/navbarnew.php");
 	    		</div>
 	    	</div>
 	  	</div>
-	  </div>
-	  <div class="row">
-	    <div class="col s12">
-	    	<div class="card">
-					<div id="map-canvas" style="height: 400px;"></div>
-				</div>
-	    </div>
 	  </div>
 	</div>
 </main>

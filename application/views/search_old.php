@@ -63,7 +63,8 @@ load_view("Template/navbarnew.php");
               <div class="row" style='margin-bottom:-20px;' >
                 <div class="col s12">
                   <select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic_t2(this);' data-condition='simple'>
-                    <option value="" disabled selected>Select Subject</option>
+                    <option value="" disabled selected>Subject</option>
+                    <option value="">Select class first</option>
                   </select>
                 </div>
               </div>
