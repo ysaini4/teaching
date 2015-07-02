@@ -22,6 +22,9 @@
 		
 	require_once(WIZ."AddAttendee.php");
 
+	include("pankaj/phpmailer/class.phpmailer.php");
+	include("pankaj/phpmailer/class.smtp.php"); // note, this is optional - gets called from main class if not already loaded
+
 
 	if(!isset($config))
 		$config=array();

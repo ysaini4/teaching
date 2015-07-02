@@ -73,7 +73,8 @@ $_ginfo["action_constrain"]=array(
 	"addmoney" => array("need" => array("uid", "money")),
 	"review" => array("need" => array("starttime", "feedback", "tid", "rate")),
 	"acceptrej" => array("need" => array("tid", "isselected")),
-	"adminprofile_users" => array("users" => array("a"))
+	"adminprofile_users" => array("users" => array("a")),
+	"forgotpass" => array("need" => array("email"))
 );
 
 

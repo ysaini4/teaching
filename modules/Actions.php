@@ -134,5 +134,19 @@ class Actions{
 		}
 		return $outp;
 	}
+
+	function forgotpass($data) {
+		$outp = array("ec"=>1,"data"=>0);
+		if(!(User::passreset($data["email"]))) {
+			$outp["ec"] = -6;
+		}
+		return $outp;
+	}
+
+	function resetpass($data) {
+		$outp = array("ec"=>1, "data"=>0);
+		$outp["data"] = User::changePassword( null,  $data["password"] );
+		return $outp;
+	}
 }
 ?>

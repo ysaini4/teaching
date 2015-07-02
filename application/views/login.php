@@ -69,7 +69,7 @@ load_view("Template/navbarnew.php",$inp);
                   </a>
                 </h6>
               </div>
-              <form class="col s12 l10 offset-l1" id="forgot_pass_section">
+              <form class="col s12 l10 offset-l1" id="forgot_pass_section" onsubmit='form.req(this);return false;' data-action="forgotpass" data-res='success.push("Password reseting link is sent. check your mail.");' >
                 <div class="row">
                   <div class="col s12">
                     <p class="grey-text">Enter your email to send verification link.</p>
@@ -83,7 +83,7 @@ load_view("Template/navbarnew.php",$inp);
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <button class="btn waves-effect waves-light" type="submit">Send</button>
+                    <button class="btn waves-effect waves-light" type="submit"  >Send</button>
                   </div>
                 </div>
               </form>
