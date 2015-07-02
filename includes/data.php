@@ -8,6 +8,12 @@ $view_default=array(
 		"needpopup"=>true,
 		"needbody"=>true
 		),
+	'Template/table.php'=>array(
+		"width" => null,
+		"height" => null,
+		"func" => null,
+		"rows" => array()
+	),
 	"popup.php"=>array(
 		"title"=>"This popup is made in India",
 		"body"=>"",

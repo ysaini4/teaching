@@ -616,4 +616,13 @@
 		return $outp;
 	}
 
+
+	function add($a, $b) {
+		if(gettype($a) == "array" && gettype($b) == "array" ) {
+			return Fun::array_append($a, $b);
+		}
+	}
+
+	
+
 ?>

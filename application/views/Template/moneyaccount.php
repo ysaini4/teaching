@@ -36,7 +36,7 @@
 				?>
 				<tr>
 					<td><div class="<?php pit("red-text", $row["amount"]<0, "green-text"); ?>"><i class="<?php pit("mdi-content-remove", $row["amount"]<0, "mdi-content-add"); ?>"></i> &#8377; <?php echo abs($row["amount"]); ?></div></td>
-					<td>Fees paid for the Mathematics class you attended on 23 June, 2015.</td>
+					<td><?php echo convchars($row["content"]); ?></td>
 					<td class="tooltipped" data-position="right" data-delay="50" data-tooltip="<?php echo Fun::timetostr( $row["time"] ); ?>">
 						<span class="grey-text"><?php echo Fun::timepassed( time()-$row["time"] ); ?></span>
 					</td>

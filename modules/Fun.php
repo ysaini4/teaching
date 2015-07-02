@@ -592,6 +592,15 @@ abstract class Fun{
 			return array(getval(0, $clines), getval(1, $clines) );
 		}
 	}
+
+	public static function array_append($a, $b) {
+		for($i=0; $i<count($b); $i++) {
+			$a[] = $b[$i];
+		}
+		return $a;
+	}
+
+
 }
 
 

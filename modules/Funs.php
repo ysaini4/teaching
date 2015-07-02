@@ -444,5 +444,16 @@ abstract class Funs{
 		$content = rquery(getval($commentid, gi("moneyaccount"), $commentid), $add);
 		Sqle::insertVal("moneyaccount", array("uid" => $uid, "content" => $content, "time" => time(), "amount" => $money));
 	}
+
+	public static function admin_profile($aid, $ainfo=array()) {
+		$pageinfo = array();
+		$pageinfo['ainfo'] = $ainfo;
+		mergeifunset($pageinfo, Funs::moneyaccount($aid));
+		$pageinfo["allusers"] = array(
+			"teachers" => Sqle::getA("select users.* from users left join teachers on teachers.tid = users.id where users.type='t' "),
+			"students" => Sqle::getA("select users.* from users where type='s' ")
+		);
+		return $pageinfo;
+	}
 }
 ?>

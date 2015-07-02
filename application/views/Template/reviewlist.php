@@ -7,16 +7,16 @@
     <div class="card white">
       <div class="card-content grey-text">
         <h6>
-          <a href="<?php echo BASE."profile/".$row["tid"]; ?>">
+          <a <?php pit("href='".BASE."profile/".$row["tid"]."'", $reviewname == "teachername" ); ?> >
 
             <i class="mdi-action-face-unlock small left"></i>
 
 <!--             <img src=""  >
  -->
-            <?php echo $row[$reviewname] ?>
+            <?php echo convchars($row[$reviewname]); ?>
           </a>
         </h6><br>
-        <p>He is an excellent tutor. Explained concepts better than school teachers did.</p>
+        <p><?php echo convchars($row["feedback"]); ?>.</p>
       </div>
       <div class="card-action" style="display:none;" >
         <a href="#">Upvote</a>
