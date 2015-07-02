@@ -6,6 +6,6 @@
 #
 #
 Class booking mail
-Hey {teachername},
-your class have been booked by {studentname} on {date} for {classname}, {subjectname}, {topicname}.
-please login to website on time and start teaching.
+Dear {teachername},
+Your class have been booked by {studentname} on {date} for {classname}, Subject {subjectname} and Topic {topicname}.
+Please login and verify the booking details

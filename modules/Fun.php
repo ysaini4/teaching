@@ -381,11 +381,16 @@ abstract class Fun{
 	}
 
 	public static function mail($to,$sub,$body,$add=array()){//to be replace
-		return Fun::dummymm($to,$sub,$body,Fun::mergeifunset($add, array("file"=>"data/mailf")));
+		Fun::dummymm($to,$sub,$body,Fun::mergeifunset($add, array("file"=>"data/mailf")));
+		if(gi("isrealmail")) {
+			return Funs::sendmail($to, $sub, $body);
+		}
 	}
 	public static function msg($to,$sub,$body,$add=array()){//to be replace
-		return Fun::dummymm($to,$sub,$body, Fun::mergeifunset($add,array("file"=>"data/msgf")));
-//		return Funs::sendmsg($to, $body);
+		Fun::dummymm($to,$sub,$body, Fun::mergeifunset($add,array("file"=>"data/msgf")));
+		if(gi("isrealmsg")) {
+			return Funs::sendmsg($to, $body);
+		}
 	}
 
 	public static function mailfromfile($to,$mfile,$data) {

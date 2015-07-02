@@ -250,7 +250,7 @@ abstract class Funs{
 	public static function otpstore($phone){
 		$otp=rand(100000,999999);
 		sets("phone",$otp);
-		Fun::msgfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp));
+		Fun::msgfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp, "name" => "Student"));
 		return 1;
 //    Fun::msgfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
 	}
@@ -439,10 +439,13 @@ abstract class Funs{
 		return array($finalquery , $params);
 	}
 
-	public static function addremmoney($money, $commentid='', $uid=null, $add = array()) {
+	public static function addremmoney($money, $commentid='', $uid=null, $add = array(), $mailf=null) {
 		setifnn($uid, User::loginId());
 		$content = rquery(getval($commentid, gi("moneyaccount"), $commentid), $add);
 		Sqle::insertVal("moneyaccount", array("uid" => $uid, "content" => $content, "time" => time(), "amount" => $money));
+		if($mailf != null) {
+			
+		}
 	}
 
 	public static function admin_profile($aid, $ainfo=array()) {
@@ -450,6 +453,37 @@ abstract class Funs{
 		$pageinfo['ainfo'] = $ainfo;
 		mergeifunset($pageinfo, Funs::moneyaccount($aid));
 		return $pageinfo;
+	}
+
+	public static function sendmail($to, $subject, $body) {
+		$mail             = new PHPMailer();
+		$mail->IsSMTP();
+		$mail->SMTPAuth   = true;                  // enable SMTP authentication
+		$mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+		$mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+		$mail->Port       = 465;                   // set the SMTP port
+
+		$mail->Username   = "getiitians@gmail.com";  // GMAIL username
+		$mail->Password   = "iitdelhi1984";            // GMAIL password, Some times if two step varification enabled in this mail id, Mail will not be sent.
+
+		$mail->From       = "getiitians@gmail.com";
+		$mail->FromName   = "Himanshu";
+		$mail->Subject    = $subject;
+		$mail->AltBody    = ""; //Text Body
+		$mail->WordWrap   = 5000; // set word wrap
+
+		$mail->MsgHTML($body);
+
+		$mail->AddReplyTo("himanshu@getiitians.com","Himanshu Jain");
+
+		//$mail->AddAttachment("/path/to/file.zip");             // attachment
+		//$mail->AddAttachment("/path/to/image.jpg", "new.jpg"); // attachment
+
+		$mail->AddAddress($to, "");
+
+		$mail->IsHTML(true); // send as HTML
+
+		return $mail->Send();
 	}
 }
 ?>

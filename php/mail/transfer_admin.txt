@@ -1,0 +1,2 @@
+Dear Admin,
+Rupees {amount} has been credited in {studentname} getIITians account.

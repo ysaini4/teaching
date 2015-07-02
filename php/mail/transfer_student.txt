@@ -1,0 +1,3 @@
+Got money
+Dear {studentname},
+Rupees {amount} has been credited in your getIITians account.
