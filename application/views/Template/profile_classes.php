@@ -67,7 +67,7 @@
           foreach($oldslots as $i => $row) {
         ?>
         <tr>
-          <td><?php echo $row["teachername"] ?></td>
+          <td><?php echo $row["studentname"] ?></td>
           <td><?php echo $row["classname"] ?></td>
           <td><?php echo $row["subjectname"] ?></td>
           <td><?php echo $row["topicname"] ?></td>

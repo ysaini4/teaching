@@ -8,6 +8,12 @@ $view_default=array(
 		"needpopup"=>true,
 		"needbody"=>true
 		),
+	'Template/table.php'=>array(
+		"width" => null,
+		"height" => null,
+		"func" => null,
+		"rows" => array()
+	),
 	"popup.php"=>array(
 		"title"=>"This popup is made in India",
 		"body"=>"",
@@ -63,8 +69,14 @@ $_ginfo["action_constrain"]=array(
 	"saveuserdetails"=>array("users"=>"all"),
 	"studentBookSlots" => array("datets", "slots", "cst"),
 	"disptopics" => array("need" => array("tid")),
-	"updatebio" => array("need" => array("teachermoto"))
+	"updatebio" => array("need" => array("teachermoto")),
+	"addmoney" => array("need" => array("uid", "money")),
+	"review" => array("need" => array("starttime", "feedback", "tid", "rate")),
+	"acceptrej" => array("need" => array("tid", "isselected")),
+	"adminprofile_users" => array("users" => array("a"))
 );
+
+
 $_ginfo["error"]=array(
 	"-1"=>"Session expired",
 	"-2"=>"You are not right person to perform this action.",
@@ -87,6 +99,8 @@ $_ginfo["error"]=array(
 	"-25"=>"Subject Already Added",
 	"-26"=>"Password cant be changed",
 	"-27"=>"Wiziq Error",
+	"-28"=>"No Such CST exist",
+	"-29"=>"You don't have sufficient money in your account.",
 
 	"1"=>"Positive"
 );
@@ -109,6 +123,18 @@ $_ginfo["timer"]=array(
 	);
 
 $_ginfo["numsearchr"]=array("loadonce"=>20, "loadadd"=>10);
+
+$_ginfo["moneyaccount"] = array(
+	"-1" => "You booked class of {classname}, {subjectname}, {topicname} with teacher {teachername} ",
+	"-2" => "Admin added in your account",
+	"-3" => "You have received by Admin",
+	"-4" => "{studentname} booked your class on {date}",
+	"-5" => "You taught class of {classname}, {subjectname}, {topicname} to {studentname} ",
+	"-6" => "You added in account of {name}({type})"
+);
+
+
+$_ginfo["adminmailid"] = "mohitsaini1196@gmail.com";
 
 
 ?>

@@ -16,3 +16,8 @@ $(window).scroll(function() {
     sticker.removeClass(); //top of page
   }
 });
+
+
+$(document).ready(function(){
+  ms.refinecallafter();
+});

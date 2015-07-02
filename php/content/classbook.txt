@@ -1,0 +1,3 @@
+Hey {name},
+your class have been booked by {student_name} at {time}.
+please login to website on time and start teaching.

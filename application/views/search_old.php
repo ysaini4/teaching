@@ -63,7 +63,8 @@ load_view("Template/navbarnew.php");
               <div class="row" style='margin-bottom:-20px;' >
                 <div class="col s12">
                   <select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic_t2(this);' data-condition='simple'>
-                    <option value="" disabled selected>Select Subject</option>
+                    <option value="" disabled selected>Subject</option>
+                    <option value="">Select class first</option>
                   </select>
                 </div>
               </div>
@@ -195,8 +196,9 @@ load_view("Template/navbarnew.php");
                   </div>
                 </form>
     					</div>
-      				<div class="divider"></div><br>
-      				<div class="row">
+      				<div class="divider"></div>
+              <br>
+      				<div class="row" id="dispnoresult" style='display:none;' >
                 <div class="col s12 red-text text-lighten-1">
                   Sorry. No results found.
                 </div>

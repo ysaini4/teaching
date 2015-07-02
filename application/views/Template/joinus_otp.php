@@ -7,7 +7,7 @@
               </div>
             </div>
             <div class="row">
-                  <div class="input-field col s12 l4">
+                  <div class="input-field col s12 l4 offset-l1">
                     <input id="otp" type="text" class="validate" name="otp" data-condition="simple" >
                     <label for="otp">One Time Password</label>
                   </div>

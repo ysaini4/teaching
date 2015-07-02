@@ -46,14 +46,8 @@
 			$DB->close();
 	}
 
-	function getval($key, $arr, $default=null) {
-	/*
-	Returns the value corresponding to give key in associative array if it is set otherwise return default value
-	Arguments: $key: Key to be checked
-						 $arr: Array in which key is to be checked
-						 $default: default value to return if key is not set 
-	*/
-		 return (isset($arr[$key]) ? $arr[$key] : $default );
+	function getval($key,$arr,$default=null){
+		 return ( ($arr!==null && isset($arr[$key])) ? $arr[$key] : $default );
 	}
 
 	function post($key, $default=null) {
@@ -193,15 +187,11 @@
 	}
 
 	function isvalid_action($post_data) {
-	/*Checks whether all the fields in post data are set or not according to g_info["action_constraint"] requirements
-	 Arguments: $post_data: Input data array
-	*/
- 
 		global $_ginfo;
 		if(isset($_ginfo["action_constrain"][$post_data["action"]])){
 			$sarr=$_ginfo["action_constrain"][$post_data["action"]];
 			$sarr=Fun::mergeifunset($sarr,array("users"=>"","need"=>array()));
-			if(!(($sarr["users"]=="all" && User::islogin()) || $sarr["users"]=="" || in_array(User::loginType(), $sarr["users"]) ))
+			if(!(($sarr["users"]=="all" && User::islogin()) || $sarr["users"]=="" || ($sarr["users"] != "all" && in_array(User::loginType(), $sarr["users"])) ))
 				return -2;
 			if(!Fun::isAllSet($sarr["need"], $post_data))
 				return -9;
@@ -210,10 +200,6 @@
 	}
 
 	function islset($data, $arr) {
-	/*Checks whether the required keys value are set or not in given data
-	 Arguments: $data: Input data array
-							$arr: array of keys 
-	*/    
 		for($i = 0;$i<count($arr);$i++){
 			if(!isset($data[$arr[$i]]))
 				return false;
@@ -588,5 +574,47 @@
 		return myexplode(" ", strtolower($searchString));
 	}
 
+
+	function g($inp) {
+		global $$inp;
+		return $$inp;
+	}
+
+	function s($inp, $val=null) {
+		global $$inp;
+		$$inp = $val;
+	}
+
+	function gi($inp) {
+		return getval($inp, g("_ginfo"));
+	}
+
+
+	function filter($list, $boolfunc) {
+		$outp = array();
+		foreach($list as $i => $val) {
+			if($boolfunc($val) === true) {
+				$outp[] = $val;
+			}
+		}
+		return $outp;
+	}
+
+	function map($list ,$func) {
+		$outp = array();
+		foreach($list as $i => $val) {
+			$outp[$i] = $func($val);
+		}
+		return $outp;
+	}
+
+
+	function add($a, $b) {
+		if(gettype($a) == "array" && gettype($b) == "array" ) {
+			return Fun::array_append($a, $b);
+		}
+	}
+
+	
 
 ?>

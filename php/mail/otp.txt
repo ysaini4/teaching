@@ -1,1 +1,1 @@
-Your OTP is <otp> .
+Your OTP is {otp} .

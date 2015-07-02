@@ -62,7 +62,7 @@ load_view("Template/navbarnew.php",$inp);
             </div>
 
             <div class="row">
-              <div class="col s12 l10 offset-l1" style='display:none;' >
+              <div class="col s12 l10 offset-l1" style='' >
                 <h6>
                   <a onclick="forgotPass();" style="cursor:pointer;">
                     <span id="forgot_prefix_arrow"><i class="material-icons tiny">keyboard_arrow_up</i></span>&nbsp;Forgot Password

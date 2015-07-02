@@ -111,13 +111,22 @@ class Sqle extends Sql{
 		}
 		return $columns;
 	}
-	public static function getRow($query,$param_string="",$param_array=array()){
+	public static function getRow($query,$param_string="",$param_array=array(), $getkey=null){
 		$qoutp=Sql::getArray($query,$param_string,$param_array);
 		if(count($qoutp)>0)
-			return $qoutp[0];
+			return ($getkey == null ? $qoutp[0]:getval($getkey, $qoutp[0]) );
 		else
 			return null;
 	}
+
+	public static function getR($query, $param = array(), $getkey=null) {
+		$qoutp=Sqle::getA($query, $param);
+		if(count($qoutp) > 0)
+			return ($getkey == null ? $qoutp[0]:getval($getkey, $qoutp[0]) );
+		else
+			return null;
+	}
+
 	public static function loadtables($query,$key,$limit=-1,$min=0,$max=0,$isnewer=true,$sorttext=''){
 		$min=0+$min;
 		$max=0+$max;
@@ -235,6 +244,8 @@ class Sqle extends Sql{
 		}
 		return $outp;
 	}
+
+
 
 
 }

@@ -45,6 +45,8 @@ class Welcome extends CI_Controller {
 				$adddata["home"]=Fun::getmulchecked($_POST,"home",2);
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
+
+				Fun::mailfromfile( gi("adminmailid"), "php/mail/joinus_admin.txt" );
 //        Fun::redirect(BASE."account");
 				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
 				Fun::redirect(BASE."profile");
@@ -192,7 +194,7 @@ class Welcome extends CI_Controller {
 
 	}
 	
-		public function profile($tid=0,$tabid=1){
+		public function profile($tid=0,$tabid=1) {
 			$numtabs=5;
 			global $_ginfo;
 			$tid=Funs::gettid($tid);
@@ -265,10 +267,15 @@ class Welcome extends CI_Controller {
 					// }
 					$pageinfo['langArray'] = array();// $langArray;
 					$pageinfo["isme"] = (User::loginId() == $tid);
+					mergeifunset($pageinfo, Funs::moneyaccount($tid));
+					$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where tid={tid} ", array("tid" => $tid));
 					load_view("profile.php",$pageinfo);            
 				}
-				else if($uprofile['type']=='s'){
+				else if($uprofile['type']=='s') {
 					load_view("studentprofile.php",Funs::student_profile($tid));
+				}            
+				else if($uprofile['type']=='a') {
+					load_view("adminprofile.php",Funs::admin_profile($tid, $uprofile));
 				}            
 			}
 	}
@@ -419,7 +426,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function forgotPassword() {
-		load_view("forgotPassword.php",array());
+		load_view("forgotPassword.php", array());
 	}
 	public function changepassword(){
 		$pageinfo=array();
@@ -571,7 +578,11 @@ class Welcome extends CI_Controller {
   public function hiring() {
     load_view("hiring.php",array());
   }
-
+  
+  public function reviews() {
+    load_view("review.php",array());
+  }
+   
 }
 
 ?>

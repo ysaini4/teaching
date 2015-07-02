@@ -157,7 +157,7 @@
       Minimun tution fees per hour
      </span>
     </div>
-    <div class="col s12 l5">
+    <div class="col s12 l4">
      <select data-condition="simple" class="browser-default" name="minfees" id="minfees">
       <option value="" disabled="disabled" selected="selected">
        Select Minimum Fees
@@ -219,7 +219,7 @@
       Both offline and online
      </span>
     </div>
-    <div class="col s12 l5">
+    <div class="col s12 l4">
      <select data-condition="simple" class="browser-default" name="teachingexp" id="experience">
       <option value="" disabled="disabled" selected="selected">
        Select Teaching Experience
@@ -560,11 +560,8 @@
     </div>
     <div class="col s12 l8">
      <div class="file-field input-field">
-      <input class="file-path validate" type="text" />
-      <div class="btn">
-       <span>
-        Upload
-       </span>
+      <input class="file-path validate" type="text" placeholder="Click to upload file"/>
+      <div>
        <input type="file" name="uploadfile_clgvarification" />
       </div>
      </div>
@@ -1520,11 +1517,8 @@
     </div>
     <div class="col s12 l8">
      <div class="file-field input-field">
-      <input class="file-path validate" type="text" />
-      <div class="btn">
-       <span>
-        Upload
-       </span>
+      <input class="file-path validate" type="text" placeholder="Click to upload file"/>
+      <div>
        <input type="file" name="resumefile" />
       </div>
      </div>

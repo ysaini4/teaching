@@ -250,7 +250,7 @@ abstract class Funs{
 	public static function otpstore($phone){
 		$otp=rand(100000,999999);
 		sets("phone",$otp);
-		Fun::mailfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp));
+		Fun::msgfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp));
 		return 1;
 //    Fun::msgfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
 	}
@@ -308,14 +308,22 @@ abstract class Funs{
 		}
 		return $inp;
 	}
-	public static function student_profile($sid){
+	public static function moneyaccount($uid) {
+		$pageinfo = array();
+		$pageinfo["moneyaccount"] = Sqle::getA("select * from moneyaccount where uid={uid} order by time desc ", array("uid" => $uid));
+		$pageinfo["mymoney"] = getval("mymoney", Sqle::getR( "select * from ".qtable("accountbalance")." where uid={uid}", array("uid" => $uid)));
+		return $pageinfo;
+	}
+
+	public static function student_profile($sid) {
 		$sinfo=User::userProfile($sid);
 		$flname=explode(" ",$sinfo["name"]." ");
 		$dob=$sinfo["dob"]>0 ? Fun::timetostr_t3($sinfo["dob"]):"";
 		$oldslots = Funs::classeslist_filter(Sqle::getA(qtable("stdbookedclasses_old", false), array("sid" => $sid)));
 		$newslots = Funs::classeslist_filter(Sqle::getA(qtable("stdbookedclasses_new", false), array("sid" => $sid)));
-
 		$pageinfo=array("fname"=>$flname[0],"lname"=>$flname[1],"sinfo"=>$sinfo,"dob"=>$dob, "sid" => $sid, "newslots" => $newslots, "oldslots" => $oldslots);
+		$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where sid={sid} ", array("sid" => User::loginId()));
+		mergeifunset($pageinfo, Funs::moneyaccount($sid));
 		return $pageinfo;
 	}
 	public static function doublesplit($inp){
@@ -332,7 +340,7 @@ abstract class Funs{
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
 		$hisoutput = Funs::mssearch($data);
-		$hisoutput[0]="select dispteachers.tid, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid order by pricelist.minprice asc";
+		$hisoutput[0]="select dispteachers.tid, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
 	}
 	public static function get_teacher_classes($tid) {
@@ -429,6 +437,19 @@ abstract class Funs{
 //		$finalquery = Fun::intersectionquery(array($query1, $query2), "tid");
 //		echo $finalquery;
 		return array($finalquery , $params);
+	}
+
+	public static function addremmoney($money, $commentid='', $uid=null, $add = array()) {
+		setifnn($uid, User::loginId());
+		$content = rquery(getval($commentid, gi("moneyaccount"), $commentid), $add);
+		Sqle::insertVal("moneyaccount", array("uid" => $uid, "content" => $content, "time" => time(), "amount" => $money));
+	}
+
+	public static function admin_profile($aid, $ainfo=array()) {
+		$pageinfo = array();
+		$pageinfo['ainfo'] = $ainfo;
+		mergeifunset($pageinfo, Funs::moneyaccount($aid));
+		return $pageinfo;
 	}
 }
 ?>

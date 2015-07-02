@@ -84,12 +84,12 @@ load_view("Template/navbarnew.php",$inp);
           </div>
           <div id="tab_reviews" class="col s12">
           <?php
-//            load_view("Template/studentprofile_reviews.php");
+            load_view("Template/studentprofile_reviews.php", Fun::mergeifunset($inp, array("reviewname" => "teachername")));
           ?>
           </div>
           <div id="tab_account" class="col s12">
           <?php
-//            load_view("Template/studentprofile_account.php");
+            load_view("Template/moneyaccount.php", $inp);
           ?>
           </div>
         </div>
@@ -99,8 +99,13 @@ load_view("Template/navbarnew.php",$inp);
 
 <?php
 load_view("Template/footer.php",$inp);
+load_view("popup.php", array("name" => "writereview", "body" => "Template/reviewform.php", "divs" => "padding:0px;"));
+
 load_view("Template/bottom.php",Fun::mergeifunset($inp,array("needbody"=>false)));
 ?>
   <script src="js/studentprofile.js"></script>
+  <script type="text/javascript">
+    $("#review_stars").raty();
+  </script>
 </body>
 </html>

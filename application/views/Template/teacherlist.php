@@ -1,7 +1,7 @@
 <?php
 foreach($qresult as $row) {
 ?>
-<div class="card" style="padding:15px;">
+<div class="card teacherlistelm" style="padding:15px;">
   <div class="row">
     <div class="col s12 l3">
       <a href="<?php echo BASE."profile/".$row["tid"]; ?>" >
