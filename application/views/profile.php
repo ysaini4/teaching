@@ -1,8 +1,9 @@
 <?php
 load_view("Template/top.php");
 load_view("Template/navbarnew.php");
-?>
 
+if($aboutinfo["isselected"] == "a" || User::isloginas("a") ) {
+?>
 	<main>
 		<div class="container">
 		<br>
@@ -129,6 +130,12 @@ load_view("Template/navbarnew.php");
 			</div>
 		</div>
 	</main>
+<?php
+} else {
+	if($tid == User::loginId())
+		echo "You Are not selected.";
+}
+?>
 
 <?php
 load_view("Template/footernew.php");

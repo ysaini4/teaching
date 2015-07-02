@@ -163,5 +163,28 @@ class Actiondisp{
 			return;
 		load_view("Template/teacher_topiclist.php", array("mysubj" => Funs::teacher_subjects($data["tid"]), "tid" => $data["tid"] ));
 	}
+
+	function adminprofile_users($data, $printjson = true) {
+		$outp = array("ec" => 1, "data" => 0);
+		if($printjson)
+			echo json_encode($outp)."\n";
+		if($outp["ec"] < 0)
+			return;
+		$pageinfo = array();
+		$pageinfo["allusers"] = array(
+			"teachers" => Sqle::getA("select teachers.isselected, users.* from users left join teachers on teachers.tid = users.id where users.type='t' "),
+			"students" => Sqle::getA("select users.* from users where type='s' ")
+		);
+		load_view("Template/adminprofile_users.php", $pageinfo );
+	}
+
+	function moneyaccount($data, $printjson = true) {
+		$outp = array("ec" => 1, "data" => 0);
+		if($printjson)
+			echo json_encode($outp)."\n";
+		if( $outp["ec"] < 0 )
+			return;
+		load_view("Template/moneyaccount.php", Funs::moneyaccount(User::loginId()));
+	}
 }
 ?>

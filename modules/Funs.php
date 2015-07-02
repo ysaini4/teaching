@@ -315,7 +315,7 @@ abstract class Funs{
 		return $pageinfo;
 	}
 
-	public static function student_profile($sid){
+	public static function student_profile($sid) {
 		$sinfo=User::userProfile($sid);
 		$flname=explode(" ",$sinfo["name"]." ");
 		$dob=$sinfo["dob"]>0 ? Fun::timetostr_t3($sinfo["dob"]):"";
@@ -340,7 +340,7 @@ abstract class Funs{
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
 		$hisoutput = Funs::mssearch($data);
-		$hisoutput[0]="select dispteachers.tid, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid order by pricelist.minprice asc";
+		$hisoutput[0]="select dispteachers.tid, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
 	}
 	public static function get_teacher_classes($tid) {
@@ -449,10 +449,6 @@ abstract class Funs{
 		$pageinfo = array();
 		$pageinfo['ainfo'] = $ainfo;
 		mergeifunset($pageinfo, Funs::moneyaccount($aid));
-		$pageinfo["allusers"] = array(
-			"teachers" => Sqle::getA("select users.* from users left join teachers on teachers.tid = users.id where users.type='t' "),
-			"students" => Sqle::getA("select users.* from users where type='s' ")
-		);
 		return $pageinfo;
 	}
 }

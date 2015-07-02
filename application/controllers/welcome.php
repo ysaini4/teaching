@@ -45,6 +45,8 @@ class Welcome extends CI_Controller {
 				$adddata["home"]=Fun::getmulchecked($_POST,"home",2);
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
+
+				Fun::mailfromfile( gi("adminmailid"), "php/mail/joinus_admin.txt" );
 //        Fun::redirect(BASE."account");
 				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
 				Fun::redirect(BASE."profile");
@@ -192,7 +194,7 @@ class Welcome extends CI_Controller {
 
 	}
 	
-		public function profile($tid=0,$tabid=1){
+		public function profile($tid=0,$tabid=1) {
 			$numtabs=5;
 			global $_ginfo;
 			$tid=Funs::gettid($tid);
@@ -424,7 +426,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function forgotPassword() {
-		load_view("forgotPassword.php",array());
+		load_view("forgotPassword.php", array());
 	}
 	public function changepassword(){
 		$pageinfo=array();

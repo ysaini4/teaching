@@ -114,5 +114,12 @@ class User extends Sql{
 			return $temp;
 	}
 
+	public static function passreset($uid) {
+		$uinfo = userProfile($uid);
+		if($uinfo!=null) {
+			$uinfo["password"] = Fun::encode2($uinfo["password"]);
+			return BASE."forgotPassword?".http_build_query( Fun::getflds(array("email", "password"), $uinfo) );
+		}
+	}
 }
 ?>

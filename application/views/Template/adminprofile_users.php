@@ -9,11 +9,11 @@ $srows = add(array(array("Name", "Email", "Phone", "Action", "Add money")), map(
 
 $addmoney = function($uid) {
 ?>
-	<form onsubmit="form.req(this);return false;" >
+	<form onsubmit="form.req(this);return false;" data-action='addmoney' data-res='success.push("Added Successfully");div.reload($("#tab_account")[0]);' >
 		<?php
 			hidinp("uid", $uid);
 		?>
-		<div class="input-field col s12 l2">
+		<div class="input-field col s12 l3">
 			<input type="text" name="money" data-condition='simple' placeholder="Add money in account" >
 		</div>
 		<button type="submit" class="btn blue waves-effect waves-light" >Add</button>
@@ -23,11 +23,17 @@ $addmoney = function($uid) {
 
 $tfunc = function($r, $c) use($addmoney, $allusers) {
 	if($c == 3 && $r > 0 ) {
+		$row = $allusers["teachers"][$r-1];
+		if($row["isselected"] != "a") {
 		?>
-		<button type="button" class="btn blue waves-effect waves-light" >Accept</button>
-		<button type="button" class="btn blue waves-effect waves-light" >Reject</button>
-		<br>
+		<button type="button" onclick='button.sendreq_v2(this);div.reload($("#tab_users")[0]);' data-isselected='a' data-tid="<?php echo $row["id"]; ?>" data-action="acceptrej" class="btn blue waves-effect waves-light" >Accept</button>
 		<?php
+		}
+		if($row["isselected"] != "r" ) {
+		?>
+		<button type="button" class="btn blue waves-effect waves-light" onclick='button.sendreq_v2(this);div.reload($("#tab_users")[0]);' data-isselected='r' data-tid="<?php echo $row["id"]; ?>" data-action="acceptrej" >Reject</button>
+		<?php
+		}
 		return true;
 	} else if ($c == 4 && $r > 0) {
 		$addmoney( $allusers["teachers"][$r-1]["id"] );

@@ -69,8 +69,14 @@ $_ginfo["action_constrain"]=array(
 	"saveuserdetails"=>array("users"=>"all"),
 	"studentBookSlots" => array("datets", "slots", "cst"),
 	"disptopics" => array("need" => array("tid")),
-	"updatebio" => array("need" => array("teachermoto"))
+	"updatebio" => array("need" => array("teachermoto")),
+	"addmoney" => array("need" => array("uid", "money")),
+	"review" => array("need" => array("starttime", "feedback", "tid", "rate")),
+	"acceptrej" => array("need" => array("tid", "isselected")),
+	"adminprofile_users" => array("users" => array("a"))
 );
+
+
 $_ginfo["error"]=array(
 	"-1"=>"Session expired",
 	"-2"=>"You are not right person to perform this action.",
@@ -124,9 +130,11 @@ $_ginfo["moneyaccount"] = array(
 	"-3" => "You have received by Admin",
 	"-4" => "{studentname} booked your class on {date}",
 	"-5" => "You taught class of {classname}, {subjectname}, {topicname} to {studentname} ",
+	"-6" => "You added in account of {name}({type})"
 );
 
 
+$_ginfo["adminmailid"] = "mohitsaini1196@gmail.com";
 
 
 ?>
