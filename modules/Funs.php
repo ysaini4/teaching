@@ -444,7 +444,7 @@ abstract class Funs{
 		$content = rquery(getval($commentid, gi("moneyaccount"), $commentid), $add);
 		Sqle::insertVal("moneyaccount", array("uid" => $uid, "content" => $content, "time" => time(), "amount" => $money));
 		if($mailf != null) {
-			
+			Fun::mailfromfile($add["mailto"], $mailf, $add);
 		}
 	}
 

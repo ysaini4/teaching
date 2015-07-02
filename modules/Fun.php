@@ -605,6 +605,14 @@ abstract class Fun{
 		return $a;
 	}
 
+	public static function mergeforce($a,$b){
+		$keys=array_keys($b);
+		for($i=0;$i<count($keys);$i++){
+			$a[$keys[$i]]=$b[$keys[$i]];
+		}
+		return $a;
+	}
+
 
 }
 
