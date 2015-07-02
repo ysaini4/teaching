@@ -86,9 +86,14 @@ class User extends Sql{
 		}
 	}
 
-	public static function changePassword($oldp,$newp){
-		if(self::islogin())
-			return Sqle::updateVal('users',array('password'=>$newp),array('id'=>self::loginId(),'password'=>$oldp),1);
+	public static function changePassword($oldp=null, $newp){
+		if(self::islogin()){
+			$match = array('id'=>self::loginId());
+			if($oldp != null) {
+				$match['password'] = $oldp;
+			}
+			return Sqle::updateVal('users',array('password'=>$newp), $match, 1);
+		}
 		else
 			return false;
 	}
@@ -114,12 +119,16 @@ class User extends Sql{
 			return $temp;
 	}
 
-	public static function passreset($uid) {
-		$uinfo = userProfile($uid);
+	public static function passreset($email) {
+		$uinfo = Sqle::getR("select * from users where email={email} limit 1", array("email" => $email));
 		if($uinfo!=null) {
 			$uinfo["password"] = Fun::encode2($uinfo["password"]);
-			return BASE."forgotPassword?".http_build_query( Fun::getflds(array("email", "password"), $uinfo) );
+			$reseturl = BASE."forgotPassword?".http_build_query( Fun::getflds(array("id", "password"), $uinfo) );
+			$uinfo["link"] = $reseturl;
+			Fun::mailfromfile($email, "php/mail/passwordreset.txt", $uinfo);
+			return true;
 		}
+		return null;
 	}
 }
 ?>

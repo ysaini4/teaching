@@ -426,7 +426,14 @@ class Welcome extends CI_Controller {
 	}
 
 	public function forgotPassword() {
-		load_view("forgotPassword.php", array());
+		$pageinfo = array();
+		$uinfo = User::userProfile(get("id"));
+		if($uinfo!=null && Fun::encode2($uinfo["password"] ) == get("password")  ) {
+			sets("login", array("id" => $uinfo["id"], "type" => $uinfo["type"] ));
+			load_view("forgotPassword.php", array());
+		} else {
+			Fun::redirect(HOST);
+		}
 	}
 	public function changepassword(){
 		$pageinfo=array();
