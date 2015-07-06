@@ -136,7 +136,7 @@ $_ginfo["moneyaccount"] = array(
 );
 
 
-$_ginfo["adminmailid"] = "mohitsaini1196@gmail.com";
+$_ginfo["adminmailid"] = "himanshu@getiitians.com";
 
 $_ginfo["isrealmail"] = true;
 $_ginfo["isrealmsg"] = true;
