@@ -2,7 +2,12 @@
 include "includes/app.php";
 
 
-echo gget("fbkeys", "appid");
+//$a = User::fglogin(array("type" => "fblogin", "fblogin" => 11011, "email" => "mohit17@mail.com"));
+
+//print_r($a);
+
+
+//print_r(gets("login"));
 
 
 if(false) {

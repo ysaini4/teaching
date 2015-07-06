@@ -25,6 +25,10 @@ function create(){
 	echo Sql::query("ALTER TABLE users add profilepicbig varchar(100) NULL ");
 	echo Sql::query("ALTER TABLE users add gender varchar(1) NULL ");
 	echo Sql::query("ALTER TABLE users add dob int NULL ");
+	echo Sql::query("ALTER TABLE users add fblogin varchar(50) NULL ");
+	echo Sql::query("ALTER TABLE users add gpluslogin varchar(50) NULL ");
+
+
 	echo Sql::query("CREATE TABLE subjects (id int NOT NULL AUTO_INCREMENT,tid int, c_id int, s_id int, t_id int, PRIMARY KEY ( id) , UNIQUE (tid, c_id, s_id, t_id ) ) ");
 	echo Sql::query("ALTER TABLE subjects add timer int NULL ");
 	echo Sql::query("ALTER TABLE subjects add price int NULL ");
