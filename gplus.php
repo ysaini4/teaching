@@ -8,14 +8,14 @@ include "includes/app.php";
 // Fill CLIENT ID, CLIENT SECRET ID, REDIRECT URI from Google Developer Console
 require_once 'Google/google-api-php-client/src/Google/autoload.php';
 
- $client_id = '61668863490-tal7lugl9tccc0qkeohdehfpuqg5an8p.apps.googleusercontent.com';
- $client_secret = 'di4rQU2r6eBsMTSqkPlygU0S';
- $redirect_uri = 'http://getiitians.com/folkstore/gplus.php';
- $simple_api_key = 'AIzaSyBJofNDlKImQgIq_eGx0IruHsp2JdnTriY';
+	$client_id = gget("gpluskeys", "clientid");
+	$client_secret = gget("gpluskeys", "clientsec");
+	$redirect_uri = HOST.'gplus.php';
+	$simple_api_key = gget("gpluskeys", "apikey");
  
 //Create Client Request to access Google API
 $client = new Google_Client();
-$client->setApplicationName("FolksStore");
+$client->setApplicationName( gget("gpluskeys", "appname") );
 $client->setClientId($client_id);
 $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
@@ -27,36 +27,36 @@ $objOAuthService = new Google_Service_Oauth2($client);
 
 //Logout
 if (isset($_REQUEST['logout'])) {
-  unset($_SESSION['access_token']);
-  $client->revokeToken();
-  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL)); //redirect user back to page
+	unset($_SESSION['access_token']);
+	$client->revokeToken();
+	header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL)); //redirect user back to page
 }
 
 //Authenticate code from Google OAuth Flow
 //Add Access Token to Session
 if (isset($_GET['code'])) {
-  $client->authenticate($_GET['code']);
-  $_SESSION['access_token'] = $client->getAccessToken();
-  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+	$client->authenticate($_GET['code']);
+	$_SESSION['access_token'] = $client->getAccessToken();
+	header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
 
 //Set Access Token to make Request
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-  $client->setAccessToken($_SESSION['access_token']);
+	$client->setAccessToken($_SESSION['access_token']);
 }
 
 //Get User Data from Google Plus
 if ($client->getAccessToken()) {
-  $userData = $objOAuthService->userinfo->get();
+	$userData = $objOAuthService->userinfo->get();
  // print_r($userData);
-  $gemail=$userData['email'];
-  $gname=$userData['name'];
-  echo $gemail;
-  echo $gname;
-  //echo $gname;
-  $_SESSION['access_token'] = $client->getAccessToken();
+	$gemail=$userData['email'];
+	$gname=$userData['name'];
+	echo $gemail;
+	echo $gname;
+	//echo $gname;
+	$_SESSION['access_token'] = $client->getAccessToken();
 } else {
-    Fun::redirect($client->createAuthUrl());
+		Fun::redirect($client->createAuthUrl());
 }
 closedb();
 ?>
