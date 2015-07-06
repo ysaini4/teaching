@@ -708,6 +708,22 @@ function mylib(){
 			});
 		}
 	};
+	var hovercss = {
+		onmousein: function(obj, selector, cssprop) {
+			selector.css(cssprop);
+		},
+		onmousein: function(obj, selector, cssprop) {
+			selector.css(cssprop);
+		},
+		hovercss: function (obj, cssv, selector) {
+			if(selector == null) {
+				selector = $(obj).find(".edit");
+			}
+		}
+	};
+	var editform = {
+
+	}
 	valid.resetinp();
 }
 

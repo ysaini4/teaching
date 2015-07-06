@@ -247,10 +247,10 @@ abstract class Funs{
 		$url="http://216.245.209.132/rest/services/sendSMS/sendGroupSms?AUTH_KEY=14e4de84f23c84d81f24b8fb69d1e0&message=".$msg."&senderId=GETIIT&routeId=1&mobileNos=".$phone."&smsContentType=english";
 		return shell_exec("curl '".$url."'");
 	}
-	public static function otpstore($phone){
+	public static function otpstore($phone, $st){
 		$otp=rand(100000,999999);
 		sets("phone",$otp);
-		Fun::msgfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp, "name" => "Student"));
+		Fun::msgfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp, "name" => $st));
 		return 1;
 //    Fun::msgfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
 	}

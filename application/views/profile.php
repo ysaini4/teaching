@@ -63,22 +63,34 @@ if(true || $aboutinfo["isselected"] == "a" || User::isloginas("a") ) {
 							</div>
 						</div>
 						<div class="row" style="" >
-							<form class="col s12" onsubmit='form.req(this);return false;' data-action='updatebio' >
-								<div class="row">
-									<div class="input-field col s12 l7">
-										<textarea name="teachermoto" id="biography" class="materialize-textarea" placeholder="Write a small description about yourself." <?php pit("readonly", !$isme); ?> ><?php echo convchars($aboutinfo["teachermoto"]); ?></textarea>
-										<label for="biography">Bio</label>
+							<form class="col s12" onsubmit='form.req(this);return false;' data-action='updatebio' data-res='hideshowdown("bioedit", "biodisp");$("#biodisptext").html($("#biography").val());' >
+								<div id='biodisp' >
+									<div class="row">
+										<div class="col s12 l7" data-onhover='hovercss(this, {"display":""}));' >
+											<span id='biodisptext' ><?php echo Fun::smilymsg($aboutinfo["teachermoto"]); ?></span>
+											<?php
+												if(User::loginId() == $tid) {
+											?>
+											<span onclick='hideshowdown("biodisp", "bioedit");' class='edit' >Edit</span>
+											<?php
+												}
+											?>
+										</div>
 									</div>
 								</div>
-								<?php if(User::loginId() == $tid) { ?>
-								<div class="row">
-									<div class="input-field col s12">
-										<button class="btn waves-effect waves-light blue" type="submit"><i class="material-icons left">save</i>Save</button>
+								<div style='display:none;' id='bioedit' >
+									<div class="row"  >
+										<div class="input-field col s12 l7">
+											<textarea name="teachermoto" id="biography" class="materialize-textarea" placeholder="Write a small description about yourself." ><?php echo convchars($aboutinfo["teachermoto"]); ?></textarea>
+											<label for="biography">Bio</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input-field col s12">
+											<button class="btn waves-effect waves-light blue" type="submit"><i class="material-icons left" data-waittext='Saving..' ></i>Save Changes</button>
+										</div>
 									</div>
 								</div>
-								<?php
-									}
-								?>
 							</form>
 						</div>
 					</div>
@@ -98,7 +110,7 @@ if(true || $aboutinfo["isselected"] == "a" || User::isloginas("a") ) {
 					</div>
 					<div id="tab_profile" class="col s12 offset-l1">
 					<?php
-						load_view("Template/profile_about.php",array('aboutinfo'=>$aboutinfo,'firstName'=>$firstName,'lastName'=>$lastName,'jsonArray'=>$jsonArray,'subArray'=>$subArray,'gradeArray'=>$gradeArray,'langArray'=>$langArray));
+						load_view("Template/profile_about.php", $inp);
 					?>
 					</div>
 					<div id="tab_calendar" class="col s12">
@@ -139,7 +151,7 @@ if(true || $aboutinfo["isselected"] == "a" || User::isloginas("a") ) {
 
 <?php
 load_view("Template/footernew.php");
-load_view("popup.php",array("name"=>"timeslot"));
+load_view("popup.php",array("name"=>"timeslot", "title" => "Please select your free slots"));
 load_view("Template/bottom.php",array("needbody"=>false));
 ?>
 	<script>

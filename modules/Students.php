@@ -45,12 +45,17 @@ class Students{
 			} else {
 				$cstinfo["date"] = Fun::timetodate($data["datets"]);
 				Funs::addremmoney(-$cstinfo["priceused"], -1, null, $cstinfo);
-				Fun::mailfromfile($cstinfo["studentemail"], "php/mail/successbookclass.txt", $cstinfo);
+				Fun::mailfromfile($cstinfo["studentemail"], "php/mail/classbook_student.txt", $cstinfo);
 				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook.txt", $cstinfo);
+				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook_admin.txt", $cstinfo);
 				foreach($bookedslots as $i => $row) {
 					$starttime = $data["datets"]+($row[0]-1)*1800;
 					$duration = $row[1]*1800;
-					$wiziqo = null;//Funs::wiziq(array("action" => "tryaddclass", "s_time" => $starttime, "duration" => $duration ));
+					if( !gi("isrealwiziq") ) {
+						$wiziqo = null;
+					} else {
+						$wiziqo = Funs::wiziq(array("action" => "tryaddclass", "s_time" => $starttime, "duration" => $duration ));
+					}
 					$insrow = array($data["tid"], $starttime, User::loginId(), $duration, $c_id, $s_id, $t_id, getval("curl", $wiziqo), getval("surl", $wiziqo), getval("rurl", $wiziqo), getval("cid", $wiziqo), time() );
 					$dbpush[] = $insrow;
 				}

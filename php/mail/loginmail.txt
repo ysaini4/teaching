@@ -1,2 +1,3 @@
+Signup mail
 Dear {name},
 Thank you, for signing up with getIITians. Please login and book teachers slot as per your suitability. 

@@ -63,7 +63,7 @@ $_ginfo["action_constrain"]=array(
 	"addrembulkts"=>array("need"=>array("time","days","startdate","enddate")),
 	"addtopics"=>array("need"=>array("class","subject","topic","timer","price")),
 	"deltopics"=>array("need"=>array("deleteid")),
-	"signupotp"=>array("need"=>array("phone")),
+	"signupotp"=>array("need"=>array("phone", "type")),
 	"signup"=>array("need"=>array("email","password","name","phone","otp")),
 	"changepassaction"=>array("need"=>array("oldpass","newpass","newcpass")),
 	"saveuserdetails"=>array("users"=>"all"),
@@ -108,7 +108,7 @@ $_ginfo["error"]=array(
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 $_ginfo["needotp"] = true;
-$_ginfo["needsignupotp"] = true;
+$_ginfo["needsignupotp"] = false;
 $_ginfo['imgheight']=200;
 $_ginfo['imgwidth']=200;
 
@@ -117,6 +117,7 @@ $_ginfo["price"]=array(
 		array('1000-2000','1000<=price AND price<=2000'),
 		array('>2000','2000<=price'),
 	);
+
 $_ginfo["timer"]=array(
 		array('<1 hr','timer<1'),
 		array('1-5 hr','1<=timer AND timer<=5'),
@@ -137,10 +138,8 @@ $_ginfo["moneyaccount"] = array(
 
 $_ginfo["adminmailid"] = "mohitsaini1196@gmail.com";
 
-
 $_ginfo["isrealmail"] = false;
 $_ginfo["isrealmsg"] = false;
 $_ginfo["isrealwiziq"] = true;
-
 
 ?>

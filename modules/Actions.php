@@ -85,7 +85,7 @@ class Actions{
 
 	function signupotp($data){
 		$outp=array("ec"=>1,"data"=>0);
-		$outp["ec"]=Funs::otpstore($data["phone"]);
+		$outp["ec"]=Funs::otpstore($data["phone"], ($data["type"]=='s' ? "Student" : "Teacher") );
 		return $outp;
 	}
 
@@ -105,13 +105,14 @@ class Actions{
 		$outp=array("ec"=>1,"data"=>0);
 		if(gets("phone")!=$data["otp"] && $_ginfo["needsignupotp"] ){
 			$outp["ec"]=-17;
-		}
-		else{
+		} else{
 			$signup_data=Fun::getflds(array("phone","name","email","password"),$data);
 			$signup_data["type"]="s";
 			$temp=User::signUp($signup_data);
 			if(!($temp>0)){
 				$outp["ec"]=$temp;
+			} else {
+				Fun::mailfromfile( $signup_data["email"], "php/mail/signupmail.txt", $signup_data );
 			}
 		}
 		return $outp;

@@ -98,7 +98,6 @@ function submitForm(obj){
 
 function submitForm_t2(obj){
 	var list="";
-	
 	var listMatch = {fname:"First Name", lname: "Last Name", sub1:"Subject", sub2:"Subject", sub3:"Subject", sub4:"Subject", sub5:"Subject", sub6:"Subject", grade1:"Grade", grade2:"Grade", grade3:"Grade", grade4:"Grade", lang1:"Language", lang2:"Language", lang3:"Language", lang4:"Language", lang5:"Language", lang6:"Language", lang8:"Language", lang9:"Language", lang10:"Language", lang11:"Language", lang12:"Language", lang13:"Language", lang14:"Language", branch:"Branch", email:"Email", password:"Password", cpassword:"Confirm Password", phone:"Phone", dob:"Date Of Birth", city:"City", zipcode:"Zipcode", state:"State", knowaboutus1:"How Did You Came To Know About Us", knowaboutus2:"How Did You Came To Know About Us", knowaboutus3:"How Did You Came To Know About Us", knowaboutus4:"How Did You Came To Know About Us", college:"College", degree:"Degree", gender:"Gender", country:"Country",otpvarified:"Correct OTP"};
 
 	$(obj).find(".text-danger").html("");
@@ -107,7 +106,7 @@ function submitForm_t2(obj){
 	var problem=false;
 	for(i=0;i<inputs.length;i++){
 		var ilist=$(obj).find(inputs[i]);
-		for(j=0;j<ilist.length ;j++){
+		for(j=0;j<ilist.length && j<1 ;j++) {
 			if(checkValidInput.isChecked( ilist[j] )){
 				$(ilist[j]).parent().removeClass("has-error");
 			}
