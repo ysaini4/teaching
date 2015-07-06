@@ -52,11 +52,9 @@ if ( isset( $session ) ) {
 	print_r(array("type" => "fblogin", "id"=>$fbid, "name" => $fbfullname, "email" => $fbemail ));
 //  $temp = User::fglogin(array("type" => "fblogin", "id"=>$fbid, "name" => $fbfullname, "email" => $fbemail ));
 //  Fun::redirect(HOST."store.php");
-
-	 
 } else {
-	echo $helper->getLoginUrl();
-//		Fun::redirect($helper->getLoginUrl());
+	$loginurl = $helper->getLoginUrl(array('scope' => 'email'));
+	Fun::redirect($loginurl);
 }
 
 closedb();
