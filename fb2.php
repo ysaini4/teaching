@@ -29,6 +29,7 @@ FacebookSession::setDefaultApplication(gget("fbkeys", "appid") ,gget("fbkeys", "
  
 // login helper with redirect_uri
 $helper = new FacebookRedirectLoginHelper( HOST.'fb2.php' );
+echo HOST.'fb2.php';
  
 try {
 	$session = $helper->getSessionFromRedirect();
