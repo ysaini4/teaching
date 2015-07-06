@@ -8,10 +8,10 @@ include "includes/app.php";
 // Fill CLIENT ID, CLIENT SECRET ID, REDIRECT URI from Google Developer Console
 require_once 'Google/google-api-php-client/src/Google/autoload.php';
 
-	$client_id = gget("gpluskeys", "clientid");
-	$client_secret = gget("gpluskeys", "clientsec");
-	$redirect_uri = HOST.'gplus.php';
-	$simple_api_key = gget("gpluskeys", "apikey");
+$client_id = gget("gpluskeys", "clientid");
+$client_secret = gget("gpluskeys", "clientsec");
+$redirect_uri = HOST.'gplus.php';
+$simple_api_key = gget("gpluskeys", "apikey");
  
 //Create Client Request to access Google API
 $client = new Google_Client();

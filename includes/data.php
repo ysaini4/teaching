@@ -108,7 +108,7 @@ $_ginfo["error"]=array(
 $_ginfo["calrepeatlimit"]=365;
 $_ginfo["wiziqlimit"]=3;
 $_ginfo["needotp"] = true;
-$_ginfo["needsignupotp"] = false;
+$_ginfo["needsignupotp"] = true;
 $_ginfo['imgheight']=200;
 $_ginfo['imgwidth']=200;
 
@@ -138,8 +138,8 @@ $_ginfo["moneyaccount"] = array(
 
 $_ginfo["adminmailid"] = "mohitsaini1196@gmail.com";
 
-$_ginfo["isrealmail"] = false;
-$_ginfo["isrealmsg"] = false;
+$_ginfo["isrealmail"] = true;
+$_ginfo["isrealmsg"] = true;
 $_ginfo["isrealwiziq"] = true;
 
 ?>
