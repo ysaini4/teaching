@@ -50,7 +50,7 @@ if ( isset( $session ) ) {
 	$fbemail = $graphObject->getProperty('email');
 
 	User::fglogin(array("type" => "fblogin", "fblogin" => $fbid, "name" => $fbfullname, "email" => $fbemail));
-	Fun::redirect(HOST."profile.php");
+	Fun::redirect(BASE."profile");
 } else {
 	$loginurl = $helper->getLoginUrl(array('scope' => 'email'));
 	Fun::redirect($loginurl);
