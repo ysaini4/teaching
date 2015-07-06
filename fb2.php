@@ -55,7 +55,8 @@ if ( isset( $session ) ) {
 
 	 
 } else {
-		Fun::redirect($helper->getLoginUrl());
+	echo $helper->getLoginUrl();
+//		Fun::redirect($helper->getLoginUrl());
 }
 
 closedb();
