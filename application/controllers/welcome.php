@@ -590,10 +590,18 @@ class Welcome extends CI_Controller {
     load_view("hiring.php",array());
   }
   
+  public function privacypolicy() {
+    load_view("privacypolicy.php",array());
+  }
+  
+  public function termsofuse() {
+    load_view("terms.php",array());
+  }
+  
   public function reviews() {
     load_view("review.php",array());
   }
-   
+     
 }
 
 ?>

@@ -24,6 +24,9 @@ main {
 .footer-link {
   color: #eeeeee;
 }
+.footer-link:hover {
+  color: #ffffff;
+}
 
 @font-face {
   font-family: 'Kurale';
@@ -43,6 +46,10 @@ a.brand-logo {
 .parallax-container {
   height: 350px;
   min-height: 350px;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0px;
 }
 
 /* about us page style start satish --- */
