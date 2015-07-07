@@ -26,6 +26,9 @@ foreach($qresult as $row) {
       </div>
     </div>
     <div class="col s12 l4">
+      <div>
+        <a href="#">Reviews</a>
+      </div>
       <div class="grey-text text-darken-3"><?php echo $row["subjectname"]; ?></div>
       <div class="grey-text text-darken-3">
         Min Fees :
@@ -33,9 +36,11 @@ foreach($qresult as $row) {
           <?php echo $row["minprice"].rit(" - ".$row["maxprice"], $row["maxprice"]!=$row["minprice"] ); ?>/hr
         </span>
       </div>
-      <a style="cursor:pointer;display:none;">
-        Book Slots
-      </a>
+      <div>
+        <a style="cursor:pointer;display:none;">
+          <i class="material-icons tiny">bookmark</i>Book Slots
+        </a>
+      </div>
     </div>
   </div>
 </div>
