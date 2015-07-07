@@ -32,7 +32,7 @@ load_view("Template/navbarnew.php");
               </div><br>
               <h6 class="teal-text text-darken-1">Call <i class="material-icons tiny">call</i></h6>
               <div class="grey-text">
-                +91 987 654 3210
+                +91 931 339 4403
               </div>
             </div>
           </div>

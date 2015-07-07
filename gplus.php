@@ -55,6 +55,8 @@ if ($client->getAccessToken()) {
 	echo $gname;
 	//echo $gname;
 	$_SESSION['access_token'] = $client->getAccessToken();
+	User::fglogin(array("type" => "gpluslogin", "gpluslogin" => $gemail, "email" => $gemail, "name" => $gname));
+	Fun::redirect(BASE."profile");
 } else {
 		Fun::redirect($client->createAuthUrl());
 }

@@ -1,5 +1,4 @@
 <?php
-
 	include_once( 'includes/setting.php' ) ;
 	include_once( 'includes/data.php' ) ;
 	include_once( 'includes/password.php' ) ;

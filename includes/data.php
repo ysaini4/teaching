@@ -1,4 +1,5 @@
 <?php
+
 $view_default=array(
 	"Template/top.php"=>array(
 		"css"=>array("css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css","https://fonts.googleapis.com/icon?family=Material+Icons"),
