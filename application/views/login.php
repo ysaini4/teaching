@@ -91,7 +91,7 @@ load_view("Template/navbarnew.php",$inp);
           </div>
         </div>
 
-        <div class="col s12 l6" style='visibility:hidden;' >
+        <div class="col s12 l6" style='' >
           <div class="card-panel">
           <br>
             <div class="row">
@@ -106,12 +106,12 @@ load_view("Template/navbarnew.php",$inp);
             </div>
             <div class="row">
               <div class="col s12 l10 offset-l1">
-                <a class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">Sign Up with facebook</a>
+                <a href="<?php echo HOST."fb2.php"; ?>" class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">Sign Up with facebook</a>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style='' >
               <div class="col s12 l10 offset-l1">
-                <a class="btn-large waves-effect waves-light red darken-1" style="width:100%;">Sign Up with google+</a>
+                <a href="<?php echo HOST."gplus.php"; ?>" class="btn-large waves-effect waves-light red darken-1" style="width:100%;">Sign Up with google+</a>
               </div>
             </div>
           </div>

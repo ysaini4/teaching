@@ -589,7 +589,23 @@
 		return getval($inp, g("_ginfo"));
 	}
 
+	function listget() {
+		$args = func_get_args();
+		$inplist = array_slice($args, 1);
+		$outp = getval(0,$args);
+		foreach($inplist as $i => $val) {
+			$outp = getval( $val, $outp );
+		}
+		return $outp;
+	}
 
+	function gget() {
+		$args = func_get_args();
+		$args[0] = g(getval(0, $args));
+
+		return call_user_func_array("listget", $args);
+	}
+	
 	function filter($list, $boolfunc) {
 		$outp = array();
 		foreach($list as $i => $val) {

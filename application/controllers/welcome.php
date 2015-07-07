@@ -45,8 +45,9 @@ class Welcome extends CI_Controller {
 				$adddata["home"]=Fun::getmulchecked($_POST,"home",2);
 				$datatoinsert["jsoninfo"]=json_encode($adddata);
 				$odata=Sqle::insertVal("teachers",$datatoinsert);
+				$post_data = $_POST;
 
-				Fun::mailfromfile( gi("adminmailid"), "php/mail/joinus_admin.txt" );
+				Fun::mailfromfile( gi("adminmailid"), "php/mail/joinus_admin.txt", $post_data["name"] );
 //        Fun::redirect(BASE."account");
 				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
 				Fun::redirect(BASE."profile");
@@ -141,7 +142,7 @@ class Welcome extends CI_Controller {
 
 	public function signup(){
 		$handle_signup=handle_request(Fun::mergeifunset($_POST, array("action"=>"signup")));
-		if($handle_signup["ec"]>0){
+		if($handle_signup["ec"]>0) {
 			Fun::redirect(BASE."profile");
 		}
 		$pageinfo=array();
@@ -254,7 +255,7 @@ class Welcome extends CI_Controller {
 					$jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']);
 					$pageinfo['city']=$jsonArray['city'];
 					$pageinfo['jsonArray']=$jsonArray;
-							$tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
+					$tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
 					$pageinfo['subArray']=explode(' , ', $tempSubjects);
 					$tempGrades=explode('-',$jsonArray['grade']);
 					// foreach ($tempGrades as $value) {
@@ -265,10 +266,13 @@ class Welcome extends CI_Controller {
 					// foreach ($tempLang as $value) {
 					// 		$langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
 					// }
+					$pageinfo["ejsoninfo"] = str2json($pageinfo["aboutinfo"]["jsoninfo"]);
 					$pageinfo['langArray'] = array();// $langArray;
 					$pageinfo["isme"] = (User::loginId() == $tid);
 					mergeifunset($pageinfo, Funs::moneyaccount($tid));
 					$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where tid={tid} ", array("tid" => $tid));
+					$pageinfo["cansee"] = (User::loginId() == $tid || User::isloginas("a"));
+					$pageinfo["canedit"] = (User::loginId() == $tid);
 					load_view("profile.php",$pageinfo);            
 				}
 				else if($uprofile['type']=='s') {

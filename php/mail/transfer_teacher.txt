@@ -1,2 +1,0 @@
-Dear {teachername},
-Rupees {amount} has been credited in your getIITians account.

@@ -1,17 +1,19 @@
 <br><br>
-<div class="row">
-  <div class="col s12">
-    <h5 class="teal-text text-darken-1">Calendar</h5>
-  </div>
-</div>
 
 <?php
 if ($tid == User::loginId()) {
 ?>
 <div class="row">
   <div class="col s12">
-    <a class="modal-trigger" href="#fillalltsform">Click to Add/Remove your free time Slot</a>
-    <! fillalltsform -->
+
+    <a class="modal-trigger" href="#fillalltsform">Click here for slots</a>
+
+
+<!--     <a onclick="mohit.popup('addslots');" >Click here for slots</a>
+ -->
+    <?php
+//      load_view("popup.php", array("name"=>"addslots", "body" => "Template/uploadslotform.php", "bodyinfo" => $inp, "title" => "Add your slots"));
+    ?>
     <div id="fillalltsform" class="modal" class="width:1000px;">
       <div class="modal-content">
         <p>

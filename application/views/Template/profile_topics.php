@@ -23,12 +23,12 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 						</div>
 						<div class="input-field col s12">
 							<select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic(this);' data-condition='simple' >
-								<option value="" >Select Subject</option>
+								<option value="" >Please select class first</option>
 							</select>
 						</div>
 						<div class="input-field col s12">
 							<select name='topic' class="browser-default" id='selecttopic' data-condition='simple' >
-								<option value="" >Select Topic</option>
+								<option value="" >Please select subject first</option>
 							</select>
 						</div>
 						<div class="input-field col s12">

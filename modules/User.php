@@ -26,9 +26,17 @@ class User extends Sql{
 		$temp=self::islogin() ;
 		return ($temp ? $temp['id']:$temp);
 	}
+
 	public static function logout(){
 		$_SESSION['login']=null;
 	}
+
+	public static function login($id, $type){
+		$temp = array("id" => $id, "type" => $type);
+		sets("login", $temp);
+		return $temp;
+	}
+
 	public static function isloginas($t){
 		return (self::islogin() && self::loginType()==$t);
 	}
@@ -130,5 +138,22 @@ class User extends Sql{
 		}
 		return null;
 	}
+
+	public static function fglogin($data){//must have key, { type, data[type], email} Additional : { name, phone, email}
+		if( in_array($data["type"], array("fblogin", "gpluslogin")) ){
+			$ins_data=Fun::getflds(array("name", "phone", "email"), $data);
+			$trylogin = Sqle::selectVal("users", "*", array( $data["type"] => $data[$data["type"]] ),1);
+			if(!$trylogin) {
+				$ins_data["password"] = rand(100000, 999999);
+				$ins_data["type"] = "s";
+				$ins_data[$data["type"]] = $data[$data["type"]];
+				return User::signUp($ins_data);
+			} else {
+				return User::login($trylogin["id"], $trylogin["type"]);
+			}
+		}
+	}
+
+
 }
 ?>

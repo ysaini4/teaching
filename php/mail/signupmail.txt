@@ -1,6 +1,6 @@
 #This mail is to be send when someone signup ( To confirm mail id).
 #Every line starting with # is comment line. first uncomment line is subject of mail and rest part is body.
-Signup confirmation is your subject
+Signup confirmation
 Dear {name},
 Thank you for signing up with getIITians. Please login and book teachers slot as per your suitability. 
 Thank you.

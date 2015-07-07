@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" style='display:none;' >
   <div class="col s12">
     <h6>
       <a onclick="editProfile();" style="cursor:pointer;">

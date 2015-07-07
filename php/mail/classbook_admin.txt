@@ -1,3 +1,4 @@
+Class book
 Dear Admin ,
 {studentname} just booked a class with {teachername} on {date} for {classname}, Subject {subjectname} and Topic {topicname}.
 Please login and verify the transaction.
