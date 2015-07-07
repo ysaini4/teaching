@@ -6,7 +6,7 @@ if ($tid == User::loginId()) {
 <div class="row">
   <div class="col s12">
 
-    <a class="modal-trigger" href="#fillalltsform">Click here for slots</a>
+    <a class="modal-trigger" href="#fillalltsform">Click here</a> to book slots for multiple days.
 
 
 <!--     <a onclick="mohit.popup('addslots');" >Click here for slots</a>
