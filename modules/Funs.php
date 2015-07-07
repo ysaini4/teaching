@@ -340,7 +340,7 @@ abstract class Funs{
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
 		$hisoutput = Funs::mssearch($data);
-		$hisoutput[0]="select dispteachers.tid, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
+		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
 	}
 	public static function get_teacher_classes($tid) {
@@ -430,9 +430,29 @@ abstract class Funs{
 		foreach($keys as $i => $val) {
 			$params["key".($i+1)] = $val;
 		}
+		$pt_constrain = map(array("price", "timer"), function($ctype) use($data){
+			return Fun::get_constrain($data[$ctype], map(gi($ctype), function($inp){
+				return $inp[1];
+				}));
+		}, true);
+		$timeslot_constrain = Fun::get_constrain($data["timeslot"], map(range(0,47), function($inp){
+			return "(starttime%(3600*24)) div 1800 = $inp";
+		}));
+		$lang_constrain = Fun::get_constrain($data["lang"], map(range(0, count(giget("encodeddataofteacherstable", "lang"))-1), function($inp){
+			return "concat('-', lang, '-') like concat('%-', ".(1+$inp).", '-%')";
+		}));
+
 		mergeifunset($params, Fun::getflds(array("class", "subject", "topic"), $data));
-		$query1 = "select distinct tid from ".qtable("subjectlist")." left join users on users.id = subjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) ";
-		$finalquery = $query1;
+		$query1 = "select distinct tid from ".qtable("subjectlist")." left join users on users.id = subjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) AND (".$pt_constrain["price"].") AND (".$pt_constrain["timer"].")";
+
+		$query2 = "select distinct tid from timeslot where starttime>".time()." AND (".$timeslot_constrain.")";
+		$query3 = "select tid from teachers where (".$lang_constrain.")";
+//		echo $query3;
+//		echo $query2;
+
+//		$finalquery = $query1;
+		$finalquery = Fun::intersectionquery(array($query1, $query2, $query3), "tid");
+//		echo $finalquery;
 //		$finalquery = "(".$query1.") union (".$query2.") ";
 //		$finalquery = Fun::intersectionquery(array($query1, $query2), "tid");
 //		echo $finalquery;
@@ -485,5 +505,6 @@ abstract class Funs{
 
 		return $mail->Send();
 	}
+
 }
 ?>

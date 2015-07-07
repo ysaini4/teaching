@@ -10,11 +10,13 @@ foreach($qresult as $row) {
       <div>
         <h6><?php echo convchars($row["name"]); ?></h6>
         <div class="orange-text">
+          <?php
+          for($i=0; $i<$row["avgrating"]; $i++){
+          ?>
           <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-          <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-          <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-          <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-          <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+          <?php
+          }
+          ?>
         </div>
         <div class="grey-text text-darken-2">
           This will be the short description of the tutor that he has provided
