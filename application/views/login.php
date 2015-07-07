@@ -109,9 +109,9 @@ load_view("Template/navbarnew.php",$inp);
                 <a href="<?php echo HOST."fb2.php"; ?>" class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">Sign Up with facebook</a>
               </div>
             </div>
-            <div class="row" style='display:none;' >
+            <div class="row" style='' >
               <div class="col s12 l10 offset-l1">
-                <a class="btn-large waves-effect waves-light red darken-1" style="width:100%;">Sign Up with google+</a>
+                <a href="<?php echo HOST."gplus.php"; ?>" class="btn-large waves-effect waves-light red darken-1" style="width:100%;">Sign Up with google+</a>
               </div>
             </div>
           </div>

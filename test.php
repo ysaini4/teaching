@@ -2,10 +2,14 @@
 include "includes/app.php";
 
 
-$a = User::fglogin(array("type" => "gpluslogin", "fblogin" => 11011, "email" => "mohit17@mail.com"));
+
+
+
+
+$a = User::fglogin(array("type" => "gpluslogin", "gpluslogin" => 11011, "email" => "mohit19@mail.com"));
 //$a = User::fglogin(array("type" => "fblogin", "fblogin" => 11011, "email" => "mohit17@mail.com"));
 
-//print_r($a);
+print_r($a);
 
 
 //print_r(gets("login"));
