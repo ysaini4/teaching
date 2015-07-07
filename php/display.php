@@ -380,5 +380,7 @@
 		echo rit($toprint, $cond, $toprint_false);
 	}
 
-
+	function msprint($inp) {
+		echo msvalprint($inp);
+	}
 ?>

@@ -79,7 +79,7 @@ load_view("Template/navbarnew.php");
                       </div>
                     </li>
                     <?php
-                      if(false) {
+                      if(true) {
                     ?>
                     <li>
                       <div class="collapsible-header">Time</div>

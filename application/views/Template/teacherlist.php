@@ -26,11 +26,13 @@ foreach($qresult as $row) {
         </div>
         <div class="col s12 l6">
           <h6>
+            <?php
+            for($i=0; $i<$row["avgrating"]; $i++){
+            ?>
             <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
-            <i class="material-icons tiny" style="width:1rem;">star_rate</i>
+            <?php
+            }
+            ?>
           </h6>
 <!--           <h6>
             3 Reviews

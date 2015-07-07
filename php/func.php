@@ -318,7 +318,7 @@
 		}
 		return $temp;
 	}
-	function intexplode_t2($ex,$inp,$limit=-1){
+	function intexplode_t2($inp, $limit=-1, $ex='-'){
 		$temp=myexplode($ex,$inp);
 		$outp=array();
 		foreach($temp as $i=>$val){
@@ -602,7 +602,12 @@
 	function gget() {
 		$args = func_get_args();
 		$args[0] = g(getval(0, $args));
+		return call_user_func_array("listget", $args);
+	}
 
+	function giget() {
+		$args = func_get_args();
+		$args[0] = gi(getval(0, $args));
 		return call_user_func_array("listget", $args);
 	}
 	
@@ -616,10 +621,10 @@
 		return $outp;
 	}
 
-	function map($list ,$func) {
+	function map($list ,$func, $isindexed=false) {
 		$outp = array();
 		foreach($list as $i => $val) {
-			$outp[$i] = $func($val);
+			$outp[($isindexed?$val:$i)] = $func($val);
 		}
 		return $outp;
 	}
@@ -628,9 +633,28 @@
 	function add($a, $b) {
 		if(gettype($a) == "array" && gettype($b) == "array" ) {
 			return Fun::array_append($a, $b);
+		} else if (gettype($a) == "array" && gettype($b) == "integer") {
+			return Fun::array_addinall($a, $b);
 		}
 	}
 
-	
+	function msvalprint($inp) {//recursive function.
+		if(gettype($inp) == "array") {
+			$isnindex = (array_keys($inp) == Fun::oneToN(count($inp)-1, 0));//is natural indexed
+			$otext = map(array_keys($inp), function($ind) use($isnindex, $inp) {
+				return ($isnindex?"":"'".$ind."'=>").msvalprint($inp[$ind]);
+			});
+			return "array(".implode(", ", $otext).")";
+		} else if(gettype($inp) == 'integer') {
+			return $inp;
+		} else {
+			$inp = str_replace("'", "\\'", "".$inp);
+			return "'".$inp."'";
+		}
+	}
+
+	function msimplode($glue, $inp, $defval=null) {
+		 return (count($inp) == 0 && $defval != null ) ? $defval : implode($glue, $inp);
+	}
 
 ?>
