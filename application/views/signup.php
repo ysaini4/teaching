@@ -66,6 +66,11 @@ $defopen="signupwindow";
                     </div>
                   </div>
                   <div class="row">
+                    <div class="col s12 grey-text">
+                      By clicking on Submit, you agree to our <a href="<?php echo BASE.'termsofuse'; ?>">Terms of use</a>.
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="input-field col s12">
                       <button class="btn waves-effect waves-light" name="signup" type="submit" id="submit_button">
                         Submit<i class="material-icons right">send</i>

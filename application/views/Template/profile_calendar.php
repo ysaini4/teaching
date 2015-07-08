@@ -6,7 +6,7 @@ if ($tid == User::loginId()) {
 <div class="row">
   <div class="col s12">
 
-    <a class="modal-trigger" href="#fillalltsform">Click here</a> to book slots for multiple days.
+    <a onclick="$('#fillalltsform').slideToggle(500);">Click here</a> to book slots for multiple days.
 
 
 <!--     <a onclick="mohit.popup('addslots');" >Click here for slots</a>
@@ -14,17 +14,10 @@ if ($tid == User::loginId()) {
     <?php
 //      load_view("popup.php", array("name"=>"addslots", "body" => "Template/uploadslotform.php", "bodyinfo" => $inp, "title" => "Add your slots"));
     ?>
-    <div id="fillalltsform" class="modal" class="width:1000px;">
-      <div class="modal-content">
-        <p>
-          <?php
-            load_view("Template/uploadslotform.php",$inp);
-          ?>
-        </p>
-      </div>
-      <div class="modal-footer" style="display:none;">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"></a>
-      </div>
+    <div id="fillalltsform" style="display:none;padding:30px;">
+      <?php
+        load_view("Template/uploadslotform.php",$inp);
+      ?>
     </div>
   </div>
 </div>

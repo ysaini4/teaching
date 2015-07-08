@@ -1,7 +1,7 @@
 <br><br>
 <div class="row">
   <div class="col s12 l10 offset-l1">
-    <h5 class="teal-text text-darken-1">Student reviews about you</h5>
+    <h5 class="teal-text text-darken-1">Student reviews</h5>
   </div>
 </div>
 

@@ -14,10 +14,10 @@ load_view("Template/navbarnew.php",$inp);
             ?>
 
             <div class="row no-margin-bottom">
-              <div class="col s12 l4">
+              <div class="col s12 l4 offset-l1">
                 <h3 class="teal-text text-darken-1">Login</h3>
               </div>
-              <div class="col s12 l8">
+              <div class="col s12 l7">
                 <div class="row grey-text">
                   <div class="col s12">
                     <ul>
@@ -72,6 +72,7 @@ load_view("Template/navbarnew.php",$inp);
               <form class="col s12 l10 offset-l1" id="forgot_pass_section" onsubmit='form.req(this);return false;' data-action="forgotpass" data-res='success.push("Password reseting link is sent. check your mail.");' >
                 <div class="row">
                   <div class="col s12">
+                    <h6 class="grey-text text-darken-1">Reset password for getIITians</h6>
                     <p class="grey-text">Enter your email to send verification link.</p>
                   </div>
                 </div>
