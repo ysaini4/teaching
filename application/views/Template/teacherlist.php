@@ -1,9 +1,9 @@
 <?php
 foreach($qresult as $row) {
 ?>
-<div class="card teacherlistelm" style="padding:15px;box-shadow:none;border:1px solid #b0bec5;">
+<div class="card teacherlistelm" style="padding:10px;box-shadow:none;border:1px solid #b0bec5;">
   <div class="row" style="margin-bottom:0px;">
-    <div class="col s12 l8">
+    <div class="col s8">
       <a href="<?php echo BASE."profile/".$row["tid"]; ?>" style="width:160px;" class="left">
         <img src="<?php echo $row["profilepic"]; ?>" height="150" width="150" style="border:1px solid #b0bec5;padding:4px;"/>
       </a>
@@ -19,7 +19,7 @@ foreach($qresult as $row) {
           ?>
         </div>
         <div class="grey-text text-darken-2">
-          This will be the short description of the tutor that he has provided
+          This will be the short description of the tutor that he/she has provided
           in his/her profile.
         </div>
         <!--
@@ -27,13 +27,11 @@ foreach($qresult as $row) {
         -->
       </div>
     </div>
-    <div class="col s12 l4">
-      <div>
-        <a href="#">Reviews</a>
-      </div>
-      <div class="grey-text text-darken-3"><?php echo $row["subjectname"]; ?></div>
-      <div class="grey-text text-darken-3">
-        Min Fees :
+    <div class="col s4">
+      <!--<a href="#">Reviews</a>-->
+      <div class="grey-text text-darken-3"><?php echo implode(", ",myexplode(",", $row["subjectname"])); ?></div>
+      <div class="grey-text text-darken-1">
+        Min Fees :<br>
         <span>
           <?php echo $row["minprice"].rit(" - ".$row["maxprice"], $row["maxprice"]!=$row["minprice"] ); ?>/hr
         </span>
