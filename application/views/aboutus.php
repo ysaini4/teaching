@@ -61,7 +61,7 @@ load_view("Template/navbarnew.php");
       </div>
     </div>
     <div class="col s6 m4 l2">
-      <img src="images/mohit.jpg" class="responsive-img circle" style="border:1px solid #dcdcdc;padding:5px;">
+      <img src="images/shivam.jpg" class="responsive-img circle" style="border:1px solid #dcdcdc;padding:5px;">
       <div class="center raleway-font" style="text-shadow:none;">
         <div>Mohit Saini</div>
         <div style="font-size:13px;">Back End Developer</div>
