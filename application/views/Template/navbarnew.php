@@ -1,16 +1,16 @@
 <body>
   <!-- Dropdown for Create Account -->
   <ul id="dropdownaccount" class="dropdown-content">
-    <li class="<?php pit('active', $page==='signup');?>"><a href="<?php echo BASE."signup" ;?>">Signup&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;" class="grey-text">for Students</span></a></li>
-    <li class="<?php pit('active', $page==='joinus');?>"><a href="<?php echo BASE."joinus" ;?>">Joinus&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;" class="grey-text">for Tutors</span></a></li>
+    <li class="<?php pit('active', $page==='signup');?>"><a href="<?php echo BASE."signup" ;?>">Signup<span style="font-size:13px;" class="grey-text right">STUDENT</span></a></li>
+    <li class="<?php pit('active', $page==='joinus');?>"><a href="<?php echo BASE."joinus" ;?>">Joinus<span style="font-size:13px;" class="grey-text right">TUTOR</span></a></li>
   </ul>
 
   <!-- NavBar -->
   <div class="navbar-fixed">
     <nav class="teal darken-3" role="navigation">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">getIITians</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="<?php echo BASE.'index'; ?>" class="brand-logo">getIITians</a>
+        <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li class="<?php pit('active', $page==='aboutus');?>"><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
           <li class="<?php pit('active', $page==='contactus');?>"><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>

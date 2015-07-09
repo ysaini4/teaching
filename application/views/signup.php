@@ -110,11 +110,6 @@ $defopen="signupwindow";
               </div>
             </div>
             <div class="row">
-              <div class="col s12 l12">
-                <h6 class="grey-text"><i class="material-icons tiny left">chevron_right</i>Only Students can sign up from this section.</h6>
-              </div>
-            </div>
-            <div class="row">
               <div class="col s12">
                 <a href="<?php echo HOST.'fb2.php'; ?>" class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">
                   <img src="images/facebook-login-icon.png" width="30" height="35" class="left" style="margin-top:9px;">&nbsp;&nbsp;&nbsp;Sign Up with facebook

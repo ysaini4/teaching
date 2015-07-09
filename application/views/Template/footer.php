@@ -4,16 +4,16 @@
     <div class="row">
       <div class="col l4 s12">
         <h5 class="white-text">getIITians</h5>
-        <p class="white-text"><em>Get an IITian Tutor. Any Topic! Any Time!</em></p>
+        <p class="white-text"><em>Get an IITian Tutor.<br>Any Topic! Any Time!</em></p>
         <ul>
-          <li><a class="footer-link" href="<?php echo BASE.'aboutus'; ?>">About Us</a></li>
-          <li><a class="footer-link" href="<?php echo BASE.'hiring'; ?>">Work with Us</a></li>
+          <li><a class="footer-link" href="<?php echo BASE.'hiring'; ?>">Work with us</a></li>
         </ul>
       </div>
       <div class="col l2 s12">
         <h5 class="white-text">Help</h5>
         <ul>
           <li><a class="footer-link" href="#!" style="display:none;">Refund and Returns</a></li>
+          <li><a class="footer-link" href="<?php echo BASE.'aboutus'; ?>">About us</a></li>
           <li><a class="footer-link" href="<?php echo BASE.'contactus'; ?>">Contact us</a></li>
           <li><a class="footer-link" href="#!" style="display:none;">FAQ</a></li>
         </ul>
@@ -27,7 +27,7 @@
       </div>
       <div class="col l3 s12">
         <div style="margin-top:-26px;">
-          <a class="footer-link" href="#!">
+          <a class="footer-link" href="https://www.facebook.com/getiitians">
             <img src="images/facebook-ribbon.png" alt="Facebook" width="30" height="60" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Facebook">
           </a>
           <a class="footer-link" href="#!">
