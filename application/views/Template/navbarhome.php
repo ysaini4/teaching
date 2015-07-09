@@ -1,23 +1,22 @@
   <!-- Dropdown for Create Account -->
-  <ul id="dropdownaccount" class="dropdown-content">
-    <li><a href="<?php echo BASE."signup" ;?>">Signup&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;" class="grey-text">for Students</span></a></li>
-    <li><a href="<?php echo BASE."joinus" ;?>">Joinus&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:13px;" class="grey-text">for Tutors</span></a></li>
+  <ul id="dropdownaccount" class="dropdown-content transparent">
+    <li class="<?php pit('active', $page==='signup');?>"><a href="<?php echo BASE."signup" ;?>">Signup<span style="font-size:13px;" class="grey-text right">STUDENT</span></a></li>
+    <li class="<?php pit('active', $page==='joinus');?>"><a href="<?php echo BASE."joinus" ;?>">Joinus<span style="font-size:13px;" class="grey-text right">TUTOR</span></a></li>
   </ul>
 
   <!-- NavBar -->
   <div class="navbar">
     <nav class="transparent" role="navigation" id="navbar">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo"><img src="images/logo.png" width="190" height="81" style="padding-top:10px;"/></a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        <a href="<?php echo BASE.'index'; ?>" class="brand-logo">getIITians</a>
+        <a data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
           <li><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>
-
           <?php
           if (User::islogin()) {
           ?>
-          <li><a href="<?php echo BASE."profile" ;?>">Profile</a></li>
+          <li><a href="<?php echo BASE."profile"; ?>">Profile</a></li>
           <li><a href="<?php echo BASE."?logout"; ?>">Logout</a></li>
           <?php
           }
@@ -25,17 +24,16 @@
           ?>
           <li><a href="<?php echo BASE."login"; ?>">Login</a></li>
           <li>
-            <a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdownaccount">
-              Create Account <i class="mdi-navigation-arrow-drop-down right"></i>
+            <a class="dropdown-button" data-beloworigin="true" data-activates="dropdownaccount">
+              Create Account <i class="material-icons right">arrow_drop_down</i>
             </a>
           </li>
           <?php
           }
           ?>
-
           <form class="right" action="<?php echo BASE."search"; ?>" >
             <div class="input-field">
-              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q" >
+              <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q">
               <label for="search"><i class="mdi-action-search"></i></label>
             </div>
           </form>
