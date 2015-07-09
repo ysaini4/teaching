@@ -1310,10 +1310,6 @@ class Disp extends Sql{
 		</form>
 <?php
 	}
+
 }
 ?>
-
-
-
-
-

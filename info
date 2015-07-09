@@ -1,6 +1,5 @@
 mahfil dhaba
 
 Inconsistance system : 
-	js/lib.js => submitForm_t2
 	$_ginfo["needsignupotp"] = true;
 	$_ginfo["isreal*"] = true;

@@ -1,15 +1,15 @@
 <?php
 include "includes/app.php";
 
+msprint( giget("encodeddataofteacherstable", "lang"));
+//msprint(gi("encodeddataofteacherstable"));
 
 
 
-
-
-$a = User::fglogin(array("type" => "gpluslogin", "gpluslogin" => 11011, "email" => "mohit19@mail.com"));
+//$a = User::fglogin(array("type" => "gpluslogin", "gpluslogin" => 11011, "email" => "mohit19@mail.com"));
 //$a = User::fglogin(array("type" => "fblogin", "fblogin" => 11011, "email" => "mohit17@mail.com"));
 
-print_r($a);
+//print_r($a);
 
 
 //print_r(gets("login"));

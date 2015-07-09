@@ -1,3 +1,10 @@
+$('#dob_datepicker').pickadate({
+  selectMonths: true,
+  selectYears: 65,
+  min: [1950,01,01],
+  max: true
+});
+
 $("#specify_sub_other").hide();
 $("#specify_deg_other").hide();
 $("#specify_survey_other").hide();

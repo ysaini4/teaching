@@ -20,10 +20,10 @@
      </span>
     </div>
     <div class="col s12 l4">
-     <input placeholder="First Name" type="text" class="validate" name="fname" data-condition="simple" />
+     <input placeholder="First Name" type="text" class="validate" name="fname" data-condition="simple" length="30"/>
     </div>
     <div class="col s12 l4">
-     <input placeholder="Last Name" type="text" class="validate" name="lname" data-condition="simple" />
+     <input placeholder="Last Name" type="text" class="validate" name="lname" data-condition="simple" length="30"/>
     </div>
    </div>
    <div class="row">
@@ -157,10 +157,10 @@
       Minimun tution fees per hour
      </span>
     </div>
-    <div class="col s12 l4">
+    <div class="col s12 l3">
      <select data-condition="simple" class="browser-default" name="minfees" id="minfees">
       <option value="" disabled="disabled" selected="selected">
-       Select Minimum Fees
+       Select
       </option>
       <option value="200">
        &#8377; 200
@@ -219,10 +219,10 @@
       Both offline and online
      </span>
     </div>
-    <div class="col s12 l4">
+    <div class="col s12 l3">
      <select data-condition="simple" class="browser-default" name="teachingexp" id="experience">
       <option value="" disabled="disabled" selected="selected">
-       Select Teaching Experience
+       Select
       </option>
       <option value="0">
        None
@@ -502,22 +502,22 @@
        Select Degree
       </option>
       <option value="btech">
-       BTech
+       B.Tech.
       </option>
       <option value="mtech">
-       MTech
+       M.Tech.
       </option>
       <option value="phd">
-       PhD
+       Ph.D.
       </option>
       <option value="msc">
-       MSc
+       M.Sc.
       </option>
       <option value="mba">
-       MBA
+       M.B.A.
       </option>
       <option value="dual">
-       Dual Degree
+       Dual (B.Tech. + M.Tech.)
       </option>
       <option value="other">
        Other
@@ -542,7 +542,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="e.g. Electrical Engineering" type="text" class="validate" name="branch" data-condition="simple" />
+     <input placeholder="e.g. Electrical Engineering" type="text" class="validate" name="branch" data-condition="simple" length="30"/>
     </div>
    </div>
    <div class="row">
@@ -555,7 +555,7 @@
      </span>
      <br />
      <span class="grey-text text-lighten-1" style="font-size: 13px;">
-      Upload a snapshot of your College Degree or Student ID
+      Upload a snapshot of your College Degree or Student ID<br>Max. file size: 2MB
      </span>
     </div>
     <div class="col s12 l8">
@@ -586,11 +586,14 @@
       Password
       <span class="red-text">
        *
-      </span>
+      </span><br>
+      <span class="grey-text text-lighten-1" style="font-size: 13px;">
+        Must contain 6 or more characters, at least one special character, an uppercase letter and a digit
+       </span>
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="Password" type="password" class="validate" id="password" name="password" data-condition="simple" />
+     <input placeholder="Password" type="password" class="validate" id="password" name="password" data-condition="simple" pattern="(?=.*\d)(?=.*[A-Z])(?!.*[!#\$%&\?])^\D.{6,}" title="Must contain 6 or more characters, at least one special character, an uppercase letter and a digit"/>
     </div>
    </div>
    <div class="row">
@@ -603,7 +606,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="Re-enter Password" type="password" class="validate" name="cpassword" data-condition="password" />
+     <input placeholder="Re-enter Password" type="password" class="validate" name="cpassword" data-condition="password" pattern="(?=.*\d)(?=.*[A-Z])(?!.*[!#\$%&\?])^\D.{6,}" title="Must contain 6 or more characters, at least one special character, an uppercase letter and a digit"/>
     </div>
    </div>
    <div class="row">
@@ -620,7 +623,7 @@
      </span>
     </div>
     <div class="col s6 l4">
-     <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone" data-condition="phone" />
+     <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone" data-condition="phone" pattern="[0-9]*.{10,}" title="Must contain numbers only">
     </div>
    </div>
    <div class="row">
@@ -659,7 +662,7 @@
      </span>
     </div>
     <div class="col s12 l4">
-     <input type="date" class="datepicker" name="dob" data-condition="simple" onchange="ageToTime(this)" />
+     <input type="date" class="datepicker" name="dob" data-condition="simple" onchange="ageToTime(this)" id="dob_datepicker" />
     </div>
    </div>
    <div class="row">
@@ -1512,7 +1515,7 @@
      </span>
      <br />
      <span class="grey-text text-lighten-1" style="font-size: 13px;">
-      Please upload your resume in PDF format
+      Please upload your resume in PDF format<br>Max. file size: 2MB
      </span>
     </div>
     <div class="col s12 l8">
@@ -1552,6 +1555,11 @@
      <textarea placeholder="Feel free to write anything" class="materialize-textarea" name="feedback">
      </textarea>
     </div>
+   </div>
+   <div class="row">
+     <div class="col s12 l8 offset-l4 grey-text text-darken-2">
+       By clicking Submit, you agree to our <a href="<?php echo BASE.'termsofuse' ?>">Terms of use</a>.
+     </div>
    </div>
    <div class="row">
     <div class="col s12 l8 offset-l4">

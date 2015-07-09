@@ -2,7 +2,7 @@
           <div id="otp_section">  
             <div class="row">
               <div class="col s12 l11 offset-l1">
-                <h5 class="teal-text text-darken-1">Confirmation</h5>
+                <h5 class="teal-text text-darken-1">Confirmation<span class="red-text">*</span></h5>
                 <span class="grey-text">The OTP has been sent to your Mobile Phone.<br>Please confirm it below.</span>
               </div>
             </div>
