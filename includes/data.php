@@ -2,7 +2,9 @@
 
 $view_default=array(
 	"Template/top.php"=>array(
-		"css"=>array("css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css","https://fonts.googleapis.com/icon?family=Material+Icons"),
+	  "css"=>array("css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css",
+			"https://fonts.googleapis.com/icon?family=Material+Icons", "http://fonts.googleapis.com/css?family=Raleway", 
+			"http://fonts.googleapis.com/css?family=Open+Sans"),
 		"title"=>"Get IITians"
 		),
 	'Template/bottom.php'=>array(

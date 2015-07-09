@@ -24,19 +24,17 @@ main {
 .footer-link {
   color: #eeeeee;
 }
-.footer-link:hover {
-  color: #ffffff;
-}
 
 @font-face {
   font-family: 'Kurale';
   src: url('font/Kurale-Regular.ttf');
 }
 
-a.brand-logo {
-  padding-left: 25px;
+@media only screen and (min-width: 993px){
+  .nav-wrapper a.brand-logo{
+    margin-left: 100px;
+  }
 }
-
 
 /* HOME */
 #container {
@@ -45,11 +43,18 @@ a.brand-logo {
 
 .parallax-container {
   height: 350px;
-  min-height: 350px;
+  min-height: 400px;
 }
 
-.no-margin-bottom {
-  margin-bottom: 0px;
+/* Fonts */
+/* Open Sans Font */
+.opensans-font {
+  font-family: 'Open Sans';
+}
+/* Raleway Font */
+.raleway-font {
+  font-family: 'Raleway';
+  text-shadow: 0px 4px 1px #212121;
 }
 
 /* about us page style start satish --- */
