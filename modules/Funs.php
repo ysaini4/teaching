@@ -506,5 +506,37 @@ abstract class Funs{
 		return $mail->Send();
 	}
 
+	public static function bkvas_tinfo($row){
+		global $_ginfo;
+
+		$jsonArray=str2json($row['jsoninfo']);
+		mergeifunset($row, Fun::getflds($_ginfo['teacherJsoninfo'], $jsonArray));
+
+		foreach ($_ginfo['teacherJsoninfolist'] as $key1 => $value1) {
+			if(isset($jsonArray[$value1]) || isset($row[$value1])) {
+				if(isset($jsonArray[$value1])) 
+					$field=$jsonArray;
+				else 
+					$field=$row;
+				$subArray=array();
+				$count=count($_ginfo['encodeddataofteacherstable'][$value1]);
+				$subjects=intexplode_t2('-',$field[$value1],$count);
+				foreach ($subjects as $key => $value) {
+					if($value==$count) {
+						$str=$value1.'other';
+						if($field[$str]!='')
+							$subArray[]=htmlspecialchars($field[$str]);
+					}
+					else 
+						$subArray[]=$_ginfo['encodeddataofteacherstable'][$value1][$value-1];
+				}
+				$name=$value1.'_name';
+				$row[$name]=$subArray;
+			}
+		}
+		unset($row['jsoninfo']);
+		return $row;
+	}
+
 }
 ?>
