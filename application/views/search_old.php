@@ -3,31 +3,54 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 ?>
 <style>
-  div#wrapper {
-    width:1030px;
+  @media only screen and (max-width: 1000px) {
+    div#wrapper {
+      width: 100%;
+    }
+    div#mainContent {
+      width: 100%;
+      padding: 0px;
+    }
+    div#sideBar {
+      width: 100%;
+      padding: 0px;
+    }
+    div#sticker_panel {
+      width: 100%;
+      height: 500px;
+      padding: 10px;
+      background-color: #ffffff;
+      overflow-y: auto;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    }
   }
-  div#mainContent {
-    width:655px;
-    min-height: 700px;
-    padding:10px;
-    float:left;
-  }
-  div#sideBar {
-    width:290px;
-    padding:10px;
-    float:left;
-    margin-top: 8px;
+  @media only screen and (min-width: 1000px) {
+    div#wrapper {
+      width:1030px;
+    }
+    div#mainContent {
+      width:655px;
+      min-height: 700px;
+      padding:10px;
+      float:left;
+    }
+    div#sideBar {
+      width:290px;
+      padding:10px;
+      float:left;
+      margin-top: 8px;
+    }
+    div#sticker_panel {
+      width: 270px;
+      height: 550px;
+      padding:15px;
+      background:#ffffff;
+      overflow-y: auto;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    }
   }
   .clear {
     clear:both; 
-  }
-  div#sticker_panel {
-    width: 270px;
-    height: 550px;
-    padding:15px;
-    background:#ffffff;
-    overflow-y: auto;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
   }
   .stick {
     position:fixed;
@@ -175,13 +198,13 @@ load_view("Template/navbarnew.php");
       		<div class="col s12">
       			<div class="card-panel">
       			  <div class="row" style="margin-bottom:0px;">
-    						<div class="col s5">
+    						<div class="col s12 m6 l6">
     						  <h5 class="blue-grey-text text-darken-1">Search Results</h5>
     						</div>
-                <div class="col s3">
+                <div class="col s4 m2 l2">
                   <img src="photo/icons/loading2.gif" id="searchloadingimg" style="visibility:hidden;" class="right"/>
                 </div>
-                <form method="post" class="col s4">
+                <form method="post" class="col s8 m4 l4">
                   <div class="row">
                     <div class="col s12">
                       <select name="orderby" class="browser-default">
