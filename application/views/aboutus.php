@@ -39,7 +39,7 @@ load_view("Template/navbarnew.php");
   </div>
 </div>
 
-<div class="white" style="width:100%;margin-bottom:-20px;">
+<div class="white" style="width:100%;margin-bottom:-20px;display:none;">
   <div class="row">
     <div class="col s12"><br><br>
       <h4 class="center raleway-font blue-grey-text text-darken-2" style="text-shadow:none;">Our Website Team</h4>
