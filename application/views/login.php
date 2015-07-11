@@ -13,7 +13,7 @@ load_view("Template/navbarnew.php",$inp);
               load_view('Template/form_errors.php',array("msg"=>$loginmsg));
             ?>
 
-            <div class="row">
+            <div class="row no-margin-bottom">
               <div class="col s12 l4 offset-l1">
                 <h3 class="teal-text text-darken-1">Login</h3>
               </div>
@@ -23,11 +23,11 @@ load_view("Template/navbarnew.php",$inp);
                     <ul>
                       <li>Login for Students and Tutors.</li>
                       <li>Don't have an account?</li>
-                      <li><i class="material-icons left tiny">chevron_right</i>
-                        Student: Sign Up <a href="<?php echo BASE."signup"; ?>">here</a>.
+                      <li><h6><i class="material-icons left tiny">chevron_right</i>
+                        Student: Sign Up <a href="<?php echo BASE."signup"; ?>">here</a>.</h6>
                       </li>
-                      <li><i class="material-icons left tiny">chevron_right</i>
-                        Tutor: Join Us <a href="<?php echo BASE."joinus"; ?>">here</a>.
+                      <li><h6><i class="material-icons left tiny">chevron_right</i>
+                        Tutor: Join Us <a href="<?php echo BASE."joinus"; ?>">here</a>.</h6>
                       </li>
                     </ul>
                   </div>
@@ -36,15 +36,15 @@ load_view("Template/navbarnew.php",$inp);
             </div>
             
             <div id="login_section">
-              <div class="row">
+              <div class="row no-margin-bottom">
                 <form class="col s12 offset-l1" method="post">
-                  <div class="row">
+                  <div class="row no-margin-bottom">
                     <div class="input-field col s12 l10">
                       <input id="email" name="email" type="email" class="validate" required>
                       <label for="email">Email</label>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row no-margin-bottom">
                     <div class="input-field col s12 l10">
                       <input id="password" name="password" type="password" class="validate" required>
                       <label for="password">Password</label>
@@ -62,7 +62,7 @@ load_view("Template/navbarnew.php",$inp);
             </div>
 
             <div class="row">
-              <div class="col s12 l10 offset-l1" style='' >
+              <div class="col s12 l10 offset-l1">
                 <h6>
                   <a onclick="forgotPass();" style="cursor:pointer;">
                     <span id="forgot_prefix_arrow"><i class="material-icons tiny">keyboard_arrow_up</i></span>&nbsp;Forgot Password
@@ -72,6 +72,7 @@ load_view("Template/navbarnew.php",$inp);
               <form class="col s12 l10 offset-l1" id="forgot_pass_section" onsubmit='form.req(this);return false;' data-action="forgotpass" data-res='success.push("Password reseting link is sent. check your mail.");' >
                 <div class="row">
                   <div class="col s12">
+                    <h6 class="grey-text text-darken-1">Reset password for getIITians</h6>
                     <p class="grey-text">Enter your email to send verification link.</p>
                   </div>
                 </div>
@@ -96,7 +97,7 @@ load_view("Template/navbarnew.php",$inp);
           <br>
             <div class="row">
               <div class="col s12 l10 offset-l1">
-                <h5 class="teal-text">Sign up with other platforms</h5>
+                <h5 class="teal-text">Log in with other platforms</h5>
               </div>
             </div>
             <div class="row">
@@ -106,12 +107,16 @@ load_view("Template/navbarnew.php",$inp);
             </div>
             <div class="row">
               <div class="col s12 l10 offset-l1">
-                <a href="<?php echo HOST."fb2.php"; ?>" class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">Sign Up with facebook</a>
+                <a href="<?php echo HOST.'fb2.php'; ?>" class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">
+                  <img src="images/facebook-login-icon.png" width="30" height="35" class="left" style="margin-top:9px;">&nbsp;&nbsp;&nbsp;Log In with facebook
+                </a>
               </div>
             </div>
-            <div class="row" style='' >
+            <div class="row">
               <div class="col s12 l10 offset-l1">
-                <a href="<?php echo HOST."gplus.php"; ?>" class="btn-large waves-effect waves-light red darken-1" style="width:100%;">Sign Up with google+</a>
+                <a href="<?php echo HOST.'gplus.php'; ?>" class="btn-large waves-effect waves-light red darken-1" style="width:100%;">
+                  <img src="images/googleplus-login-icon.png" width="35" height="40" class="left" style="margin-top:9px;">Log In with google+
+                </a>
               </div>
             </div>
           </div>

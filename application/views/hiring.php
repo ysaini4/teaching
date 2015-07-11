@@ -4,69 +4,46 @@ load_view("Template/navbarnew.php");
 ?>
 <br>
            <div class="container">
-                <div class="card medium">
-                    
-                         <h2 style="text-align:center"> We are Hiring </h2>
-
-                          <hr>
-
-                    <div class="row">
-                    
-                        <h4 style="text-align:center"> DO COOL THINGS THAT MATTER</h4>
-
-                        <p style="padding-left:15px;padding-right:15px;text-align:center">
-
-                            We are not looking for another brick in the wall. If you have what it takes and can give us compelling reasons that
-                            make you stand out from the rest (for all the right reasons, of course!), then we would like to hear from you.<br>
-                            We are a well funded startup located in New Delhi dramatically improving the fragmented tutorial service in India.
-                            We make it dead simple, easy to comprehend and really fast.
-                            
-                        </p>    
-                    </div> 
-                </div>
-                      
-                      <div class="card large"> 
-                              <h4 style="text-align:center"> Creative </h4>
-                           <div class="row">
-                               
-
-                                   <h4 style="font-family:italic;padding-left:15px;padding-right:15px">Content Writer & PR Executive </h4>
-
-                                   <h6 style="font-family:italic;padding-left:15px;padding-right:15px"> Key Responsibilities:</h6> 
-
-                                   <p style="padding-left:15px;padding-right:15px";>Write/proof read/edit product descriptions for GetIITians an identify the attributes of the product and write with a clear understanding of the target audience with the right tone of voice.
-
-                                       Develop highly effective, original and targeted content for promotion of GetIITians.
-
-                                       Understanding the message the company is seeking to deliver and translating this into crisp and clutter breaking copy.
-
-                                       Work with various internal and external teams to get hold of the correct product information.
-                                    </p>
-                               
-                                   <h5 style="padding-left:15px;padding-right:15px">Requirements:</h5>
-
-                                   <p style="padding-left:15px;padding-right:15px">0-2 years of content writing experience online or offline. Experience in education industry preferred.<br>
-
-                                       Expert writing skills, editing and proof reading abilities.<br>
-
-                                       Ability to write terse, attention grabbing and professional copy that puts the message across.<br>
-
-                                       Creative bent of mind with strong visualization and idea generation skills.<br>
-
-                                       Ability to deliver within tight deadlines. Excellent relationship management skills.<br>
-
-                                       Aggressive and willing to work in a startup.
-                                   <br>
-                                   <b>Salary:</b></br>
+                <div class="card medium">                    
+                  <h2 style="text-align:center"> We are Hiring </h2>
+                  <hr>
+                  <div class="row">                    
+                    <h4 style="text-align:center"> DO COOL THINGS THAT MATTER</h4>
+                    <p style="padding-left:15px;padding-right:15px;text-align:center">
+                      We are not looking for another brick in the wall. If you have what it takes and can give us compelling reasons that
+                      make you stand out from the rest (for all the right reasons, of course!), then we would like to hear from you.<br>
+                      We are a well funded startup located in New Delhi dramatically improving the fragmented tutorial service in India.
+                      We make it dead simple, easy to comprehend and really fast.                            
+                    </p>    
+                  </div> 
+                </div>                    
+                <div class="card-panel large"> 
+                  <h4 style="text-align:center"> Creative </h4>
+                  <div class="row">                            
+                  <h4 style="font-family:italic;padding-left:15px;padding-right:15px">Content Writer & PR Executive </h4>
+                  <h6 style="font-family:italic;padding-left:15px;padding-right:15px"> Key Responsibilities:</h6> 
+                  <p style="padding-left:15px;padding-right:15px";>Write/proof read/edit product descriptions for GetIITians an identify the attributes of the product and write with a clear understanding of the target audience with the right tone of voice.
+                    Develop highly effective, original and targeted content for promotion of GetIITians.
+                    Understanding the message the company is seeking to deliver and translating this into crisp and clutter breaking copy.
+                    Work with various internal and external teams to get hold of the correct product information.
+                  </p>                               
+                  <h5 style="padding-left:15px;padding-right:15px">Requirements:</h5>
+                  <p style="padding-left:15px;padding-right:15px">0-2 years of content writing experience online or offline. Experience in education industry preferred.<br>
+                      Expert writing skills, editing and proof reading abilities.<br>
+                      Ability to write terse, attention grabbing and professional copy that puts the message across.<br>
+                      Creative bent of mind with strong visualization and idea generation skills.<br>
+                      Ability to deliver within tight deadlines. Excellent relationship management skills.<br>
+                      Aggressive and willing to work in a startup.<br>
+                      <b>Salary:</b></br>
                                    No bar for right candidates.
                                    <br>
-                                   Please send your resume with relevant experience at: <a href="info@getiitians.com">info@getiitians.com</a>
+                                   <blockquote>Please send your resume with relevant experience at: <a href="info@getiitians.com">info@getiitians.com</a></blockquote>
                                    </p>
                            </div>
                       </div>  
 
 
-                      <div class="card large">
+                      <div class="card-panel large">
 
                         <h4 style="text-align:center"> MARKETING </h4>
 
@@ -102,7 +79,7 @@ load_view("Template/navbarnew.php");
                       </div>
 
 
-                            <div class="card large">
+                            <div class="card-panel large">
                                  <div class="row">
 
                                <h4 style="text-align:center"> TECHNOLOGY </h4>
@@ -143,7 +120,7 @@ load_view("Template/navbarnew.php");
                                 </div> 
                                      </div>  
                                  
-                            <div class="card large">
+                            <div class="card-panel large">
 
                                 <div class="row">
 
@@ -179,7 +156,7 @@ load_view("Template/navbarnew.php");
 
 
 
-                            <div class="card large">
+                            <div class="card-panel large">
 
                                 <div class="row">
 
@@ -225,7 +202,7 @@ load_view("Template/navbarnew.php");
                                 </div>   
 
 
-                                 <div class="card large">
+                                 <div class="card-panel large">
                                  <div class="row">
 
                                <h4 style="text-align:center"> DESIGN </h4>

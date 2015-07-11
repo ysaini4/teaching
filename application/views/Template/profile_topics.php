@@ -17,13 +17,13 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 						<div class="input-field col s12">
 							<select name='class' class="browser-default" onchange='topicssubtopic(this);' id="selectclass" data-condition='simple' style='' >
 								<?php
-									 disp_olist($class_olist,array('selectalltext'=>"Select Class"));
+									 disp_olist($class_olist,array('selectalltext'=>"Select Grade"));
 								?>
 							</select>
 						</div>
 						<div class="input-field col s12">
 							<select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic(this);' data-condition='simple' >
-								<option value="" >Please select class first</option>
+								<option value="" >Please select grade first</option>
 							</select>
 						</div>
 						<div class="input-field col s12">
@@ -56,7 +56,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 			<table class="striped responsive-table">
 				<thead>
 					<tr>
-						<th data-field="class">Class</th>
+						<th data-field="class">Grade</th>
 						<th data-field="subject">Subject</th>
 						<th data-field="topic">Topic</th>
 						<th data-field="duration">Duration (hrs)</th>

@@ -2,12 +2,18 @@
 load_view("Template/top.php",$inp);
 ?>
 <!--
-
-mohit Saini112
+mohit Saini11
+Shivam Mamgain
 -->
-
+<link rel="stylesheet" href="css/custom-homestyle-v2.css">
 
 <body>
+  <a id="top"></a>
+  <!-- TOP button -->
+  <a href="<?php echo BASE.'index'; ?>#top" class="btn-large btn-floating waves-effect waves-light yellow darken-2" id="top_arrow" title="TOP">
+    <i class="material-icons" style="font-size:3rem;">keyboard_arrow_up</i>
+  </a>
+
   <div id="index-banner" class="parallax-container">
     <?php
     load_view("Template/navbarhome.php",$inp);
@@ -16,87 +22,101 @@ mohit Saini112
       <div class="container">
         <div class="row ">
           <div class="col s12">
-            <h1 class="header center white-text">get IITians</h1>
+            <h1 class="header center white-text raleway-font">Get IITians</h1>
           </div>
           <div class="col s12">
-              <div class="rw-words-1">
-                <h5 class="center">Get an IITian tutor for <b>Any Topic, Any Time</b>! </h5>
-                <h5 class="center">Be one among us <b>Better than us</b></h5>
-                <h5 class="center">We are for <b>Quality conscious people</b></h5>
-              </div>
-             </div>
-          
-        </div></br>
+            <div class="rw-words-1 raleway-font" style="height:40px;">
+              <h5>Get an IITian tutor for Any Topic! Any Time!</h5>
+              <h5>Be one among us. Better than us.</h5>
+              <h5>We are for quality conscious people.</h5>
+            </div>
+          </div>
+        </div><br>
 
         <div class="row center">
           <form class="col s12" action="<?php echo BASE."search"; ?>" >
+            <!-- Main Search Bar -->
             <div class="row center">
-              <div class="col s12" style="margin-top:20px;"  id="main-search-bar" >
-                <input placeholder="Search by Topic, Subject, Time, Teacher" type="search" autocomplete="off" name="q">
-                <input type="submit" value="See Tutors">
-              </div>              
-            </div>
-            <div id="dropdownnav" class="row" style='display:none;' >
-              <nav class="transparent col s12">
-                <ul class="nav">
-                  <li><a href="#">VI</a>
-                    <div>
-                      <div class="nav-column">
-                        <h3>Maths</h3>
-                        <ul>
-                          <li><a href="#">Trigonometry</a></li>
-                          <li><a href="#">Algebra</a></li>
-                          <li><a href="#">Calculas</a></li>
-                          <li><a href="#">Trigonometry</a></li>
-                          <li><a href="#">Algebra</a></li>
-                          <li><a href="#">Calculas</a></li>
-                          <li><a href="#">Algebra</a></li>
-                          <li><a href="#">Calculas</a></li>
-                        </ul>
-                      </div>
-
-                      <div class="nav-column">
-                        <h3>science</h3>
-                        <ul>
-                          <li><a href="#">Water</a></li>
-                          <li><a href="#">Circuit</a></li>
-                          <li><a href="#">Motion</a></li>
-                        </ul>
-
-                        <h3>Civics</h3>
-                        <ul>
-                          <li><a href="#">government</a></li>
-                          <li><a href="#">rural</a></li>
-                          <li><a href="#">urban</a></li>
-                        </ul>
-                      </div>
-
-                      <div class="nav-column">
-                        <h3>History</h3>
-                        <ul>
-                          <li><a href="#">government</a></li>
-                          <li><a href="#">rural</a></li>
-                          <li><a href="#">urban</a></li>
-                          <li><a href="#">government</a></li>
-                          <li><a href="#">rural</a></li>
-                          <li><a href="#">urban</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                  <li><a href="#">VII</a></li>
-                  <li><a href="#">VIII</a></li>
-                  <li><a href="#">IX</a></li>
-                  <li><a href="#">X</a></li>
-                  <li><a href="#">XI</a></li>
-                  <li><a href="#">XII</a></li>
-                  <li><a href="#">IIT-JEE</a></li>
-                </ul>
-              </nav>
+              <div class="col s12 l8 offset-l1" style="padding-left:0px;padding-right:0px;margin-bottom:10px;">
+                <input placeholder="Search Tutors" type="search" autocomplete="off" name="q" id="main_search_bar">
+              </div>
+              <div class="col s12 l2" style="padding-left:0px;">
+                <button type="submit" class="btn waves-effect waves-light teal darken-3" id="main_search_button">
+                  Search
+                </button>
+              </div>
             </div>
           </form>
         </div>
-        
+
+        <!-- DROPDOWN BEGIN -->
+        <div id="dropdownnav" class="row" style="display:none;">
+          <nav class="transparent col s12">
+            <ul class="nav">
+              <li><a>VI</a>
+                <div>
+                  <ul class="nav2">
+                    <li><a href="#">Mathematics</a>
+                      <div>
+                      <div class="nav-column">
+                        <ul>
+                          <li><a href="#">introduction to Trigonometry</a></li>
+                          <li><a href="#">Algebric expression</a></li>
+                          <li><a href="#">Calculas</a></li>
+                          <li><a href="#">application of Trigonometry</a></li>
+                          <li><a href="#">Algebra</a></li>
+                          <li><a href="#">introduction to Trigonometry</a></li>
+                          <li><a href="#">Calculas</a></li>
+                          <li><a href="#">Algebric expression</a></li>
+                          <li><a href="#">introduction to Trigonometry</a></li>
+                          <li><a href="#">Calculas</a></li>
+                        </ul>
+                      </div>
+                      </div>
+                    </li>
+                    <li><a href="#">Science</a>
+                      <div>
+                      <div class="nav-column">
+                        <ul>
+                          <li><a href="#">Calculas</a></li>
+                          <li><a href="#">Algebric expression</a></li>
+                          <li><a href="#">Calculas</a></li>
+                          <li><a href="#">application of Trigonometry</a></li>
+                          <li><a href="#">Algebra</a></li>
+                          <li><a href="#">introduction to Trigonometry</a></li>
+                          <li><a href="#">introduction to Trigonometry</a></li>
+                          <li><a href="#">Algebric expression</a></li>
+                          <li><a href="#">introduction to Trigonometry</a></li>
+                          <li><a href="#">Calculas</a></li>
+                        </ul>
+                      </div>
+                      </div>
+                    </li>
+                    <li><a href="#">Civics</a></li>
+                    <li><a href="#">Chemistry</a></li>
+                    <li><a href="#">Physics</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Computer</a></li>
+                    <li><a href="#">Hindi</a></li>
+                    <li><a href="#">Bussiness</a></li>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">Psychology</a></li>
+                    <li><a href="#">Sociology</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a>VII</a></li>
+              <li><a>VIII</a></li>
+              <li><a>IX</a></li>
+              <li><a>X</a></li>
+              <li><a>XI</a></li>
+              <li><a>XII</a></li>
+              <li><a>JEE-mains</a></li>
+              <li><a>JEE-advance</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- DROPDOWN END -->
       </div>
     </div>
     <div class="parallax" height="100%"><img src="images/banner.png" width="85%" alt="Banner" ></div>
@@ -106,233 +126,379 @@ mohit Saini112
     <div class="section">
       <div class="row">
         <div class="col s12">
-          <h3 class="header center teal-text text-darken-1" style="font-variant:small-caps">How it Works?</h3>
-        </div>
-        <div class="col s12 m4">
-          <h2 class="header center"><i class="mdi-image-remove-red-eye large"></i></h2>
-          <h5 class="header center grey-text text-darken-2">Look for topics</h5>
-        </div>
-        <div class="col s12 m4">
-          <h2 class="header center"><i class="mdi-device-access-time large"></i></h2>
-          <h5 class="header center grey-text text-darken-2">Schedule a class</h5>
-        </div>
-        <div class="col s12 m4">
-          <h2 class="header center"><i class="mdi-hardware-desktop-windows large"></i></h2>
-          <h5 class="header center grey-text text-darken-2">Start tutorial online</h5>
-          <p class="light">
-          </p>
+          <h3 class="header center teal-text text-darken-4 opensans-font">How it Works</h3>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12">
-        <br><br>
-        <h3 class="header center teal-text text-darken-1" style="font-variant:small-caps">Why Us</h3>
-    </div>
-  </div>
-
-      <div class="container">
-        <div class="row border-bottom border-top" style="margin:0; padding:0;">
-          <div class="col s12 m6 border-right">
-            <h2 class="header center"><i class="mdi-communication-clear-all"></i></h2>
-            <p class=" center">
-              Study <b>TOPIC</b> of your choice 
-            </p>
-          </div>
-          <div class="col s12 m6">
-            <h2 class="header center"><i class="mdi-social-people"></i></h2>
-            <p class=" center">
-              Study with <b>TEACHERS</b> of your choice
-            </p>
+      <div class="row">
+        <div class="col s6 l2 offset-l1">
+          <div class="card-panel center hoverable" style="height:200px;padding:10px;">
+            <div class="work-step-number">1</div>
+            <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">list</i></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;">Select <br><b>Topics</b></div>
           </div>
         </div>
-
-        <div class="row border-bottom" style="margin:0; padding:0;">
-          <div class="col s12 m6 border-right">
-            <h2 class="header center"><i class="mdi-maps-place"></i></h2>
-            <p class=" center">
-              Study at <b>PLACE</b> of your choice
-            </p>
+        <div class="col s6 l2">
+          <div class="card-panel center hoverable" style="height:200px;padding:10px;">
+            <div class="work-step-number">2</div>
+            <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">search</i></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;">Search for <br><b>Tutors</b></div>
           </div>
-          <div class="col s12 m6">
-            <h2 class="header center"><i class="mdi-action-alarm"></i></h2>
-            <p class=" center">
-              Study at <b>TIME</b> of your choice
-            </p>
+        </div>
+        <div class="col s6 l2">
+          <div class="card-panel center hoverable" style="height:200px;padding:10px;">
+            <div class="work-step-number">3</div>
+            <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:4.5rem;">filter_list</i></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;margin-top:6px;">Shortlist using <br><b>Reviews</b></div>
+          </div>
+        </div>
+        <div class="col s6 l2">
+          <div class="card-panel center hoverable" style="height:200px;padding:10px;">
+            <div class="work-step-number">4</div>
+            <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">event</i></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;">Book <br><b>Slots</b></div>
+          </div>
+        </div>
+        <div class="col s12 l2">
+          <div class="card-panel center hoverable" style="height:200px;padding:10px;">
+            <div class="work-step-number">5</div>
+            <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">desktop_windows</i></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;">Start <br><b>Learning</b></div>
           </div>
         </div>
       </div>
-
-      <br><br>
-
-  <div style="width:100%; display:none;">
-    <div class="section">
       <div class="row">
         <div class="col s12">
-          <h3 class="header center teal-text text-darken-1" style="font-variant:small-caps">Reviews</h3>
+          <div class="divider"></div>
         </div>
-        <div class="col s12">
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="container">
+    <div class="row">
+      <div class="col s12 l6">
+        <div class="row">
+          <div class="col s12">
+            <h5 class="header center teal-text text-darken-4 opensans-font">Why choose us</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <ul id="whyus_list" style="margin-top:0px;">
+              <li>770+ Topics and 57+ Subjects to choose from</li>
+              <li>Learn only from IITian Tutors</li>
+              <li>Study from the comfort of your home</li>
+              <li>Select the best tutor through reviews and ratings</li>
+              <li>Because we care about Quality Education more<br>than anybody else</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 l5">
+        <div class="row">
+          <div class="col s12">
+            <h5 class="header center teal-text text-darken-4 opensans-font">Students and Tutors love us</h5>
+          </div>
+        </div>
+        <div>
           <div class="slider">
-            <ul class="slides">
+            <ul class="slides" id="review_slider">
               <li>
-                <div class="caption center-align center row">
-                  <div class="col s2 offset-s5">
-                    <img src="images/1.jpg" class="circle responsive-img">
-                  </div>
-                  <div class="col s4 offset-s4">
-                    <p class="light grey-text text-darken-4" style="margin-top:0; margin-bottom:0;"><b>student/teacher name</b></p>
-                  </div>
+                <div class="row left-align">
                   <div class="col s12">
-                    <h5 class="light grey-text text-darken-3">Learn anything, anytime from anywhere.Learn anything, anytime from anywhere. Learn anything, anytime from anywhere.Learn anything, anytime from anywhere.Learn anything, anytime from anywhere.</h5>
+                    <div class="review-comment">
+                      Getting the best tutors at one click.<br><a href="#">#WayToGo</a> <a href="#">@getIITians</a>
+                    </div>
+                    <div class="reviewer">
+                      <div class="row">
+                        <div class="col s3 right-align">
+                          <img class="img-responsive circle" src="images/review1.png" style="max-width:60px;">   
+                        </div>
+                        <div class="col s9">
+                          <a href="#">Shujaul Haque</a><br>
+                          <div class="grey-text">Student</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
               <li>
-                <div class="caption left-align center row">
-                  <div class="col s2 offset-s5">
-                    <img src="images/1.jpg" class="circle responsive-img">
-                  </div>
-                  <div class="col s4 offset-s4">
-                    <p class="light grey-text text-darken-4" style="margin-top:0; margin-bottom:0;"><b>student name</b></p>
-                  </div>
+                <div class="row left-align">
                   <div class="col s12">
-                    <h5 class="light grey-text text-darken-3">Learn anything, anytime from anywhere.</h5>
+                    <div class="review-comment">
+                      <a href="#">@getiitians</a> Excellent tutoring service.<br>The best I have seen so far.<br><a href="#">#FTW #getIITians</a>
+                    </div>
+                    <div class="reviewer">
+                      <div class="row">
+                        <div class="col s3 right-align">
+                          <img class="img-responsive circle" src="images/review2.jpg" style="max-width:60px;">
+                        </div>
+                        <div class="col s9">
+                          <a href="#">Rajiv Air</a><br>
+                          <div class="grey-text">CEO, Malvo.com</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
               <li>
-                <div class="caption right-align center row">
-                <div class="col s2 offset-s5">
-                  <img src="images/1.jpg" class="circle responsive-img">
-                </div>
-                <div class="col s12">
-                  <h5 class="light grey-text text-darken-3">Learn anything, anytime from anywhere.</h5>
-                </div>
-                </div>
-              </li>
-              <li>
-                <div class="caption center-align center row">
-                <div class="col s2 offset-s5">
-                  <img src="images/1.jpg" class="circle responsive-img">
-                </div>
-                <div class="col s12">
-                  <h5 class="light grey-text text-darken-3">Learn anything, anytime from anywhere.</h5>
-                </div>
+                <div class="row left-align">
+                  <div class="col s12">
+                    <div class="review-comment">
+                      website is user friendly and very intuitive. <a href="#">#keepitup</a>
+                    </div>
+                    <div class="reviewer">
+                      <div class="row">
+                        <div class="col s3 right-align">
+                          <img class="img-responsive circle" src="images/review3.png" style="max-width:60px;">
+                        </div>
+                        <div class="col s9">
+                          <a href="#">Prof. Mike Corleone</a><br>
+                          <div class="grey-text">Sicily University</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="divider"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 l3">
+          <div class="card-panel" style="padding:0px;">
+            <div class="courses-grade orange darken-3">
+              6<sup>th</sup> - 8<sup>th</sup> Grade
+            </div>
+            <div class="courses-list">
+              Topics
+              <ul class="courses-list-ul">
+                <li>Algebra</li>
+                <li>Light</li>
+                <li>Urban Livelihoods</li>
+                <li><a href="<?php echo BASE.'search'; ?>">+View More</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l3">
+          <div class="card-panel" style="padding:0px;">
+            <div class="courses-grade green darken-3">
+              9<sup>th</sup> - 10<sup>th</sup> Grade
+            </div>
+            <div class="courses-list">
+              Topics
+              <ul class="courses-list-ul">
+                <li>Practical Geometry</li>
+                <li>The Indian Subcontinent</li>
+                <li>Heat and Thermodynamics</li>
+                <li><a href="<?php echo BASE.'search'; ?>">+View More</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l3">
+          <div class="card-panel" style="padding:0px;">
+            <div class="courses-grade brown darken-3">
+              11<sup>th</sup> - 12<sup>th</sup> Grade
+            </div>
+            <div class="courses-list">
+              Topics
+              <ul class="courses-list-ul">
+                <li>Semiconductors</li>
+                <li>Plane Equations</li>
+                <li>French</li>
+                <li><a href="<?php echo BASE.'search'; ?>">+View More</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l3">
+          <div class="card-panel" style="padding:0px;">
+            <div class="courses-grade light-blue darken-3" style="font-size:15px;">
+              JEE Mains & Advanced
+            </div>
+            <div class="courses-list">
+              Topics
+              <ul class="courses-list-ul">
+                <li>Optics</li>
+                <li>Kinematics</li>
+                <li>In-Organics Chemistry</li>
+                <li><a href="<?php echo BASE.'search'; ?>">+View More</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container" style="display:none;">
+
+
+  <div style="width:100%;background:#ffffff;">
     <div class="section">
       <div class="row">
         <div class="col s12">
-          <h4 class="center teal-text text-darken-1">Users</h4>
+          <h5 class="center teal-text text-darken-4 opensans-font">Choose from a myriad of Topics</h5>
         </div>
-        <div class="col s12 m6 l6">
-          <div class="card-panel center">
-            <h6>Total Students Registered</h6>
-            <h3 id="counter"><i class="mdi-social-school"></i> 1337</h5>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="divider"></div>
         </div>
-        <div class="col s12 m6 l6">
-          <div class="card-panel center">
-            <h6>Total Teachers Registered</h6>
-            <h3 id="counter"><i class="mdi-social-person"></i> 1001</h5>
-          </div>
+      </div>
+      <div class="row center" style="margin-bottom:0px">
+        <div class="col s12" style="line-height:250%;">
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Current Electricity</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Repiratory System</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Maps</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Integers</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Environment</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Lanthanides</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Plant Nutrition</a>
+        </div>
+      </div>
+      <div class="row center" style="margin-bottom:0px">
+        <div class="col s12" style="line-height:250%;">
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Acids and Bases</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Transportation</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Our Earth</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Psychology</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Exponents and Powers</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Microorganisms</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Friction</a>
+        </div>
+      </div>
+      <div class="row center" style="margin-bottom:0px">
+        <div class="col s12" style="line-height:250%;">
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">.NET</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Industries</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Digital Logics</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Agriculture</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Civil Rights</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Graphs</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Linear Equations</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Pollution</a>
+        </div>
+      </div>
+      <div class="row center" style="margin-bottom:0px">
+        <div class="col s12" style="line-height:250%;">
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Judiciary</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Minerals</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Force</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Carbon Compounds</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Magnetism</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Political Parties</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Java</a>
+        </div>
+      </div>
+      <div class="row center" style="margin-bottom:0px">
+        <div class="col s12" style="line-height:250%;">
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Momentum Transfer</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Democratic Socialism</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link" style="background-color:#00796b;color:#ffffff;">
+            And Many More +
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <br><br>
         </div>
       </div>
     </div>
   </div>
-    <div class="container" style="margin-bottom:0;">
+
+  <div style="width:100%;" class="attention">
+    <div class="row">
+      <div class="col s12 l5 offset-l2">
+        Are you an IITian?<br>Do you like tutoring students?<br>If yes, then be a part of our community. 
+      </div>
+      <div class="col s12 l5">
+        <br>
+        <a class="valign btn-large waves-effect waves-light attention-joinus" href="<?php echo BASE.'joinus'; ?>">Join Us</a>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;display:none;" class="iit-logo-container">
+    <div class="row">
+      <div class="col s4 l1 offset-l1">
+        <div class="card-panel hoverable center" style="padding:5px;">
+          <a href="http://www.iitgn.ac.in/">
+            <img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" class="responsive-img">
+          </a>
+          <span class="iit-logo-names">Gandhinagar</span>
+        </div>
+      </div>
+      <div class="col s4 l1">
+        <div class="card-panel hoverable center" style="padding:5px;">
+          <a href="">
+            <img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" class="responsive-img">
+          </a>
+          <span class="iit-logo-names">Gandhinagar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="margin-bottom:0;">
     <div class="section">
       <div class="row">
         <div class="col s12">
-          <div class="logo-slider-container">
-            <ul class="logo-bxslider">
-            <?php
-            $i = 0;
-            while($i++ < 10)echo '
-              <li><a href="http://www.iitgn.ac.in/" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Gandhinagar"><img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" height="50" width="50"></a></li>
-              <li><a href="http://www.iitr.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Roorkee"><img src="logos/roorkee.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitmandi.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Mandi"><img src="logos/mandi-iit.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iiti.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Indore"><img src="logos/indore.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitj.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Jodhpur"><img src="logos/IIT-JODHPUR-LOGO.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitg.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Guwahati"><img src="logos/IIT-Guwahati-Logo.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitd.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Delhi"><img src="logos/iit-delhi.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitb.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Bombay"><img src="logos/iit-bombay.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitk.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Kanpur"><img src="logos/IIT_Kanpur_Logo.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iith.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Hydrabad"><img src="logos/iit_hydrabad_logo.png" height="50" width="50"></a></li> 
-              <li><a href="http://www.iitbhu.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT (BHU)Varanasi"><img src="logos/iiit-varanasi.png" height="50" width="50"></a></li>  
-              <li><a href="http://www.iitbbs.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Bhuvneshwar"><img src="logos/bhuvneshwar.png" height="50" width="50"></a></li>
-              <li><a href="http://www.iitkgp.ac.in" class="tooltipped" data-position="top" data-delay="0" data-tooltip="IIT Kharagpur"><img src="logos/IITKharagpurLogo.png" height="50" width="50"></a></li>
-             '
-             ?>
-            </ul>
+        <div id="slider1_container" style="position: relative; height: 70px; overflow: hidden; ">
+          <div u="slides" style="cursor: move; position: relative; width:1340px; height: 70px; overflow: hidden;">
+            <div><a href="http://www.iitgn.ac.in/" ><img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" height="70" width="70"></a></div>
+            <div><a href="http://www.iitr.ac.in" ><img src="logos/roorkee.png" title="IIT Roorkee" height="70" width="70"></a></div>
+            <div><a href="http://www.iitmandi.ac.in" ><img src="logos/mandi-iit.png" title="IIT Mandi" height="70" width="70"></a></div>
+            <div><a href="http://www.iiti.ac.in" ><img src="logos/indore.png" title="IIT Indore" height="70" width="70"></a></div>
+            <div><a href="http://www.iitj.ac.in" ><img src="logos/IIT-JODHPUR-LOGO.png" title="IIT Jodhpur" height="70" width="70"></a></div>
+            <div><a href="http://www.iitg.ac.in" ><img src="logos/IIT-Guwahati-Logo.png" title="IIT Guwahati" height="70" width="70"></a></div>
+            <div><a href="http://www.iitd.ac.in" ><img src="logos/iit-delhi.png" title="IIT Delhi" height="70" width="70"></a></div>
+            <div><a href="http://www.iitb.ac.in" ><img src="logos/iit-bombay.png" title="IIT Bombay" height="70" width="70"></a></div>        
+            <div><a href="http://www.iitk.ac.in" ><img src="logos/IIT_Kanpur_Logo.png" title="IIT Kanpur" height="70" width="70"></a></div>
+            <div><a href="http://www.iith.ac.in" ><img src="logos/iit_hydrabad_logo.png" title="IIT Hydrabad" height="70" width="70"></a></div>
+            <div><a href="http://www.iitbhu.ac.in" ><img src="logos/iiit-varanasi.png" title="IIT Varanasi(BHU)" height="70" width="70"></a></div>
+            <div><a href="http://www.iitbbs.ac.in" ><img src="logos/bhuvneshwar.png" title="IIT Bhuvneshwar" height="70" width="70"></a></div>
+            <div><a href="http://www.iitkgp.ac.in" ><img src="logos/IITKharagpurLogo.png" title="IIT Kharagpur" height="70" width="70"></a></div>
           </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="width:100%;margin-bottom:-20px;" class="feel-free">
+    <div class="container">
+      <div class="row" style="margin-bottom:0px;">
+        <div class="col s12 l3">
+          Feel free to <a href="#">Contact Us</a>
         </div>
       </div>
     </div>
   </div>
 
 <?php
-load_view("Template/footernew.php",$inp);
+load_view("Template/footer.php",$inp);
 load_view("Template/bottom.php",Fun::mergeifunset($inp, array("needbody"=>false  )));
 ?>
-
-<link rel="stylesheet" type="text/css" href="css/custom-homestyle.css">
-
-<script type="text/javascript">
-
-    $(".button1").click(function(e){
-      $(this).addClass("current");
-      $(".button2").removeClass("current");
-      $(".button3").removeClass("current");
-      $(".button4").removeClass("current");
-      $("li.b1").addClass("current");
-      $("li.b2").removeClass("current");
-      $("li.b3").removeClass("current");
-      $("li.b4").removeClass("current");
-    });
-
-    $(".button2").click(function(e){
-      $(this).addClass("current");
-      $(".button1").removeClass("current");
-      $(".button3").removeClass("current");
-      $(".button4").removeClass("current");
-      $("li.b2").addClass("current");
-      $("li.b1").removeClass("current");
-      $("li.b3").removeClass("current");
-      $("li.b4").removeClass("current");
-    });
-
-    $(".button3").click(function(e){
-      $(this).addClass("current");
-      $(".button1").removeClass("current");
-      $(".button2").removeClass("current");
-      $(".button4").removeClass("current");
-      $("li.b3").addClass("current");
-      $("li.b1").removeClass("current");
-      $("li.b2").removeClass("current");
-      $("li.b4").removeClass("current");
-    });
-
-    $(".button4").click(function(e){
-      $(this).addClass("current");
-      $(".button1").removeClass("current");
-      $(".button3").removeClass("current");
-      $(".button2").removeClass("current");
-      $("li.b4").addClass("current");
-      $("li.b1").removeClass("current");
-      $("li.b3").removeClass("current");
-      $("li.b2").removeClass("current");
-    });
-
-</script>
-</body></html>
+  <script type="text/javascript" src="js/jssor.js"></script>
+  <script type="text/javascript" src="js/jssor.slider.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

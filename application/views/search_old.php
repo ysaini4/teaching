@@ -22,7 +22,7 @@ load_view("Template/navbarnew.php");
     clear:both; 
   }
   div#sticker_panel {
-    width:270px;
+    width: 270px;
     height: 550px;
     padding:15px;
     background:#ffffff;
@@ -32,6 +32,9 @@ load_view("Template/navbarnew.php");
   .stick {
     position:fixed;
     top:70px;
+  }
+  ul.collapsible {
+    box-shadow: none;
   }
 </style>
 <script>
@@ -45,7 +48,7 @@ load_view("Template/navbarnew.php");
       <!-- Begin Filter Panel -->
       <div id="sideBar">
         <div class="" id="sticker_panel"> <!-- Don't add a class -->
-          <h5 class="teal-text text-darken-1"><i class="material-icons left">filter_list</i>Filter</h5>
+          <h5 class="blue-grey-text text-darken-1">Filter<i class="material-icons right">filter_list</i></h5>
           <div class="row">
             <form method="post" id="searchform" class="col s12">
               <?php
@@ -171,9 +174,9 @@ load_view("Template/navbarnew.php");
         <div class="row"> 
       		<div class="col s12">
       			<div class="card-panel">
-      			  <div class="row">
+      			  <div class="row" style="margin-bottom:0px;">
     						<div class="col s5">
-    						  <h5 class="teal-text text-darken-1"><i class="material-icons left">search</i>Search</h5>
+    						  <h5 class="blue-grey-text text-darken-1">Search Results</h5>
     						</div>
                 <div class="col s3">
                   <img src="photo/icons/loading2.gif" id="searchloadingimg" style="visibility:hidden;" class="right"/>
@@ -215,7 +218,7 @@ load_view("Template/navbarnew.php");
       				<div class="row">
       					<div class="col s12">
       						<img src='photo/icons/loading2.gif' id="loadmoreloadingimg" style='visibility:hidden;' /><br>
-      						<a onclick='ms.searchloadmore(this);' style="cursor:pointer;" id="loadmorebutton" >Load More  </a>
+      						<a onclick='ms.searchloadmore(this);' style="cursor:pointer;" id="loadmorebutton" >View More</a>
       					</div>
       				</div>
       			</div>

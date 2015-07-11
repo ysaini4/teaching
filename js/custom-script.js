@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".dropdown-button").dropdown({hover: false});
+  $(".dropdown-button").dropdown({hover: true});
   $('.dropdown-content').click(function(e) {
     if(!(this.getAttribute("data-closeonclick")=="true")){
       e.stopPropagation();
@@ -34,12 +34,4 @@ $(document).ready(function(){
   $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
-
-  $('.slider').slider({
-    full_width: true,
-    height:350,
-    transition:400,
-    interval:3500
-  });
-
 });

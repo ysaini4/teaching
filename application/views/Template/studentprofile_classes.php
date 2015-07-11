@@ -10,7 +10,7 @@
 			<thead>
 				<tr>
 					<th>Teacher</th>
-					<th>Class</th>
+					<th>Grade</th>
 					<th>Subject</th>
 					<th>Topic</th>
 					<th>Date</th>
@@ -54,7 +54,7 @@
 			<thead>
 				<tr>
 					<th>Teacher</th>
-					<th>Class</th>
+					<th>Grade</th>
 					<th>Subject</th>
 					<th>Topic</th>
 					<th>Date</th>

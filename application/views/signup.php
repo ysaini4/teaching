@@ -10,26 +10,26 @@ $defopen="signupwindow";
     <div class="container">
     <br>
       <div class="row">
-        <div class="col s12 l10 offset-l1">
+        <div class="col s12 l7">
           <div class="card-panel">
             <?php
               load_view('Template/form_errors.php',array("msg"=>$signupmsg));
             ?>
 
-            <div class="row">
-              <div class="col s12 l3 offset-l1">
+            <div class="row no-margin-bottom">
+              <div class="col s12 l4">
                 <h4 class="teal-text text-darken-1 center">Sign Up</h4>
               </div>
               <div class="col s12 l8">
                 <div class="row grey-text">
                   <div class="col s12">
                     <ul>
-                      <li><i class="material-icons tiny left">chevron_right</i>
+                      <li><h6><i class="material-icons tiny left">chevron_right</i>
                         This form is meant only for students.
-                      </li>
-                      <li><i class="material-icons tiny left">chevron_right</i>
+                      </h6></li>
+                      <li><h6><i class="material-icons tiny left">chevron_right</i>
                         All fields are mandatory.
-                      </li>                      
+                      </h6></li>                      
                     </ul>
                   </div>
                 </div>
@@ -37,9 +37,9 @@ $defopen="signupwindow";
             </div>
 
             <div class="row center">
-              <form class="col s12 l10 offset-l1" method="post" onsubmit='return ms.signupform(this,<?php echo tf($_ginfo["needsignupotp"]); ?>);' <?php if($_ginfo["needsignupotp"]) { ?>  data-action='signupotp' data-param='{"phone":$("#signupwindow").find("input[name=phone]").val(), type: "s"}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?>  <?php } ?>  autocomplete="off" >
+              <form class="col s12 l12" method="post" onsubmit='return ms.signupform(this,<?php echo tf($_ginfo["needsignupotp"]); ?>);' <?php if($_ginfo["needsignupotp"]) { ?>  data-action='signupotp' data-param='{"phone":$("#signupwindow").find("input[name=phone]").val(), type: "s"}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?>  <?php } ?>  autocomplete="off" >
                 <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
-                  <div class="row">
+                  <div class="row no-margin-bottom">
                     <div class="input-field col s12 l6">
                       <input id="fullname" name="name" type="text"  data-condition='simple' >
                       <label for="fullname">Full Name</label>
@@ -49,7 +49,7 @@ $defopen="signupwindow";
                       <label for="email">Email</label>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row no-margin-bottom">
                     <div class="input-field col s12 l6">
                       <input id="password" name="password" type="password"  data-condition="simple"  >
                       <label for="password">Password</label>
@@ -63,6 +63,11 @@ $defopen="signupwindow";
                     <div class="input-field col s12">
                       <input id="phone" name="phone" type="text" data-condition="phone">
                       <label for="phone">Mobile Number</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12 grey-text">
+                      By clicking on Submit, you agree to our <a href="<?php echo BASE.'termsofuse'; ?>">Terms of use</a>.
                     </div>
                   </div>
                   <div class="row">
@@ -93,6 +98,30 @@ $defopen="signupwindow";
                   </div>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 l5">
+          <div class="card-panel">
+            <div class="row no-margin-bottom">
+              <div class="col s12 l12">
+                <h5 class="teal-text">Sign up with other platforms</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <a href="<?php echo HOST.'fb2.php'; ?>" class="btn-large waves-effect waves-light blue darken-3" style="width:100%;">
+                  <img src="images/facebook-login-icon.png" width="30" height="35" class="left" style="margin-top:9px;">&nbsp;&nbsp;&nbsp;Sign Up with facebook
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <a href="<?php echo HOST.'gplus.php'; ?>" class="btn-large waves-effect waves-light red darken-1" style="width:100%;">
+                  <img src="images/googleplus-login-icon.png" width="35" height="40" class="left" style="margin-top:9px;">Sign Up with google+
+                </a>
+              </div>
             </div>
           </div>
         </div>

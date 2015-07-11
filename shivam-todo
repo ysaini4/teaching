@@ -1,0 +1,3 @@
+Index page contains a stylesheet "css/custom-homestyle-v2.css" which is
+not included inside the <head> tag.
+
