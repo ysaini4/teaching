@@ -562,7 +562,7 @@
      <div class="file-field input-field">
       <input class="file-path validate" type="text" placeholder="Click to upload file"/>
       <div>
-       <input type="file" name="uploadfile_clgvarification" />
+       <input type="file" name="uploadfile_clgvarification" id="degree_upload_file"/>
       </div>
      </div>
     </div>
@@ -1522,7 +1522,7 @@
      <div class="file-field input-field">
       <input class="file-path validate" type="text" placeholder="Click to upload file"/>
       <div>
-       <input type="file" name="resumefile" />
+       <input type="file" name="resumefile" id="resume_upload_file" />
       </div>
      </div>
     </div>

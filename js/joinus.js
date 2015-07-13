@@ -11,6 +11,19 @@ $("#specify_survey_other").hide();
 
 $("#otp_section").hide();
 
+$("input#degree_upload_file").change(function() {
+  if (this.files[0].size > 2000000) {
+    alert("Maximum file size limit is 2MB");
+    $(this).val('');
+  }
+});
+$("input#resume_upload_file").change(function() {
+  if (this.files[0].size > 2000000) {
+    alert("Maximum file size limit is 2MB");
+    $(this).val('');
+  }
+});
+
 function specifySubOther() {
   $("#specify_sub_other").slideToggle(500);
 }
