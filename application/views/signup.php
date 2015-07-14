@@ -25,9 +25,6 @@ $defopen="signupwindow";
                   <div class="col s12">
                     <ul>
                       <li><h6><i class="material-icons tiny left">chevron_right</i>
-                        This form is meant only for students.
-                      </h6></li>
-                      <li><h6><i class="material-icons tiny left">chevron_right</i>
                         All fields are mandatory.
                       </h6></li>                      
                     </ul>
