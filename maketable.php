@@ -74,6 +74,9 @@ function create(){
 
 	echo Sql::query("create table donefreedemo ( uid int not null, tid int, time int, constraint uniq_likes unique (uid, tid) )");
 
+
+	echo Sql::query("create table msreview ( feedback varchar(3000), time int, ip varchar(20))");
+
 }
 
 //drop_table();
