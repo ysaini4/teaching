@@ -40,11 +40,16 @@ class Students{
 			$outp["ec"] = "-28";
 		} else {
 			$cstinfo["priceused"] = floor(($cstinfo["price"]*count($inpslots))/2);
-			if( $cstinfo["priceused"] > $cstinfo["mymoney"] ) {
+			$isdonedemo = (Sqle::selectVal("donefreedemo", "*", array("tid" => $data["tid"], "uid" => User::loginId()), 1) != null );
+			if( $cstinfo["priceused"] > $cstinfo["mymoney"] && $isdonedemo ) {
 				$outp["ec"] = "-29";
 			} else {
 				$cstinfo["date"] = Fun::timetodate($data["datets"]);
-				Funs::addremmoney(-$cstinfo["priceused"], -1, null, $cstinfo);
+				if($isdonedemo) {
+					Funs::addremmoney(-$cstinfo["priceused"], -1, null, $cstinfo);
+				} else {
+					Sqle::insertVal("donefreedemo", array("tid" => $data["tid"], "uid" => User::loginId(), "time" => time()));
+				}
 				Fun::mailfromfile($cstinfo["studentemail"], "php/mail/classbook_student.txt", $cstinfo);
 				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook.txt", $cstinfo);
 				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook_admin.txt", $cstinfo);
