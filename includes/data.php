@@ -147,9 +147,10 @@ $_ginfo['teacherJsoninfolist']=array('sub','grade','lang');
 
 $_ginfo["adminmailid"] = "himanshu@getiitians.com";
 
-$_ginfo["isrealmail"] = true;
-$_ginfo["isrealmsg"] = true;
-$_ginfo["isrealwiziq"] = true;
+
+$_ginfo["isrealmail"] = (server == "server");
+$_ginfo["isrealmsg"] = (server == "server");
+$_ginfo["isrealwiziq"] = (server == "server");
 
 
 

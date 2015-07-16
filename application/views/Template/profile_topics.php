@@ -3,6 +3,15 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 </script>
 
 <br><br>
+<div>
+<?php
+if(!$isdonedemo) {
+?>
+	Choose a course for free demo.
+<?php
+}
+?>
+</div>
 <div class="row">
 		<?php
 		if(User::loginId()==$tid){

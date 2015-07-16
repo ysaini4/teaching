@@ -71,6 +71,9 @@ function create(){
 
 	echo Sql::query("CREATE TABLE moneyaccount (id int NOT NULL AUTO_INCREMENT, uid int, content varchar(1000), time int, amount int, PRIMARY KEY ( id) ) ");
 
+
+	echo Sql::query("create table donefreedemo ( uid int not null, tid int, time int, constraint uniq_likes unique (uid, tid) )");
+
 }
 
 //drop_table();

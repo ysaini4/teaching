@@ -19,8 +19,7 @@ foreach($qresult as $row) {
           ?>
         </div>
         <div class="grey-text text-darken-2">
-          This will be the short description of the tutor that he/she has provided
-          in his/her profile.
+          <?php echo convchars($row["teachermoto"]); ?>
         </div>
         <!--
         <h6>IIT Delhi</h6>
@@ -37,6 +36,15 @@ foreach($qresult as $row) {
         </span>
       </div>
       <div>
+        <?php
+          if(!$row["isdonedemo"]) {
+        ?>
+        <a href="<?php pit(BASE."profile/".$row["tid"]."/"."5", User::islogin(), BASE."login"); ?>" >
+          <button type="button" class="btn waves-effect waves-light" >Free Demo</button>
+        </a>
+        <?php
+          }
+        ?>
         <a style="cursor:pointer;display:none;">
           <i class="material-icons tiny">bookmark</i>Book Slots
         </a>
