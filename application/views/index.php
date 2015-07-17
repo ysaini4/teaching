@@ -148,14 +148,14 @@ Shivam Mamgain
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
             <div class="work-step-number">3</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:4.5rem;">filter_list</i></div>
-            <div class="opensans-font blue-grey-text" style="font-size:18px;margin-top:6px;">Shortlist using <br><b>Fees</b></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;margin-top:6px;">Shortlist your <br><b>Tutor</b></div>
           </div>
         </div>
         <div class="col s6 l2">
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
             <div class="work-step-number">4</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">event</i></div>
-            <div class="opensans-font blue-grey-text" style="font-size:18px;">Book <br><b>Slots</b></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;">Book his <br><b>Slot</b></div>
           </div>
         </div>
         <div class="col s12 l2">
