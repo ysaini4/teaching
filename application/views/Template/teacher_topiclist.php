@@ -5,7 +5,7 @@
 						<td><?php echo $row["classname"]; ?></td>
 						<td><?php echo $row["subjectname"]; ?></td>
 						<td><?php echo $row["topicname"]; ?></td>
-						<td><?php echo $row["timer"]."h"; ?></td>
+						<td style="display:none"><?php echo $row["timer"]."h"; ?></td>
 						<td>&#8377;<?php echo $row["price"]; ?></td>
 					<?php
 					if($tid==User::loginId()){
