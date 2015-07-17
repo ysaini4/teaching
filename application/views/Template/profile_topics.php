@@ -41,7 +41,7 @@ if(!$isdonedemo) {
 							</select>
 						</div>
 						<div class="input-field col s12" style="display:none">
-							<input id="duration" type="text" class="validate" name="timer" data-condition='simple' >
+							<input id="duration" type="text" class="validate" name="timer">
 							<label for="duration">Class duration (in hrs)</label>
 						</div>
 						<div class="input-field col s12">
