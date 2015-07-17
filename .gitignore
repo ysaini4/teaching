@@ -4,3 +4,4 @@ data/mailf
 data/msgf
 msv
 .msv*
+serverkey.pem

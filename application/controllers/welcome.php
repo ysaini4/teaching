@@ -240,13 +240,14 @@ class Welcome extends CI_Controller {
 					$topicinfo["class_olist"]=Funs::cst_tree2classlist($cst_tree);
 					$topicinfo["mysubj"]=Sql::getArray("select subjects.*,all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id=subjects.c_id left join all_subjects on all_subjects.id=subjects.s_id left join all_topics on all_topics.id=subjects.t_id where tid=?",'i',array(&$tid));
 					$pageinfo=array();
-					$pageinfo["aboutinfo"]=Sqle::getRow("select teachers.*,users.* from teachers left join users on users.id=teachers.tid where teachers.tid=? limit 1",'i',array(&$tid));
+					$pageinfo["aboutinfo"]=Sqle::getR("select teachers.*, users.*, takendemo.isdonedemo from teachers left join users on users.id=teachers.tid left join ".qtable("takendemo")." on takendemo.tid = teachers.tid where teachers.tid={tid} limit 1", array("tid" => $tid, "uid" => 0+User::loginId()));
 					if($pageinfo["aboutinfo"]==null){
 							Fun::redirect(HOST);
 					}
 					$pageinfo["calinfo"]=Funs::get_teacher_cal_info($tid);
 					$pageinfo["myclasses"] = Funs::get_teacher_classes($tid);
 					$pageinfo["topicinfo"]=$topicinfo;
+					$pageinfo["topicinfo"]["isdonedemo"] = $pageinfo["aboutinfo"]["isdonedemo"];
 					$pageinfo["tid"]=$tid;
 					$pageinfo["tabid"]=$tabid;
 					$tempArr=explode(' ',$pageinfo['aboutinfo']['name']);

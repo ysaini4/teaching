@@ -340,7 +340,8 @@ abstract class Funs{
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
 		$hisoutput = Funs::mssearch($data);
-		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
+		$hisoutput[1]["uid"] = (0+User::loginId());
+		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, takendemo.isdonedemo, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.teachermoto, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid left join ".qtable("takendemo")." on takendemo.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
 	}
 	public static function get_teacher_classes($tid) {
@@ -504,6 +505,38 @@ abstract class Funs{
 		$mail->IsHTML(true); // send as HTML
 
 		return $mail->Send();
+	}
+
+	public static function bkvas_tinfo($row){
+		global $_ginfo;
+
+		$jsonArray=str2json($row['jsoninfo']);
+		mergeifunset($row, Fun::getflds($_ginfo['teacherJsoninfo'], $jsonArray));
+
+		foreach ($_ginfo['teacherJsoninfolist'] as $key1 => $value1) {
+			if(isset($jsonArray[$value1]) || isset($row[$value1])) {
+				if(isset($jsonArray[$value1])) 
+					$field=$jsonArray;
+				else 
+					$field=$row;
+				$subArray=array();
+				$count=count($_ginfo['encodeddataofteacherstable'][$value1]);
+				$subjects=intexplode_t2('-',$field[$value1],$count);
+				foreach ($subjects as $key => $value) {
+					if($value==$count) {
+						$str=$value1.'other';
+						if($field[$str]!='')
+							$subArray[]=htmlspecialchars($field[$str]);
+					}
+					else 
+						$subArray[]=$_ginfo['encodeddataofteacherstable'][$value1][$value-1];
+				}
+				$name=$value1.'_name';
+				$row[$name]=$subArray;
+			}
+		}
+		unset($row['jsoninfo']);
+		return $row;
 	}
 
 }

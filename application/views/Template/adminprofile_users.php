@@ -37,6 +37,11 @@ $tfunc = function($r, $c) use($addmoney, $allusers) {
 		return true;
 	} else if ($c == 4 && $r > 0) {
 		$addmoney( $allusers["teachers"][$r-1]["id"] );
+	} else if ($c == 0 && $r > 0) {
+		?>
+			<a href='<?php echo BASE."profile/".$allusers["teachers"][$r-1]["id"]; ?>' ><?php echo $allusers["teachers"][$r-1]["name"]; ?></a>
+		<?php
+		return true;
 	}
 	return null;
 };

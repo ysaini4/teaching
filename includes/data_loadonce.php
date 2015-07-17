@@ -45,5 +45,7 @@ $_ginfo["query"]["allreviews"] = "select rate, feedback, tid, sid, users.name as
 
 $_ginfo["query"]["teacherratings"] = "select tid, avg(rate) as avgrating, count(rate) as numpeople from booked where rate is not null group by tid";
 
+$_ginfo["query"]["takendemo"] = "select teachers.tid, (donefreedemo.uid is not null) as isdonedemo from teachers left join donefreedemo on (donefreedemo.tid = teachers.tid AND donefreedemo.uid = {uid} ) ";
+
 
 ?>

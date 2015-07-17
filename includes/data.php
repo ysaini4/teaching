@@ -138,11 +138,20 @@ $_ginfo["moneyaccount"] = array(
 	"-6" => "You added in account of {name}({type})"
 );
 
+$_ginfo['teacherJsoninfo']=array("college","subother","minfees","resume", "calvarification", "degree","degreeother","branch","city","zipcode","state","country","linkprofile","feedback","knowaboutusother","sub","grade","knowaboutus","home");
+$_ginfo['teacherInfo']=array("tid","iit","iitentryyear","degree","experience","addinfo","isselected","rate","youtubelink","jsoninfo","teachingexp","lang","teachermoto");
+$_ginfo['teacherJsoninfolist']=array('sub','grade','lang');
+
+
+
 
 $_ginfo["adminmailid"] = "himanshu@getiitians.com";
 
-$_ginfo["isrealmail"] = true;
-$_ginfo["isrealmsg"] = true;
-$_ginfo["isrealwiziq"] = true;
+
+$_ginfo["isrealmail"] = (server == "server");
+$_ginfo["isrealmsg"] = (server == "server");
+$_ginfo["isrealwiziq"] = (server == "server");
+
+
 
 ?>
