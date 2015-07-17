@@ -141,7 +141,7 @@ load_view("Template/navbarnew.php");
                       </div>
                     </li>
                     <li>
-                      <div class="collapsible-header">Duration</div>
+                      <div class="collapsible-header" style="display:none">Duration</div>
                       <div class="collapsible-body" style="padding:10px;">
                         <?php
                           $count=1;
