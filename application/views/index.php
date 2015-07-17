@@ -148,7 +148,7 @@ Shivam Mamgain
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
             <div class="work-step-number">3</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:4.5rem;">filter_list</i></div>
-            <div class="opensans-font blue-grey-text" style="font-size:18px;margin-top:6px;">Shortlist using <br><b>Reviews</b></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;margin-top:6px;">Shortlist using <br><b>Fees</b></div>
           </div>
         </div>
         <div class="col s6 l2">
@@ -362,53 +362,59 @@ Shivam Mamgain
       </div>
       <div class="row center" style="margin-bottom:0px">
         <div class="col s12" style="line-height:250%;">
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Current Electricity</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Repiratory System</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Maps</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Integers</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Environment</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Lanthanides</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Plant Nutrition</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Chemical Reaction and Equatio</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Acides</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Bases</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Salts</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Metals</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Non-metals</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Real Number</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Polynomials</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Pair of Linear Eqations in Tw</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Sets</a>
         </div>
       </div>
       <div class="row center" style="margin-bottom:0px">
         <div class="col s12" style="line-height:250%;">
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Acids and Bases</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Transportation</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Functions</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Relations</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Trigometric Functions</a>
           <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Our Earth</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Psychology</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Exponents and Powers</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Microorganisms</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Friction</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Some Basic Concepts of Chemist</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Structure of Atom</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Classification of Elements</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Physical World</a>
         </div>
       </div>
       <div class="row center" style="margin-bottom:0px">
         <div class="col s12" style="line-height:250%;">
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">.NET</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Industries</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Digital Logics</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Agriculture</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Civil Rights</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Graphs</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Linear Equations</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Pollution</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Units and Measurement</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Motion in a straight Line</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Matrices</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">The Solid State</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Solutions</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Electrochemistry</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Electric Charges and Fields</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Electrostatic potential and Cs</a>
         </div>
       </div>
       <div class="row center" style="margin-bottom:0px">
         <div class="col s12" style="line-height:250%;">
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Judiciary</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Minerals</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Force</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Carbon Compounds</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Magnetism</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Political Parties</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Java</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Current Electricity</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Complex Number</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Deteerminants</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">States of Matter</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Physics and Measurement</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Kinematics</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Lawn of Motion</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Permutations</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Combinations</a>
         </div>
       </div>
       <div class="row center" style="margin-bottom:0px">
         <div class="col s12" style="line-height:250%;">
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Momentum Transfer</a>
-          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Democratic Socialism</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Gaseous</a>
+          <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link">Liquid State</a>
           <a href="<?php echo BASE.'search'; ?>" class="hoverable course-link" style="background-color:#00796b;color:#ffffff;">
             And Many More +
           </a>
