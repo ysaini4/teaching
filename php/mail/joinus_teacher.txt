@@ -1,2 +1,5 @@
+Welcome to getIITians
 Dear {teachername},
-Thank you for registering with getIITians. Our representative will soon get in touch with you. 
+Thank you for registering with getIITians. Pleases login and upload your pic, topics and time you are available to teach. We will soon get in touch with you for a short interview. Post interview your profile will be hosted on teacher list of our website.
+
+Thank You

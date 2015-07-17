@@ -82,6 +82,10 @@ class Students{
 		if($slotinfo!=null) {
 			Funs::addremmoney($slotinfo["classcharge"], -5, $data["tid"], $slotinfo);
 			$outp["data"] = Sqle::updateVal("booked", Fun::getflds( array("feedback", "rate"), $data), Fun::setifunset( Fun::getflds( array("tid", "starttime"), $data ), "sid", User::loginId() )  );
+			$stinfo = Sqle::getR("select users.name as teachername, users.email as temail, users1.name as studentname, users1.email as semail from users, users as users1 where users.id={tid} AND users1.id={sid} limit 1" , $data);
+			Fun::mailfromfile($stinfo["temail"], "php/mail/review_teacher.txt", $stinfo);
+			Fun::mailfromfile($stinfo["semail"], "php/mail/review_student.txt", $stinfo);
+			Fun::mailfromfile(gi("adminmailid"), "php/mail/review_admin.txt", $stinfo);
 		}
 		return $outp;
 	}

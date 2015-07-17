@@ -26,12 +26,12 @@ $tfunc = function($r, $c) use($addmoney, $allusers) {
 		$row = $allusers["teachers"][$r-1];
 		if($row["isselected"] != "a") {
 		?>
-		<button type="button" onclick='button.sendreq_v2(this);div.reload($("#tab_users")[0]);' data-isselected='a' data-tid="<?php echo $row["id"]; ?>" data-action="acceptrej" class="btn blue waves-effect waves-light" >Accept</button>
+		<button type="button" onclick='button.sendreq_v2(this);' data-isselected='a' data-tid="<?php echo $row["id"]; ?>" data-action="acceptrej" class="btn blue waves-effect waves-light" data-res='div.reload($("#tab_users")[0]);' >Accept</button>
 		<?php
 		}
 		if($row["isselected"] != "r" ) {
 		?>
-		<button type="button" class="btn blue waves-effect waves-light" onclick='button.sendreq_v2(this);div.reload($("#tab_users")[0]);' data-isselected='r' data-tid="<?php echo $row["id"]; ?>" data-action="acceptrej" >Reject</button>
+		<button type="button" class="btn blue waves-effect waves-light" onclick='button.sendreq_v2(this);' data-isselected='r' data-tid="<?php echo $row["id"]; ?>" data-action="acceptrej" data-res='div.reload($("#tab_users")[0]);' >Reject</button>
 		<?php
 		}
 		return true;
