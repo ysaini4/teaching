@@ -194,9 +194,9 @@ load_view("Template/navbarnew.php");
       
       <!-- Begin Search Panel -->
       <div id="mainContent">
-        <div class="row"> 
+        <div class="row">
       		<div class="col s12">
-      			<div class="card-panel">
+      			<div class="card-panel" style="padding:10px;">
       			  <div class="row" style="margin-bottom:0px;">
     						<div class="col s12 m6 l6">
     						  <h5 class="blue-grey-text text-darken-1">Search Results</h5>
