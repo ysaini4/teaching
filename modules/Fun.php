@@ -393,7 +393,7 @@ abstract class Fun{
 		}
 	}
 
-	public static function mailfromfile($to,$mfile,$data) {
+	public static function mailfromfile($to,$mfile,$data = array()) {
 		list($subj, $body) = Fun::readmail($mfile);
 		return Fun::mail( $to, $subj, rquery($body, $data) );
 	}

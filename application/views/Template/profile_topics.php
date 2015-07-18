@@ -40,8 +40,8 @@ if(!$isdonedemo) {
 								<option value="" >Please select subject first</option>
 							</select>
 						</div>
-						<div class="input-field col s12">
-							<input id="duration" type="text" class="validate" name="timer" data-condition='simple' >
+						<div class="input-field col s12" style="display:none">
+							<input id="duration" type="text" class="validate" name="timer">
 							<label for="duration">Class duration (in hrs)</label>
 						</div>
 						<div class="input-field col s12">
@@ -67,8 +67,8 @@ if(!$isdonedemo) {
 					<tr>
 						<th data-field="class">Grade</th>
 						<th data-field="subject">Subject</th>
-						<th data-field="topic">Topic</th>
-						<th data-field="duration">Duration (hrs)</th>
+						<th data-field="topic" >Topic</th>
+						<th data-field="duration" style="display:none">Duration (hrs)</th>
 						<th data-field="fees">Fees</th>
 						<th data-field=""></th>
 					</tr>

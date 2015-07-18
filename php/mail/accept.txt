@@ -1,0 +1,5 @@
+Teacher Accepted
+Dear Admin,
+Currently there are {nooft} teachers are on search page.
+
+Thank you

@@ -1,0 +1,5 @@
+Contact
+Dear admin,
+{name}, {phone}, {email},
+Wants to contact u.
+{msg}
