@@ -498,7 +498,7 @@
 		$qoutput["load_view"]=$action_spec["load_view"];
 		return $qoutput;
 	}
-	function handle_disp($post_data,$actionarg=null){
+	function handle_disp($post_data,$actionarg=null){ 
 		global $_ginfo;
 		if($actionarg!=null)
 			$post_data["action"]=$actionarg;
@@ -508,8 +508,8 @@
 			$isvalid=isvalid_action($post_data);
 			if(!($isvalid>0))
 				$outp["ec"]=$isvalid;
-			else{
-				$func=$post_data["action"];
+			else{ 
+				$func=$post_data["action"]; 
 				if( method_exists($a,$post_data["action"])){
 					$a->$func($post_data,$actionarg==null);
 					return;

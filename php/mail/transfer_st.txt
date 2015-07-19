@@ -1,3 +1,3 @@
 Got money
 Dear {name},
-Rupees {amount} has been credited in your getIITians account.
+Rupees {amount} has been credited in your getIITians account.You can easily book teachers slot now.Thank you

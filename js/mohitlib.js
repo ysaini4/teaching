@@ -246,7 +246,7 @@ var form={
 			
 		}});
 	},
-	sendreq1:function(obj,bobj){
+	sendreq1:function(obj,bobj){ 
 		if(bobj.disabled)
 			return;
 		var allattrs=button.attrs(obj);
@@ -286,7 +286,7 @@ var form={
 			
 		}});
 	},
-	req:function(obj){
+	req:function(obj){ 
 		form.sendreq1(obj, $(obj).find("button[type=submit]")[0]);
 		return false;
 	},

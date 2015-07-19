@@ -115,9 +115,10 @@ class Help  extends Sql{
 		//Validate Phone Number first
 		//eliminate every char except 0-9
 		$justNums = preg_replace("/[^0-9]/", '', $data['phone']);
+		
 
 		//if we have 10 digits left, it's probably valid.
-		if (!(strlen($justNums) == 10)) return false;
+		if (!((strlen($justNums) == 10)&&(strlen($data['msg'])<=100))) return false;
 
 		return (preg_match("/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/",$data['email']) && $data['name']!="" &&	$data['msg']!="" );
 	}
