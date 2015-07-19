@@ -380,9 +380,9 @@ abstract class Fun{
 		return chmod($add["file"],0777);
 	}
 
-	public static function mail($to,$sub,$body,$add=array()){//to be replace
+	public static function mail($to,$sub,$body,$add=array()){ //to be replace 
 		Fun::dummymm($to,$sub,$body,Fun::mergeifunset($add, array("file"=>"data/mailf")));
-		if(gi("isrealmail")) {
+		if(gi("isrealmail")) { 
 			return Funs::sendmail($to, $sub, $body);
 		}
 	}
@@ -393,7 +393,7 @@ abstract class Fun{
 		}
 	}
 
-	public static function mailfromfile($to,$mfile,$data = array()) {
+	public static function mailfromfile($to,$mfile,$data = array()) { 
 		list($subj, $body) = Fun::readmail($mfile);
 		return Fun::mail( $to, $subj, rquery($body, $data) );
 	}

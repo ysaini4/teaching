@@ -113,6 +113,7 @@ class Actions{
 				$outp["ec"]=$temp;
 			} else {
 				Fun::mailfromfile( $signup_data["email"], "php/mail/signupmail.txt", $signup_data );
+				Fun::mailfromfile( gi("adminmailid"), "php/mail/signup_admin.txt", $signup_data);
 			}
 		}
 		return $outp;

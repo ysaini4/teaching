@@ -476,7 +476,7 @@ abstract class Funs{
 		return $pageinfo;
 	}
 
-	public static function sendmail($to, $subject, $body) {
+	public static function sendmail($to, $subject, $body) {  
 		$mail             = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->SMTPAuth   = true;                  // enable SMTP authentication
