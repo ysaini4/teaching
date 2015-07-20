@@ -85,7 +85,7 @@ class Actions{
 
 	function signupotp($data){
 		$outp=array("ec"=>1,"data"=>0);
-		$outp["ec"]=Funs::otpstore($data["phone"], ($data["type"]=='s' ? "User" : "Teacher") );
+		$outp["ec"]=Funs::otpstore($data["phone"],$data["name"]);
 		return $outp;
 	}
 

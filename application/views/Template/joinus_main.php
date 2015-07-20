@@ -20,10 +20,10 @@
      </span>
     </div>
     <div class="col s12 l4">
-     <input placeholder="First Name" type="text" class="validate" name="fname" data-condition="simple" length="30"/>
+     <input placeholder="First Name" type="text" class="validate" name="fname" data-condition="simple" length="30"  />
     </div>
     <div class="col s12 l4">
-     <input placeholder="Last Name" type="text" class="validate" name="lname" data-condition="simple" length="30"/>
+     <input placeholder="Last Name" type="text" class="validate" name="lname" data-condition="simple" length="30" />
     </div>
    </div>
    <div class="row">
@@ -41,7 +41,7 @@
     </div>
     <div class="col s12 l4">
      <div>
-      <input id="math" type="checkbox" name="sub1" data-condition="checkbox" data-group="sub" />
+      <input id="math" type="checkbox" name="sub1" data-condition="checkbox" data-group="sub"  />
       <label for="math">
        Mathematics
       </label>
@@ -96,7 +96,7 @@
     </div>
     <div class="col s12 l4">
      <div>
-      <input id="6to8" type="checkbox" name="grade1" data-condition="checkbox" data-group="grade" />
+      <input id="6to8" type="checkbox" name="grade1" data-condition="checkbox" data-group="grade"  />
       <label for="6to8">
        6
        <sup>
@@ -162,7 +162,7 @@
       <option value="" disabled="disabled" selected="selected">
        Select
       </option>
-      <option value="200">
+      <option value="200"  >
        &#8377; 200
       </option>
       <option value="300">
@@ -224,7 +224,7 @@
       <option value="" disabled="disabled" selected="selected">
        Select
       </option>
-      <option value="0">
+      <option value="0" >
        None
       </option>
       <option value="1">
@@ -335,7 +335,7 @@
     </div>
     <div class="col s12 l4">
      <div>
-      <input id="lang1" type="checkbox" name="lang1" data-condition="checkbox" data-group="lang" />
+      <input id="lang1" type="checkbox" name="lang1" data-condition="checkbox" data-group="lang"  />
       <label for="lang1">
        English
       </label>
@@ -542,7 +542,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="e.g. Electrical Engineering" type="text" class="validate" name="branch" data-condition="simple" length="30"/>
+     <input placeholder="e.g. Electrical Engineering" type="text" class="validate" name="branch" data-condition="simple" length="30"  />
     </div>
    </div>
    <div class="row" style="display:none" >
@@ -577,7 +577,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="e.g. example@example.com" type="email" class="validate" name="email" data-condition="email" />
+     <input placeholder="e.g. example@example.com" type="email" class="validate" name="email" data-condition="email"   />
     </div>
    </div>
    <div class="row">
@@ -593,7 +593,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="Password" type="password" class="validate" id="password" name="password" data-condition="simple"  />
+     <input placeholder="Password" type="password" class="validate" id="password" name="password" data-condition="simple"   />
     </div>
    </div>
    <div class="row">
@@ -606,7 +606,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="Re-enter Password" type="password" class="validate" name="cpassword" data-condition="password"  />
+     <input placeholder="Re-enter Password" type="password" class="validate" name="cpassword" data-condition="password"   />
     </div>
    </div>
    <div class="row">
@@ -623,7 +623,7 @@
      </span>
     </div>
     <div class="col s6 l4">
-     <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone" data-condition="phone" pattern="[0-9]*.{10,}" title="Must contain numbers only">
+     <input placeholder="98xxxxxxxx" type="tel" class="validate" id="phonenumber" name="phone" data-condition="phone" pattern="[0-9]*.{10,}" title="Must contain numbers only" >
     </div>
    </div>
    <div class="row">
@@ -688,7 +688,7 @@
     </div>
     <div class="col s12 l4">
      <div>
-      <input id="home1" type="radio" name="home1" />
+      <input id="home1" type="radio" name="home1"  />
       <label for="home1">
        Yes
       </label>
@@ -712,18 +712,18 @@
     </div>
     <div class="col s12 l4">
      <div>
-      <input placeholder="City" type="text" class="validate" name="city" data-condition="simple" />
+      <input placeholder="City" type="text" class="validate" name="city" data-condition="simple"  />
      </div>
      <div>
-      <input placeholder="Postal/Zip Code" type="text" class="validate" name="zipcode" data-condition="simple" />
+      <input placeholder="Postal/Zip Code" type="text" class="validate" name="zipcode" data-condition="simple"  />
      </div>
     </div>
     <div class="col s12 l4">
      <div>
-      <input placeholder="State/Province" type="text" class="validate" name="state" data-condition="simple" />
+      <input placeholder="State/Province" type="text" class="validate" name="state" data-condition="simple"  />
      </div>
      <select name="country" class="browser-default" data-condition="simple">
-      <option value="" disabled="disabled" selected="selected">
+      <option value="" disabled="disabled" selected="selected" >
        Country
       </option>
       <option value="Afghanistan">
@@ -1473,7 +1473,7 @@
     </div>
     <div class="col s12 l4">
      <div>
-      <input id="source1" type="checkbox" name="knowaboutus1" data-condition="checkbox" data-group="knowaboutus" />
+      <input id="source1" type="checkbox" name="knowaboutus1" data-condition="checkbox" data-group="knowaboutus"/>
       <label for="source1">
        Facebook
       </label>

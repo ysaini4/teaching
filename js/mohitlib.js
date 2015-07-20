@@ -249,20 +249,20 @@ var form={
 	sendreq1:function(obj,bobj){ 
 		if(bobj.disabled)
 			return;
-		var allattrs=button.attrs(obj);
+		var allattrs=button.attrs(obj); 
 		var allattrsb=button.attrs(bobj);
 
-		var params=getFormInputs(obj,'action');
-		if(button.hasattr(allattrs,'data-param')){
-			eval("var addparam="+allattrs['data-param']);
-			others.mergeifunset(params,addparam);
+		var params=getFormInputs(obj,'action'); 
+		if(button.hasattr(allattrs,'data-param')){ 
+			eval("var addparam="+allattrs['data-param']); 
+			others.mergeifunset(params,addparam);  
 		}
 
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"]; 
 		bobj.disabled=true;
 		var prvvalue=bobj.innerHTML;
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
-		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){
+		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){ 
 			bobj.disabled=false;
 			var respo=button.parse(d);
 			bobj.innerHTML=prvvalue;
@@ -317,7 +317,7 @@ var form={
 		},
 		action:function(obj, type){
 			var temp=form.valid.is(obj);
-			var errors=temp[0];
+			var errors=temp[0]; 
 			var objlist=temp[1];
 			if(errors.length>0){
 				if(type==1){

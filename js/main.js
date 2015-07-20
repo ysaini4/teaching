@@ -204,10 +204,10 @@ var ms={
 		else
 			return false;
 	},
-	signupform:function(obj,needotp){
-		if(needotp){
-			if($("#signupwindow").is(":visible")){
-				if(form.valid.action1(  $("#signupwindow")[0]  )){
+	signupform:function(obj,needotp){ 
+		if(needotp){ 
+			if($("#signupwindow").is(":visible")){ 
+				if(form.valid.action1(  $("#signupwindow")[0]  )){   
 					form.sendreq1(obj, $("#signupwindow").find("button[type=submit]")[0] );
 				}
 				return false;
