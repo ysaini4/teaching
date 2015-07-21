@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 		}
 
 		if(Fun::isSetP("fname", "lname", "email", "phone", "password", "subother", "degreeother","branch","dob","city","zipcode","state","linkprofile","feedback")){
-			$pageinfo["issubmitted"]=true;
+			$pageinfo["issubmitted"]=true; 
 			$_POST=Fun::mergeifunset($_POST,array("degree"=>"","college"=>"","resume"=>"","calvarification"=>"","minfees"=>"","country"=>"", "teachingexp" => "", "gender" => ""));
 			$_POST['name']=$_POST["fname"]." ".$_POST["lname"];
 			$temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"],"dob"=>Fun::strtotime_t3($_POST["dob"]),"gender"=>$_POST["gender"]));
@@ -142,8 +142,7 @@ class Welcome extends CI_Controller {
 		load_view("login.php",$pageinfo);
 	}
 
-	public function signup(){ 
-
+	public function signup(){  
 		$handle_signup=handle_request(Fun::mergeifunset($_POST, array("action"=>"signup")));
 		if($handle_signup["ec"]>0) {
 			Fun::redirect(BASE."profile");

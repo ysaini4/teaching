@@ -19,7 +19,7 @@ var button={
 		try{
 			return JSON.parse(d);
 		}catch(e){
-			mohit.alert("Unexpected error! ");
+			mohit.alert("Unexpected error!");
 			return null;
 		}
 	},
@@ -218,7 +218,7 @@ var form={
 		var allattrsb=button.attrs(bobj);
 
 		var params=getFormInputs(obj,'action');
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"]; 
 		bobj.disabled=true;
 		var prvvalue=bobj.innerHTML;
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
@@ -252,7 +252,7 @@ var form={
 		var allattrs=button.attrs(obj); 
 		var allattrsb=button.attrs(bobj);
 
-		var params=getFormInputs(obj,'action'); 
+		var params=getFormInputs(obj,'action');
 		if(button.hasattr(allattrs,'data-param')){ 
 			eval("var addparam="+allattrs['data-param']); 
 			others.mergeifunset(params,addparam);  
@@ -260,13 +260,13 @@ var form={
 
 		params['action']=allattrs["data-action"]; 
 		bobj.disabled=true;
-		var prvvalue=bobj.innerHTML;
+		var prvvalue=bobj.innerHTML; 
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
 		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){ 
-			bobj.disabled=false;
+			bobj.disabled=false; 
 			var respo=button.parse(d);
-			bobj.innerHTML=prvvalue;
-			if(respo){
+			bobj.innerHTML=prvvalue; 
+			if(respo){ 
 				if(respo.ec<0){
 					if(button.hasattr(allattrs,"data-error")){
 						var ec=respo.ec;
@@ -282,7 +282,7 @@ var form={
 						eval(allattrs["data-res"]);
 					}
 				}
-			}
+			} 
 			
 		}});
 	},
