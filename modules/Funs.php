@@ -119,7 +119,7 @@ abstract class Funs{
 						$datets=$timestamp+($count-1)*3600*24;
 						$cellinfo["date"]=$count;
 						$cellinfo["text"]=$count;
-						if($datets>time()-3600*24)
+						if($datets>time())
 							$cellinfo["tdparams"]=array("data-datets"=>$datets,"data-tid"=>$tid,"data-action"=>"daytspopup","onclick"=>"opencalpopup(this);");
 						if(isset($dailymap[$count])){
 							$cellinfo["dispslots"]=Funs::slottext($dailymap[$count]);
