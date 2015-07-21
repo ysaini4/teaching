@@ -275,6 +275,7 @@ var ms={
 		selectedtopic=cst;
 		$("#profiletabs2").click();
 		Materialize.toast($(obj).attr("data-topictext")+' is selected, now select the time.', 10000);
+		Materialize.toast('You can book your class from tomorrow.',12000);
 	},
 	openreviewform: function(obj, tid, starttime) {
 		mohit.popup('writereview');
