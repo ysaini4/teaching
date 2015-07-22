@@ -6,7 +6,7 @@ class Admin{
 		$t_cntr=array();
 		$total_teacher=Sqle::getRow("select count(*) as teacher from teachers");
 		$accepted_teacher=Sqle::getRow("select count(*) as teacher from teachers where isselected='a'");
-		$t_cntr['nooft']=$total_teacher['teacher'].'/'.$accepted_teacher['teacher'];
+		$t_cntr['nooft']=$accepted_teacher['teacher'].'/'.$total_teacher['teacher'];
 		Fun::mailfromfile( gi("adminmailid"), (($data["isselected"]=='a') ? "php/mail/accept.txt":"php/mail/reject.txt"),$t_cntr);
 		$tinfo = User::userProfile($data["tid"]);
 		Fun::mailfromfile( $tinfo["email"] , (($data["isselected"]=='a') ? "php/mail/accept_teacher.txt":"php/mail/reject_teacher.txt"), $tinfo);
