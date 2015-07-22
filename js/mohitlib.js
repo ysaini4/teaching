@@ -64,7 +64,7 @@ var button={
 			
 		}});
 	},
-	sendreq_v2:function(obj){
+	sendreq_v2:function(obj){ 
 		var allattrs=this.attrs(obj);
 		if(!button.hasattr(allattrs,"data-params"))
 			var params=this.tosendattrs(obj,allattrs);
@@ -75,7 +75,7 @@ var button={
 			eval("var eparams="+allattrs["data-eparams"]);
 			params=others.mergeifunset(params,eparams);
 		}
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"]; 
 		obj.disabled=true;
 		var prvvalue=obj.innerHTML;
 		obj.innerHTML=(!button.hasattr(allattrs,"data-waittext"))?' ... ':(allattrs["data-waittext"]==''?prvvalue:allattrs["data-waittext"]);

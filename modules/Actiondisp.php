@@ -170,7 +170,7 @@ class Actiondisp{
 			echo json_encode($outp)."\n";
 		if($outp["ec"] < 0)
 			return;
-		$pageinfo = array();
+		$pageinfo = array(); 
 		$pageinfo["allusers"] = array(
 			"teachers" => Sqle::getA("select teachers.isselected, users.* from users left join teachers on teachers.tid = users.id where users.type='t' order by users.create_time desc"),
 			"students" => Sqle::getA("select users.* from users where type='s' order by users.create_time")

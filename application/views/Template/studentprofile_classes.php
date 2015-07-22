@@ -22,7 +22,7 @@
 
 			<tbody>
 				<?php
-					foreach($newslots as $i => $row) {
+					foreach($newslots as $i => $row) { 
 				?>
 				<tr>
 					<td><?php echo $row["teachername"] ?></td>

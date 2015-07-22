@@ -4,7 +4,7 @@ var topics=<?php echo json_encode($cst_tree); ?>;
 
 <br><br>
 <div>
-<?php
+<?php 
 if(!$isdonedemo) {
 ?>
 	Choose a course for free demo.

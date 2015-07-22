@@ -323,7 +323,7 @@ abstract class Funs{
 		$newslots = Funs::classeslist_filter(Sqle::getA(qtable("stdbookedclasses_new", false), array("sid" => $sid)));
 		$pageinfo=array("fname"=>$flname[0],"lname"=>$flname[1],"sinfo"=>$sinfo,"dob"=>$dob, "sid" => $sid, "newslots" => $newslots, "oldslots" => $oldslots);
 		$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where sid={sid} ", array("sid" => User::loginId()));
-		mergeifunset($pageinfo, Funs::moneyaccount($sid));
+		mergeifunset($pageinfo, Funs::moneyaccount($sid)); 
 		return $pageinfo;
 	}
 	public static function doublesplit($inp){
