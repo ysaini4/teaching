@@ -1,4 +1,4 @@
-<?php
+<?php  
 setifnn($width, (count($rows)==0 ? 0 : count($rows[0])) );
 setifnn($height,  count($rows)  );
 if($height > 0 ) {

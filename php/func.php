@@ -509,7 +509,7 @@
 			if(!($isvalid>0))
 				$outp["ec"]=$isvalid;
 			else{ 
-				$func=$post_data["action"]; 
+				$func=$post_data["action"];  
 				if( method_exists($a,$post_data["action"])){ 
 					$a->$func($post_data,$actionarg==null);
 					return;

@@ -6,7 +6,6 @@ $trows = add(array(array("Name", "Email", "Phone", "Action", "Add money")), map(
 $srows = add(array(array("Name", "Email", "Phone", "Action", "Add money")), map( $allusers["students"], function ($row) { 
 	return Fun::get_key_values(Fun::getflds(array("name", "email", "phone"), $row)); 
 }));
-
 $addmoney = function($uid) {
 ?>
 	<form onsubmit="form.req(this);return false;" data-action='addmoney' data-res='success.push("Added Successfully");div.reload($("#tab_account")[0]);' >

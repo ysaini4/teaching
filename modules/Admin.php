@@ -3,7 +3,11 @@ class Admin{
 	function acceptrej($data){
 		$odata = array('ec'=>1, 'data'=>0);
 		$odata = Sqle::updateVal("teachers", array("isselected"=>$data["isselected"]), array("tid"=>$data["tid"]));
-		Fun::mailfromfile( gi("adminmailid"), (($data["isselected"]=='a') ? "php/mail/accept.txt":"php/mail/reject.txt"));
+		$t_cntr=array();
+		$total_teacher=Sqle::getRow("select count(*) as teacher from teachers");
+		$accepted_teacher=Sqle::getRow("select count(*) as teacher from teachers where isselected='a'");
+		$t_cntr['nooft']=$total_teacher['teacher'].'/'.$accepted_teacher['teacher'];
+		Fun::mailfromfile( gi("adminmailid"), (($data["isselected"]=='a') ? "php/mail/accept.txt":"php/mail/reject.txt"),$t_cntr);
 		$tinfo = User::userProfile($data["tid"]);
 		Fun::mailfromfile( $tinfo["email"] , (($data["isselected"]=='a') ? "php/mail/accept_teacher.txt":"php/mail/reject_teacher.txt"), $tinfo);
 		return $odata;
