@@ -23,7 +23,7 @@ class AddAttendee
 			<attendee>
 			  <attendee_id><![CDATA[".$add_details["student_id"]."]]></attendee_id>
 			  <screen_name><![CDATA[".$add_details["student_name"]."]]></screen_name>
-                          <language_culture_name><![CDATA[es-ES]]></language_culture_name>
+                          <language_culture_name><![CDATA[en-US]]></language_culture_name>
 			</attendee>
 		  </attendee_list>";
 		$method = "add_attendees";
