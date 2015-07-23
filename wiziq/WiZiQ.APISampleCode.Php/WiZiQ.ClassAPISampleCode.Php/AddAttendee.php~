@@ -11,12 +11,12 @@ class AddAttendee
 			<attendee>
 			  <attendee_id><![CDATA[101]]></attendee_id>
 			  <screen_name><![CDATA[john]]></screen_name>
-                          <language_culture_name><![CDATA[es-ES]]></language_culture_name>
+                          <language_culture_name><![CDATA[en-US]]></language_culture_name>
 			</attendee>
 			<attendee>
 			  <attendee_id><![CDATA[102]]></attendee_id>
 			  <screen_name><![CDATA[mark]]></screen_name>
-                          <language_culture_name><![CDATA[ru-RU]]></language_culture_name>
+                          <language_culture_name><![CDATA[en-US]]></language_culture_name>
 			</attendee>
 		  </attendee_list>";
 		$XMLAttendee="<attendee_list>
