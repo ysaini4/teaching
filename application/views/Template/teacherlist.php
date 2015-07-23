@@ -1,5 +1,5 @@
 <?php
-foreach($qresult as $row) {
+foreach($qresult as $row) {   
 ?>
 <div class="card teacherlistelm" style="padding:10px;box-shadow:none;border:1px solid #b0bec5;">
   <div class="row" style="margin-bottom:0px;">
@@ -19,7 +19,7 @@ foreach($qresult as $row) {
           ?>
         </div>
         <div class="grey-text text-darken-2">
-          <?php echo convchars($row["teachermoto"]); ?>
+          <?php echo substr(convchars($row["teachermoto"]),0,100); ?>
         </div>
         <!--
         <h6>IIT Delhi</h6>
@@ -30,11 +30,13 @@ foreach($qresult as $row) {
       <!--<a href="#">Reviews</a>-->
       <div class="grey-text text-darken-3"><?php echo implode(", ",myexplode(",", $row["subjectname"])); ?></div>
       <div class="grey-text text-darken-1">
-        Min Fees :<br>
+        Fees :
         <span>
           <?php echo $row["minprice"].rit(" - ".$row["maxprice"], $row["maxprice"]!=$row["minprice"] ); ?>/hr
         </span>
       </div>
+      <div class="grey-text text-darken-1">College : IIT <?php echo convchars(json_decode($row['jsoninfo'])->{'college'}); ?></div>
+      <div class="grey-text text-darken-1">Experience : <?php echo (($row['teachingexp']==0)||($row['teachingexp']==1)?(($row['teachingexp']==0)?"None":$row['teachingexp'].' Year'):$row['teachingexp'].' Years'); ?> </div>
       <div>
         <?php
           if(!$row["isdonedemo"]) {

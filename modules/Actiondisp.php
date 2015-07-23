@@ -143,16 +143,16 @@ class Actiondisp{
 		}
 
 		if($ec>0){ 
-			list($query,$param)=Funs::tejpal_output($data);
+			list($query,$param)=Funs::tejpal_output($data); 
 			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$data["maxl"], 'minl'=>0, 'min'=>0));
 			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, $_ginfo["numsearchr"]["loadadd"]);
-			$odata=Fun::getflds(array("max", "maxl", "qresultlen"), $qoutput);
+			$odata=Fun::getflds(array("max", "maxl", "qresultlen"), $qoutput); 
 		}
 		if($printjson){
 			echo json_encode(array('ec'=>$ec,'data'=>$odata))."\n";
 		}
 		if($ec<0)
-			return;
+			return; 
 		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult']));
 	}
 	function disptopics($data, $printjson = true) {

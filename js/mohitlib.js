@@ -258,7 +258,7 @@ var form={
 			others.mergeifunset(params,addparam);  
 		}
 
-		params['action']=allattrs["data-action"]; 
+		params['action']=allattrs["data-action"];  
 		bobj.disabled=true;
 		var prvvalue=bobj.innerHTML; 
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
