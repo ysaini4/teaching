@@ -1,6 +1,6 @@
 <br><br>
 
-<?php
+<?php 
 if ($tid == User::loginId()) {
 ?>
 <div class="row">

@@ -142,17 +142,17 @@ class Actiondisp{
 			$ec = -9;
 		}
 
-		if($ec>0){
-			list($query,$param)=Funs::tejpal_output($data);
+		if($ec>0){ 
+			list($query,$param)=Funs::tejpal_output($data); 
 			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$data["maxl"], 'minl'=>0, 'min'=>0));
 			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, $_ginfo["numsearchr"]["loadadd"]);
-			$odata=Fun::getflds(array("max", "maxl", "qresultlen"), $qoutput);
+			$odata=Fun::getflds(array("max", "maxl", "qresultlen"), $qoutput); 
 		}
 		if($printjson){
 			echo json_encode(array('ec'=>$ec,'data'=>$odata))."\n";
 		}
 		if($ec<0)
-			return;
+			return; 
 		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult']));
 	}
 	function disptopics($data, $printjson = true) {
@@ -170,7 +170,7 @@ class Actiondisp{
 			echo json_encode($outp)."\n";
 		if($outp["ec"] < 0)
 			return;
-		$pageinfo = array();
+		$pageinfo = array(); 
 		$pageinfo["allusers"] = array(
 			"teachers" => Sqle::getA("select teachers.isselected, users.* from users left join teachers on teachers.tid = users.id where users.type='t' order by users.create_time desc"),
 			"students" => Sqle::getA("select users.* from users where type='s' order by users.create_time")

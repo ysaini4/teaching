@@ -498,19 +498,19 @@
 		$qoutput["load_view"]=$action_spec["load_view"];
 		return $qoutput;
 	}
-	function handle_disp($post_data,$actionarg=null){
+	function handle_disp($post_data,$actionarg=null){ 
 		global $_ginfo;
 		if($actionarg!=null)
-			$post_data["action"]=$actionarg;
+			$post_data["action"]=$actionarg;  
 		$a=new Actiondisp();
 		$outp=array("ec"=>-7);
 		if(isset($post_data["action"])  ){
 			$isvalid=isvalid_action($post_data);
 			if(!($isvalid>0))
 				$outp["ec"]=$isvalid;
-			else{
-				$func=$post_data["action"];
-				if( method_exists($a,$post_data["action"])){
+			else{ 
+				$func=$post_data["action"];   
+				if( method_exists($a,$post_data["action"])){  
 					$a->$func($post_data,$actionarg==null);
 					return;
 				}
@@ -519,7 +519,7 @@
 					$outp["data"]=Fun::getflds(array("min", "max", "minl", "maxl"), $as_handle);
 					$outp["ec"]=1;
 					if($actionarg==null)
-						echo json_encode($outp)."\n";
+						echo json_encode($outp)."\n"; 
 					load_view($as_handle["load_view"], array("qresult"=>$as_handle["qresult"]));
 					return;
 				}

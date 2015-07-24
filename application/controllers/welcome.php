@@ -7,12 +7,12 @@ class Welcome extends CI_Controller {
 		$this->cururl=Fun::getcururl();
 		$this->cleanurl=Fun::getcururl(true);
 	}
-	public function index(){
+	public function index(){  
 		$pageinfo=array();
 		Fun::issetlogout();
 		load_view('index.php',$pageinfo);
 	}
-	public function joinus(){
+	public function joinus(){ 
 		global $_ginfo;
 		$pageinfo=array("issubmitted"=>false,"msg1"=>"");
 		$msg="Dear IITian, welcome to getIITians please tell us something about yourself.";
@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 		}
 
 		if(Fun::isSetP("fname", "lname", "email", "phone", "password", "subother", "degreeother","branch","dob","city","zipcode","state","linkprofile","feedback")){
-			$pageinfo["issubmitted"]=true;
+			$pageinfo["issubmitted"]=true; 
 			$_POST=Fun::mergeifunset($_POST,array("degree"=>"","college"=>"","resume"=>"","calvarification"=>"","minfees"=>"","country"=>"", "teachingexp" => "", "gender" => ""));
 			$_POST['name']=$_POST["fname"]." ".$_POST["lname"];
 			$temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"],"dob"=>Fun::strtotime_t3($_POST["dob"]),"gender"=>$_POST["gender"]));
@@ -96,7 +96,7 @@ class Welcome extends CI_Controller {
 			$result = Help::contactUs($contactus_data);
 			if($result>0){
 				Fun::mailfromfile(gi("adminmailid"), "php/mail/contact.txt", $contactus_data);
-				$msg="Thank you we will get back to you soon.";
+				$msg="Thank you for contact us.We will soon get in touch with you.";
 			}
 			else
 				$msg="Error submitting your query. Please try again";
@@ -142,7 +142,7 @@ class Welcome extends CI_Controller {
 		load_view("login.php",$pageinfo);
 	}
 
-	public function signup(){
+	public function signup(){  
 		$handle_signup=handle_request(Fun::mergeifunset($_POST, array("action"=>"signup")));
 		if($handle_signup["ec"]>0) {
 			Fun::redirect(BASE."profile");
@@ -197,7 +197,7 @@ class Welcome extends CI_Controller {
 
 	}
 	
-		public function profile($tid=0,$tabid=1) {
+		public function profile($tid=0,$tabid=1) { 
 			$numtabs=5;
 			global $_ginfo;
 			$tid=Funs::gettid($tid);

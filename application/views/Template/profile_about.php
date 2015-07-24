@@ -70,7 +70,7 @@
 				<div style='display:none;' id='bioedit' >
 					<div class="row"  >
 						<div class="input-field col s12 l7">
-							<textarea name="teachermoto" id="biography" class="materialize-textarea" placeholder="Write a small description about yourself." ><?php echo convchars($aboutinfo["teachermoto"]); ?></textarea>
+							<textarea name="teachermoto" id="biography" class="materialize-textarea" placeholder="Write a small description about yourself." length="200"; ><?php echo convchars($aboutinfo["teachermoto"]); ?></textarea>
 							<label for="biography">Bio</label>
 						</div>
 					</div>

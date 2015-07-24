@@ -19,7 +19,7 @@ var button={
 		try{
 			return JSON.parse(d);
 		}catch(e){
-			mohit.alert("Unexpected error! ");
+			mohit.alert("Unexpected error!");
 			return null;
 		}
 	},
@@ -64,7 +64,7 @@ var button={
 			
 		}});
 	},
-	sendreq_v2:function(obj){
+	sendreq_v2:function(obj){ 
 		var allattrs=this.attrs(obj);
 		if(!button.hasattr(allattrs,"data-params"))
 			var params=this.tosendattrs(obj,allattrs);
@@ -75,7 +75,7 @@ var button={
 			eval("var eparams="+allattrs["data-eparams"]);
 			params=others.mergeifunset(params,eparams);
 		}
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"]; 
 		obj.disabled=true;
 		var prvvalue=obj.innerHTML;
 		obj.innerHTML=(!button.hasattr(allattrs,"data-waittext"))?' ... ':(allattrs["data-waittext"]==''?prvvalue:allattrs["data-waittext"]);
@@ -218,7 +218,7 @@ var form={
 		var allattrsb=button.attrs(bobj);
 
 		var params=getFormInputs(obj,'action');
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"]; 
 		bobj.disabled=true;
 		var prvvalue=bobj.innerHTML;
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
@@ -246,27 +246,27 @@ var form={
 			
 		}});
 	},
-	sendreq1:function(obj,bobj){
+	sendreq1:function(obj,bobj){ 
 		if(bobj.disabled)
 			return;
-		var allattrs=button.attrs(obj);
+		var allattrs=button.attrs(obj); 
 		var allattrsb=button.attrs(bobj);
 
 		var params=getFormInputs(obj,'action');
-		if(button.hasattr(allattrs,'data-param')){
-			eval("var addparam="+allattrs['data-param']);
-			others.mergeifunset(params,addparam);
+		if(button.hasattr(allattrs,'data-param')){ 
+			eval("var addparam="+allattrs['data-param']); 
+			others.mergeifunset(params,addparam);  
 		}
 
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"];  
 		bobj.disabled=true;
-		var prvvalue=bobj.innerHTML;
+		var prvvalue=bobj.innerHTML; 
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
-		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){
-			bobj.disabled=false;
+		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){ 
+			bobj.disabled=false; 
 			var respo=button.parse(d);
-			bobj.innerHTML=prvvalue;
-			if(respo){
+			bobj.innerHTML=prvvalue; 
+			if(respo){ 
 				if(respo.ec<0){
 					if(button.hasattr(allattrs,"data-error")){
 						var ec=respo.ec;
@@ -282,11 +282,11 @@ var form={
 						eval(allattrs["data-res"]);
 					}
 				}
-			}
+			} 
 			
 		}});
 	},
-	req:function(obj){
+	req:function(obj){ 
 		form.sendreq1(obj, $(obj).find("button[type=submit]")[0]);
 		return false;
 	},
@@ -317,7 +317,7 @@ var form={
 		},
 		action:function(obj, type){
 			var temp=form.valid.is(obj);
-			var errors=temp[0];
+			var errors=temp[0]; 
 			var objlist=temp[1];
 			if(errors.length>0){
 				if(type==1){

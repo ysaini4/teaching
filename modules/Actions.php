@@ -85,7 +85,7 @@ class Actions{
 
 	function signupotp($data){
 		$outp=array("ec"=>1,"data"=>0);
-		$outp["ec"]=Funs::otpstore($data["phone"], ($data["type"]=='s' ? "User" : "Teacher") );
+		$outp["ec"]=Funs::otpstore($data["phone"], ($data["type"]=='s' ? $data["name"] : $data["fname"]) );
 		return $outp;
 	}
 
@@ -113,6 +113,7 @@ class Actions{
 				$outp["ec"]=$temp;
 			} else {
 				Fun::mailfromfile( $signup_data["email"], "php/mail/signupmail.txt", $signup_data );
+				Fun::mailfromfile( gi("adminmailid"), "php/mail/signup_admin.txt", $signup_data);
 			}
 		}
 		return $outp;

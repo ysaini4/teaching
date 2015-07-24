@@ -204,10 +204,10 @@ var ms={
 		else
 			return false;
 	},
-	signupform:function(obj,needotp){
-		if(needotp){
-			if($("#signupwindow").is(":visible")){
-				if(form.valid.action1(  $("#signupwindow")[0]  )){
+	signupform:function(obj,needotp){ 
+		if(needotp){ 
+			if($("#signupwindow").is(":visible")){ 
+				if(form.valid.action1(  $("#signupwindow")[0]  )){   
 					form.sendreq1(obj, $("#signupwindow").find("button[type=submit]")[0] );
 				}
 				return false;
@@ -217,7 +217,7 @@ var ms={
 			return form.valid.action1( $("#signupwindow")[0] ) ;
 		}
 	},
-	joinusform:function(obj, needotp){
+	joinusform:function(obj, needotp){ 
 		var mainwindow = $("#main_form_section");
 		var otpwindow = $("#otp_section");
 		if(needotp){
@@ -275,6 +275,7 @@ var ms={
 		selectedtopic=cst;
 		$("#profiletabs2").click();
 		Materialize.toast($(obj).attr("data-topictext")+' is selected, now select the time.', 10000);
+		Materialize.toast('You can book your class from tomorrow.',12000);
 	},
 	openreviewform: function(obj, tid, starttime) {
 		mohit.popup('writereview');

@@ -38,27 +38,27 @@ $defopen="signupwindow";
                 <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
                   <div class="row no-margin-bottom">
                     <div class="input-field col s12 l6">
-                      <input id="fullname" name="name" type="text"  data-condition='simple' >
+                      <input id="fullname" name="name" type="text"  data-condition='simple'  >
                       <label for="fullname">Full Name</label>
                     </div>
                     <div class="input-field col s12 l6">
-                      <input id="email" name="email" type="text"  data-condition='email' >
+                      <input id="email" name="email" type="text"  data-condition='email'   >
                       <label for="email">Email</label>
                     </div>
                   </div>
                   <div class="row no-margin-bottom">
                     <div class="input-field col s12 l6">
-                      <input id="password" name="password" type="password"  data-condition="simple"  >
+                      <input id="password" name="password" type="password"  data-condition="simple"   >
                       <label for="password">Password</label>
                     </div>
                     <div class="input-field col s12 l6">
-                      <input id="confirm_password" name="cpassword" type="password" data-condition="password"  >
+                      <input id="confirm_password" name="cpassword" type="password" data-condition="password"   >
                       <label for="confirm_password">Confirm Password</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <input id="phone" name="phone" type="text" data-condition="phone">
+                      <input id="phone" name="phone" type="text" data-condition="phone" >
                       <label for="phone">Mobile Number</label>
                     </div>
                   </div>

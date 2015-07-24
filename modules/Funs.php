@@ -119,7 +119,7 @@ abstract class Funs{
 						$datets=$timestamp+($count-1)*3600*24;
 						$cellinfo["date"]=$count;
 						$cellinfo["text"]=$count;
-						if($datets>time()-3600*24)
+						if($datets>time())
 							$cellinfo["tdparams"]=array("data-datets"=>$datets,"data-tid"=>$tid,"data-action"=>"daytspopup","onclick"=>"opencalpopup(this);");
 						if(isset($dailymap[$count])){
 							$cellinfo["dispslots"]=Funs::slottext($dailymap[$count]);
@@ -323,7 +323,7 @@ abstract class Funs{
 		$newslots = Funs::classeslist_filter(Sqle::getA(qtable("stdbookedclasses_new", false), array("sid" => $sid)));
 		$pageinfo=array("fname"=>$flname[0],"lname"=>$flname[1],"sinfo"=>$sinfo,"dob"=>$dob, "sid" => $sid, "newslots" => $newslots, "oldslots" => $oldslots);
 		$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where sid={sid} ", array("sid" => User::loginId()));
-		mergeifunset($pageinfo, Funs::moneyaccount($sid));
+		mergeifunset($pageinfo, Funs::moneyaccount($sid)); 
 		return $pageinfo;
 	}
 	public static function doublesplit($inp){
@@ -339,9 +339,9 @@ abstract class Funs{
 
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
-		$hisoutput = Funs::mssearch($data);
+		$hisoutput = Funs::mssearch($data); 
 		$hisoutput[1]["uid"] = (0+User::loginId());
-		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, takendemo.isdonedemo, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.teachermoto, teachers.jsoninfo, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid left join ".qtable("takendemo")." on takendemo.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
+		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, takendemo.isdonedemo, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.teachermoto, teachers.jsoninfo,teachers.teachingexp, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid left join ".qtable("takendemo")." on takendemo.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
 	}
 	public static function get_teacher_classes($tid) {
@@ -476,7 +476,7 @@ abstract class Funs{
 		return $pageinfo;
 	}
 
-	public static function sendmail($to, $subject, $body) {
+	public static function sendmail($to, $subject, $body) {  
 		$mail             = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->SMTPAuth   = true;                  // enable SMTP authentication

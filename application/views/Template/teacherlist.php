@@ -1,5 +1,5 @@
 <?php
-foreach($qresult as $row) {
+foreach($qresult as $row) {   
 ?>
 <div class="card teacherlistelm" style="padding:6px;box-shadow:none;border:1px solid #eeeeee;">
   <div class="row" style="margin-bottom:0px;">
@@ -13,6 +13,9 @@ foreach($qresult as $row) {
         <a href="<?php echo BASE."profile/".$row["tid"]; ?>" title="<?php echo convchars($row["name"]); ?>" style="font-size:18px;">
           <?php echo convchars($row["name"]); ?>
         </a>
+        <span class="grey-text text-darken-1">
+          &nbsp;&nbsp;IIT <?php echo convchars(json_decode($row['jsoninfo'])->{'college'}); ?>
+        </span>
         <div class="orange-text">
           <?php
           for($i=0; $i<$row["avgrating"]; $i++){
@@ -23,19 +26,23 @@ foreach($qresult as $row) {
           ?>
         </div>
         <div>
-          <?php echo convchars($row["teachermoto"]); ?>
+          <?php echo substr(convchars($row["teachermoto"]),0,100); ?>
         </div>
-        <!--<h6>IIT Delhi</h6>-->
       </div>
 
-      <div style="margin-top:10px;">
+      <div style="margin-top:8px;">
         <!--<a href="#">Reviews</a>-->
-        <div class="grey-text text-darken-1" style="font-size:14px;"><?php echo implode(", ",myexplode(",", $row["subjectname"])); ?></div>
+        <div class="grey-text text-darken-1" style="font-size:14px;">
+          <?php echo implode(", ",myexplode(",", $row["subjectname"])); ?>
+        </div>
         <div class="grey-text" style="font-size:14px;">
           Min Fees :
           <span>
             <?php echo $row["minprice"].rit(" - ".$row["maxprice"], $row["maxprice"]!=$row["minprice"] ); ?>/hr
           </span>
+        </div>
+        <div class="grey-text text-darken-1">
+          Experience : <?php echo (($row['teachingexp']==0)||($row['teachingexp']==1)?(($row['teachingexp']==0)?"None":$row['teachingexp'].' Year'):$row['teachingexp'].' Years'); ?>
         </div>
         <div>
         <?php

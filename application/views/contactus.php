@@ -78,7 +78,7 @@ load_view("Template/navbarnew.php");
 	    		  	  	<label for="phone_number">Phone Number</label>
 	    		  	  </div>
 	    		  	  <div class="input-field col s12">
-	    		  	  	<textarea id="message" name="msg" class="materialize-textarea" required></textarea>
+	    		  	  	<textarea id="message" name="msg" class="materialize-textarea" required length="100"></textarea>
           				<label for="message">Your Message</label>
 	    		  	  </div>
 	    		  	  <div class="col s12">
