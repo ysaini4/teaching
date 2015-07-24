@@ -69,7 +69,7 @@ if(!$isdonedemo) {
 						<th data-field="subject">Subject</th>
 						<th data-field="topic" >Topic</th>
 						<th data-field="duration" style="display:none">Duration (hrs)</th>
-						<th data-field="fees">Fees</th>
+						<th data-field="fees">Fees/hr</th>
 						<th data-field=""></th>
 					</tr>
 				</thead>

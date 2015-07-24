@@ -92,7 +92,7 @@ load_view("Template/navbarnew.php",$inp);
           </div>
         </div>
 
-        <div class="col s12 l6" style='' >
+        <div class="col s12 l6" style='display:none' >
           <div class="card-panel">
           <br>
             <div class="row">
