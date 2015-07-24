@@ -55,9 +55,9 @@ load_view("Template/navbarnew.php");
               hidinp("search",htmlspecialchars($search));
               ?>
               <div class="row" style='margin-bottom:-20px;' >
-                <div class="col s12">
+                <div class="col s12"> 
                   <select name="class" class="browser-default" onchange='topicssubtopic_t2(this);' id="selectclass" data-condition="simple">
-                    <?php
+                    <?php 
                       disp_olist($class_olist,array('selectalltext'=>"Select Class"));
                     ?>
                   </select>
@@ -93,7 +93,7 @@ load_view("Template/navbarnew.php");
                             foreach($val as $j=>$val1) {
                         ?>
                           <div class="col s6">
-                            <input id="timesearch<?php echo $i."-".$j; ?>" type="checkbox" name="timeslot" class="filled-in" value="<?php echo $val1[1]; ?>" checked/>
+                            <input id="timesearch<?php echo $i."-".$j; ?>" type="checkbox" name="timeslot" class="filled-in" value="<?php echo $val1[1]; ?>"/>
                             <label style="padding-left:23px;" for="timesearch<?php echo $i."-".$j; ?>"><?php echo $val1[0]; ?></label>
                           </div>
                         <?php
@@ -113,7 +113,7 @@ load_view("Template/navbarnew.php");
                             foreach($val1 as $j=>$val2) {
                         ?>
                           <div class="col s6">
-                            <input id="lang<?php echo $count; ?>" type="checkbox" class="filled-in" name="lang" value='<?php echo $count; ?>' checked />
+                            <input id="lang<?php echo $count; ?>" type="checkbox" class="filled-in" name="lang" value='<?php echo $count; ?>' />
                             <label style="padding-left:23px;" for="lang<?php echo $count; ?>" >
                               <?php echo $val2; ?>
                             </label>
@@ -133,7 +133,7 @@ load_view("Template/navbarnew.php");
                           $count=1;
                           foreach($price as $val) {
                             foreach($val as $val1) {
-                              load_view("Template/check1.php",array('label'=>htmlspecialchars($val1[0]), 'value'=>$count,"id"=>"price".$count, "name"=>"price"));
+                             load_view("Template/check1.php",array('label'=>htmlspecialchars($val1[0]), 'value'=>$count,"id"=>"price".$count, "name"=>"price"));
                               $count++;
                             }
                           }

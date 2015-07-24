@@ -36,7 +36,7 @@ class Templates{
   function check1($inp){
     foreach($inp as $key=>$val)
       $$key=$val;
-    mergeifunset($inpattr,array("class"=>$class.'filled-in',"id"=>$id==''?'':"check_".$id,"onchange"=>$onchange,"type"=>"checkbox", "value"=>$value, 'checked'=>'',"name"=>$name ));
+    mergeifunset($inpattr,array("class"=>$class.'filled-in',"id"=>$id==''?'':"check_".$id,"onchange"=>$onchange,"type"=>"checkbox", "value"=>$value,"name"=>$name ));
 ?>
              <input <?php echo param2str($inpattr); ?>  />
              <label for="<?php echo $inpattr["id"]; ?>" >

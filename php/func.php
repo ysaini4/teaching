@@ -658,3 +658,26 @@
 	}
 
 ?>
+<?php  // functions by yogy
+	function digrupee($digit) {
+		return 'Rs. '.$digit;
+	}
+	function convlang($langcode){
+		$lang=array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi");
+		for($i=0;$i<count($lang);$i++) {
+			if($i==($langcode-1)) {
+				return $lang[$i];
+			}
+		}
+		return null;
+	}
+	function convgrade($gradecode) {
+		$grades=array("6<sup> th</sup> to 8<sup> th</sup>","9<sup> th</sup> to 10<sup> th</sup>","11<sup> th</sup> to 12<sup> th</sup>","IIT JEE");
+		for($i=0;$i<count($grades);$i++) {
+			if($i==($gradecode-1)) {
+				return $grades[$i];
+			}
+		}
+		return null;
+	}
+?>

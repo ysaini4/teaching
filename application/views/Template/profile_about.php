@@ -144,6 +144,9 @@
 			</div>
 		</div>
 		<div class="col s12 l6">
+			<?php
+				if($cansee) {
+			?>		
 			<div class="row">
 				<div class="col s12">
 					Address :<br>
@@ -153,6 +156,9 @@
 				</div>
 			</div>
 			<?php
+				}
+			?>
+			<?php	
 				if($cansee) {
 			?>
 			<div class="row">
@@ -185,7 +191,7 @@
 
 	<!-- Teaching Details -->
 	<?php
-	if(false) {
+	if(true) {
 	?>
 	<div class="row">
 		<div class="col s12">
@@ -197,7 +203,7 @@
 			Subjects :
 			<span class="grey-text text-darken-1">
 				<ul>
-					<?php
+					<?php 
 						foreach ($subArray as $value) {
 							echo '<li>'.$value.'</li>';
 						}
@@ -209,22 +215,34 @@
 			Grades :
 			<span class="grey-text text-darken-1">
 				<ul>
-					<?php
+					<?php 
 						foreach ($gradeArray as $value) {
-							echo '<li>'.$value.'</li>';
+							echo '<li>'.convgrade($value).'</li>';
 						}
 				 ?>
 				</ul>
 			</span>
 		</div>
-		<div class="col s12 l4">
+		<div class="col s12 l2">
 			Languages :
 			<span class="grey-text text-darken-1">
 				<ul>
 					<?php
 						foreach ($langArray as $value) {
-							echo '<li>'.$value.'</li>';
+							echo '<li>'.convlang($value).'</li>';
 						}
+				 ?>
+				</ul>
+			</span>
+		</div>
+		<div class="col s12 l2">
+			Minimum Fees :
+			<span class="grey-text text-darken-1">
+				<ul>
+					<?php
+						
+							echo '<li>'.digrupee($jsonArray['minfees']).'</li>';
+						
 				 ?>
 				</ul>
 			</span>

@@ -255,22 +255,22 @@ class Welcome extends CI_Controller {
 					$tempArr=explode(' ',$pageinfo['aboutinfo']['name']);
 					$pageinfo['firstName']=$tempArr[0];
 					$pageinfo['lastName']=$tempArr[1];
-					$jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']);
+					$jsonArray=str2json($pageinfo['aboutinfo']['jsoninfo']); 
 					$pageinfo['city']=$jsonArray['city'];
-					$pageinfo['jsonArray']=$jsonArray;
+					$pageinfo['jsonArray']=$jsonArray;  
 					$tempSubjects=Funs::extractFields($pageinfo['aboutinfo']['jsoninfo'],$_ginfo['encodeddataofteacherstable']['sub'],'sub');
 					$pageinfo['subArray']=explode(' , ', $tempSubjects);
 					$tempGrades=explode('-',$jsonArray['grade']);
 					// foreach ($tempGrades as $value) {
 					// 		$gradeArray[]=$_ginfo['encodeddataofteacherstable']['grade'][$value-1];
 					// }
-					$pageinfo['gradeArray']=array();//$gradeArray;
+					$pageinfo['gradeArray']=$tempGrades;//$gradeArray;
 					$tempLang=explode('-',$pageinfo['aboutinfo']['lang']);
 					// foreach ($tempLang as $value) {
 					// 		$langArray[]=$_ginfo['encodeddataofteacherstable']['lang'][$value-1];
 					// }
 					$pageinfo["ejsoninfo"] = str2json($pageinfo["aboutinfo"]["jsoninfo"]);
-					$pageinfo['langArray'] = array();// $langArray;
+					$pageinfo['langArray'] = $tempLang;// $langArray;
 					$pageinfo["isme"] = (User::loginId() == $tid);
 					mergeifunset($pageinfo, Funs::moneyaccount($tid));
 					$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where tid={tid} ", array("tid" => $tid));

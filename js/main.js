@@ -29,7 +29,7 @@ function uploadfile(obj,name){
 }
 
 function topicssubtopic_t2(obj){
-	temp=obj;
+	temp=obj; 
 	var ids=["selectclass","selectsubject","selecttopic"];
 	var cstval=[];
 	for(var i=0;i<ids.length;i++){
@@ -50,6 +50,7 @@ function topicssubtopic_t2(obj){
 	}
 	if(obj.id=="selectsubject" && typeof(topics[cstval[0]])!='undefined' && typeof(topics[cstval[0]]['children'][cstval[1]])!='undefined' ){
 		var selectedHTML=selects.arr2mselect(getslist( topics[cstval[0]]['children'][cstval[1]]['children'] ),'topic');
+			
 		$("#selecttopic").html(selectedHTML);
 	}
 	$(".selectall").click(function(){
@@ -62,7 +63,7 @@ function topicssubtopic_t2(obj){
 }
 
 function topicssubtopic(obj){//assuming a variable topics is already defined
-	temp=obj;
+	temp=obj; 
 	var ids=["selectclass","selectsubject","selecttopic"];
 	var cstval=[];
 	for(var i=0;i<ids.length;i++){

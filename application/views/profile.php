@@ -20,7 +20,7 @@ if(true || $aboutinfo["isselected"] == "a" || User::isloginas("a") ) {
 						</ul>
 					</div>
 					<div id="tab_profile" class="col s12 offset-l1">
-					<?php
+					<?php 
 						load_view("Template/profile_about.php", $inp);
 					?>
 					</div>
