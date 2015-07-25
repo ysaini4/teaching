@@ -99,7 +99,7 @@ $defopen="signupwindow";
           </div>
         </div>
 
-        <div class="col s12 l5" style="display:none">
+        <div class="col s12 l5" style="">
           <div class="card-panel">
             <div class="row no-margin-bottom">
               <div class="col s12 l12">
