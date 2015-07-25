@@ -98,3 +98,12 @@
 .edit:hover {
   text-decoration: underline;
 }
+
+#nav-mobile i.tiny{
+  font-size: 1rem;
+  display: inline;
+}
+
+#nav-mobile a.phoneno{
+  margin-top: -2px;
+}

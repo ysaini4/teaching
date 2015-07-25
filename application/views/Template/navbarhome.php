@@ -8,9 +8,10 @@
   <div class="navbar">
     <nav class="transparent" role="navigation" id="navbar">
       <div class="nav-wrapper">
-        <a href="<?php echo BASE.'index'; ?>" class="brand-logo">getIITians</a>
+        <a href="<?php echo BASE; ?>" class="brand-logo">getIITians</a>
         <a data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#" class="phoneno"><i class="material-icons tiny">call </i>+91 931 339 4403</a></li>
           <li><a href="<?php echo BASE."aboutus"; ?>">About Us</a></li>
           <li><a href="<?php echo BASE."contactus"; ?>">Contact Us</a></li>
           <?php
@@ -31,12 +32,14 @@
           <?php
           }
           ?>
+          <?php if($page!=='index'): ?>
           <form class="right" action="<?php echo BASE."search"; ?>" >
             <div class="input-field">
               <input id="search" type="search" placeholder="Search Tutors" autocomplete="off" name="q">
               <label for="search"><i class="mdi-action-search"></i></label>
             </div>
           </form>
+        <?php endif; ?>
         </ul>
       </div>
     </nav>
@@ -68,7 +71,7 @@
     <?php
     }
     ?>
-
+    <?php if($page!=='index'): ?>
     <div class="row"  >
       <form class="col s12" action="<?php echo BASE."search"; ?>" >
         <div class="row">
@@ -80,4 +83,5 @@
         </div>
       </form>
     </div>
+  <?php endif; ?>
   </ul>

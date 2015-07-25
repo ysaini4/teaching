@@ -37,9 +37,45 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['reviews'] 				=	"welcome/reviews";
+$route['termsofuse'] 			=	"welcome/termsofuse";
+$route['privacypolicy'] 		=	"welcome/privacypolicy";
+$route['hiring'] 				=	"welcome/hiring";
+$route['studentprofile'] 		=	"welcome/studentprofile";
 
-$route['default_controller'] = "welcome";
-$route['404_override'] = '';
+$route['deleteFile'] 			=	"welcome/deleteFile";
+$route['myslots'] 				=	"welcome/myslots";
+$route['review'] 				=	"welcome/review";
+$route['account']				=	"welcome/account";
+$route['changepassword'] 		=	"welcome/changepassword";
+
+$route['forgotPassword'] 		=	"welcome/forgotPassword";
+$route['confirmSlots'] 			=	"welcome/confirmSlots";
+$route['testCSV'] 				=	"welcome/testCSV";
+$route['compareMany'] 			=	"welcome/compareMany";
+$route['view'] 					=	"welcome/view";
+
+$route['reject'] 				=	"welcome/reject";
+$route['accept'] 				=	"welcome/accept";
+$route['acceptOrReject'] 		=	"welcome/acceptOrReject";
+$route['search'] 				=	"welcome/search";
+$route['edit'] 					=	"welcome/edit";
+
+$route['profile'] 				=	"welcome/profile";
+$route['topics'] 				=	"welcome/topics";
+$route['cal'] 					=	"welcome/cal";
+$route['signup']				=	"welcome/signup";
+$route['login'] 				=	"welcome/login";
+
+$route['joinusreal'] 			=	"welcome/joinusreal";
+$route['contactus'] 			=	"welcome/contactus";
+$route['reset'] 				=	"welcome/reset";
+$route['joinus'] 				=	"welcome/joinus";
+$route['aboutus'] 				=	"welcome/aboutus";
+
+$route['index'] 				=	"welcome/index";
+$route['default_controller'] 	=	"welcome";
+$route['404_override'] 			=	'';
 
 
 /* End of file routes.php */
