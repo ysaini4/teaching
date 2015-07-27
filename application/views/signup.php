@@ -86,15 +86,7 @@ $defopen="signupwindow";
                       <label for="otp">One Time Password (Phone)</label>
                     </div>
                   </div>
-                  <div class="col s12" style="display:none">
-                    An OTP has been sent to your Email. Please enter it below.
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12" style="display:none">
-                      <input id="otp" name="otp_mail" type="text" data-condition="simple" class="validate" >
-                      <label for="otp">One Time Password (Email)</label>
-                    </div>
-                  </div>
+                  
                   <div class="row">
                     <div class="input-field col s12">
                       <button class="btn waves-effect waves-light"  name="signup" type="submit" >Submit
