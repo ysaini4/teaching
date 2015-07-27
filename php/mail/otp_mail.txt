@@ -1,0 +1,4 @@
+OTP From getIITians
+Dear {name}
+Your OTP is {otp}.
+www.getiitians.com

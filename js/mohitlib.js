@@ -250,15 +250,15 @@ var form={
 		if(bobj.disabled)
 			return;
 		var allattrs=button.attrs(obj); 
-		var allattrsb=button.attrs(bobj);
+		var allattrsb=button.attrs(bobj); 
 
-		var params=getFormInputs(obj,'action');
+		var params=getFormInputs(obj,'action'); 
 		if(button.hasattr(allattrs,'data-param')){ 
 			eval("var addparam="+allattrs['data-param']); 
 			others.mergeifunset(params,addparam);  
 		}
 
-		params['action']=allattrs["data-action"];  
+		params['action']=allattrs["data-action"]; 
 		bobj.disabled=true;
 		var prvvalue=bobj.innerHTML; 
 		bobj.innerHTML=(!button.hasattr(allattrsb,"data-waittext"))?' ... ':(allattrsb["data-waittext"]==''?prvvalue:allattrsb["data-waittext"]);
