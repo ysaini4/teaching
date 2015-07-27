@@ -103,7 +103,7 @@ class Actions{
 	function signup($data){
 		global $_ginfo;
 		$outp=array("ec"=>1,"data"=>0);
-		if((gets("phone")!=$data["otp"] || gets("email")!=$data["otp_mail"] ) && $_ginfo["needsignupotp"] ){
+		if((gets("phone")!=$data["otp"]  ) && $_ginfo["needsignupotp"] ){
 			$outp["ec"]=-17;
 		} else{
 			$signup_data=Fun::getflds(array("phone","name","email","password"),$data);
