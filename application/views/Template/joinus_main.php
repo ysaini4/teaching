@@ -577,7 +577,7 @@
      </span>
     </div>
     <div class="col s12 l8">
-     <input placeholder="e.g. example@example.com" type="email" class="validate" name="email" data-condition="email" value="mam@mail.com"   />
+     <input placeholder="e.g. example@example.com" type="email" class="validate" name="email" data-condition="email"    />
     </div>
    </div>
    <div class="row">
@@ -672,7 +672,7 @@
      </span>
     </div>
     <div class="col s12 l6">
-     <div id="times"> 12 yrs
+     <div id="times"> 
      </div>
     </div>
    </div>

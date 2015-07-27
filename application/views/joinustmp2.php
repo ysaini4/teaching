@@ -38,7 +38,7 @@ load_view("Template/navbarnew.php");
             </div>
           </div>
           <div class="row" >
-            <form class="col s12 l10 offset-l1" enctype="multipart/form-data"  method="post" <?php if($_ginfo["needotp"]){?> data-action='signupotp' data-param='{"phone":$("#main_form_section").find("input[name=phone]").val(), "type":"t"}' <?php } else {?> <?php } ?> onsubmit="return ms.joinusform(this, <?php echo tf($_ginfo["needotp"]); ?>);" data-res="openOtpSection();"  >
+            <form class="col s12 l10 offset-l1" enctype="multipart/form-data"  method="post" <?php if($_ginfo["needotp"]){?> data-action='signupotp' data-param='{"phone":$("#main_form_section").find("input[name=phone]").val(), "type":"t","email":$("#main_form_section").find("input[name=email]").val()}' <?php } else {?> <?php } ?> onsubmit="return ms.joinusform(this, <?php echo tf($_ginfo["needotp"]); ?>);" data-res="openOtpSection();"  >
               <?php
                 load_view("Template/joinus_otp.php");
                 load_view("Template/joinus_main.php");

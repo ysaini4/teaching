@@ -252,9 +252,9 @@ abstract class Funs{
 		sets("phone",$otp);
 		Fun::msgfromfile($phone,"php/mail/otp.txt",array("otp"=>$otp, "name" => $st));
 		if($email!='') { 
-			$otp=rand(100000,999999);
-			sets("email",$otp);
-			Fun::mailfromfile($email,"php/mail/otp_mail.txt",array("otp"=>$otp, "name" => $st));
+			//$otp=rand(100000,999999);
+			//sets("email",$otp);
+			//Fun::mailfromfile($email,"php/mail/otp_mail.txt",array("otp"=>$otp, "name" => $st));
 		} 
 		return 1;
 //    Fun::msgfromfile($data["phone"],"php/mail/otp.txt",array("otp"=>$otp));
