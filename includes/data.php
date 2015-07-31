@@ -92,7 +92,8 @@ $_ginfo["error"]=array(
 	"-8"=>"Session expired or You are not right person to perform this action.",
 	"-9"=>"Not sufficient arguments.",
 	"-16"=>"This email id used Already",
-	"-17"=>"OTP is incorrect",
+	"-17"=>"Phone OTP is incorrect",
+	"-18"=>"Email OTP is incorrect",
 	"-19"=>"You cannot choose slot of past.",
 	"-20"=>"You Cannot generate link",
 	"-21"=>"Your account deactivated",
@@ -151,6 +152,7 @@ $_ginfo["adminmailid"] = "himanshu@getiitians.com";
 $_ginfo["isrealmail"] = (server == "server");
 $_ginfo["isrealmsg"] = (server == "server");
 $_ginfo["isrealwiziq"] = (server == "server");
+
 
 
 

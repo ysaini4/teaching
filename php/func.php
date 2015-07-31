@@ -503,7 +503,7 @@
 		if($actionarg!=null)
 			$post_data["action"]=$actionarg;  
 		$a=new Actiondisp();
-		$outp=array("ec"=>-7);
+		$outp=array("ec"=>-7); 
 		if(isset($post_data["action"])  ){
 			$isvalid=isvalid_action($post_data);
 			if(!($isvalid>0))
@@ -679,5 +679,12 @@
 			}
 		}
 		return null;
+	}
+	function cururl() {
+		return $_SERVER['REQUEST_URI'];
+	}
+	function unsets($key){
+		unset ($_SESSION[$key]);
+
 	}
 ?>

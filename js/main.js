@@ -205,10 +205,10 @@ var ms={
 		else
 			return false;
 	},
-	signupform:function(obj,needotp){ 
+	signupform:function(obj,needotp,emailexist){ 
 		if(needotp){ 
 			if($("#signupwindow").is(":visible")){ 
-				if(form.valid.action1(  $("#signupwindow")[0]  )){   
+				if(form.valid.action1(  $("#signupwindow")[0]  )){
 					form.sendreq1(obj, $("#signupwindow").find("button[type=submit]")[0] );
 				}
 				return false;
@@ -242,10 +242,10 @@ var ms={
 			$("#dispnoresult").hide();
 		}
 	},
-	refinesearch: function(){
+	refinesearch: function(){ 
 		var searchdiv = $('#searchresultdiv');
-		var maxl = parseInt($("#searchresultdiv").attr("data-maxl"));
-		div.reload_autoscroll(searchdiv[0], null, function(d){
+		var maxl = parseInt($("#searchresultdiv").attr("data-maxl")); 
+		div.reload_autoscroll(searchdiv[0], null, function(d){ 
 			$("#loadmorebutton").hide();
 			if(!(d.qresultlen < maxl)) {
 				$("#loadmorebutton").fadeIn();

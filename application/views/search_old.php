@@ -67,12 +67,38 @@ load_view("Template/navbarnew.php");
                 <div class="col s12">
                   <select name='subject'  class="browser-default" id='selectsubject' onchange='topicssubtopic_t2(this);' data-condition='simple'>
                     <option value="" disabled selected>Subject</option>
-                    <option value="">Select class first</option>
+                    <option value="">Select Class first</option>
                   </select>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" style="display:none">
                 <div class="col s12">
+                  <ul class="collapsible" data-collapsible="accordion">
+                     <li>
+                      <div class="collapsible-header">Chouse Your Tuition Type</div>
+                      <div class="collapsible-body" style="padding:6px;">
+                        <div class="row">
+                          <div class="col s10">
+                            <input id="hometuition" type="checkbox" class="filled-in" name="hometuition" value='1' />
+                            <label style="padding-left:23px;" for="hometuition" >
+                            Home Tuition
+                            </label>
+                          </div>
+                          <div class="col s10">
+                          <input id="onlineclasses" type="checkbox" class="filled-in" name="onlineclasses" value='1' />
+                            <label style="padding-left:23px;" for="onlineclasses" >
+                            Online Classes
+                            </label>
+                          </div>
+                        
+                        </div>
+                      </div>
+                    </li>
+                   </ul>
+                </div>
+              </div>               
+              <div class="row"  >
+                <div class="col s12" style="display:none">
                   <ul class="collapsible" data-collapsible="accordion">
                     <li>
                       <div class="collapsible-header">Topics</div>

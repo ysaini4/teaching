@@ -6,13 +6,15 @@ var button={
 			attrso[alla[i].name]=alla[i].value;
 		return attrso;
 	},
-	tosendattrs:function(obj,allattrs){
+	tosendattrs:function(obj,allattrs){ 
 		var dontneed=["data-restext","data-waittext","data-res","data-wait","data-error","data-params","data-eparams"];
 		var sendparams={};
-		for(var i in allattrs){
-			if(i.substr(0,5)=="data-" && dontneed.indexOf(i)==-1 )
-				sendparams[i.substr(5)]=allattrs[i];
-		}
+		for(var i in allattrs){ 
+			if(i.substr(0,5)=="data-" && dontneed.indexOf(i)==-1 ) { 
+				sendparams[i.substr(5)]=allattrs[i]; 
+					
+			} 
+		} 
 		return sendparams;
 	},
 	parse:function (d){
@@ -146,9 +148,10 @@ var button={
 			
 		}});
 	},
-	sendreq_v2_t3:function(params,call_back_data,call_back_html,adata){
-		$.post(HOST+"actiondisp.php",params,function(d,s){if(s=='success'){
-			var respo=button.parse(d.split("\n")[0]);
+	sendreq_v2_t3:function(params,call_back_data,call_back_html,adata){ 
+
+		$.post(HOST+"actiondisp.php",params,function(d,s){if(s=='success'){ 
+			var respo=button.parse(d.split("\n")[0]); 
 			if(respo){
 				if(respo.ec<0){
 					if(typeof(adata)!='undefined'){
@@ -173,10 +176,11 @@ var button={
 			}
 		}});
 	},
-	sendreq_v2_t4:function(obj,call_back_data,call_back_html,adata){
-		var allattrs=this.attrs(obj);
-		if(!button.hasattr(allattrs,"data-params"))
-			var params=this.tosendattrs(obj,allattrs);
+	sendreq_v2_t4:function(obj,call_back_data,call_back_html,adata){ 
+		var allattrs=this.attrs(obj);   
+		if(!button.hasattr(allattrs,"data-params")) { 
+			var params=this.tosendattrs(obj,allattrs); 
+		}
 		else{
 			eval("var params="+allattrs["data-params"]);
 		}
@@ -184,7 +188,7 @@ var button={
 			eval("var eparams="+allattrs["data-eparams"]);
 			params=others.mergeifunset(params,eparams);
 		}
-		params['action']=allattrs["data-action"];
+		params['action']=allattrs["data-action"]; 
 		button.sendreq_v2_t3(params,call_back_data,call_back_html);
 	},
 	sendreq1:function (params,call_back,adata){
@@ -208,7 +212,6 @@ var button={
 	}
 
 };
-
 
 var form={
 	sendreq:function(obj,bobj){
@@ -245,7 +248,7 @@ var form={
 			}
 			
 		}});
-	},
+	}, 
 	sendreq1:function(obj,bobj){ 
 		if(bobj.disabled)
 			return;
@@ -291,15 +294,15 @@ var form={
 		return false;
 	},
 	valid:{
-		is:function (obj){
+		is:function (obj){ 
 			var errorlist=[];
 			var objlist=[];
 			var inputs=['INPUT','TEXTAREA','SELECT'];
 			var problem=false;
 			for(i=0;i<inputs.length;i++){
-				var ilist=$(obj).find(inputs[i]);
-				for(j=0;j<ilist.length;j++){
-					if(checkValidInput.isChecked( ilist[j]  ) ){
+				var ilist=$(obj).find(inputs[i]); 
+				for(j=0;j<ilist.length;j++){ 
+					if(checkValidInput.isChecked( ilist[j]  ) ){ 
 						$(ilist[j]).parent().removeClass("has-error");
 					}
 					else{
@@ -312,11 +315,11 @@ var form={
 						problem=true;
 					}
 				}
-			}
+			} 
 			return [errorlist,objlist];
 		},
-		action:function(obj, type){
-			var temp=form.valid.is(obj);
+		action:function(obj, type){ 
+			var temp=form.valid.is(obj); 
 			var errors=temp[0]; 
 			var objlist=temp[1];
 			if(errors.length>0){
@@ -332,11 +335,11 @@ var form={
 					var dispmsg="You have to fill:<br>"+errors.join("<br>");
 					success.push(dispmsg,true);
 				}
-			}
+			} 
 			return !(errors.length>0);
 		},
-		action1:function(obj){
-			return form.valid.action(obj,1);
+		action1:function(obj){ 
+			return form.valid.action(obj,1); 
 		}
 	}
 };
@@ -511,12 +514,12 @@ var div={
 			return -1;
 		if( (isloadold==1 && $(obj).attr("data-minl")==0) || (isloadold==0 && $(obj).attr("data-maxl")==0) )
 			return -2;
-		div.setblock(obj);
-		loading.showimg(loadingselector);
-		if(isappendold==null)
+		div.setblock(obj); 
+		loading.showimg(loadingselector); 
+		if(isappendold==null) 
 			isappendold=isloadold;
 		$(obj).attr("data-isloadold",isloadold);
-		button.sendreq_v2_t4(obj,function(d){
+		button.sendreq_v2_t4(obj,function(d){ 
 			var replacearr=["min", "max", "minl", "maxl"];
 			for(var i=0; i<replacearr.length; i++){
 				$(obj).attr("data-"+replacearr[i], d[replacearr[i]]);
@@ -537,9 +540,9 @@ var div={
 			}
 		});
 	},
-	reload_autoscroll: function(obj, data_maxl, call_back_data, call_back_html, selector) {
-		if(data_maxl==null)
-			data_maxl=$(obj).attr("data-ignoreloadonce");
+	reload_autoscroll: function(obj, data_maxl, call_back_data, call_back_html, selector) { 
+		if(data_maxl==null) 
+			data_maxl=$(obj).attr("data-ignoreloadonce"); 
 		$(obj).attr({"data-max":0, "data-maxl":data_maxl});
 		div.load(obj, 0, -1, call_back_data, call_back_html, selector);
 	},

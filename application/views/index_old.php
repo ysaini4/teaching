@@ -22,13 +22,13 @@ Shivam Mamgain
       <div class="container">
         <div class="row ">
           <div class="col s12">
-            <h1 class="header center white-text raleway-font">Tution by IITians</h1>
+            <h1 class="header center white-text raleway-font">Get IITians</h1>
           </div>
           <div class="col s12">
             <div class="rw-words-1 raleway-font" style="height:40px;">
-              <h5 style="animation:none;opacity:1">Get an IITian tutor for Any Subject! Any Class!</h5>
-              <h5 style="display:none">Get the best tutor for your child.</h5>
-              <h5 style="display:none">Be one among us, better than us.</h5>
+              <h5>Get an IITian tutor for Any Topic! Any Time!</h5>
+              <h5>Be one among us. Better than us.</h5>
+              <h5>We are for quality conscious people.</h5>
             </div>
           </div>
         </div><br>
@@ -38,7 +38,7 @@ Shivam Mamgain
             <!-- Main Search Bar -->
             <div class="row center">
               <div class="col s12 l8 offset-l1" style="padding-left:0px;padding-right:0px;margin-bottom:10px;">
-                <input placeholder="Search Tutors: Mathematics, Physics, Science etc." type="search" autocomplete="off" name="q" id="main_search_bar">
+                <input placeholder="Search Tutors" type="search" autocomplete="off" name="q" id="main_search_bar">
               </div>
               <div class="col s12 l2" style="padding-left:0px;">
                 <button type="submit" class="btn waves-effect waves-light teal darken-3" id="main_search_button">
@@ -130,7 +130,6 @@ Shivam Mamgain
         </div>
       </div>
       <div class="row">
-      <!--
         <div class="col s6 l2 offset-l1">
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
             <div class="work-step-number">1</div>
@@ -138,33 +137,32 @@ Shivam Mamgain
             <div class="opensans-font blue-grey-text" style="font-size:18px;">Select <br><b>Topics</b></div>
           </div>
         </div>
-      -->
-        <div class="col s6 l2 offset-l2">
+        <div class="col s6 l2">
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
-            <div class="work-step-number">1</div>
+            <div class="work-step-number">2</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">search</i></div>
             <div class="opensans-font blue-grey-text" style="font-size:18px;">Search for <br><b>Tutors</b></div>
           </div>
         </div>
         <div class="col s6 l2">
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
-            <div class="work-step-number">2</div>
+            <div class="work-step-number">3</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:4.5rem;">filter_list</i></div>
             <div class="opensans-font blue-grey-text" style="font-size:18px;margin-top:6px;">Shortlist your <br><b>Tutor</b></div>
           </div>
         </div>
         <div class="col s6 l2">
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
-            <div class="work-step-number">3</div>
+            <div class="work-step-number">4</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">event</i></div>
             <div class="opensans-font blue-grey-text" style="font-size:18px;">Book his <br><b>Slot</b></div>
           </div>
         </div>
         <div class="col s12 l2">
           <div class="card-panel center hoverable" style="height:200px;padding:10px;">
-            <div class="work-step-number">4</div>
+            <div class="work-step-number">5</div>
             <div><i class="material-icons blue-grey-text text-darken-3" style="font-size:5rem;">desktop_windows</i></div>
-            <div class="opensans-font blue-grey-text" style="font-size:18px;">Start <br><b>Free Demo  </b></div>
+            <div class="opensans-font blue-grey-text" style="font-size:18px;">Start <br><b>Learning</b></div>
           </div>
         </div>
       </div>

@@ -63,6 +63,7 @@ class User extends Sql{
 			return 1;//yes, This is valid SignUpable data.
 	}
 	public static function signUp($data){//email,password,type keys are compulsary !!
+		global $_ginfo;
 		$data['create_time']=$data['update_time']=time();
 		if(!self::isValidSignUp($data))
 			return -3;//not valid input

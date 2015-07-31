@@ -10,6 +10,9 @@ class Welcome extends CI_Controller {
 	public function index(){  
 		$pageinfo=array();
 		Fun::issetlogout();
+		if (in_array('mod_rewrite', apache_get_modules())) {
+			echo "mod rewrite set hai.";
+		}
 		load_view('index.php',$pageinfo);
 	}
 	public function joinus(){ 
@@ -33,27 +36,31 @@ class Welcome extends CI_Controller {
 			$pageinfo["issubmitted"]=true; 
 			$_POST=Fun::mergeifunset($_POST,array("degree"=>"","college"=>"","resume"=>"","calvarification"=>"","minfees"=>"","country"=>"", "teachingexp" => "", "gender" => ""));
 			$_POST['name']=$_POST["fname"]." ".$_POST["lname"];
-			$temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"],"dob"=>Fun::strtotime_t3($_POST["dob"]),"gender"=>$_POST["gender"]));
-			if($temp>0){
-				$datatoinsert=array("lang"=>Fun::getmulchecked($_POST,"lang",14),"teachingexp"=>$_POST["teachingexp"]);
-				$datatoinsert["tid"]=$temp['id'];
-				$datatoinsert["isselected"]=$_ginfo["joinus_need_to_confirm"]?'f':'t';
-				$adddata=Fun::getflds(array("college","subother","minfees","resume", "calvarification", "degree","degreeother","branch","city","zipcode","state","country","linkprofile","feedback","knowaboutusother"),$_POST);
-				$adddata["sub"]=Fun::getmulchecked($_POST,"sub",6);
-				$adddata["grade"]=Fun::getmulchecked($_POST,"grade",4);
-				$adddata["knowaboutus"]=Fun::getmulchecked($_POST,"knowaboutus",4);
-				$adddata["home"]=Fun::getmulchecked($_POST,"home",2);
-				$datatoinsert["jsoninfo"]=json_encode($adddata);
-				$odata=Sqle::insertVal("teachers",$datatoinsert);
-				$post_data = $_POST;
-
-				Fun::mailfromfile( gi("adminmailid"), "php/mail/joinus_admin.txt", array("teachername" => $post_data["name"] ));
-				Fun::mailfromfile( $post_data["email"], "php/mail/joinus_teacher.txt", array("teachername" => $post_data["name"] ));
-//        Fun::redirect(BASE."account");
-				$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
-				Fun::redirect(BASE."profile");
-			}
-
+			if((gets("phone")!=$_POST["otp"] || gets("email")!=$_POST["otp_mail"] ) && $_ginfo["needsignupotp"] )
+				$temp=((gets("phone")!=$_POST["otp"])? -17 : -18);
+			else 
+				$temp=1;
+			if($temp>0) {
+				$temp=User::signUp(array("name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"],"type"=>'t',"phone"=>$_POST["phone"],"dob"=>Fun::strtotime_t3($_POST["dob"]),"gender"=>$_POST["gender"]));
+				if($temp>0){
+					$datatoinsert=array("lang"=>Fun::getmulchecked($_POST,"lang",14),"teachingexp"=>$_POST["teachingexp"]);
+					$datatoinsert["tid"]=$temp['id'];
+					$datatoinsert["isselected"]=$_ginfo["joinus_need_to_confirm"]?'f':'t';
+					$adddata=Fun::getflds(array("college","subother","minfees","resume", "calvarification", "degree","degreeother","branch","city","zipcode","state","country","linkprofile","feedback","knowaboutusother"),$_POST);
+					$adddata["sub"]=Fun::getmulchecked($_POST,"sub",6);
+					$adddata["grade"]=Fun::getmulchecked($_POST,"grade",4);
+					$adddata["knowaboutus"]=Fun::getmulchecked($_POST,"knowaboutus",4);
+					$adddata["home"]=Fun::getmulchecked($_POST,"home",2);
+					$datatoinsert["jsoninfo"]=json_encode($adddata);
+					$odata=Sqle::insertVal("teachers",$datatoinsert);
+					$post_data = $_POST;
+					Fun::mailfromfile( gi("adminmailid"), "php/mail/joinus_admin.txt", array("teachername" => $post_data["name"] ));
+					Fun::mailfromfile( $post_data["email"], "php/mail/joinus_teacher.txt", array("teachername" => $post_data["name"] ));
+				  //Fun::redirect(BASE."account");
+					$msg="Dear ".$_POST["name"].", thanks for contacting us. We will soon get back to you.";
+					Fun::redirect(BASE."profile");
+				}
+			}		
 			$data=json_encode($_POST);
 			$fn=time()."_".$_SERVER['REMOTE_ADDR']."_".strlen($data)."";
 			$uf="joinusdata/".$fn;
@@ -65,10 +72,9 @@ class Welcome extends CI_Controller {
 		$pageinfo["msg"]=$msg;
 		if($pageinfo["issubmitted"]==true){
 			$pageinfo["msg"]="thanks for contacting us. We will soon get back to you."; 
-			if($temp == -16)
-				$pageinfo["msg"]="<b>".$_POST["email"]."</b> Id already exists";  
-			else if($temp == -3)
-				$pageinfo["msg"]="Invalid Data. Please fill the form again";
+			if($temp<0) { 
+				$pageinfo["msg"]=errormsg($temp);  
+			}
 		} 
 		load_view("joinustmp2.php",$pageinfo);
 	}
@@ -133,8 +139,12 @@ class Welcome extends CI_Controller {
 		$pageinfo=array("loginmsg"=>"");
 		if(Fun::isSetP("email","password")){
 			$temp=User::signIn($_POST["email"],$_POST["password"]);
-			if($temp>0){
-				Fun::redirect(BASE."profile");
+			if($temp>0){ 
+				if(isses("redirecturl")) {
+					Fun::redirect(gets("redirecturl"));
+				} else {
+					Fun::redirect(BASE."profile");
+				}
 			}
 			else
 				$pageinfo["loginmsg"]="Invalid email/password";
@@ -198,6 +208,9 @@ class Welcome extends CI_Controller {
 	}
 	
 		public function profile($tid=0,$tabid=1) { 
+			$this->load->library('uri'); 
+			$tid = $this->uri->segment(2);
+			$tabid = $this->uri->segment(3);
 			$numtabs=5;
 			global $_ginfo;
 			$tid=Funs::gettid($tid);

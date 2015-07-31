@@ -103,9 +103,9 @@ class Actions{
 	function signup($data){
 		global $_ginfo;
 		$outp=array("ec"=>1,"data"=>0);
-		if((gets("phone")!=$data["otp"]  ) && $_ginfo["needsignupotp"] ){
-			$outp["ec"]=-17;
-		} else{
+		if((gets("phone")!=$data["otp"] || gets("email")!=$data["otp_mail"] ) && $_ginfo["needsignupotp"] ){
+			$outp["ec"]=((gets("phone")!=$data["otp"])? -17 : -18);
+		} else {
 			$signup_data=Fun::getflds(array("phone","name","email","password"),$data);
 			$signup_data["type"]="s";
 			$temp=User::signUp($signup_data);

@@ -62,6 +62,8 @@ $route['search'] 				=	"welcome/search";
 $route['edit'] 					=	"welcome/edit";
 
 $route['profile'] 				=	"welcome/profile";
+$route['profile/:num'] 			=	"welcome/profile";
+$route['profile/:num/:num']		=	"welcome/profile";
 $route['topics'] 				=	"welcome/topics";
 $route['cal'] 					=	"welcome/cal";
 $route['signup']				=	"welcome/signup";

@@ -145,7 +145,7 @@ function getFormInputs(obj,add){
 				outp[fn]=fv;
 			}
 		}
-	}
+	} 
 	outp[add]="";
 	return outp;
 }

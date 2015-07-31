@@ -34,21 +34,21 @@ $defopen="signupwindow";
             </div>
 
             <div class="row center">
-              <form class="col s12 l12" method="post" onsubmit='return ms.signupform(this,<?php echo tf($_ginfo["needsignupotp"]); ?>);' <?php if($_ginfo["needsignupotp"]) { ?>  data-action='signupotp' data-param='{"phone":$("#signupwindow").find("input[name=phone]").val(), type: "s","email":$("#signupwindow").find("input[name=email]").val()}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?>  <?php } ?>  autocomplete="off" >
+              <form class="col s12 l12" method="post" onsubmit='return ms.signupform(this,<?php echo tf($_ginfo["needsignupotp"]); ?>,true);' <?php if($_ginfo["needsignupotp"]) { ?>  data-action='signupotp' data-param='{"phone":$("#signupwindow").find("input[name=phone]").val(), type: "s","email":$("#signupwindow").find("input[name=email]").val()}' data-res='hideshowdown("signupwindow","otpwindow");'  <?php }else{ ?>  <?php } ?>  autocomplete="off" >
                 <div id="signupwindow" style='<?php dit($defopen=="signupwindow"); ?>' >
                   <div class="row no-margin-bottom">
                     <div class="input-field col s12 l6">
-                      <input id="fullname" name="name" type="text"  data-condition='simple'   >
+                      <input id="fullname" name="name" type="text"  data-condition='simple'     >
                       <label for="fullname">Full Name</label>
                     </div>
                     <div class="input-field col s12 l6">
-                      <input id="email" name="email" type="text"  data-condition='email'    >
+                      <input id="email" name="email" type="email"   data-condition='email'  >
                       <label for="email">Email</label>
                     </div>
                   </div>
                   <div class="row no-margin-bottom">
                     <div class="input-field col s12 l6">
-                      <input id="password" name="password" type="password"  data-condition="simple"    >
+                      <input id="password" name="password" type="password"  data-condition="simple"     >
                       <label for="password">Password</label>
                     </div>
                     <div class="input-field col s12 l6">
@@ -86,7 +86,15 @@ $defopen="signupwindow";
                       <label for="otp">One Time Password (Phone)</label>
                     </div>
                   </div>
-                  
+                  <div class="col s12" >
+                    An OTP has been sent to your Email. Please enter it below.
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12" >
+                      <input id="otp" name="otp_mail" type="text" data-condition="simple" class="validate" >
+                      <label for="otp">One Time Password (Email)</label>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="input-field col s12">
                       <button class="btn waves-effect waves-light"  name="signup" type="submit" >Submit
