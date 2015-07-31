@@ -22,7 +22,7 @@ Shivam Mamgain
       <div class="container">
         <div class="row ">
           <div class="col s12">
-            <h1 class="header center white-text raleway-font">Tution by IITians</h1>
+            <h1 class="header center white-text raleway-font">Tuition by IITians</h1>
           </div>
           <div class="col s12">
             <div class="rw-words-1 raleway-font" style="height:40px;">

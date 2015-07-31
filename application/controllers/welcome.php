@@ -205,6 +205,9 @@ class Welcome extends CI_Controller {
 	}
 	
 		public function profile($tid=0,$tabid=1) { 
+			//$this->load->library('uri'); 
+			//$tid = $this->uri->segment(2);
+			//$tabid = $this->uri->segment(3);
 			$numtabs=5;
 			global $_ginfo;
 			$tid=Funs::gettid($tid);
@@ -335,7 +338,7 @@ class Welcome extends CI_Controller {
 			$adddata['calvarification'] = $jsonArray['calvarification'];
 			$adddata['branch'] = $jsonArray['branch'];
 			if($_POST['resumefile']=='')
-				$_POST['resumefile']=$jsonArray['resume'];
+			$_POST['resumefile']=$jsonArray['resume'];
 			$adddata['resume']=$_POST['resumefile'];
 			$adddata['feedback']=$jsonArray['feedback'];
 			$adddata["sub"] = Fun::getmulchecked($_POST,"sub",6);

@@ -52,7 +52,7 @@ class Students{
 				}
 				Fun::mailfromfile($cstinfo["studentemail"], "php/mail/classbook_student.txt", $cstinfo);
 				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook.txt", $cstinfo);
-				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook_admin.txt", $cstinfo);
+				Fun::mailfromfile($_ginfo["adminmailid"], "php/mail/classbook_admin.txt", $cstinfo);
 				foreach($bookedslots as $i => $row) {
 					$starttime = $data["datets"]+($row[0]-1)*1800;
 					$duration = $row[1]*1800;
