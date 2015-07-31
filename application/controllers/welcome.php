@@ -10,9 +10,6 @@ class Welcome extends CI_Controller {
 	public function index(){  
 		$pageinfo=array();
 		Fun::issetlogout();
-		if (in_array('mod_rewrite', apache_get_modules())) {
-			echo "mod rewrite set hai.";
-		}
 		load_view('index.php',$pageinfo);
 	}
 	public function joinus(){ 
