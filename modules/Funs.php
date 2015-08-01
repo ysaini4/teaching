@@ -344,7 +344,7 @@ abstract class Funs{
 
 	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
-		$hisoutput = Funs::mssearch($data); 
+		$hisoutput = Funs::mssearch($data);
 		$hisoutput[1]["uid"] = (0+User::loginId());
 		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, takendemo.isdonedemo, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.teachermoto, teachers.jsoninfo,teachers.teachingexp, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid left join ".qtable("takendemo")." on takendemo.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
@@ -431,7 +431,7 @@ abstract class Funs{
 	}
 //Search modules
 	public static function mssearch($data) {
-		$keys = searchkeysplit($data["search"]);
+		$keys = replacekeys(searchkeysplit($data["search"]),array('9'=>'ix','10'=>'x','11'=>'xi','12'=>'xii',"maths"=>"math"));
 		$params=array();
 		foreach($keys as $i => $val) {
 			$params["key".($i+1)] = $val;

@@ -519,7 +519,7 @@
 					$outp["data"]=Fun::getflds(array("min", "max", "minl", "maxl"), $as_handle);
 					$outp["ec"]=1;
 					if($actionarg==null)
-						echo json_encode($outp)."\n"; 
+						echo json_encode($outp)."\n";
 					load_view($as_handle["load_view"], array("qresult"=>$as_handle["qresult"]));
 					return;
 				}
@@ -687,7 +687,7 @@
 		unset ($_SESSION[$key]);
 
 	}
-	function yogyimplode($glue,$lastglue,$arrval) {
+	function yogyimplode($glue,$lastglue,$arrval) { //implode with last glue
 		if(!count($arrval)>0)
 			return null;
 		else {
@@ -703,7 +703,7 @@
 		return $string;		
 	}
 
-	function conmerge($array1=array(),$array2=array()) {
+	function conmerge($array1=array(),$array2=array()) { // merge 2 array's value continuous
 		if(!count($array1)>0)
 			return null;
 		else if(!count($array1)==count($array2))
@@ -714,4 +714,14 @@
 			}
 		return $temparr;	
 	}
+	function replacekeys($array1,$array2) {
+		$keys=array_keys($array2);
+		for($i=0;$i<count($keys);$i++) {
+			for($j=0;$j<count($array1);$j++) {
+				if($array1[$j]==$keys[$i])
+					$array1[$j]=$array2[$keys[$i]];
+			}
+		}
+		return $array1;
+	}	
 ?>
