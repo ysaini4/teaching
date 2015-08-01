@@ -470,19 +470,19 @@ Shivam Mamgain
         <div class="col s12">
         <div id="slider1_container" style="position: relative; height: 70px; overflow: hidden; ">
           <div u="slides" style="cursor: move; position: relative; width:1340px; height: 70px; overflow: hidden;">
-            <div><a href="http://www.iitgn.ac.in/" ><img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" height="70" width="70"></a></div>
-            <div><a href="http://www.iitr.ac.in" ><img src="logos/roorkee.png" title="IIT Roorkee" height="70" width="70"></a></div>
-            <div><a href="http://www.iitmandi.ac.in" ><img src="logos/mandi-iit.png" title="IIT Mandi" height="70" width="70"></a></div>
-            <div><a href="http://www.iiti.ac.in" ><img src="logos/indore.png" title="IIT Indore" height="70" width="70"></a></div>
-            <div><a href="http://www.iitj.ac.in" ><img src="logos/IIT-JODHPUR-LOGO.png" title="IIT Jodhpur" height="70" width="70"></a></div>
-            <div><a href="http://www.iitg.ac.in" ><img src="logos/IIT-Guwahati-Logo.png" title="IIT Guwahati" height="70" width="70"></a></div>
-            <div><a href="http://www.iitd.ac.in" ><img src="logos/iit-delhi.png" title="IIT Delhi" height="70" width="70"></a></div>
-            <div><a href="http://www.iitb.ac.in" ><img src="logos/iit-bombay.png" title="IIT Bombay" height="70" width="70"></a></div>        
-            <div><a href="http://www.iitk.ac.in" ><img src="logos/IIT_Kanpur_Logo.png" title="IIT Kanpur" height="70" width="70"></a></div>
-            <div><a href="http://www.iith.ac.in" ><img src="logos/iit_hydrabad_logo.png" title="IIT Hydrabad" height="70" width="70"></a></div>
-            <div><a href="http://www.iitbhu.ac.in" ><img src="logos/iiit-varanasi.png" title="IIT Varanasi(BHU)" height="70" width="70"></a></div>
-            <div><a href="http://www.iitbbs.ac.in" ><img src="logos/bhuvneshwar.png" title="IIT Bhuvneshwar" height="70" width="70"></a></div>
-            <div><a href="http://www.iitkgp.ac.in" ><img src="logos/IITKharagpurLogo.png" title="IIT Kharagpur" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitgn.ac.in/" ><img src="logos/IITGandhinagar.png" title="IIT Gandhinagar" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitr.ac.in" ><img src="logos/roorkee.png" title="IIT Roorkee" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitmandi.ac.in" ><img src="logos/mandi-iit.png" title="IIT Mandi" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iiti.ac.in" ><img src="logos/indore.png" title="IIT Indore" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitj.ac.in" ><img src="logos/IIT-JODHPUR-LOGO.png" title="IIT Jodhpur" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitg.ac.in" ><img src="logos/IIT-Guwahati-Logo.png" title="IIT Guwahati" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitd.ac.in" ><img src="logos/iit-delhi.png" title="IIT Delhi" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitb.ac.in" ><img src="logos/iit-bombay.png" title="IIT Bombay" height="70" width="70"></a></div>        
+            <div><a target="_blank" href="http://www.iitk.ac.in" ><img src="logos/IIT_Kanpur_Logo.png" title="IIT Kanpur" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iith.ac.in" ><img src="logos/iit_hydrabad_logo.png" title="IIT Hydrabad" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitbhu.ac.in" ><img src="logos/iiit-varanasi.png" title="IIT Varanasi(BHU)" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitbbs.ac.in" ><img src="logos/bhuvneshwar.png" title="IIT Bhuvneshwar" height="70" width="70"></a></div>
+            <div><a target="_blank" href="http://www.iitkgp.ac.in" ><img src="logos/IITKharagpurLogo.png" title="IIT Kharagpur" height="70" width="70"></a></div>
           </div>
         </div>
         </div>

@@ -34,7 +34,7 @@ class Students{
 		$bookedslots = grouplist( $inpslots );
 		list($c_id, $s_id, $t_id) = intexplode("-", $data["cst"]);
 		$dbpush = array();
-		$query = "select accountbalance.mymoney, users.name as teachername, users.email as teacheremail, users1.name as studentname, users1.email as studentemail, subjectlist.* from ".qtable("subjectlist")." left join users on users.id = {tid} left join users as users1 on users1.id = {sid} left join ".qtable("accountbalance")." on accountbalance.uid = {sid} where c_id = $c_id AND s_id = $s_id AND t_id = $t_id AND tid={tid} ";
+		$query = "select accountbalance.mymoney, users.name as teachername, users.email as teacheremail,users.phone as teacherphone, users1.name as studentname, users1.email as studentemail,users1.phone as studentphone, subjectlist.* from ".qtable("subjectlist")." left join users on users.id = {tid} left join users as users1 on users1.id = {sid} left join ".qtable("accountbalance")." on accountbalance.uid = {sid} where c_id = $c_id AND s_id = $s_id AND t_id = $t_id AND tid={tid} ";
 		$cstinfo = Sqle::getR($query, array("sid" => User::loginId(), "tid" => $data["tid"]));
 		if($cstinfo==null) {
 			$outp["ec"] = "-28";
@@ -43,6 +43,7 @@ class Students{
 			$timetotime[] = Fun::timetotime_t3($data["datets"]+($row[0]-1)*1800);
 			} 
 			$cstinfo['stimes']=yogyimplode(", "," and ",$timetotime);
+			
 			$cstinfo["priceused"] = floor(($cstinfo["price"]*count($inpslots))/2);
 			$isdonedemo = (Sqle::selectVal("donefreedemo", "*", array("tid" => $data["tid"], "uid" => User::loginId()), 1) != null );
 			if( $cstinfo["priceused"] > $cstinfo["mymoney"] && $isdonedemo ) {
@@ -57,6 +58,8 @@ class Students{
 				Fun::mailfromfile($cstinfo["studentemail"], "php/mail/classbook_student.txt", $cstinfo);
 				Fun::mailfromfile($cstinfo["teacheremail"], "php/mail/classbook.txt", $cstinfo);
 				Fun::mailfromfile($_ginfo["adminmailid"], "php/mail/classbook_admin.txt", $cstinfo);
+				Fun::msgfromfile($cstinfo["studentphone"], "php/mail/classbook_student_msg.txt", $cstinfo);
+				Fun::msgfromfile($cstinfo["teacherphone"], "php/mail/classbook_msg.txt", $cstinfo);
 				foreach($bookedslots as $i => $row) {
 					$starttime = $data["datets"]+($row[0]-1)*1800;
 					$duration = $row[1]*1800;
