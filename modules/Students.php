@@ -27,7 +27,7 @@ class Students{
 		}
 		return array('ec'=>$ec,'data'=>$odata);
 	}
-	function studentBookSlots($data) {
+	function studentBookSlots($data) { 
 		global $_ginfo;
 		$outp = array("ec" => 1, "data" => 0);
 		$inpslots = intexplode("-", $data["slots"]);
@@ -36,10 +36,13 @@ class Students{
 		$dbpush = array();
 		$query = "select accountbalance.mymoney, users.name as teachername, users.email as teacheremail, users1.name as studentname, users1.email as studentemail, subjectlist.* from ".qtable("subjectlist")." left join users on users.id = {tid} left join users as users1 on users1.id = {sid} left join ".qtable("accountbalance")." on accountbalance.uid = {sid} where c_id = $c_id AND s_id = $s_id AND t_id = $t_id AND tid={tid} ";
 		$cstinfo = Sqle::getR($query, array("sid" => User::loginId(), "tid" => $data["tid"]));
-		
 		if($cstinfo==null) {
 			$outp["ec"] = "-28";
 		} else {
+			foreach($bookedslots as $i => $row) {
+			$timetotime[] = Fun::timetotime_t3($data["datets"]+($row[0]-1)*1800);
+			} 
+			$cstinfo['stimes']=yogyimplode(", "," and ",$timetotime);
 			$cstinfo["priceused"] = floor(($cstinfo["price"]*count($inpslots))/2);
 			$isdonedemo = (Sqle::selectVal("donefreedemo", "*", array("tid" => $data["tid"], "uid" => User::loginId()), 1) != null );
 			if( $cstinfo["priceused"] > $cstinfo["mymoney"] && $isdonedemo ) {

@@ -78,7 +78,7 @@ var button={
 			params=others.mergeifunset(params,eparams);
 		}
 		params['action']=allattrs["data-action"]; 
-		obj.disabled=true;
+		obj.disabled=true; 
 		var prvvalue=obj.innerHTML;
 		obj.innerHTML=(!button.hasattr(allattrs,"data-waittext"))?' ... ':(allattrs["data-waittext"]==''?prvvalue:allattrs["data-waittext"]);
 		$.post(HOST+"actionv2.php",params,function(d,s){if(s=='success'){

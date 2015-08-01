@@ -263,14 +263,14 @@ var ms={
 			}
 		}, null, "#loadmoreloadingimg");
 	},
-	studentbookslot: function(obj) {
+	studentbookslot: function(obj) { 
 		if(selectedtopic != "") {
 			ms.cbautofill("disppopupslots");
 			$(obj).attr("data-cst", selectedtopic);
 			button.sendreq_v2(obj);
 		} else {
 			Materialize.toast('Please select the topic first', 4000);
-		}
+		} 
 	},
 	booktopic: function(obj, cst) {
 		selectedtopic=cst;

@@ -687,4 +687,20 @@
 		unset ($_SESSION[$key]);
 
 	}
+	function yogyimplode($glue,$lastglue,$arrval) {
+		if(!count($arrval)>0) {
+			return null;
+		} else {
+			for($i=0;$i<=count($arrval)-1;$i++) {
+				if($i==0) {
+					$string=$arrval[$i];
+				} else if($i==count($arrval)-1) {
+					$string=$string.$lastglue.$arrval[$i];
+				} else {
+					$string=$string.$glue.$arrval[$i];
+				}
+			}
+		}
+		return $string;		
+	}
 ?>
