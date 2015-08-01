@@ -688,19 +688,30 @@
 
 	}
 	function yogyimplode($glue,$lastglue,$arrval) {
-		if(!count($arrval)>0) {
+		if(!count($arrval)>0)
 			return null;
-		} else {
+		else {
 			for($i=0;$i<=count($arrval)-1;$i++) {
-				if($i==0) {
+				if($i==0)
 					$string=$arrval[$i];
-				} else if($i==count($arrval)-1) {
+				else if($i==count($arrval)-1)
 					$string=$string.$lastglue.$arrval[$i];
-				} else {
+				else
 					$string=$string.$glue.$arrval[$i];
-				}
 			}
 		}
 		return $string;		
+	}
+
+	function conmerge($array1=array(),$array2=array()) {
+		if(!count($array1)>0)
+			return null;
+		else if(!count($array1)==count($array2))
+			return array1;
+		else {
+			for($i=0;$i<=count($array1)-1;$i++)
+				$temparr[]=$array1[$i].$array2[$i];
+			}
+		return $temparr;	
 	}
 ?>

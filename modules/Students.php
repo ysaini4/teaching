@@ -41,9 +41,9 @@ class Students{
 		} else {
 			foreach($bookedslots as $i => $row) {
 			$timetotime[] = Fun::timetotime_t3($data["datets"]+($row[0]-1)*1800);
+			$dispdur[] = '('.number_format(($row[1]*1800)/3600.0 , 1)." hr)";
 			} 
-			$cstinfo['stimes']=yogyimplode(", "," and ",$timetotime);
-			
+			$cstinfo['stimes']=yogyimplode(", "," and ",conmerge($timetotime,$dispdur));
 			$cstinfo["priceused"] = floor(($cstinfo["price"]*count($inpslots))/2);
 			$isdonedemo = (Sqle::selectVal("donefreedemo", "*", array("tid" => $data["tid"], "uid" => User::loginId()), 1) != null );
 			if( $cstinfo["priceused"] > $cstinfo["mymoney"] && $isdonedemo ) {

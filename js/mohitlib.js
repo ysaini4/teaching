@@ -77,7 +77,7 @@ var button={
 			eval("var eparams="+allattrs["data-eparams"]);
 			params=others.mergeifunset(params,eparams);
 		}
-		params['action']=allattrs["data-action"]; 
+		params['action']=allattrs["data-action"];
 		obj.disabled=true; 
 		var prvvalue=obj.innerHTML;
 		obj.innerHTML=(!button.hasattr(allattrs,"data-waittext"))?' ... ':(allattrs["data-waittext"]==''?prvvalue:allattrs["data-waittext"]);

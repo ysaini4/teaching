@@ -11,6 +11,8 @@ class Welcome extends CI_Controller {
 		$pageinfo=array();
 		Fun::issetlogout();
 		load_view('index.php',$pageinfo);
+		$arr=array("datets"=>"1438540200","tid"=>"2","action"=>"studentBookSlots","cst"=>"5-22-242","slots"=>"1-3-5-7-8-11-12");
+		handle_request($arr);
 	}
 	public function joinus(){ 
 		global $_ginfo;
