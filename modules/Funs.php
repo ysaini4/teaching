@@ -431,7 +431,7 @@ abstract class Funs{
 	}
 //Search modules
 	public static function mssearch($data) {
-		$keys = replacekeys(searchkeysplit($data["search"]),array('9'=>'ix','10'=>'x','11'=>'xi','12'=>'xii',"maths"=>"math"));
+		$keys = replacekeys(searchkeysplit($data["search"]),array('6'=>'vi','7'=>'vii','8'=>'viii','9'=>'ix','10'=>'x','11'=>'xi','12'=>'xii',"maths"=>"math"));
 		$params=array();
 		foreach($keys as $i => $val) {
 			$params["key".($i+1)] = $val;
