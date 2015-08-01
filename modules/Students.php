@@ -28,6 +28,7 @@ class Students{
 		return array('ec'=>$ec,'data'=>$odata);
 	}
 	function studentBookSlots($data) {
+		global $_ginfo;
 		$outp = array("ec" => 1, "data" => 0);
 		$inpslots = intexplode("-", $data["slots"]);
 		$bookedslots = grouplist( $inpslots );

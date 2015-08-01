@@ -205,9 +205,9 @@ class Welcome extends CI_Controller {
 	}
 	
 		public function profile($tid=0,$tabid=1) { 
-			//$this->load->library('uri'); 
-			//$tid = $this->uri->segment(2);
-			//$tabid = $this->uri->segment(3);
+			$this->load->library('uri'); 
+			$tid = $this->uri->segment(2);
+			$tabid = $this->uri->segment(3);
 			$numtabs=5;
 			global $_ginfo;
 			$tid=Funs::gettid($tid);
@@ -285,7 +285,7 @@ class Welcome extends CI_Controller {
 					mergeifunset($pageinfo, Funs::moneyaccount($tid));
 					$pageinfo["rlist"] = Sqle::getA("select * from ".qtable("allreviews")." where tid={tid} ", array("tid" => $tid));
 					$pageinfo["cansee"] = (User::loginId() == $tid || User::isloginas("a"));
-					$pageinfo["canedit"] = (User::loginId() == $tid);
+					$pageinfo["canedit"] = (User::loginId() == $tid);  
 					load_view("profile.php",$pageinfo);            
 				}
 				else if($uprofile['type']=='s') {
