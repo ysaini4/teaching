@@ -8,7 +8,7 @@ var button={
 	},
 	tosendattrs:function(obj,allattrs){ 
 		var dontneed=["data-restext","data-waittext","data-res","data-wait","data-error","data-params","data-eparams"];
-		var sendparams={};
+		var sendparams={}; 
 		for(var i in allattrs){ 
 			if(i.substr(0,5)=="data-" && dontneed.indexOf(i)==-1 ) { 
 				sendparams[i.substr(5)]=allattrs[i]; 
@@ -149,7 +149,6 @@ var button={
 		}});
 	},
 	sendreq_v2_t3:function(params,call_back_data,call_back_html,adata){ 
-
 		$.post(HOST+"actiondisp.php",params,function(d,s){if(s=='success'){ 
 			var respo=button.parse(d.split("\n")[0]); 
 			if(respo){
@@ -177,16 +176,16 @@ var button={
 		}});
 	},
 	sendreq_v2_t4:function(obj,call_back_data,call_back_html,adata){ 
-		var allattrs=this.attrs(obj);   
+		var allattrs=this.attrs(obj);  
 		if(!button.hasattr(allattrs,"data-params")) { 
 			var params=this.tosendattrs(obj,allattrs); 
 		}
 		else{
 			eval("var params="+allattrs["data-params"]);
-		}
-		if(button.hasattr(allattrs,"data-eparams")){
-			eval("var eparams="+allattrs["data-eparams"]);
-			params=others.mergeifunset(params,eparams);
+		} 
+		if(button.hasattr(allattrs,"data-eparams")){ 
+			eval("var eparams="+allattrs["data-eparams"]); 
+			params=others.mergeifunset(params,eparams); 
 		}
 		params['action']=allattrs["data-action"]; 
 		button.sendreq_v2_t3(params,call_back_data,call_back_html);

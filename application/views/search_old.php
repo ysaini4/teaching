@@ -52,7 +52,8 @@ load_view("Template/navbarnew.php");
           <div class="row">
             <form method="post" id="searchform" class="col s12">
               <?php
-              hidinp("search",htmlspecialchars($search));
+              //hidinp("search","htmlspecialchars($search)"); old line
+              hidinp("search",""); //new line by yogy for refine without search input
               ?>
               <div class="row" style='margin-bottom:-20px;' >
                 <div class="col s12"> 

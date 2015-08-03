@@ -210,7 +210,8 @@ function readform(obj,add){
 		outp[i]=outp[i].join("-");
 	}
 	if(add!=null)
-		outp[add]="";
+		outp[add]="";console.log(outp);
 	return outp;
 }
+ 
 

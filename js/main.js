@@ -301,7 +301,7 @@ function setinputselects(hidinp,cbselector){
 	hidinp.value=outp.join("-");
 }
 
-function searchform(){
+function searchform(){ 
 	var leftform=readform($("#searchform"));
 	mergeifunset(leftform, {'orderby':$("select[name=orderby]").val()});
 	return leftform;
