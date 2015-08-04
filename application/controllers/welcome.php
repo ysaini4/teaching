@@ -7,11 +7,14 @@ class Welcome extends CI_Controller {
 		$this->cururl=Fun::getcururl();
 		$this->cleanurl=Fun::getcururl(true);
 	}
-	public function index(){  
+	public function index(){ 
 		$pageinfo=array();
 		Fun::issetlogout();
 		load_view('index.php',$pageinfo);
+		//$arrt=array("action"=>"search","blocked"=>"true","class"=>"","home"=>"1-2","ignoreloadonce"=>"20","isloadold"=>"0","lang"=>"","max"=>"0","maxl"=>"20","orderby"=>"","price"=>"","search"=>"","subject"=>"","timer"=>"","timeslot"=>"","topic"=>"");
+		//Actiondisp::search($arrt);
 		}
+
 	public function joinus(){ 
 		global $_ginfo;
 		$pageinfo=array("issubmitted"=>false,"msg1"=>"");
@@ -75,7 +78,7 @@ class Welcome extends CI_Controller {
 		} 
 		load_view("joinustmp2.php",$pageinfo);
 	}
-
+	
 	public function aboutus(){
 		$aboutVar = array();
 		load_view("aboutus.php", $aboutVar);

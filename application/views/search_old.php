@@ -72,7 +72,7 @@ load_view("Template/navbarnew.php");
                   </select>
                 </div>
               </div>
-              <div class="row" style="display:none">
+              <div class="row">
                 <div class="col s12">
                   <ul class="collapsible" data-collapsible="accordion">
                      <li>
@@ -80,14 +80,14 @@ load_view("Template/navbarnew.php");
                       <div class="collapsible-body" style="padding:6px;">
                         <div class="row">
                           <div class="col s10">
-                            <input id="hometuition" type="checkbox" class="filled-in" name="hometuition" value='1' />
-                            <label style="padding-left:23px;" for="hometuition" >
+                            <input id="home1" type="checkbox" class="filled-in" name="home" value='1' checked />
+                            <label style="padding-left:23px;" for="home1" >
                             Home Tuition
                             </label>
                           </div>
                           <div class="col s10">
-                          <input id="onlineclasses" type="checkbox" class="filled-in" name="onlineclasses" value='1' />
-                            <label style="padding-left:23px;" for="onlineclasses" >
+                          <input id="home2" type="checkbox" class="filled-in" name="home" value='2' checked />
+                            <label style="padding-left:23px;" for="home2" >
                             Online Classes
                             </label>
                           </div>
@@ -98,8 +98,8 @@ load_view("Template/navbarnew.php");
                    </ul>
                 </div>
               </div>               
-              <div class="row"  >
-                <div class="col s12" style="display:none">
+              <div class="row" style="display:none"  >
+                <div class="col s12" >
                   <ul class="collapsible" data-collapsible="accordion">
                     <li>
                       <div class="collapsible-header">Topics</div>

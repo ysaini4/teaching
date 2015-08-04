@@ -132,7 +132,7 @@ class Actiondisp{
 
 		load_view('timeslotpopup.php',$pageinfo);
 	}
-	function search($data,$printjson=true){  
+	function search($data,$printjson=true){ 
 		global $_ginfo;
 //		$need=array('class', 'subject', 'topic', 'price', 'timer', 'lang', 'timeslot', 'orderby', 'search', 'max', 'maxl');
 		$need=array('class', 'subject', 'topic', 'orderby', 'search', 'max', 'maxl');

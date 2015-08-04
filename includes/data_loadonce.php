@@ -17,7 +17,6 @@ $_ginfo["query"]["studentteacherallts"]=gtable("meteacherallts")." AND (sid={sid
 
 $_ginfo["query"]["teacherfreets"]="select starttime from (".gtable("meteacherallts")." AND (sid is null AND numbooked<".$_ginfo["wiziqlimit"].") ".") teacherfreets ";
 
-
 $_ginfo["query"]["pricelist"] = "select tid, min(price) as minprice, max(price) as maxprice from subjects group by tid";
 
 $_ginfo["query"]["cst_map"] = "select all_classes.classname, all_subjects.subjectname, all_topics.topicname, all_cst.* from all_cst left join all_classes on all_classes.id = all_cst.c_id left join all_subjects on all_subjects.id = all_cst.s_id left join all_topics on all_topics.id = all_cst.t_id ";
@@ -47,5 +46,7 @@ $_ginfo["query"]["teacherratings"] = "select tid, avg(rate) as avgrating, count(
 
 $_ginfo["query"]["takendemo"] = "select teachers.tid, (donefreedemo.uid is not null) as isdonedemo from teachers left join donefreedemo on (donefreedemo.tid = teachers.tid AND donefreedemo.uid = {uid} ) ";
 
+/// query by yogy
+$_ginfo["query"]["teachersubjectlist"]="select teachers.tid,subjectlist.* from teachers left join (select subjects.id,subjects.tid as otid,subjects.c_id,subjects.s_id,subjects.t_id,subjects.timer,subjects.price, all_classes.classname, all_subjects.subjectname, all_topics.topicname from subjects left join all_classes on all_classes.id = subjects.c_id left join all_subjects on all_subjects.id = subjects.s_id left join all_topics on all_topics.id = subjects.t_id) subjectlist on teachers.tid=subjectlist.otid";
 
 ?>

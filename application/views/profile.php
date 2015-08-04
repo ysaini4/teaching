@@ -3,7 +3,8 @@ load_view("Template/top.php");
 load_view("Template/navbarnew.php");
 
 if(true || $aboutinfo["isselected"] == "a" || User::isloginas("a") ) { 
-?>
+
+?> 
 	<main>
 		<div class="container">
 		<br>

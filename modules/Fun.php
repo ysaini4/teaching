@@ -579,9 +579,9 @@ abstract class Fun{
 		for($i=1; $i<count($queryies); $i++) {
 			$appstr[] = " $key in (".$queryies[$i].") " ;
 		}
-		if(count($appstr) == 0) {
+		if(count($appstr) == 0) { 
 			return $query;
-		} else {
+		} else { 
 			return $query." where ".implode(" AND ", $appstr);
 		}
 	}

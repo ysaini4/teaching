@@ -694,7 +694,7 @@
       </label>
      </div>
      <div>
-      <input id="home2" type="radio" name="home1" />
+      <input id="home2" type="radio" name="home2" />
       <label for="home2">
        No
       </label>

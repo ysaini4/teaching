@@ -342,10 +342,12 @@ abstract class Funs{
 		return $outp;
 	}
 
-	public static function tejpal_output($data){//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
+	public static function tejpal_output($data){
+
+	//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
-		$hisoutput = Funs::mssearch($data);
-		$hisoutput[1]["uid"] = (0+User::loginId());
+		$hisoutput = Funs::mssearch($data); 
+		$hisoutput[1]["uid"] = (0+User::loginId()); 
 		$hisoutput[0]="select dispteachers.tid, teacherratings.avgrating, takendemo.isdonedemo, teacherratings.numpeople as numrater, subjectnamelist.subjectname, users.name, users.profilepic, teachers.teachermoto, teachers.jsoninfo,teachers.teachingexp, pricelist.minprice, pricelist.maxprice from (".$hisoutput[0].") dispteachers left join users on users.id=dispteachers.tid left join teachers on teachers.tid=dispteachers.tid left join (".gtable("pricelist").") pricelist on pricelist.tid = teachers.tid left join ".qtable("subjectnamelist")." on subjectnamelist.tid = teachers.tid left join ".qtable("teacherratings")." on teacherratings.tid=teachers.tid left join ".qtable("takendemo")." on takendemo.tid = teachers.tid where teachers.isselected='a' order by pricelist.minprice asc";
 		return $hisoutput;
 	}
@@ -430,7 +432,7 @@ abstract class Funs{
 		return getifn($outpurl, "");
 	}
 //Search modules
-	public static function mssearch($data) {
+	public static function mssearch($data) { 
 		$keys = replacekeys(searchkeysplit($data["search"]),array('6'=>'vi','7'=>'vii','8'=>'viii','9'=>'ix','10'=>'x','11'=>'xi','12'=>'xii',"maths"=>"math"));
 		$params=array();
 		foreach($keys as $i => $val) {
@@ -449,19 +451,23 @@ abstract class Funs{
 		}));
 
 		mergeifunset($params, Fun::getflds(array("class", "subject", "topic"), $data));
+		
+/*cmnt by yogy 		
 		$query1 = "select distinct tid from ".qtable("subjectlist")." left join users on users.id = subjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) AND (".$pt_constrain["price"].") AND (".$pt_constrain["timer"].")";
-
-		$query2 = "select distinct tid from timeslot where starttime>".time()." AND (".$timeslot_constrain.")";
+			
+		$query2 = "select distinct tid from timeslot where starttime>".time()." AND (".$timeslot_constrain.")";   
+cmnt by yogy */		
+		$query1 = "select distinct tid from ".qtable("teachersubjectlist")." left join users on users.id = teachersubjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) AND (".$pt_constrain["price"].") AND (".$pt_constrain["timer"].")";// this query gives results with teachers has no class ,subject ,topic booked 
 		$query3 = "select tid from teachers where (".$lang_constrain.")";
 //		echo $query3;
 //		echo $query2;
 
 //		$finalquery = $query1;
-		$finalquery = Fun::intersectionquery(array($query1, $query2, $query3), "tid");
+		$finalquery = Fun::intersectionquery(array($query1/*, $query2*/, $query3), "tid");
 //		echo $finalquery;
 //		$finalquery = "(".$query1.") union (".$query2.") ";
 //		$finalquery = Fun::intersectionquery(array($query1, $query2), "tid");
-//		echo $finalquery;
+//		
 		return array($finalquery , $params);
 	}
 
