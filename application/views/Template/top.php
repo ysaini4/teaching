@@ -6,7 +6,7 @@
   opent("base",array("href"=>HOST));
   ocloset("title",$title);
   // changes by narayan
-  if (uri_string() == "search") {
+    if (strpos(uri_string(),'search') !== false) {
     array_push($css, "css/bootstrap.min.css");
   }
   array_push($css, "css/glyphicon.css");
