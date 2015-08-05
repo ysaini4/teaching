@@ -37,6 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['rating/:any'] 			=	"welcome/rating";
+$route['rating'] 				=	"welcome/rating";
 $route['reviews'] 				=	"welcome/reviews";
 $route['termsofuse'] 			=	"welcome/termsofuse";
 $route['privacypolicy'] 		=	"welcome/privacypolicy";

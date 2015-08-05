@@ -1,14 +1,14 @@
 /* To check if device is a Mobile */
-if (screen.width <= 1000) {
+/* if (screen.width <= 1000) {
   var isMobile = true;
 } else {
   var isMobile = false;
 }
-
+*/
 /* Search Page - Filter Panel */
 var sticker = $("#sticker_panel");
 var pos_stk = sticker.position();
-
+/*
 $(window).scroll(function() {
   if (!isMobile) {
     var windowpos = $(window).scrollTop() + 60;
@@ -24,5 +24,5 @@ $(window).scroll(function() {
     }
   }
 });
-
+*/
 ms.refinecallafter();

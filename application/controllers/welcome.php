@@ -14,7 +14,7 @@ class Welcome extends CI_Controller {
 		//$arrt=array("action"=>"search","blocked"=>"true","class"=>"","home"=>"1-2","ignoreloadonce"=>"20","isloadold"=>"0","lang"=>"","max"=>"0","maxl"=>"20","orderby"=>"","price"=>"","search"=>"","subject"=>"","timer"=>"","timeslot"=>"","topic"=>"");
 		//Actiondisp::search($arrt);
 		}
-
+	
 	public function joinus(){ 
 		global $_ginfo;
 		$pageinfo=array("issubmitted"=>false,"msg1"=>"");
@@ -606,18 +606,81 @@ class Welcome extends CI_Controller {
     load_view("hiring.php",array());
   }
   
-  public function privacypolicy() {
-    load_view("privacypolicy.php",array());
-  }
+  	public function privacypolicy() {
+    	load_view("privacypolicy.php",array());
+  	}
   
-  public function termsofuse() {
-    load_view("terms.php",array());
-  }
+  	public function termsofuse() {
+    	load_view("terms.php",array());
+  	}
   
-  public function reviews() {
-    load_view("review.php",array());
-  }
-     
+  	public function reviews() {
+    	load_view("review.php",array());
+  	}
+	public function rating(){
+		$total_no_of_ratings 	=	(int)($this->input->post('rating_count') ? $this->input->post('rating_count') : 0);
+		$rating_avg 			=	(float)($this->input->post('rating_avg') ? $this->input->post('rating_avg') : 0);
+		$uid 					=	(int)$this->input->post('uid');
+		$tid 					=	(int)$this->input->post('tid');
+		$rating 				=	(int)$this->input->post('rating');
+		$prev_rating			=	(int)$this->input->post('previous_rating');
+		$rating_id 				=	(int)($this->input->post('rating_id') ? $this->input->post('rating_id') : NULL);
+
+		if($prev_rating == 0)
+		{
+			$data_rating 		= array(
+				'user_id'		=> $uid,
+				'teacher_id'	=> $tid,
+				'rating'		=> $rating
+				);
+			$this->db->insert('rating', $data_rating);
+			$last_insert_id 	= $this->db->insert_id();
+
+
+			$new_average_rating = round(((($rating_avg*$total_no_of_ratings)+$rating)/($total_no_of_ratings+1)),2);
+
+			$data_teachers 		= array(
+				'rating' 		=> $new_average_rating,
+				'rating_total' 	=> ($total_no_of_ratings+1)
+				);
+			$this->db->where('tid', $tid);
+			$this->db->update('teachers', $data_teachers);
+
+			$reply = array(
+				'previous_rating' 	=> $rating,
+				'rating_count' 		=> ($total_no_of_ratings+1),
+				'rating_avg' 		=> $new_average_rating,
+				'tid' 				=> $tid,
+				'rating_id' 		=> $last_insert_id
+				);
+			echo json_encode($reply);
+		}
+		elseif($prev_rating > 0)
+		{
+			$data_rating 	= array(
+				'rating'	=> $rating
+				);
+			$this->db->where('id', $rating_id);
+			$this->db->update('rating', $data_rating);
+
+			$new_average_rating = round((((($rating_avg*$total_no_of_ratings)-$prev_rating)+$rating)/$total_no_of_ratings),2);
+			$data_teachers 		= array(
+				'rating' 		=> $new_average_rating,
+				'rating_total' 	=> $total_no_of_ratings
+				);
+			$this->db->where('tid', $tid);
+			$this->db->update('teachers', $data_teachers);
+
+			$reply = array(
+				'previous_rating' 	=> $rating,
+				'rating_count' 		=> $total_no_of_ratings,
+				'rating_avg' 		=> $new_average_rating,
+				'tid' 				=> $tid,
+				'rating_id' 		=> $rating_id
+				);
+			echo json_encode($reply);
+		}
+	}     
 }
 
 ?>

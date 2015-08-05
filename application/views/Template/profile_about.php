@@ -56,14 +56,14 @@
 				<div id='biodisp' >
 					<div class="row">
 						<div class="col s12 l7" data-onhover='hovercss(this, {"display":""}));' >
-							<span id='biodisptext' ><?php echo Fun::smilymsg($aboutinfo["teachermoto"]); ?></span>
-							<?php
-								if(User::loginId() == $tid) {
-							?>
-							<span onclick='hideshowdown("biodisp", "bioedit");' class='edit' >Edit</span>
-							<?php
-								}
-							?>
+<!--changes by narayan -->							
+							<?php $teachermoto = Fun::smilymsg($aboutinfo["teachermoto"]); ?>
+							<span id='biodisptext' ><?php echo $teachermoto; ?></span>
+							<?php if(User::loginId() == $tid) :	?>
+								<?php if (empty($teachermoto)) echo "Write a small description about yourself."; ?>
+							<span onclick='hideshowdown("biodisp", "bioedit");' class='glyphicon glyphicon-edit green-text text-darken-2' ></span>
+							<?php endif; ?>
+<!--changes by narayan -->						
 						</div>
 					</div>
 				</div>

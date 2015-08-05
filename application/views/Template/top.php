@@ -5,6 +5,12 @@
   <?php
   opent("base",array("href"=>HOST));
   ocloset("title",$title);
+  // changes by narayan
+  if (uri_string() == "search") {
+    array_push($css, "css/bootstrap.min.css");
+  }
+  array_push($css, "css/glyphicon.css");
+  // changes by narayan
   addall_css($css);
   addmycss();
   ?>

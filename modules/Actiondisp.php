@@ -147,13 +147,21 @@ class Actiondisp{
 			mergeifunset($param, array('max'=>$data['max'], 'maxl'=>$data["maxl"], 'minl'=>0, 'min'=>0));
 			$qoutput=Sqle::autoscroll($query, $param, null, '', true, null, $_ginfo["numsearchr"]["loadadd"]);
 			$odata=Fun::getflds(array("max", "maxl", "qresultlen"), $qoutput); 
+//changes by narayan			
+			$rating_result = array();		
+			if (User::islogin())
+			{
+				$rating_query = "select * from rating where user_id=".User::loginId();
+				$rating_result = sql::getArray($rating_query);
+			}
 		}
+//changes by narayan		
 		if($printjson){
 			echo json_encode(array('ec'=>$ec,'data'=>$odata))."\n";
 		}
 		if($ec<0)
 			return; 
-		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult']));
+		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult'],"rating"=>$rating_result));
 	}
 	function disptopics($data, $printjson = true) {
 		$outp = array("ec" => 1, "data" => 0);
