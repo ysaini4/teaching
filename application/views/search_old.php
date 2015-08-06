@@ -32,6 +32,28 @@ load_view("Template/navbarnew.php");
                     <option value="">Select class first</option>
                   </select>
               </div>
+              <ul class="collapsible" data-collapsible="accordion">
+                     <li>
+                      <div class="collapsible-header">Chouse Your Tuition Type</div>
+                      <div class="collapsible-body" style="padding:6px;">
+                        <div class="row">
+                          <div class="col s10">
+                            <input id="home1" type="checkbox" class="filled-in" name="home" value='1' checked />
+                            <label style="padding-left:23px;" for="home1" >
+                            Home Tuition
+                            </label>
+                          </div>
+                          <div class="col s10">
+                          <input id="home2" type="checkbox" class="filled-in" name="home" value='2' checked />
+                            <label style="padding-left:23px;" for="home2" >
+                            Online Classes
+                            </label>
+                          </div>
+                        
+                        </div>
+                      </div>
+                    </li>
+                   </ul>
                   <ul class="collapsible" data-collapsible="accordion" style="display:none">
                     <li>
                       <div class="collapsible-header">Topics</div>
@@ -157,7 +179,7 @@ load_view("Template/navbarnew.php");
             	<div class="row">
 	  						<div id="searchresultdiv" data-action='search' data-max='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>' data-maxl='<?php echo $_ginfo["numsearchr"]["loadadd"]; ?>' data-eparams='searchform()' data-ignoreloadonce='<?php echo $_ginfo["numsearchr"]["loadonce"]; ?>'>
 								<?php
-								 	handle_disp(array('class'=>$class, 'subject'=>$subject, 'topic'=>$topic, 'price'=>'', 'timer'=>'', 'lang'=>'', 'timeslot'=>'', 'orderby'=>'', 'search'=>$search, 'max'=>0, 'maxl'=>$_ginfo["numsearchr"]["loadonce"]), "search");
+								 	handle_disp(array('class'=>$class, 'subject'=>$subject, 'topic'=>$topic, 'price'=>'', 'timer'=>'', 'lang'=>'', 'timeslot'=>'', 'orderby'=>'', 'search'=>$search, 'max'=>0, 'maxl'=>$_ginfo["numsearchr"]["loadonce"],'home'=>'1-2'), "search");
 								?>
 							</div>
 							</div>

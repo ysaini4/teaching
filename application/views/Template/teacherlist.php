@@ -36,7 +36,7 @@ foreach($qresult as $row) {
           <?php if(($row["minprice"].rit(" - ".$row["maxprice"], $row["maxprice"]!=$row["minprice"] ))!=null)  echo $row["minprice"].rit(" - ".$row["maxprice"], $row["maxprice"]!=$row["minprice"] ); else echo convchars(json_decode($row['jsoninfo'])->{'minfees'}); ?>/hr
         </span>
       </div>
-      <div class="grey-text text-darken-1">College : IIT <?php echo convchars(json_decode($row['jsoninfo'])->{'college'}); ?></div>
+      <div class="grey-text text-darken-1">College : IIT <?php echo json_decode($row['jsoninfo'])->{'college'}; ?></div>
       <div class="grey-text text-darken-1">Experience : <?php echo (($row['teachingexp']==0)||($row['teachingexp']==1)?(($row['teachingexp']==0)?"None":$row['teachingexp'].' Year'):$row['teachingexp'].' Years'); ?> </div>
       
       <div class="divider"></div>

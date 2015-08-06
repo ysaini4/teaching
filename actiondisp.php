@@ -7,7 +7,6 @@ if(server!='server'){
 }
 
 $a=new Actiondisp();
-
 if(isset($_POST["action"])  ){ 
 	$func=$_POST["action"];
 	if( method_exists($a,$_POST["action"]))

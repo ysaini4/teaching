@@ -342,7 +342,7 @@ abstract class Funs{
 		return $outp;
 	}
 
-	public static function tejpal_output($data){
+	public static function tejpal_output($data){ 
 
 	//$data have keys => {class, subject, topic, price, timer, lang, timeslot, orderby, search}
 //		$hisoutput=array("select tid from teachers",array());
@@ -432,7 +432,7 @@ abstract class Funs{
 		return getifn($outpurl, "");
 	}
 //Search modules
-	public static function mssearch($data) { 
+	public static function mssearch($data) { //print_r($data);
 		$keys = replacekeys(searchkeysplit($data["search"]),array('6'=>'vi','7'=>'vii','8'=>'viii','9'=>'ix','10'=>'x','11'=>'xi','12'=>'xii',"maths"=>"math"));
 		$params=array();
 		foreach($keys as $i => $val) {
@@ -449,25 +449,31 @@ abstract class Funs{
 		$lang_constrain = Fun::get_constrain($data["lang"], map(range(0, count(giget("encodeddataofteacherstable", "lang"))-1), function($inp){
 			return "concat('-', lang, '-') like concat('%-', ".(1+$inp).", '-%')";
 		}));
-
-		mergeifunset($params, Fun::getflds(array("class", "subject", "topic"), $data));
+		$home_constrain = Fun::get_constrain($data["home"], map(range(0, count(giget("encodeddataofteacherstable", "lang"))-1), function($inp){
+			return "concat('-',jsoninfo,'-') like concat('%', "."'".'"home":"'.(1+$inp).'"'."'".", '%')";
+		}));
+		mergeifunset($params, Fun::getflds(array("class", "subject", "topic","home"), $data));
 		
 /*cmnt by yogy 		
 		$query1 = "select distinct tid from ".qtable("subjectlist")." left join users on users.id = subjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) AND (".$pt_constrain["price"].") AND (".$pt_constrain["timer"].")";
 			
 		$query2 = "select distinct tid from timeslot where starttime>".time()." AND (".$timeslot_constrain.")";   
 cmnt by yogy */		
-		$query1 = "select distinct tid from ".qtable("teachersubjectlist")." left join users on users.id = teachersubjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) AND (".$pt_constrain["price"].") AND (".$pt_constrain["timer"].")";// this query gives results with teachers has no class ,subject ,topic booked 
-		$query3 = "select tid from teachers where (".$lang_constrain.")";
-//		echo $query3;
-//		echo $query2;
 
+/* new query by yogy*/
+		$query1 = "select distinct tid from ".qtable("teachersubjectlist")." left join users on users.id = teachersubjectlist.tid where (c_id={class} or ".tf($data["class"] == "")." ) AND ( s_id={subject} or ".tf($data["subject"] == "")."  ) AND ( (".Fun::multichoose($data["topic"], "t_id", true). ") or ".tf( $data["topic"] == "" )."  ) AND ((".Fun::key_search($keys, "classname").") OR (".Fun::key_search($keys, "subjectname").") OR (".Fun::key_search($keys, "topicname").") OR (".Fun::key_search($keys, "users.name").")  ) AND (".$pt_constrain["price"].") AND (".$pt_constrain["timer"].")";// this query gives results with teachers has no class ,subject ,topic booked 
+		$query4 = "select tid from teachers where (".$home_constrain.")";
+/* new query by yogy*/
+		
+		$query3 = "select tid from teachers where (".$lang_constrain.")";
+					
 //		$finalquery = $query1;
-		$finalquery = Fun::intersectionquery(array($query1/*, $query2*/, $query3), "tid");
+		$finalquery = Fun::intersectionquery(array($query1/*, $query2*/, $query3, $query4), "tid");
 //		echo $finalquery;
 //		$finalquery = "(".$query1.") union (".$query2.") ";
 //		$finalquery = Fun::intersectionquery(array($query1, $query2), "tid");
 //		
+		//print_r($params);
 		return array($finalquery , $params);
 	}
 

@@ -11,8 +11,6 @@ class Welcome extends CI_Controller {
 		$pageinfo=array();
 		Fun::issetlogout();
 		load_view('index.php',$pageinfo);
-		//$arrt=array("action"=>"search","blocked"=>"true","class"=>"","home"=>"1-2","ignoreloadonce"=>"20","isloadold"=>"0","lang"=>"","max"=>"0","maxl"=>"20","orderby"=>"","price"=>"","search"=>"","subject"=>"","timer"=>"","timeslot"=>"","topic"=>"");
-		//Actiondisp::search($arrt);
 		}
 	
 	public function joinus(){ 
@@ -370,7 +368,7 @@ class Welcome extends CI_Controller {
 		$pageinfo["class"]=get("class","");
 		$pageinfo["subject"]=get("subject","");
 		$pageinfo["topic"]=get("topic","");
-
+		
 		load_view("search_old.php",$pageinfo);
 	}
 

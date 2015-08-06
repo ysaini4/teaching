@@ -148,8 +148,8 @@ class Sqle extends Sql{
 		return array("qoutp"=>$qoutp,"min"=>$min,"max"=>$max);
 	}
 	public static function convQuery($query,$param_array=array()){
-		preg_match_all("|{[^}]+}|U",$query,$matches);
-		$matches=$matches[0];
+		preg_match_all("|{[^}]+}|U",$query,$matches); 
+		$matches=$matches[0]; 
 		$params="";
 		$parama=array();
 		for($i=0;$i<count($matches);$i++){
@@ -159,12 +159,12 @@ class Sqle extends Sql{
 				$parama[]=$param_array[$key];
 				$query=str_replace($matches[$i], '?' , $query );
 			}
-		}
+		} //print_r($matches);
 		return array($query,$params,$parama);
 	}
 
-	public static function getA($query,$param_array=array()){
-		$conq=Sqle::convQuery($query,$param_array);
+	public static function getA($query,$param_array=array()){ 
+		$conq=Sqle::convQuery($query,$param_array); 
 		return Sql::getArray($conq[0],$conq[1],getrefarr($conq[2]));
 	}
 
@@ -209,6 +209,7 @@ class Sqle extends Sql{
 	// }
 
 	public static function autoscroll($query, $param, $key, $sort='', $isloadold=true ,$minl=null, $maxl=null){
+		
 		setifnn($minl, $param["minl"]);
 		setifnn($maxl, $param["maxl"]);
 		if($key!=null){
@@ -222,8 +223,8 @@ class Sqle extends Sql{
 		if($key!=null)
 			$querysort="select * from (".$querylimit.") sortquery ".$sort;
 		else
-			$querysort=$querylimit;
-		$qresult=Sqle::getA($querysort,$param);
+		$querysort=$querylimit;
+		$qresult=Sqle::getA($querysort,$param); 
 		$outp["qresult"]=$qresult;
 		$outp["maxl"]=$maxl;
 		$outp["minl"]=$minl;
@@ -241,7 +242,7 @@ class Sqle extends Sql{
 				$outp["min"] = $s->min($e1, $e2, $param["min"]);
 				$outp["max"] = $s->max($e1, $e2, $param["max"]);
 			}
-		}
+		} 
 		return $outp;
 	}
 

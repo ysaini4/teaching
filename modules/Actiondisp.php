@@ -161,6 +161,7 @@ class Actiondisp{
 		}
 		if($ec<0)
 			return; 
+
 		load_view("Template/teacherlist.php",array("qresult"=>$qoutput['qresult'],"rating"=>$rating_result));
 	}
 	function disptopics($data, $printjson = true) {
