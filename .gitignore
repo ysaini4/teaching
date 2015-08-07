@@ -7,8 +7,6 @@ msv
 serverkey.pem
 system/
 system/core/Common.php
-application/config/config.php
-application/config/database.php
-FirePHPCore/*
+FirePHPCore/
 index.php
 test.php
