@@ -1,5 +1,5 @@
 <?php
-
+echo "code by yogy";
 function getTeacherUserDetails($row) {
 	/*teachers table details
 	*/
