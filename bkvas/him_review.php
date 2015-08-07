@@ -89,6 +89,11 @@ function getTeacherUserDetails($row) {
 
 <?php
 
-$changed = TRUE;
+$changed = FALSE;
+
+if ($changed)
+{
+	var_dump($changed);
+}
 
 ?>
