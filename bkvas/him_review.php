@@ -85,3 +85,10 @@ function getTeacherUserDetails($row) {
 // How much time will you take to modify, if we don't need to know all keys to save some computation time. required keys will be given as arguments.
 
 ?>
+
+
+<?php
+
+$changed = TRUE;
+
+?>
