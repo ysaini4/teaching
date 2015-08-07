@@ -5,7 +5,17 @@ $view_default=array(
 	  "css"=>array("css/materialize.min.css","css/custom-stylesheet.css","css/jquery.bxslider.css",
 			"https://fonts.googleapis.com/icon?family=Material+Icons", "http://fonts.googleapis.com/css?family=Raleway", 
 			"http://fonts.googleapis.com/css?family=Open+Sans"),
-		"title"=>"Get IITians"
+		"title"=>array(
+					'index'		=>	'Get IITians',
+					'aboutus'	=>	'Get IITians',
+					'contactus'	=>	'Get IITians',
+					'joinus'	=>	'Get IITians',
+					'signup'	=>	'Get IITians',
+					'login'		=>	'Get IITians',
+					'reset'		=>	'Get IITians',
+					'profile'	=>	'Get IITians',
+					'search'	=>	'Get IITians',
+				)
 		),
 	'Template/bottom.php'=>array(
 		"needpopup"=>true,

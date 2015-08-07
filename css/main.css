@@ -115,31 +115,34 @@ div#sideBar {
 }
 
 div#mainContent {
-	min-height: 700px;
+  min-height: 700px;
 }
 
 .clear {
-	clear:both; 
+  clear:both; 
 }
 
 div#sticker_panel {
-	background-color:#ffffff;
-	overflow-y: auto;
+  background-color:#ffffff;
+  overflow-y: auto;
 }
 
 /*
 .stick {
-	position:fixed;
+  position:fixed;
 }
 */
 
 ul.collapsible {
-	box-shadow: none;
+  box-shadow: none;
 }
 
 /*
   Search section
 */
+html{
+  font-size: 15px;
+}
 
 .whitebg{
   background-color: #FFFFFF;
@@ -149,21 +152,28 @@ ul.collapsible {
   margin-top: 50px;
 }
 
-.teacherlistelm .card-title{
-  font-size: 14px;
+.teacherlistelm{
+  font-family: arial,tahoma,verdana,sans-serif;
+  box-shadow: none;
+  margin-top: 20px;
+}
+
+.teacherlistelm .card-content{
+  font-size: .8rem;
+  padding: 5px 5 10px;
+}
+
+.teacherlistelm .card-content .card-title{
   text-transform: capitalize;
-  font-size: 1.1rem;
+  font-size: .9rem;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   color: black;
+  line-height: 2rem;
 }
 
 .teacherlistelm i.right{
   margin-left: 5px;
-  margin-top: 13px;
-}
-
-.teacherlistelm .card-content{
-  padding: 5px 5 10px;
+  cursor: pointer;
 }
 
 .btn-small{
@@ -173,11 +183,6 @@ ul.collapsible {
   letter-spacing: 0;
   text-transform: capitalize;
   padding: 8px 6px;
-}
-
-.teacherlistelm{
-  box-shadow: none;
-  margin-top: 20px;
 }
 
 .teacherlistelm:hover{
@@ -194,8 +199,34 @@ ul.collapsible {
   padding: 0px 15px;
 }
 
-html{
-  font-size: 15px;
+.nav-wrapper a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+.teacherlistelm .card-reveal{
+  font-size: .8rem;
+}
+
+.teacherlistelm .card-reveal p{
+  margin-bottom: 0;
+  color: black;
+}
+
+.teacherlistelm .card-reveal .card-title a{
+  text-transform: capitalize;
+  font-size: .9rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  color: black;
+  line-height: 2rem;
+}
+
+.teacherlistelm p a.tooltipped{
+  color: #777;
+}
+
+.teacherlistelm .card-content p.lastp{
+  margin-top: 1rem;
 }
 
 /*

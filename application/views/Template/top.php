@@ -4,13 +4,14 @@
 
   <?php
   opent("base",array("href"=>HOST));
-  ocloset("title",$title);
-  // changes by narayan
-    if (strpos(uri_string(),'search') !== false) {
+  /*      Narayan Waraich       */
+  ocloset("title",$title['index']);
+  if (strpos(uri_string(),'search') !== false)
+  {
     array_push($css, "css/bootstrap.min.css");
   }
   array_push($css, "css/glyphicon.css");
-  // changes by narayan
+  /*----------------------------*/
   addall_css($css);
   addmycss();
   ?>

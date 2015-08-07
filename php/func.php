@@ -725,3 +725,40 @@
 		return $array1;
 	}	
 ?>
+<?php
+/*
+	Author: Narayan Waraich
+*/
+	/*
+		Converts language code string into a comma separated languages string
+		e.g. 1-2-5 => English,Hindi,Bengali
+	*/
+	function convert_lang($lang_code='')
+	{
+		$langs = explode("-", $lang_code);
+		$languages=array("English","Hindi","Assamese","Sanskrit","Bengali","Mayalayam","Tamil","Gujarati","Marathi","Telugu","Oriya","Urdu","Kannada","Punjabi");
+		foreach ($langs as $key => $value)
+		{
+			$lang[] = $languages[$value-1];
+		}
+		return implode(' , ',$lang);
+	}
+
+	/*
+		Returns the proper spelling for degrees
+	*/
+	function convert_degree($degree='')
+	{
+		$degrees 	= array(
+			'btech' =>	'B.Tech.',
+			'mtech' =>	'M.Tech.',
+			'phd'	=>	'Ph.D.',
+			'msc'	=>	'M.Sc.',
+			'mba'	=>	'M.B.A.',
+			'dual'	=>	'B.Tech. + M.Tech.'
+			);
+		if (array_key_exists($degree, $degrees))
+			return $degrees[$degree];
+		return NULL;
+	}
+?>
